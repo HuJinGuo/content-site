@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>首页 · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<script src="theme.js"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="home.html"><span class="brand-mark"></span><span class="name">AIGC 知识库</span></a>
+  <nav><a class="active" href="home.html">首页</a><a href="category.html">文档</a><a href="category.html">案例</a></nav>
+  <div class="actions">
+    <button class="icon-btn">🔍 搜索</button>
+    <button class="icon-btn" data-theme-toggle>☀ 浅</button>
+    <a class="btn small" href="#">登录</a>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="kicker">文档 · 案例 · 分组</span>
+    <h1 class="serif">把 AI 用在真活上</h1>
+    <p>从大学课堂到工程现场：可直接照做的教程、带提示词和产出的案例。部分免费，部分按篇解锁；在组里的人按组的价。</p>
+    <div class="row">
+      <a class="btn lg" href="category.html">开始阅读</a>
+      <a class="btn secondary lg" href="me.html">输入兑换码 / 邀请码</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2 class="serif">精选</h2><a href="category.html">全部文档 →</a></div>
+    <div class="grid cols-3">
+      <article class="card featured click">
+        <span class="corner chip paid">¥29</span>
+        <div class="cover"></div>
+        <h3>Claude Code 从零到精通完全指南</h3>
+        <p class="summary">安装、登录、第一次对话、项目内规则、子代理与自动化。跟着做完就能在自己的仓库里用起来。</p>
+        <div class="meta"><span>Agent 工程</span>·<span>约 18 分钟</span>·<span>2026-09-04</span></div>
+      </article>
+      <article class="card featured click">
+        <span class="corner chip free">免费</span>
+        <div class="cover"></div>
+        <h3>AI 驾驭工程（Harness）深度解析</h3>
+        <p class="summary">从提示词、上下文到驾驭工程：为什么模型越强越要有规则，怎么把规则变成工具。</p>
+        <div class="meta"><span>认知原理</span>·<span>约 12 分钟</span>·<span>2026-07-22</span></div>
+      </article>
+      <article class="card featured click">
+        <span class="corner chip exclusive">专属</span>
+        <div class="cover"></div>
+        <h3>案例：给酒包装打样单写 AI 说明书</h3>
+        <p class="summary">背景 · 工具 · 提示词 · 产出 · 复盘。一份真实打样单从口述到可交付文档的全过程。</p>
+        <div class="meta"><span>案例</span>·<span>VIP 陪跑</span>·<span>2026-08-30</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2 class="serif">分类</h2></div>
+    <div class="grid cols-4">
+      <a class="card click cat-card" href="category.html"><span class="kicker">01</span><b>校园使用</b><span class="muted small">8×90 分钟工作坊讲义，国内网页产品主线</span><span class="count">8 篇 · 3 篇免费</span></a>
+      <a class="card click cat-card" href="category.html"><span class="kicker">02</span><b>认知原理</b><span class="muted small">大模型怎么工作、边界在哪</span><span class="count">4 篇 · 2 篇免费</span></a>
+      <a class="card click cat-card" href="category.html"><span class="kicker">03</span><b>Agent 工程</b><span class="muted small">Claude Code / Codex / CLI / Harness / 个人 AI OS</span><span class="count">7 篇</span></a>
+      <a class="card click cat-card" href="category.html"><span class="kicker">04</span><b>AIGC 生产</b><span class="muted small">文 → 图 → 视频 → 发布，带版权与商用验收</span><span class="count"><span class="chip muted">筹备中</span></span></a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2 class="serif">最新</h2><a href="category.html">更多 →</a></div>
+    <div class="grid cols-2">
+      <article class="card click"><span class="corner chip paid">¥39</span><h3>Codex App 全功能实战教程</h3><p class="summary">从安装到高级自动化：任务、审批、并行会话、和仓库规范配合。</p><div class="meta"><span>Agent 工程</span>·<span>2026-09-04</span></div></article>
+      <article class="card click"><span class="corner chip group">组内免费</span><h3>L03 · 提问方法</h3><p class="summary">把作业改成可验证的提问：四段式、给材料、要出处、自己复核。</p><div class="meta"><span>校园使用</span>·<span>2026-08-20</span></div></article>
+      <article class="card click"><span class="corner chip free">免费</span><h3>大模型通识</h3><p class="summary">不讲公式的原理课：token、上下文、幻觉、为什么它会一本正经地错。</p><div class="meta"><span>认知原理</span>·<span>2026-09-04</span></div></article>
+      <article class="card click"><span class="corner chip paid">¥19</span><h3>Obsidian 笔记工具全攻略</h3><p class="summary">从空库到个人知识中台：结构、链接、模板、和 AI 一起维护。</p><div class="meta"><span>Agent 工程</span>·<span>2026-09-04</span></div></article>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>AIGC 知识库</span><a href="#">关于</a><a href="#">联系</a><span class="right">备案号（有则显示）</span>
+  </footer>
+</main>
+
+<div class="wf-note">线框 · <a href="index.html">索引</a></div>
+</body>
+</html>

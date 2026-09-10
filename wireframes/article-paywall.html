@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>文章 · 付费墙态 · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<script src="theme.js"></script>
+</head>
+<body class="has-mobile-bar">
+
+<header class="topbar">
+  <a class="brand" href="home.html"><span class="brand-mark"></span><span class="name">AIGC 知识库</span></a>
+  <nav><a href="home.html">首页</a><a class="active" href="category.html">文档</a><a href="category.html">案例</a></nav>
+  <div class="actions">
+    <button class="icon-btn">🔍 搜索</button>
+    <button class="icon-btn" data-theme-toggle>☀ 浅</button>
+    <a class="avatar" href="me.html">小</a>
+  </div>
+</header>
+<div class="progress-thread"><i></i></div>
+
+<main class="container">
+  <div class="article-head">
+    <div class="crumb"><a href="home.html">首页</a> / <a href="category.html">Agent 工程</a></div>
+    <h1 class="serif">Claude Code 从零到精通完全指南</h1>
+    <div class="article-meta">
+      <span class="chip paid">¥29</span>
+      <span class="chip group">安理工 2026 班 · 5 折</span>
+      <span>Agent 工程</span>·<span>更新 2026-09-04</span>·<span>约 18 分钟</span>
+    </div>
+  </div>
+
+  <div class="article-wrap">
+    <article class="prose">
+      <p>Claude Code 是一个在终端里跑的编码代理：你用自然语言说要做什么，它读你的仓库、改文件、跑命令、看结果、再改。和网页聊天最大的区别是——它动的是你真实的项目，做完的东西直接留在磁盘上。</p>
+      <p>这份指南按「装上 → 第一次对话 → 让它守你的规矩 → 让它替你干重复活」四步走。每一步都有当堂验收：做到哪一步、怎么判断做对了。</p>
+      <h2>一、安装与登录</h2>
+      <p>先确认 Node 版本，再全局安装。安装完成后第一次运行会让你登录，登录方式取决于你用的是订阅账号还是 API Key。</p>
+      <pre><code>node -v          # 需要 18+
+npm i -g @anthropic-ai/claude-code
+claude           # 首次运行进入登录</code></pre>
+      <p class="fade-out">登录成功后会看到一个提示符。此时它还什么都不知道：不知道你的项目、不知道你的习惯。接下来两节就是把这两件事补上。先从项目开始——进入你的仓库目录再启动，它会先扫一遍目录结构，然后等你开口。第一次对话建议从「总结这个仓库」开始，看它理解得对不对，再决定给多大权限……</p>
+
+      <div class="thread-break"></div>
+
+      <section class="card paywall">
+        <span class="kicker">线到此处</span>
+        <h3>继续阅读需要解锁</h3>
+        <p class="muted small">余下 4 节：第一次对话 · 项目规则 AGENTS.md · 子代理与并行 · 自动化与 Hooks，含 2 个附件。</p>
+        <div class="price">
+          <span class="now"><small>¥</small>14.5</span>
+          <span class="strike num">¥29</span>
+          <span class="chip group">安理工 2026 班 · 5 折</span>
+        </div>
+        <div class="actions">
+          <button class="btn lg">解锁全文 ¥14.5</button>
+          <button class="btn secondary lg">输入兑换码</button>
+        </div>
+        <p class="note">已购买永久可读 · 组权益随组有效期（到 2026-12-31）· 未登录时这里显示「登录后看你的价格」</p>
+      </section>
+    </article>
+
+    <aside class="rail">
+      <div class="card toc">
+        <span class="kicker">目录</span>
+        <a class="active" href="#">一、安装与登录</a>
+        <a class="locked" href="#">二、第一次对话</a>
+        <a class="locked" href="#">三、项目规则 AGENTS.md</a>
+        <a class="locked" href="#">四、子代理与并行</a>
+        <a class="locked" href="#">五、自动化与 Hooks</a>
+      </div>
+      <div class="card buy-card">
+        <span class="kicker">解锁这篇</span>
+        <div class="price-row"><span>原价</span><span class="num">¥29.00</span></div>
+        <div class="price-row"><span class="accent">安理工 2026 班 · 5 折</span><span class="num accent">−¥14.50</span></div>
+        <div class="price-row total"><span>应付</span><b class="num">¥14.50</b></div>
+        <button class="btn block" style="margin-top:12px">解锁全文</button>
+        <button class="btn secondary block" style="margin-top:8px">输入兑换码</button>
+      </div>
+      <div class="card">
+        <span class="kicker">附件</span>
+        <div class="attach"><span class="ext">PDF</span><span class="grow">cc-cheatsheet.pdf</span><span class="muted small">🔒</span></div>
+        <div class="attach"><span class="ext">JSON</span><span class="grow">settings.json 模板</span><span class="muted small">🔒</span></div>
+      </div>
+    </aside>
+  </div>
+
+  <section class="section">
+    <div class="section-head"><h2 class="serif">相关</h2></div>
+    <div class="grid cols-3">
+      <article class="card click"><span class="corner chip paid">¥39</span><h3>Codex App 全功能实战教程</h3><div class="meta"><span>Agent 工程</span></div></article>
+      <article class="card click"><span class="corner chip free">免费</span><h3>AI 驾驭工程（Harness）深度解析</h3><div class="meta"><span>认知原理</span></div></article>
+      <article class="card click"><span class="corner chip paid">¥19</span><h3>CLI 与 Skill 浏览器 AI 自动化</h3><div class="meta"><span>Agent 工程</span></div></article>
+    </div>
+  </section>
+
+  <footer class="footer"><span>AIGC 知识库</span><a href="#">关于</a><a href="#">联系</a></footer>
+</main>
+
+<div class="mobile-bar">
+  <div><span class="now">¥14.5</span> <span class="strike small">¥29</span><br><span class="small accent">安理工 2026 班 · 5 折</span></div>
+  <button class="btn right">解锁全文</button>
+</div>
+
+<div class="wf-note">线框 · <a href="index.html">索引</a></div>
+</body>
+</html>
