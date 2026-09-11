@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import { SERIES_HOME_HREF, SITE_NAME } from '../lib/site';
+---
+
+<Base title="没有这篇文章" description="这一页不存在。">
+	<header class="topbar">
+		<a class="brand" href={SERIES_HOME_HREF}>{SITE_NAME}</a>
+		<a class="nav-link" href={SERIES_HOME_HREF}>返回系列</a>
+	</header>
+	<main class="page not-found">
+		<h1>没有这篇文章</h1>
+		<p>链接可能写错了，或这篇还没发布。</p>
+		<p><a class="nav-link" href={SERIES_HOME_HREF}>返回系列首页</a></p>
+	</main>
+</Base>

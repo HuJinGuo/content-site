@@ -1,30 +1,31 @@
 ---
 import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { SERIES_HOME_HREF, SITE_NAME, seriesBadge } from '../lib/site';
 
 const posts = (await getCollection('posts', ({ data }) => data.status === 'published')).sort(
-	(a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+	(a, b) => (a.data.episode ?? 0) - (b.data.episode ?? 0) || b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
 );
 ---
 
-<html lang="zh-CN">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>内容发布站</title>
-	</head>
-	<body>
-		<h1>内容发布站</h1>
+<Base title={SITE_NAME} description="静态 Markdown 内容站">
+	<header class="topbar">
+		<a class="brand" href={SERIES_HOME_HREF}>{SITE_NAME}</a>
+	</header>
+	<main class="page">
+		<h1>{SITE_NAME}</h1>
 		<ul>
 			{
-				posts.map((post) => (
-					<li>
-						<a href={`/posts/${post.id}/`}>{post.data.title}</a>
-					</li>
-				))
+				posts.map((post) => {
+					const badge = seriesBadge(post.data.series, post.data.episode);
+					return (
+						<li>
+							<a href={`/posts/${post.id}`}>{post.data.title}</a>
+							{badge && <> · {badge}</>}
+						</li>
+					);
+				})
 			}
 		</ul>
-	</body>
-</html>
+	</main>
+</Base>
