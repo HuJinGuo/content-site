@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts', ({ data }) => data.status === 'published')).sort(
+	(a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+);
+---
+
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>内容发布站</title>
+	</head>
+	<body>
+		<h1>内容发布站</h1>
+		<ul>
+			{
+				posts.map((post) => (
+					<li>
+						<a href={`/posts/${post.id}/`}>{post.data.title}</a>
+					</li>
+				))
+			}
+		</ul>
+	</body>
+</html>
