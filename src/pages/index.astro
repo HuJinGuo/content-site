@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { SERIES_HOME_HREF, SITE_NAME, seriesBadge } from '../lib/site';
+
+const posts = (await getCollection('posts', ({ data }) => data.status === 'published')).sort(
+	(a, b) => (a.data.episode ?? 0) - (b.data.episode ?? 0) || b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+);
+---
+
+<Base title={SITE_NAME} description="静态 Markdown 内容站">
+	<header class="topbar">
+		<a class="brand" href={SERIES_HOME_HREF}>{SITE_NAME}</a>
+	</header>
+	<main class="page">
+		<h1>{SITE_NAME}</h1>
+		<ul>
+			{
+				posts.map((post) => {
+					const badge = seriesBadge(post.data.series, post.data.episode);
+					return (
+						<li>
+							<a href={`/posts/${post.id}`}>{post.data.title}</a>
+							{badge && <> · {badge}</>}
+						</li>
+					);
+				})
+			}
+		</ul>
+	</main>
+</Base>

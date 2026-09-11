@@ -12,3 +12,7 @@ harness/node_modules/
 .venv/
 __pycache__/
 .pytest_cache/
+
+# Astro
+dist/
+.astro/
