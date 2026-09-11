@@ -13,6 +13,11 @@ const posts = defineCollection({
 		publishedAt: z.coerce.date(),
 		// Only `published` entries are listed and get a `/posts/[slug]` page.
 		status: z.enum(['draft', 'published']),
+		episodeTotal: z.number().int().optional(),
+		nextTitle: z.string().optional(),
+		nextHook: z.string().optional(),
+		// Unpublished follow-ups stay `#` — never point at relative .md paths outside the site.
+		nextHref: z.string().optional(),
 	}),
 });
 

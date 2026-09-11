@@ -1,23 +1,17 @@
 ---
 import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import { SITE_NAME } from '../lib/site';
 
 const posts = (await getCollection('posts', ({ data }) => data.status === 'published')).sort(
 	(a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
 );
 ---
 
-<html lang="zh-CN">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>内容发布站</title>
-	</head>
-	<body>
-		<h1>内容发布站</h1>
-		<ul>
+<Layout title={SITE_NAME} description="静态 Markdown 内容站" homeLabel="回目录">
+	<main class="wrap">
+		<h1>{SITE_NAME}</h1>
+		<ul class="post-list">
 			{
 				posts.map((post) => (
 					<li>
@@ -26,5 +20,5 @@ const posts = (await getCollection('posts', ({ data }) => data.status === 'publi
 				))
 			}
 		</ul>
-	</body>
-</html>
+	</main>
+</Layout>

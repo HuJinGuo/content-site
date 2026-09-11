@@ -9,3 +9,5 @@ status: published
 ---
 
 This is a scaffold placeholder. Real series content is ingested later.
+
+![一张不存在的配图](/images/missing-demo.png)

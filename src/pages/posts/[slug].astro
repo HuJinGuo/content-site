@@ -1,5 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { renderMarkdown, splitDoToday } from '../../lib/markdown';
+import { seriesBadge } from '../../lib/site';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('posts', ({ data }) => data.status === 'published');
@@ -10,19 +13,46 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const { body, actionTitle, actionMarkdown } = splitDoToday(post.body);
+const bodyHtml = renderMarkdown(body);
+const actionHtml = actionMarkdown ? renderMarkdown(actionMarkdown) : null;
+const badge = seriesBadge(post.data);
+const nextTitle = post.data.nextTitle;
+const nextHook = post.data.nextHook;
+const nextHref = post.data.nextHref ?? '#';
 ---
 
-<html lang="zh-CN">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{post.data.title}</title>
-	</head>
-	<body>
-		<p><a href="/">Home</a></p>
-		<h1>{post.data.title}</h1>
-	</body>
-</html>
+<Layout title={post.data.title} description={post.data.description} ogImage={post.data.ogImage}>
+	<article class="wrap">
+		<header class="post-header">
+			{badge && <p class="series-badge">{badge}</p>}
+			<h1>{post.data.title}</h1>
+			{post.data.description && <p class="lead">{post.data.description}</p>}
+		</header>
+
+		<div class="prose" set:html={bodyHtml} />
+
+		{
+			actionHtml && (
+				<section class="do-today" aria-labelledby="do-today-heading">
+					<h2 id="do-today-heading">{actionTitle}</h2>
+					<div set:html={actionHtml} />
+				</section>
+			)
+		}
+
+		{
+			nextTitle && (
+				<a class="next-teaser" href={nextHref}>
+					<p class="kicker">下篇预告</p>
+					<h2>{nextTitle}</h2>
+					{nextHook && <p>{nextHook}</p>}
+				</a>
+			)
+		}
+	</article>
+
+	<footer class="site-footer">
+		<a href="/">回目录</a>
+	</footer>
+</Layout>

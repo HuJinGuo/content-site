@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+import { SITE_NAME } from '../lib/site';
+
+interface Props {
+	title: string;
+	description?: string;
+	ogImage?: string;
+	homeHref?: string;
+	homeLabel?: string;
+}
+
+const {
+	title,
+	description,
+	ogImage,
+	homeHref = '/',
+	homeLabel = '回目录',
+} = Astro.props;
+---
+
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		{description && <meta name="description" content={description} />}
+		<meta property="og:title" content={title} />
+		{description && <meta property="og:description" content={description} />}
+		{ogImage && <meta property="og:image" content={ogImage} />}
+	</head>
+	<body>
+		<header class="topbar">
+			<a class="site-name" href={homeHref}>{SITE_NAME}</a>
+			<a class="text-link" href={homeHref}>{homeLabel}</a>
+		</header>
+		<slot />
+		<script is:inline>
+			window.__imgPh = function (img) {
+				var el = document.createElement('div');
+				el.className = 'img-placeholder';
+				el.setAttribute('role', 'img');
+				el.textContent = img.alt || '图片暂缺';
+				img.replaceWith(el);
+			};
+		</script>
+	</body>
+</html>
