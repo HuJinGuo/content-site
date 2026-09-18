@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio · 实体 · 工具目录维护 /studio/entities · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="studio" data-active="entities">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">实体 · 工具目录</span><div class="row"><span class="muted small">实体（事实）与目录条目（商业）分区</span><button class="btn small">新建实体</button></div></div>
+    <div class="page">
+      <div class="tabs"><button class="active">实体 208</button><button>工具目录条目 64</button><button>认领核对队列 2</button><button>实测记录</button><button>待审自动更新 5</button></div>
+      <div class="split wide-left">
+        <div class="card">
+          <div class="filters"><select><option>类型：全部</option><option>模型</option><option>公司</option><option>论文</option><option>工具</option></select><input class="input" placeholder="搜实体"></div>
+          <table class="data">
+            <thead><tr><th>实体</th><th>类型</th><th>官方链接</th><th>Last-verified</th><th>待审更新</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><b>某模型 4.6</b></td><td>模型</td><td class="small"><span class="chip ok">200</span> vendor.example/models</td><td class="mono small">09-14</td><td><span class="chip warn">1（快讯自动）</span><span class="anno">1</span></td><td class="actions"><button class="btn small ghost">编辑</button><button class="btn small secondary">审更新</button></td></tr>
+              <tr><td><b>向量库 X</b></td><td>工具</td><td class="small"><span class="chip ok">200</span> github.com/…</td><td class="mono small">09-14</td><td>—</td><td class="actions"><button class="btn small ghost">编辑</button></td></tr>
+              <tr><td><b>某模型厂商</b></td><td>公司</td><td class="small"><span class="chip ok">403（允许）</span></td><td class="mono small">09-10</td><td>—</td><td class="actions"><button class="btn small ghost">编辑</button></td></tr>
+              <tr><td><b>ColPali 2024</b></td><td>论文</td><td class="small"><span class="chip ok">200</span> arxiv.org/…</td><td class="mono small">09-12</td><td>—</td><td class="actions"><button class="btn small ghost">编辑</button></td></tr>
+              <tr><td><b>某托管向量服务</b></td><td>工具</td><td class="small"><span class="chip bad">404</span><span class="anno">2</span></td><td class="mono small">06-01</td><td>—</td><td class="actions"><span class="chip warn">进保鲜队列</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="card"><span class="kicker">审自动更新（diff）</span><div class="small" style="margin:6px 0">某模型 4.6 · 来自快讯「上下文 1M」</div><div class="diff"><div class="ctx">context_window:</div><div class="del">  value: 128k  (as_of 2026-05-02)</div><div class="ins">  value: 1M    (as_of 2026-09-14)</div><div class="ctx">pricing.input: $x / M (as_of 2026-08-30)</div></div><div class="row" style="margin-top:8px"><button class="btn small">采纳</button><button class="btn small ghost">拒</button></div></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">授予实测徽章 <span class="anno">3</span></span><div class="fm" style="grid-template-columns:1fr;margin-top:8px"><div class="field"><label>条目</label><input value="某编辑器 Agent"></div><div class="field"><label>环境</label><input value="macOS 15 · v2.3"></div><div class="field"><label>日期 · 编辑</label><input value="2026-09-11 · 编辑 A"></div><div class="field"><label>结论（≤ 140 字）</label><input value="安装到第一次 Agent 任务 12 分钟；国内直连"></div></div><button class="btn small" style="margin-top:6px">授予</button><p class="muted small" style="margin-top:6px">只此处能授；前台无记录一律「未运行」。</p></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">认领核对队列 2</span><div class="qi" style="margin-top:8px"><div><b>某向量数据库云版 · 价格字段</b><div class="sub">claims@vendor.example（同域 ✓）· 提议：¥xx → ¥yy / 月</div></div><div class="row"><button class="btn small">核对通过</button><button class="btn small ghost">拒</button></div></div><div class="qi"><div><b>某工具 · 官网链接</b><div class="sub">邮箱 gmail.com ✕ 不同域 → 自动拒</div></div><span class="chip bad">已拒</span></div></div>
+        </div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 实体 · 工具目录</h3>
+      <ol>
+        <li>快讯发布 → 自动生成实体更新草稿（带 as_of）→ 人审采纳；机审通过后编辑抽检。<span class="ref">06 §2.7 · §4.12</span></li>
+        <li>官方链接 HEAD 检查：404 进保鲜队列。<span class="ref">06 §4.12</span></li>
+        <li>实测徽章记录环境、日期、编辑、结论；不可由厂商认领改变。<span class="ref">06 §4.12</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

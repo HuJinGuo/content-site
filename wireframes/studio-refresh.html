@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio · 保鲜队列 /studio/refresh · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="studio" data-active="refresh">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">保鲜队列 · 过时清单候选</span><div class="row"><span class="muted small">保鲜员只建议 · 处决权在人</span><a class="btn small secondary" href="studio-issue.html">10 月过时清单编排</a></div></div>
+    <div class="page">
+      <div class="tiles"><div class="tile bad"><em>3</em><span>已过 review_by</span></div><div class="tile warn"><em>4</em><span>7 日内到期</span></div><div class="tile"><em>2</em><span>实体变更触发</span></div><div class="tile"><em>1</em><span>「过时了」≥ 3 人</span></div></div>
+      <div class="filters"><div class="segmented"><button class="active">全部 10</button><button>到期</button><button>实体变更</button><button>读者反馈</button><button>链接 404</button></div><select><option>层：全部</option></select></div>
+
+      <div class="review-row">
+        <div>
+          <div class="row"><b>L2 · 某产品价格对照（2026-03）</b><span class="chip bad">review_by 已过 12 天</span><span class="chip warn">实体变更 ×3</span></div>
+          <div class="small muted" style="margin:6px 0">触发：三条计费快讯（09-13）· 「过时了」4 人 / 7 日</div>
+          <div class="diff" style="margin-top:8px"><div class="ctx">| 某编辑器 Agent | 月费 ¥xx | …</div><div class="del">| 某编辑器 Agent | 月费 ¥xx 无限用 |</div><div class="ins">| 某编辑器 Agent | 按用量，中度 ≈ ¥yy / 月（截至 09-13）|</div><div class="ctx">…（保鲜员 diff 建议 · 共 7 处）</div></div>
+        </div>
+        <div class="side">
+          <b class="small">保鲜员建议：<span style="color:var(--danger)">作废</span> · 整表结构失效</b>
+          <div class="field" style="margin:0"><label>替代（作废必填）</label><input value="L2 · 按用量计费下的月费估算（2026-09）"></div>
+          <div class="row"><button class="btn small danger">作废 + 替代</button><button class="btn small secondary">降级（挂黄条）</button><button class="btn small ghost">回写 diff</button><button class="btn small ghost">延期 30 天</button></div>
+          <span class="muted small">任一操作写 changelog + 审计。<span class="anno">1</span></span>
+        </div>
+      </div>
+
+      <div class="review-row">
+        <div>
+          <div class="row"><b>L1 · 上下文窗口</b><span class="chip warn">实体变更</span></div>
+          <div class="small muted" style="margin:6px 0">触发：快讯「上下文 1M」；正文含具体数字「128k」</div>
+          <div class="diff" style="margin-top:8px"><div class="del">目前主流模型的窗口在 128k 左右。</div><div class="ins">窗口大小变化很快，查最新值见实体页；这里只讲「大了为什么不一定好」。</div></div>
+        </div>
+        <div class="side"><b class="small">建议：回写（改写为不写数字）</b><div class="row"><button class="btn small">采纳回写 → 进 editing</button><button class="btn small ghost">拒</button></div></div>
+      </div>
+
+      <div class="review-row">
+        <div><div class="row"><b>L3 · 本地模型运行器入门</b><span class="chip warn">7 日内到期</span></div><div class="small muted" style="margin:6px 0">触发：review_by 09-20 · 新版 UI 截图不符（读者报错 2）</div></div>
+        <div class="side"><b class="small">建议：降级 + 10 月重跑截图</b><div class="row"><button class="btn small secondary">降级</button><button class="btn small ghost">延期</button></div></div>
+      </div>
+
+      <div class="review-row">
+        <div><div class="row"><b>L3 · 某托管向量服务快速上手</b><span class="chip bad">官方链接 404</span></div><div class="small muted" style="margin:6px 0">触发：实体官方链接 HEAD 404 · 服务停止新注册</div></div>
+        <div class="side"><b class="small">建议：作废</b><div class="field" style="margin:0"><label>替代</label><input value="L3 · 最小 RAG（本地库）"></div><div class="row"><button class="btn small danger">作废 + 替代</button></div></div>
+      </div>
+
+      <div class="card" style="margin-top:14px"><span class="kicker">过时清单候选（10 月）</span><p class="small" style="margin-top:6px">本月已确认：作废 2 · 降级 1 · 回写 1 → 10-01 生成清单草稿到期刊编排。</p></div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 保鲜队列</h3>
+      <ol>
+        <li>四种处置：回写 diff（进 editing 状态）/ 降级（stale 挂黄条）/ 作废（archived 必填替代 + 红条 + URL 保留）/ 延期；全部写 changelog 与审计。<span class="ref">06 §4.13 · §6</span></li>
+        <li>触发源：review_by 到期扫描（每日）、实体变更、读者「过时了」≥ 3 人 / 7 日、官方链接 404。<span class="ref">06 §8.5 freshness</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

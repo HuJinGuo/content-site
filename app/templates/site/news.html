@@ -1,0 +1,20 @@
+{% extends "base_site.html" %}
+{% block title %}情报{% endblock %}
+{% block content %}
+<section class="hero" style="padding-bottom:8px">
+  <span class="kicker">快讯</span>
+  <h1 class="serif">科技情报</h1>
+  <p>双源核实。过时会进清单。</p>
+</section>
+{% for n in items %}
+  <a class="news-item" href="/articles/{{ n.slug }}">
+    <time>{{ n.published_at|date:"m-d" }}</time>
+    <div>
+      <h3>{{ n.title }}</h3>
+      <p class="summary">{{ n.summary }}</p>
+    </div>
+  </a>
+{% empty %}
+  <p class="muted">今天还没有新快讯。去 <a class="gold" href="/learn">学习地图</a> 挑一篇概念卡。</p>
+{% endfor %}
+{% endblock %}

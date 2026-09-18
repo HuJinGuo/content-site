@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin · 功能开关 /admin/flags · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="admin" data-active="flags">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">功能开关 · 全部默认关</span><div class="row"><span class="muted small">键名唯一真源：05 §2.2 · 改动写审计 · 可回滚</span><a class="btn small secondary" href="admin-metrics.html">达标线看板</a></div></div>
+    <div class="page">
+      <div class="banner info small" style="margin-top:0">每个开关：前置条件（自动判定 ● / 人工勾选 ☐）· 生效范围 · 回退阈值。前置不满足时按钮灰且写明缺什么；<code>ads.enabled</code> 有 24 小时冷静期。<span class="anno">1</span></div>
+
+      <div class="tabs"><button class="active">广告 11</button><button>付费 / 支持者 4</button><button>功能 6</button><button>变更历史</button></div>
+
+      <div class="card">
+        <span class="kicker">分级开启向导（05 §11.3）</span>
+        <div class="steps" style="margin-top:8px"><span class="done">0 preview_roles</span><i>→</i><span class="cur">1 ads.enabled + house + R3</span><i>→</i><span>2 + self_serve.tools</span><i>→</i><span>3 + self_serve.jobs</span><i>→</i><span>4 + R2 + direct</span><i>→</i><span>5 + email_sponsor + R1</span><i>→</i><span>6 + R4 / R5 + 专区</span><i>→</i><span>7 + programmatic</span></div>
+        <p class="muted small">每级观察 ≥ 2 周，达标线不跌才进下一级；跌破回退阈值 → 自动回退到上一级并通知。</p>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <div class="flag-row" style="border-top:0;font-weight:700;color:var(--muted);font-size:12px"><span>开关</span><span>状态</span><span>前置条件</span><span>操作</span></div>
+
+        <div class="flag-row"><div><code>ads.preview_roles</code><div class="desc">Admin / AdOps 预览赞助态版式（截图对比、CLS）</div></div><div><span class="toggle on"></span> <span class="small ok">开</span></div><div><div class="pre ok">无</div></div><div><button class="btn small ghost">关</button></div></div>
+
+        <div class="flag-row"><div><code>ads.enabled</code> <span class="chip warn" style="font-size:10px">总开关</span><div class="desc">开后：媒体页、门户、政策页可见；R 位可换赞助卡</div></div><div><span class="toggle"></span> <span class="small muted">关</span></div><div>
+          <div class="pre ok">早报连续 30 工作日（61 ✓）</div>
+          <div class="pre ok">已发布 ≥ 100 篇（213 ✓）</div>
+          <div class="pre bad">月 UV ≥ 10k（8.2k ✕）<span class="anno">2</span></div>
+          <div class="pre ok">完读率 ≥ 40%（47% ✓）</div>
+          <div class="pre manual">广告政策页已发布（人工确认）</div>
+          <div class="pre ok">R1–R5 占位已上线（CLS ≤ 0.1 ✓）</div>
+        </div><div><button class="btn small" disabled>开（缺 1 自动 · 1 人工）</button><div class="muted small" style="margin-top:4px">开时进入 24h 冷静期，可撤</div></div></div>
+
+        <div class="flag-row"><div><code>ads.house</code><div class="desc">自家 / 免费试投卡（第 1 级）</div></div><div><span class="toggle"></span></div><div><div class="pre bad">ads.enabled</div></div><div><button class="btn small" disabled>开</button></div></div>
+        <div class="flag-row"><div><code>ads.self_serve.tools</code><div class="desc">黄页认证 / 置顶自助（S7）</div></div><div><span class="toggle"></span></div><div><div class="pre bad">ads.enabled</div><div class="pre ok">目录条目 ≥ 50（64 ✓）</div><div class="pre ok">实测徽章 ≥ 20（27 ✓）</div></div><div><button class="btn small" disabled>开</button></div></div>
+        <div class="flag-row"><div><code>ads.self_serve.jobs</code><div class="desc">招聘板 + 导航「招聘」（S8）</div></div><div><span class="toggle"></span></div><div><div class="pre bad">ads.enabled</div><div class="pre manual">专区审核 SLA 人员就位</div></div><div><button class="btn small" disabled>开</button></div></div>
+        <div class="flag-row"><div><code>ads.direct</code><div class="desc">直销排期（S3 / S4 / S11 / 赞助内容）</div></div><div><span class="toggle"></span></div><div><div class="pre bad">ads.enabled</div><div class="pre bad">ads.house 已开 ≥ 2 周</div></div><div><button class="btn small" disabled>开</button></div></div>
+        <div class="flag-row"><div><code>ads.email_sponsor</code><div class="desc">S1 / S2 邮件与站内赞助段</div></div><div><span class="toggle"></span></div><div><div class="pre bad">ads.enabled</div><div class="pre bad">订户 ≥ 3,000（3,120 ✓ 但父开关关）</div><div class="pre ok">退订率 ≤ 0.5% / 期</div></div><div><button class="btn small" disabled>开</button></div></div>
+        <div class="flag-row"><div><code>ads.launches</code> · <code>ads.events</code> · <code>ads.deals</code><div class="desc">三个专区（S9 / S10 / S12）分别开</div></div><div><span class="toggle"></span> <span class="toggle"></span> <span class="toggle"></span></div><div><div class="pre bad">ads.enabled</div></div><div><button class="btn small" disabled>分别开</button></div></div>
+        <div class="flag-row"><div><code>ads.sponsored_content</code><div class="desc">赞助内容页 + 独立 RSS</div></div><div><span class="toggle"></span></div><div><div class="pre bad">ads.direct</div></div><div><button class="btn small" disabled>开</button></div></div>
+        <div class="flag-row"><div><code>ads.programmatic</code><div class="desc">联盟 / 程序化填充（第 7 级 · 最后）</div></div><div><span class="toggle"></span></div><div><div class="pre bad">ads.direct 已开 ≥ 4 周</div><div class="pre manual">拦截率估算已接入</div></div><div><button class="btn small" disabled>开</button></div></div>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <span class="kicker">付费 / 支持者 · 功能</span>
+        <div class="flag-row"><div><code>supporter.enabled</code><div class="desc">/pricing、权益、会员 RSS</div></div><div><span class="toggle"></span></div><div><div class="pre bad">ask.enabled</div><div class="pre ok">资源包 ≥ 3（9 ✓）</div><div class="pre manual">发卡站商品已上架</div></div><div><button class="btn small" disabled>开</button></div></div>
+        <div class="flag-row"><div><code>paywall.enabled</code><div class="desc">内容级收费生效（access ≠ free 才截断）</div></div><div><span class="toggle"></span></div><div><div class="pre bad">supporter.enabled</div><div class="pre manual">收费清单已审（admin-paywall）</div></div><div><button class="btn small" disabled>开</button></div></div>
+        <div class="flag-row"><div><code>groups.enabled</code><div class="desc">分组 / 组码</div></div><div><span class="toggle"></span></div><div><div class="pre bad">paywall.enabled</div></div><div><button class="btn small" disabled>开</button></div></div>
+        <div class="flag-row"><div><code>tipping.enabled</code><div class="desc">赞赏按钮（文末工具条）</div></div><div><span class="toggle"></span></div><div><div class="pre bad">supporter.enabled</div></div><div><button class="btn small" disabled>开</button></div></div>
+        <div class="flag-row"><div><code>ask.enabled</code><div class="desc">站内问答（V1）</div></div><div><span class="toggle"></span></div><div><div class="pre ok">已审语料 ≥ 100（213 ✓）</div><div class="pre manual">额度与熔断就绪</div></div><div><button class="btn small" disabled>开（缺人工 1）</button></div></div>
+        <div class="flag-row"><div><code>search.semantic</code><div class="desc">语义搜索混排（pgvector）</div></div><div><span class="toggle"></span></div><div><div class="pre ok">向量已建（213 / 213）</div></div><div><button class="btn small">开</button></div></div>
+        <div class="flag-row"><div><code>quiz.enabled</code> · <code>labs.enabled</code> · <code>wechat_login.enabled</code> · <code>wechat_mp.enabled</code><div class="desc">暂不做（用户定）· 保留键名</div></div><div><span class="toggle"></span></div><div><div class="pre manual">用户拍板</div></div><div><span class="chip muted">锁定</span><span class="anno">3</span></div></div>
+      </div>
+
+      <div class="card" style="margin-top:14px"><span class="kicker">变更历史</span><div class="audit-row"><span class="t">09-14 15:02</span><span class="small">站长</span><span class="small"><code>ads.preview_roles</code> 关 → 开</span><span class="small muted">原因：截图对比 R1–R5 赞助态</span></div><div class="audit-row"><span class="t">09-01 09:00</span><span class="small">系统</span><span class="small">初始化 21 个开关 = 关</span><span></span></div></div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 功能开关</h3>
+      <ol>
+        <li>开关读缓存 ≤ 60s；每次改动写 audit（谁、何时、旧 → 新、原因）；<code>ads.enabled</code> 冷静期 24h。<span class="ref">06 §5.9 · G4</span></li>
+        <li>前置自动判定来自 stats 任务（Umami + 库内计数）；人工项需勾选并留名。<span class="ref">05 §11.2</span></li>
+        <li>用户拍板暂不做的功能：键名保留、锁定，不能开。<span class="ref">04 §15 决策</span></li>
+        <li>回退：达标线跌破阈值 → 自动回退到上一级 + 通知；手动回退随时。<span class="ref">05 §11.3</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

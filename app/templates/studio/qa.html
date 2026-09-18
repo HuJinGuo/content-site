@@ -1,0 +1,13 @@
+{% extends "base_back.html" %}
+{% block side_title %}Studio 编辑部{% endblock %}
+{% block sidenav %}{% include "studio/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">机审十门</h1>
+<p>{{ node.title }} · {{ node.get_status_display }}</p>
+<form method="post">{% csrf_token %}<button class="btn" type="submit">跑一遍</button></form>
+{% if report %}
+<ul>{% for k,v in report.gates.items %}<li>{{ k }}：{% if v %}过{% else %}未过{% endif %}</li>{% endfor %}</ul>
+<p>{% if report.passed %}全部通过{% else %}还有门没过，不能当发布依据。{% endif %}</p>
+{% endif %}
+<p><a class="gold" href="/studio/editor/{{ node.slug }}">回编辑器</a></p>
+{% endblock %}

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin · SEO /admin/seo · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="admin" data-active="seo">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">SEO · 重定向 · 死链 · 抓取政策</span><span class="muted small">sitemap 分片 ≤ 5 万 · robots / llms.txt 同一配置生成</span></div>
+    <div class="page">
+      <div class="tiles"><div class="tile"><em>1,842</em><span>sitemap URL</span></div><div class="tile"><em>37</em><span>301 规则（自动 + 手动）</span></div><div class="tile warn"><em>4</em><span>内部死链</span></div><div class="tile"><em>12</em><span>拒绝的训练爬虫 UA</span></div></div>
+      <div class="tabs"><button class="active">重定向</button><button>死链扫描</button><button>robots / llms.txt</button><button>结构化数据抽检</button></div>
+      <div class="split wide-left">
+        <div class="card">
+          <div class="filters"><input class="input" placeholder="搜路径"><button class="btn small right">新增 301</button></div>
+          <table class="data">
+            <thead><tr><th>从</th><th>到</th><th>来源</th><th>命中 30 日</th><th></th></tr></thead>
+            <tbody>
+              <tr><td class="mono small">/learn/doc-qa/min-rag-v1</td><td class="mono small">/learn/doc-qa/min-rag</td><td><span class="chip muted">slug 改名 · 自动</span><span class="anno">1</span></td><td class="num">212</td><td class="actions"><button class="btn small ghost">编辑</button></td></tr>
+              <tr><td class="mono small">/articles/price-compare-2026-03</td><td class="mono small">/compare/usage-billing-2026-09</td><td><span class="chip muted">作废替代 · 手动</span></td><td class="num">88</td><td class="actions"><button class="btn small ghost">编辑</button></td></tr>
+              <tr><td class="mono small">/c/agent</td><td class="mono small">/learn?domain=dev-agent</td><td><span class="chip muted">旧站 · 手动</span></td><td class="num">31</td><td class="actions"><button class="btn small ghost">编辑</button></td></tr>
+            </tbody>
+          </table>
+          <hr class="line">
+          <span class="kicker">死链（每周扫描 · 内链 + 外链 HEAD）</span>
+          <table class="data" style="margin-top:6px"><thead><tr><th>页面</th><th>链接</th><th>状态</th><th></th></tr></thead><tbody><tr><td class="small">L3 某托管向量服务</td><td class="mono small">https://hosted.example/docs</td><td><span class="chip bad">404</span></td><td class="actions"><a class="btn small ghost" href="studio-refresh.html">进保鲜</a></td></tr><tr><td class="small">L2 对照页</td><td class="mono small">/glossary/hnsw-old</td><td><span class="chip bad">内链 404</span></td><td class="actions"><button class="btn small ghost">加 301</button></td></tr></tbody></table>
+        </div>
+        <div>
+          <div class="card"><span class="kicker">robots.txt · llms.txt（同一配置）</span><pre class="mono small" style="margin-top:8px;background:var(--well);color:#ece7d8;padding:12px;border-radius:12px;font-size:12px;line-height:1.6">User-agent: *
+Allow: /
+Disallow: /app/ /studio/ /admin/ /ads/ /api/
+Sitemap: https://ai.nornless.com/sitemap.xml
+
+# 训练爬虫（季度复核名单）
+User-agent: GPTBot
+Disallow: /
+User-agent: CCBot
+Disallow: /
+…（12 个）
+
+# llms.txt：允许索引摘要，禁止训练
+</pre><button class="btn small ghost">编辑名单（写审计）</button></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">结构化数据抽检</span><div class="pre ok">Article + isAccessibleForFree（收费篇 false）</div><div class="pre ok">BreadcrumbList</div><div class="pre ok">NewsArticle（快讯）</div><div class="pre ok">FAQ（概念卡「什么时候不需要」）</div><div class="pre manual">DefinedTerm（术语）待抽检</div></div>
+        </div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · SEO</h3>
+      <ol>
+        <li>slug 改名自动写 301；删除 410；作废保留 URL。<span class="ref">06 §7.7</span></li>
+        <li>关闭态路由不进 sitemap；专区 / 赞助内容不进主 RSS。<span class="ref">06 G2 · §2.19</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

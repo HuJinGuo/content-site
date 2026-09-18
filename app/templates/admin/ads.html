@@ -1,0 +1,26 @@
+{% extends "base_back.html" %}
+{% block side_title %}Admin 运营{% endblock %}
+{% block sidenav %}{% include "admin/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">广告系统</h1>
+<form method="post" class="card" style="padding:16px">{% csrf_token %}
+  <input type="hidden" name="action" value="house">
+  <input name="slot" value="R1" style="width:4em">
+  <input name="title" placeholder="house 标题">
+  <input name="body" placeholder="文案">
+  <input name="url" value="/">
+  <button class="btn" type="submit">加 House</button>
+</form>
+<h2>素材审核</h2>
+{% for c in creatives %}
+<form method="post" class="row" style="margin-top:8px">{% csrf_token %}
+  <input type="hidden" name="action" value="review">
+  <input type="hidden" name="id" value="{{ c.id }}">
+  <span>{{ c.title }} · {{ c.status }}</span>
+  <button class="btn small" name="status" value="approved">通过</button>
+  <button class="btn small secondary" name="status" value="rejected">拒绝</button>
+</form>
+{% empty %}<p class="muted">没有待审素材。</p>{% endfor %}
+<h2>House</h2>
+{% for h in house %}<p>{{ h.slot }} · {{ h.title }}</p>{% endfor %}
+{% endblock %}

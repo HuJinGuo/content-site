@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>订阅中心 /subscribe · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="news">
+
+<main class="container">
+  <section class="hero" style="padding-bottom:12px">
+    <span class="kicker">订阅中心 · 不需要登录</span>
+    <h1 class="serif" style="font-size:32px">早报站内看，周报寄给你</h1>
+    <p>邮件双重确认；每一项都能单独退订；退订一键生效。RSS 分区任选。</p>
+  </section>
+
+  <div class="grid cols-2">
+    <div class="card">
+      <span class="kicker">邮件</span>
+      <div class="field" style="margin-top:10px"><label>邮箱</label><input placeholder="you@example.com"><div class="hint">一次性邮箱域名会被拒；24 小时内最多 3 封确认邮件。</div></div>
+      <div class="checklist">
+        <label><input type="checkbox"><span><b>早报</b>（工作日 08:00）<span class="hint">默认不勾：早报主载体是站内页 + RSS。<span class="anno">1</span></span></span></label>
+        <label><input type="checkbox" checked><span><b>周报</b>（每周六）<span class="hint">默认勾。</span></span></label>
+        <label><input type="checkbox" checked><span><b>过时清单</b>（每月 1 日）</span></label>
+        <label><input type="checkbox"><span><b>收藏更新</b>（收藏的文章有变更 / 勘误 / 作废）<span class="hint">需登录。</span></span></label>
+        <label><input type="checkbox"><span><b>路径催学</b>（7 天没读，提醒一次）<span class="hint">需登录；最多每周 1 封。</span></span></label>
+        <label class="gated" data-flag="ads.self_serve.jobs"><input type="checkbox"><span><b>岗位邮件</b>（每周精选）</span></label>
+      </div>
+      <button class="btn block" style="margin-top:12px">发确认邮件</button>
+      <p class="okmsg">示例成功：已发送，24 小时内点确认链接生效。</p>
+    </div>
+
+    <div>
+      <div class="card">
+        <span class="kicker">RSS</span>
+        <div class="checklist" style="margin-top:8px">
+          <label><span class="mono small">/rss.xml</span><span class="right muted small">全站（免费全文 · 收费摘要）</span></label>
+          <label><span class="mono small">/rss/news.xml</span><span class="right muted small">快讯</span></label>
+          <label><span class="mono small">/rss/daily.xml</span><span class="right muted small">早报</span></label>
+          <label><span class="mono small">/rss/weekly.xml</span><span class="right muted small">周报</span></label>
+          <label><span class="mono small">/rss/level/L3.xml</span><span class="right muted small">某一层</span></label>
+          <label><span class="mono small">/rss/topics/rag.xml</span><span class="right muted small">专题</span></label>
+          <label class="gated" data-flag="supporter.enabled"><span class="mono small">/rss/member/&lt;token&gt;.xml</span><span class="right muted small">会员 RSS（含资源更新，可重置）</span></label>
+          <label class="gated" data-flag="ads.sponsored_content"><span class="mono small">/rss/sponsored.xml</span><span class="right muted small">赞助内容独立源，不进主源</span></label>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <span class="kicker">管理与退订 <span class="anno">2</span></span>
+        <p class="small" style="margin-top:6px">每封邮件底部有「管理订阅」（签名链接，不需登录）与「一键退订」。退订即时生效；30 天后邮箱只留哈希防重复发送。</p>
+        <div class="row" style="margin-top:8px"><button class="btn small secondary">管理订阅（示例链接）</button><button class="btn small ghost">全部退订</button></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 订阅中心</h3>
+  <ol>
+    <li>公众号暂不做；早报主渠道站内 + RSS，邮件早报可选、周报默认。<span class="ref">05 §14 · 04 §10</span></li>
+    <li>双确认链接 24h 单次；<code>List-Unsubscribe</code> 一键；退信 2 次进抑制名单；确认率达标线 ≥ 50%。<span class="ref">06 §2.11</span></li>
+    <li>邮件供应商退信 webhook 是全站唯一接受的外部回调。<span class="ref">06 §8.6</span></li>
+  </ol>
+</section>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% extends "base_site.html" %}
+{% block title %}{% if staff_intent or need_totp %}员工登录{% else %}登录{% endif %}{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1 class="serif">{% if staff_intent or need_totp %}员工登录{% else %}登录{% endif %}</h1>
+  {% if staff_intent or need_totp %}
+    <p>编辑部 Studio 与运营后台需要站长邮箱、密码，以及认证器里的六位验证码。</p>
+  {% else %}
+    <p>读者登录只为同步进度和兑码。员工请走 <a class="gold" href="/login?staff=1&amp;next=/admin/">员工登录</a>。</p>
+  {% endif %}
+</section>
+{% if reader_logged_in %}
+<div class="banner info">
+  当前是读者账号 {{ user.email }}，进不了后台。先退出，再用站长邮箱登录。
+  <form method="post" action="/logout" style="display:inline">{% csrf_token %}
+    <input type="hidden" name="next" value="/login?staff=1&amp;next=/admin/">
+    <button class="btn small" type="submit">退出并改登员工</button>
+  </form>
+</div>
+{% endif %}
+{% if error %}<div class="banner archived">{{ error }}</div>{% endif %}
+<form method="post" class="card" style="padding:20px;max-width:420px">{% csrf_token %}
+  <input type="hidden" name="next" value="{{ next }}">
+  {% if need_totp %}
+    <p>账号 <b>{{ pending_email }}</b> 密码已通过。请填认证器当前验证码。</p>
+    <p style="margin-top:8px"><label>验证码<br>
+      <input name="totp" inputmode="numeric" maxlength="8" autocomplete="one-time-code" autofocus required
+             style="width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--input-bg)">
+    </label></p>
+    <button class="btn" style="margin-top:16px" type="submit">进入后台</button>
+    <p class="muted small" style="margin-top:12px"><a class="gold" href="/login?cancel=1&amp;staff=1">换账号</a></p>
+  {% else %}
+    <p><label>邮箱<br>
+      <input name="email" type="email" required value="{{ form.email.value|default:'' }}" autocomplete="username"
+             style="width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--input-bg)">
+    </label></p>
+    <p style="margin-top:8px"><label>密码<br>
+      <input name="password" type="password" required autocomplete="current-password"
+             style="width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--input-bg)">
+    </label></p>
+    <button class="btn" style="margin-top:16px" type="submit">下一步</button>
+    <p class="muted small" style="margin-top:12px">没有账号？<a class="gold" href="/register">注册</a> · <a class="gold" href="/login/magic">邮箱链接</a></p>
+  {% endif %}
+</form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base_back.html" %}
+{% block side_title %}Studio 编辑部{% endblock %}
+{% block sidenav %}{% include "studio/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">工作台</h1>
+<p class="muted">状态只经 transition()。bot 不能发布。可在站内编辑器写稿，也可继续 import_content。</p>
+<div class="grid cols-2" style="margin-top:16px">
+  <div class="card">
+    <h3>待处理稿</h3>
+    {% for d in drafts %}
+      <p><a href="/studio/editor/{{ d.slug }}">{{ d.title }}</a> · {{ d.get_status_display }} · {{ d.get_kind_display }}</p>
+    {% empty %}<p class="muted">没有草稿。用生成台或新稿开一篇。</p>{% endfor %}
+  </div>
+  <div class="card">
+    <h3>保鲜</h3>
+    {% for d in due %}<p><a href="/studio/editor/{{ d.slug }}">{{ d.title }}</a></p>{% empty %}<p class="muted">没有过复核日的稿。</p>{% endfor %}
+    <h3 style="margin-top:16px">缺口</h3>
+    {% for g in gaps %}<p>{{ g.title }} · {{ g.signal }}</p>{% empty %}<p class="muted">选题池是空的。</p>{% endfor %}
+  </div>
+</div>
+<p class="row" style="margin-top:16px">
+  <a class="btn" href="/studio/posts">文章列表</a>
+  <a class="btn secondary" href="/studio/editor">写新篇</a>
+  <a class="btn secondary" href="/studio/review">审稿列表</a>
+</p>
+{% endblock %}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin · 素材审核 /admin/ads/review · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="admin" data-active="ads-review">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">素材审核 · 4 待审</span><span class="muted small">SLA ≤ 24h 工作日 · 拒绝必写原因 · 「需修改」≤ 3 次</span></div>
+    <div class="page">
+      <div class="filters"><div class="segmented"><button class="active">待审 4</button><button>需修改中 2</button><button>今日通过 3</button><button>已拒 1</button></div><select><option>产品：全部</option></select><span class="right sla soon">最早提交 09-13 18:20 · 剩 5h</span></div>
+
+      <div class="review-row sel">
+        <div>
+          <div class="row"><b>早报赞助 · 试投</b><span class="chip muted">S1</span><span class="muted small">某向量数据库 · 主体已核验 · 申请 09-22 期</span></div>
+          <div class="split" style="margin-top:10px;grid-template-columns:1fr 1fr">
+            <div><b class="small">素材字段</b><dl class="kv small" style="margin-top:6px;grid-template-columns:70px 1fr"><dt>标题</dt><dd>本期由 某向量数据库 支持（14 / 24）</dd><dt>文案</dt><dd>免费额度够跑完文档问答路径；国内直连。（22 / 60）</dd><dt>按钮</dt><dd>了解（2 / 6）</dd><dt>落地页</dt><dd class="mono">https://vendor.example/nornless <span class="chip ok">同域 · 200</span></dd><dt>图片</dt><dd>logo.png 1:1 · 32KB <span class="chip ok">已重编码</span></dd></dl></div>
+            <div><b class="small">合规清单（人工勾） <span class="anno">1</span></b><div class="checklist small" style="margin-top:6px"><label><input type="checkbox" checked><span>无绝对化用语（机检 0 命中）</span></label><label><input type="checkbox" checked><span>不在禁投类目（金融 / 医疗 / 教培违规 / 灰产…）</span></label><label><input type="checkbox" checked><span>不冒充编辑内容（无「实测」「推荐」字样）</span></label><label><input type="checkbox"><span>与评测涉及厂商排除规则不冲突</span></label><label><input type="checkbox" checked><span>无脚本 / 像素 / iframe</span></label></div></div>
+          </div>
+          <div class="slot strip" data-slot="S1 预览（站内 + 邮件）" style="margin-top:10px;border-style:solid;background:var(--card)"><div class="logo"></div><div class="small"><span class="ad-tag">赞助</span> <b>本期由 某向量数据库 支持</b> · 免费额度够跑完文档问答路径；国内直连。<a class="gold" href="#">了解 →</a></div></div>
+        </div>
+        <div class="side">
+          <div class="field" style="margin:0"><label>意见（拒绝 / 需修改 必填 · 广告主可见）</label><textarea style="min-height:70px"></textarea></div>
+          <div class="row"><button class="btn small">通过 → approved</button><button class="btn small secondary">需修改（第 1 / 3 次）</button><button class="btn small danger">拒绝（码按政策退回 / 作废）</button></div>
+          <span class="muted small">通过后进入排期：位有空 → scheduled；位满 → 下一可用日并通知。</span>
+        </div>
+      </div>
+
+      <div class="review-row">
+        <div><div class="row"><b>发布墙 featured · 向量库 X 2.0</b><span class="chip muted">S9</span><span class="chip warn">需修改中 · 第 1 / 3 次</span></div><p class="small muted" style="margin:8px 0">09-13 已回：「最好用」为绝对化用语。等待广告主修改。</p></div>
+        <div class="side"><span class="muted small">等待中 · 超 7 天未改自动 ended，码作废。</span></div>
+      </div>
+      <div class="review-row">
+        <div><div class="row"><b>工具认证 · 某编排平台</b><span class="chip muted">S7</span></div><dl class="kv small" style="margin-top:6px;grid-template-columns:70px 1fr"><dt>落地页</dt><dd class="mono">https://lnk.example/abc <span class="chip bad">短链 · 非同域</span></dd></dl></div>
+        <div class="side"><div class="row"><button class="btn small secondary">需修改：落地页须同域</button><button class="btn small danger">拒</button></div></div>
+      </div>
+      <div class="review-row">
+        <div><div class="row"><b>招聘 · 「AI 培训班招生」</b><span class="chip muted">S8</span></div><p class="small" style="margin:8px 0;color:var(--danger)">机检：疑似教培招生伪装岗位（禁投类目）。</p></div>
+        <div class="side"><div class="row"><button class="btn small danger">拒绝（写原因）</button></div></div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 素材审核</h3>
+      <ol>
+        <li>机检（绝对化词表、红线、落地页同域、图片规格）+ 人工合规清单；拒绝原因广告主可见。<span class="ref">06 §5.5</span></li>
+        <li>通过 → approved → 排期引擎 → scheduled → live；需修改 ≤ 3 次；7 天未改自动 ended。<span class="ref">06 §3.4 · §6</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

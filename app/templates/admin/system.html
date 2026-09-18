@@ -1,0 +1,10 @@
+{% extends "base_back.html" %}
+{% block side_title %}Admin 运营{% endblock %}
+{% block sidenav %}{% include "admin/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">系统</h1>
+<p>维护模式：{{ setting.maintenance }}</p>
+<p>通知条：{{ setting.notice|default:"（空）" }}</p>
+<p>发卡站：{{ setting.card_shop_url|default:"未配置" }}</p>
+<p class="muted">备份与依赖扫描记录以后写在这里。现在改设置去「站点设置」。</p>
+{% endblock %}

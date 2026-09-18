@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio · 选题池 · 缺口 /studio/topics · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="studio" data-active="topics">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">选题池 · 缺口</span><div class="row"><span class="muted small">本月配额：概念卡 14 / 20 · 单元 2 / 4 · 深度 1 / 2 · 快讯不限</span><a class="btn small secondary" href="studio-brief.html">手动新建 Brief</a></div></div>
+    <div class="page">
+      <div class="tabs"><button class="active">缺口 38</button><button>趋势（快讯簇）12</button><button>失效（保鲜）7</button><button>竞品 4</button><button>已忽略</button></div>
+      <div class="filters"><select><option>层：全部</option></select><select><option>领域：全部</option></select><select><option>信号：全部</option><option>搜索无结果</option><option>快讯挂不到节点</option><option>问答无引用</option><option>没看懂聚集</option><option>图谱空节点</option></select><select class="right"><option>按分数</option><option>按时间</option></select></div>
+
+      <div class="card">
+        <table class="data">
+          <thead><tr><th>候选</th><th>信号来源</th><th>建议</th><th>分数</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><b>多模态 RAG：图片和表格怎么进知识库</b><div class="muted small">近 30 天</div></td><td class="small">搜索无结果 ×14 · 问答无引用 ×3 · 「多模态」术语缺</td><td class="small"><span class="lvl">L3</span> 开发与 Agent · 概念卡 + 单元补丁</td><td class="num"><b>92</b></td><td class="actions"><button class="btn small">采纳 → Brief</button><button class="btn small ghost">合并</button><button class="btn small ghost">忽略</button></td></tr>
+            <tr><td><b>第 4 课 §2 切分：读者「没看懂」聚集</b></td><td class="small">「没看懂」锚点 §2 · 9 人 / 7 日</td><td class="small"><span class="lvl">L3</span> 回写第 4 课 §2 + 新概念卡「块长与召回」</td><td class="num"><b>81</b></td><td class="actions"><button class="btn small">采纳</button><button class="btn small ghost">忽略</button></td></tr>
+            <tr><td><b>按用量计费的月费怎么估</b></td><td class="small">快讯挂接不到节点 ×2（09-13 两条计费快讯）</td><td class="small"><span class="lvl">L2</span> 对照页「账单估算表」</td><td class="num"><b>77</b></td><td class="actions"><button class="btn small">采纳</button><button class="btn small ghost">忽略</button></td></tr>
+            <tr><td><b>L5 · 客服知识库案例</b></td><td class="small">图谱空节点（有前置、有后继）</td><td class="small"><span class="lvl">L5</span> 行业与岗位 · 案例</td><td class="num"><b>64</b></td><td class="actions"><button class="btn small">采纳</button><button class="btn small ghost">忽略</button></td></tr>
+            <tr><td><b>L1 · 隐私与账号安全</b></td><td class="small">图谱计划中未开工 · 搜索「API key 泄露」×6</td><td class="small"><span class="lvl">L1</span> 概念卡</td><td class="num"><b>58</b></td><td class="actions"><button class="btn small">采纳</button><button class="btn small ghost">忽略</button></td></tr>
+            <tr style="opacity:.6"><td><b>深度 · 某厂商定价史</b></td><td class="small">编辑手动</td><td class="small"><span class="lvl">L2</span> 深度</td><td class="num">—</td><td class="actions"><span class="chip warn">超配额 · 需 Publisher 确认</span><span class="anno">1</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted small" style="margin-top:8px">忽略需写原因，30 天内不再出现；合并把信号并到已有 brief。</p>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 选题池</h3>
+      <ol>
+        <li>配额（04 §4.6）在采纳时校验；超配额提示并需 Publisher 确认。<span class="ref">06 §4.2</span></li>
+        <li>趋势 tab = 快讯聚类簇评分 ≥ 阈值的簇；失效 tab = 保鲜队列来源；竞品 tab = 人工录入。<span class="ref">06 §4.11 · §4.13</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

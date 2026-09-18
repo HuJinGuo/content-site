@@ -1,0 +1,21 @@
+{% with p=request.path %}
+<div class="nav-mod-title">编辑部</div>
+<a class="nav-btn{% if p == '/studio/' %} active{% endif %}" href="/studio/">工作台</a>
+<a class="nav-btn{% if p == '/studio/posts' %} active{% endif %}" href="/studio/posts">文章</a>
+<a class="nav-btn{% if p == '/studio/topics' %} active{% endif %}" href="/studio/topics">选题池</a>
+<a class="nav-btn{% if p == '/studio/briefs' %} active{% endif %}" href="/studio/briefs">Brief</a>
+<a class="nav-btn{% if p == '/studio/generate' %} active{% endif %}" href="/studio/generate">生成台</a>
+<a class="nav-btn{% if '/studio/editor' in p %} active{% endif %}" href="/studio/editor">新稿</a>
+<a class="nav-btn{% if p == '/studio/review' %} active{% endif %}" href="/studio/review">审稿列表</a>
+<a class="nav-btn{% if p == '/studio/issues' %} active{% endif %}" href="/studio/issues">期刊</a>
+<a class="nav-btn{% if p == '/studio/graph' %} active{% endif %}" href="/studio/graph">图谱</a>
+<a class="nav-btn{% if p == '/studio/sources' %} active{% endif %}" href="/studio/sources">情报源</a>
+<a class="nav-btn{% if p == '/studio/entities' %} active{% endif %}" href="/studio/entities">实体</a>
+<a class="nav-btn{% if p == '/studio/refresh' %} active{% endif %}" href="/studio/refresh">保鲜</a>
+<a class="nav-btn{% if p == '/studio/errata' %} active{% endif %}" href="/studio/errata">勘误</a>
+<a class="nav-btn{% if p == '/studio/assets' %} active{% endif %}" href="/studio/assets">资产</a>
+<a class="nav-btn{% if p == '/studio/prompts' %} active{% endif %}" href="/studio/prompts">提示词</a>
+<a class="nav-btn{% if p == '/studio/costs' %} active{% endif %}" href="/studio/costs">成本</a>
+<div class="nav-mod-title">运营</div>
+<a class="nav-btn" href="/admin/">Admin</a>
+{% endwith %}

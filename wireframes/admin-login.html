@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>后台登录 + TOTP /studio/login · /admin/login · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="">
+
+<main class="container">
+  <div class="grid cols-3" style="margin-top:32px">
+    <div class="card center-card" style="width:auto">
+      <span class="kicker">后台登录（Studio / Admin / 广告主门户共用）</span>
+      <h1>邮箱 + 密码</h1>
+      <div class="field" style="margin-top:14px"><label>邮箱</label><input value="editor@nornless.com"></div>
+      <div class="field"><label>密码（≥ 12 位）</label><input type="password" value="••••••••••••"></div>
+      <button class="btn block">下一步</button>
+      <p class="muted small" style="margin-top:8px">失败 5 次 / 15 分钟锁 15 分钟；来源 IP 写审计。</p>
+    </div>
+    <div class="card center-card" style="width:auto;border-top-color:var(--accent)">
+      <span class="kicker">第二步 · TOTP（后台账号必开） <span class="anno">1</span></span>
+      <h1 style="font-size:20px">输入验证器 6 位码</h1>
+      <div class="field" style="margin-top:14px"><input class="codebox" value="4 8 2 · 9 1 5"></div>
+      <button class="btn block">验证并进入</button>
+      <p class="muted small" style="margin-top:8px">会话 12 小时；不记住设备。丢失验证器 → 用恢复码（10 个一次性）。</p>
+      <p class="err">示例错误：验证码错误或已过期。</p>
+    </div>
+    <div class="card center-card" style="width:auto">
+      <span class="kicker">首次进入 · 绑定 TOTP</span>
+      <h1 style="font-size:20px">扫码绑定</h1>
+      <div class="empty" style="margin-top:12px;height:140px;display:grid;place-items:center">QR（otpauth://）</div>
+      <div class="field" style="margin-top:10px"><label>输入一次 6 位码确认</label><input class="codebox" placeholder="······"></div>
+      <button class="btn block secondary">绑定</button>
+      <p class="muted small" style="margin-top:8px">绑定成功后显示 10 个恢复码（只显示一次，请保存）。未绑定不能进任何后台页。</p>
+    </div>
+  </div>
+  <p class="muted small" style="text-align:center;margin-top:16px">广告主门户：读者账号 + advertiser 档案，登录走前台魔法链接 / 密码；无 TOTP 要求。</p>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 后台登录</h3>
+  <ol>
+    <li>后台角色（FactChecker / Editor / Publisher / AdOps / Ops / Finance / Admin / Super）TOTP 必开，会话 12h。<span class="ref">06 §1.1 · §7.3</span></li>
+  </ol>
+</section>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>快讯页 /news/[slug] · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="news">
+
+<main class="container">
+  <div class="article-head">
+    <div class="crumb"><a href="site-news.html">快讯</a> / 2026-09-14</div>
+    <div class="coord"><span class="chip muted">快讯</span><span class="lvl">L1</span><span>· 通用认知</span><span>· 实体 <a class="gold" href="site-entity.html">某模型厂商</a></span></div>
+    <h1 class="serif" style="margin-top:12px;font-size:28px">某模型厂商把上下文窗口扩到 1M，价格不变</h1>
+    <div class="article-meta"><span>2026-09-14 10:20</span>·<span>事件时间 09-14 08:30（1 小时 50 分内）</span>·<span>简报员起草 · FactChecker 签字 · 主编发布</span></div>
+  </div>
+
+  <div class="article-wrap">
+    <article>
+      <div class="card" style="border-left:3px solid var(--primary-bright);margin-bottom:18px">
+        <span class="kicker">3 点结论</span>
+        <ol class="pts" style="margin-top:8px;font-size:15px"><li>1M 只对「整本书级」输入有意义，日常问答不受益</li><li>价格不变，但输入 tokens 会自然上涨，注意账单</li><li>「上下文窗口」概念卡里的数字已过时，24 小时内更新</li></ol>
+      </div>
+      <div class="prose" style="font-size:16px">
+        <p>发生了什么：官方博客与定价页同时更新……（200–400 字，只说发生了什么与对读者的直接影响，不做独家判断）</p>
+        <p>对你意味着什么：如果你在跟文档问答路径，第 4 课的切分策略不需要改；长上下文与检索是两条路……</p>
+      </div>
+
+      <div class="mod required"><h4>来源（双源）</h4>
+        <div class="src"><span class="tier official">官方</span><a href="#">官方博客 · 公告原文</a><span class="d">09-14 08:30</span></div>
+        <div class="src"><span class="tier official">官方</span><a href="#">定价页（存档快照）</a><span class="d">09-14 09:00</span></div>
+        <div class="src"><span class="tier">一手媒体</span><a href="#">某科技媒体报道</a><span class="d">09-14 09:40 · nofollow</span></div>
+      </div>
+
+      <div class="mod"><h4>可能受影响的知识文 <span class="anno">1</span></h4>
+        <div class="row small"><a class="chip warn" href="site-unit.html">L1 上下文窗口 · 待复核</a><a class="chip free" href="site-compare.html">L2 模型对照表 · 截至 09-01</a><a class="chip free" href="site-unit.html">L3 最小 RAG 第 4 课 · 不受影响</a></div>
+      </div>
+
+      <div class="mod required"><h4>AI 使用披露</h4><p class="disclosure"><b>简报员（grok-4.6）按材料包归并起草，不添加材料包外的事实；FactChecker 逐点核对签字。</b></p></div>
+
+      <div class="mod required"><h4>这条对你</h4><div class="row"><div class="feedback3"><button class="btn small secondary">有用</button><button class="btn small secondary">没看懂</button><button class="btn small secondary">过时了</button></div><div class="toolstrip right"><button class="btn small ghost">收藏</button><button class="btn small ghost">复制引用</button><button class="btn small ghost">分享卡</button><button class="btn small ghost">报告错误</button></div></div></div>
+
+      <div class="card" style="display:flex;gap:16px;align-items:center;margin-top:18px">
+        <div class="grow"><b>下一步</b><div class="muted small">想搞懂「为什么长上下文不等于更准」？</div></div>
+        <a class="btn small" href="site-unit.html">读 L1 概念卡 →</a>
+        <a class="btn small secondary" href="site-digest-daily.html">今天的早报</a>
+      </div>
+    </article>
+
+    <aside class="rail">
+      <div class="card"><span class="kicker">实体</span><h3 style="margin:6px 0 2px">某模型厂商</h3><p class="summary">官方链接 · 关键事实表 · 时间线</p><a class="btn small block secondary" href="site-entity.html">实体页</a></div>
+      <div class="slot" data-slot="R2 · 快讯页">
+        <div class="when-off"><h4>关联知识文</h4><p>L1 · 上下文窗口：模型一次能「看见」多少字；为什么长了不一定好。</p><a class="cta" href="site-unit.html">读 →</a></div>
+        <div class="when-on"><span class="ad-tag">赞助</span><h4>上下文赞助</h4><p>按实体排除：评测涉及厂商不投。</p></div>
+      </div>
+      <div class="card"><span class="kicker">同实体近期</span><div class="timeline" style="margin-top:8px"><div class="ev"><time>09-14</time>上下文 1M</div><div class="ev"><time>08-30</time>新模型价格下调</div><div class="ev"><time>07-12</time>API 改版</div></div></div>
+    </aside>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 快讯页 /news/[slug]</h3>
+  <ol>
+    <li>「可能受影响的知识文」由挂接节点 + 实体关联自动生成；快讯发布同时触发保鲜任务，把相关文标「待复核」。<span class="ref">06 §4.13 · §8.5 freshness</span></li>
+    <li>3 点结论放最前；正文不做独家判断（周报 / 深度才做）。<span class="ref">04 §8.3 简报员</span></li>
+    <li>新闻类必须 FactChecker 签字字段非空才能发布。<span class="ref">06 §4.7</span></li>
+    <li>快讯发布自动创建 / 更新实体页草稿，人审后发布。<span class="ref">06 §2.7</span></li>
+  </ol>
+</section>
+</body>
+</html>

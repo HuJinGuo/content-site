@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>账户 /app/account · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="app" data-active="account" data-user="1">
+
+<main class="container">
+  <div class="grid cols-2">
+    <div>
+      <div class="card">
+        <span class="kicker">基本</span>
+        <div class="field" style="margin-top:10px"><label>显示名（≤ 20 字，过红线）</label><input value="读者 4f2a"></div>
+        <div class="field"><label>邮箱</label><div class="row"><input value="you@example.com" disabled><button class="btn small secondary">换绑（新旧双确认）</button></div></div>
+        <div class="field"><label>密码（可不设，用魔法链接）</label><button class="btn small secondary">设置 / 修改</button></div>
+        <button class="btn">保存</button>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <span class="kicker">权益与码</span>
+        <div class="kv" style="margin-top:8px">
+          <dt>支持者</dt><dd><span class="chip ok">有效</span> 至 2027-09-14 · <a class="gold" href="site-redeem.html">再兑一张（天数累加）</a></dd>
+          <dt>已解锁内容</dt><dd>1 篇（内容码）</dd>
+          <dt>兑码记录</dt><dd>NRL-••••-••••-2XZR · 2026-09-14 · 会员 12 个月 · <a class="gold" href="#">收据（暂无发票）</a></dd>
+          <dt>问答额度</dt><dd>20 / 日</dd>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <span class="kicker">订阅偏好</span>
+        <div class="checklist" style="margin-top:6px"><label><input type="checkbox"><span>早报邮件</span></label><label><input type="checkbox" checked><span>周报</span></label><label><input type="checkbox" checked><span>过时清单</span></label><label><input type="checkbox" checked><span>收藏更新</span></label><label><input type="checkbox"><span>路径催学（每周 ≤ 1）</span></label></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="row"><span class="kicker">活动会话（最多 5 个）</span><button class="btn small ghost right">登出全部</button></div>
+        <div class="session"><div><b>这台设备</b> · macOS · Safari<div class="muted small">上海 · 09-14 16:40</div></div><span class="chip ok">当前</span><span></span></div>
+        <div class="session"><div>iPhone · Safari<div class="muted small">上海 · 09-13</div></div><span></span><button class="btn small ghost">登出</button></div>
+        <div class="session"><div>Windows · Edge<div class="muted small">北京 · 09-02</div></div><span></span><button class="btn small ghost">登出</button></div>
+        <p class="muted small" style="margin-top:8px">30 天滑动；超过 5 个踢最早。<span class="anno">1</span></p>
+      </div>
+
+      <div class="card gated" data-flag="supporter.enabled" style="margin-top:16px">
+        <span class="kicker">会员 RSS token</span>
+        <div class="row" style="margin-top:8px"><span class="mono small">/rss/member/••••••••.xml</span><button class="btn small secondary">复制</button><button class="btn small ghost">重置（旧链接立即失效）</button></div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <span class="kicker">数据导出</span>
+        <p class="small" style="margin:6px 0 8px">一键生成 zip：进度、收藏、划线、反馈、问答记录、测评。异步 ≤ 10 分钟，链接 24 小时。</p>
+        <button class="btn small secondary">生成导出</button> <span class="muted small">每小时 1 次</span>
+      </div>
+
+      <div class="danger-zone" style="margin-top:16px">
+        <span class="kicker" style="color:var(--danger)">删除账户</span>
+        <p class="small" style="margin:6px 0 8px">二次确认后进入 <b>7 天冷静期</b>（期间登录可撤销）→ 匿名化：邮箱哈希、显示名清空、划线 / 收藏删除、反馈去关联、兑码记录保留为「已删除用户」。不可恢复。<span class="anno">2</span></p>
+        <button class="btn danger small">删除我的账户</button>
+        <div class="banner archived small" style="margin:10px 0 0"><b>冷静期中</b>：将于 2026-09-21 删除。<a href="#">撤销</a></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 账户</h3>
+  <ol>
+    <li>会话 HttpOnly Secure SameSite=Lax；30 天滑动；≤ 5 个；「登出全部」。<span class="ref">06 §2.12</span></li>
+    <li>删除账户 7 天冷静期 → 匿名化；隐私页由保留期表生成。<span class="ref">06 §2.12 · §7.4</span></li>
+    <li>写操作全部 POST + CSRF，遮罩弹窗确认。<span class="ref">06 G3 · AGENTS</span></li>
+  </ol>
+</section>
+</body>
+</html>

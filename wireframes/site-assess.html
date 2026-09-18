@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>选路测评 /assess · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="learn">
+
+<main class="container">
+  <section class="hero" style="padding-bottom:12px">
+    <span class="kicker">选路测评 · 4 题 · 每题可跳过</span>
+    <h1 class="serif" style="font-size:32px">从哪一层开始读？</h1>
+    <p>不是考试，没有分数。答完给你一个起点层、一条路径、第一课，和「先不要学什么」。</p>
+  </section>
+
+  <div class="grid side">
+    <section>
+      <div class="card" style="padding:24px 26px">
+        <div class="steps"><span class="done">1 目标</span><i>→</i><span class="cur">2 当前工具</span><i>→</i><span>3 每周时间</span><i>→</i><span>4 岗位</span></div>
+        <h2 class="serif" style="font-size:22px;margin-bottom:6px">你现在用过哪些？<span class="muted small" style="font-weight:500">（多选，都没用过也没关系）</span></h2>
+        <div class="choice cols-2" style="margin-top:14px">
+          <label class="sel"><input type="checkbox" checked> 网页版聊天（任一家）</label>
+          <label class="sel"><input type="checkbox" checked> 办公软件里的 AI 按钮</label>
+          <label><input type="checkbox"> 调过 API / 写过几行代码</label>
+          <label><input type="checkbox"> 本地跑过模型</label>
+          <label><input type="checkbox"> 用过编辑器 Agent（Cursor / Claude Code / Codex 之类）</label>
+          <label><input type="checkbox"> 搭过知识库 / 自动化流程</label>
+        </div>
+        <div class="row" style="margin-top:18px">
+          <button class="btn ghost">← 上一题</button>
+          <span class="right muted small">跳过这题</span>
+          <button class="btn">下一题 →</button>
+        </div>
+      </div>
+      <p class="muted small" style="margin-top:10px">匿名结果只存在你的浏览器里；登录后自动合并到账户。<span class="anno" title="06 §2.3">1</span> 同一 IP 每小时 60 次。<span class="anno">2</span></p>
+    </section>
+
+    <aside>
+      <div class="card">
+        <span class="kicker">结果页（答完后）</span>
+        <h3 class="serif" style="font-size:20px;margin:8px 0 4px">你的起点：<span class="lvl">L1 <small>常识与工具素养</small></span></h3>
+        <p class="summary">你会用聊天，但没碰过 API。先把「上下文 / 幻觉 / Token」三张概念卡读完，再进文档问答路径第 1 课。</p>
+        <hr class="line">
+        <div class="outline">
+          <div class="u"><div><b>先读 3 张概念卡</b><div class="goal">向同事讲清模型为什么会错</div></div><a class="btn small secondary" href="site-unit.html">开始</a></div>
+          <div class="u"><div><b>路径：从 0 做一个文档问答</b><div class="goal">第 1 课「文档问答到底怎么工作」</div></div><a class="btn small" href="site-track.html">进入</a></div>
+        </div>
+        <div class="callout" style="margin-top:14px;flex-direction:column;align-items:flex-start;gap:4px">
+          <b>先不要学：</b>
+          <span>· 微调与训练（L7，现在用不上）</span>
+          <span>· Agent 框架选型（先把单次对话做对）</span>
+          <span>· 自建向量库（第 4 课会用现成的）</span>
+        </div>
+        <div class="row" style="margin-top:14px">
+          <button class="btn secondary small">复制分享卡</button>
+          <span class="muted small">OG 图带层徽章，不带个人信息 <span class="anno">3</span></span>
+          <span class="right inline-login">想同步进度？<a class="gold" href="site-login.html">邮箱登录</a></span>
+        </div>
+      </div>
+      <p class="muted small" style="margin-top:10px">目标不是「文档问答」时：结果页只给「覆盖你目标的 N 个单元 + 先读概念卡」，不假装有别的路径。<span class="anno">4</span></p>
+    </aside>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 选路测评 /assess</h3>
+  <ol>
+    <li>4 题：目标（单选 6）· 当前工具（多选）· 每周时间（3 档）· 岗位（单选 8）；可跳过任一题；映射表在 Studio 的 <code>assess_rules</code>，带版本；匿名结果存 localStorage，登录后写 <code>assessments</code>，保留最近 5 次。<span class="ref">06 §2.3</span></li>
+    <li>限流：同一 IP 哈希 60 次 / 小时。<span class="ref">06 附录 D</span></li>
+    <li>分享卡 <code>/og/&lt;public_id&gt;.png</code> Pillow 生成，只有层徽章与路径名。<span class="ref">06 §2.19</span></li>
+    <li>只有一条路径已发布时，其他目标不伪造路径；登录提示是行内的，不是弹窗。<span class="ref">05 §5.2 · §14.5</span></li>
+    <li>埋点：assess_start / assess_step(n) / assess_done(level, track) / assess_share；达标线：完成率 ≥ 60%。<span class="ref">05 §11.1</span></li>
+  </ol>
+</section>
+</body>
+</html>

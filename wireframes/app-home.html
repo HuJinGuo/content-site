@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>学习台 /app · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="app" data-active="app" data-user="1">
+
+<main class="container">
+  <div class="grid side">
+    <section>
+      <div class="card featured" style="display:flex;gap:16px;align-items:center">
+        <div class="grow"><span class="kicker">从这里继续</span><h2 class="serif" style="font-size:20px;margin:4px 0">第 4 课 · 最小 RAG：从文件夹到能提问</h2><div class="muted small">从 0 做一个文档问答 · 读到 60% · 上次 09-13</div></div>
+        <a class="btn" href="site-unit.html">继续 →</a>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="row"><span class="kicker">今日 3 任务</span><button class="btn small ghost right">换一批（剩 2 次）</button></div>
+        <div class="task"><span class="k">下一课</span><div><b>第 4 课 · 最小 RAG</b><div class="muted small">约 40 分钟 · 沙箱实测</div></div><a class="btn small secondary" href="site-unit.html">读</a></div>
+        <div class="task"><span class="k">前置</span><div><b>L1 · Embedding 与向量检索</b><div class="muted small">第 4 课建议先读 · 约 8 分钟</div></div><a class="btn small secondary" href="site-unit.html">读</a></div>
+        <div class="task"><span class="k">快讯</span><div><b>向量库 X 2.0 改了默认索引</b><div class="muted small">与第 4 课直接相关</div></div><a class="btn small secondary" href="site-news-item.html">读</a></div>
+        <p class="muted small" style="margin-top:8px">不多于 3、未读优先、不重复；没有红点、没有连续打卡。<span class="anno">1</span></p>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <span class="kicker">我的路径</span>
+        <div class="row" style="margin-top:8px"><b>从 0 做一个文档问答</b><span class="right num small">3 / 10 读完</span></div>
+        <div class="progress" style="margin:8px 0 4px"><i style="width:30%"></i></div>
+        <span class="muted small">进度只是书签。</span>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <span class="kicker">收藏更新 · 过时提醒（≤ 5）<span class="anno">2</span></span>
+        <div class="src"><span class="chip bad">作废</span><a class="gold" href="site-digest-outdated.html">L2 某产品价格对照（2026-03）</a><span class="d">替代已给</span></div>
+        <div class="src"><span class="chip warn">降级</span><a class="gold" href="#">L3 本地模型运行器入门</a><span class="d">10 月重跑</span></div>
+        <div class="src"><span class="chip ok">更新</span><a class="gold" href="site-unit.html">第 4 课 · 第 3 步参数</a><span class="d">09-11</span></div>
+        <div class="src"><span class="chip bad">勘误</span><a class="gold" href="site-article-paywalled.html">上线前 23 项检查</a><span class="d">09-12</span></div>
+      </div>
+    </section>
+
+    <aside class="rail">
+      <div class="card gated" data-flag="ask.enabled"><span class="kicker">问答余额</span><div class="row" style="margin-top:6px"><b style="font-size:22px">3</b><span class="muted small">/ 3 今日（支持者 20）</span></div><a class="btn small block secondary" style="margin-top:8px" href="app-ask.html">去问</a></div>
+      <div class="card"><span class="kicker">简报存档</span><p class="small" style="margin:6px 0 8px">早报第 61 期 · 行动项完成 2 / 3</p><a class="btn small block secondary" href="app-library.html#briefing">看存档</a></div>
+      <div class="card gated" data-flag="supporter.enabled"><span class="kicker">支持者</span><p class="small" style="margin:6px 0 8px">有效至 2027-09-14</p><a class="btn small block ghost" href="site-redeem.html">再兑一张</a></div>
+      <div class="card"><span class="kicker">最近划线</span><div class="hl">「切分粒度是这一课最容易翻车的地方」<div class="note">备注：回头对比 500 / 1000</div></div><a class="gold small" href="app-library.html">全部 →</a></div>
+    </aside>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 学习台 /app</h3>
+  <ol>
+    <li>今日 3 任务规则：下一课 / 一张前置概念卡 / 一条关联快讯；未读优先、不重复、可换 ≤ 3 次 / 日。<span class="ref">06 §2.13</span></li>
+    <li>收藏对象更新 / 过时 / 作废 / 勘误 → 这里提醒，也可选邮件。<span class="ref">06 §2.6 · §2.11</span></li>
+    <li>所有个人数据 <code>private</code> 不缓存；子导航 学习台 / 收藏与划线 / 简报 / 下载 / 问答 / 账户 是六条路由。<span class="ref">06 §2.13</span></li>
+    <li>不做掌握度、雷达图、排名、连续打卡奖励。<span class="ref">AGENTS 不做清单</span></li>
+  </ol>
+</section>
+</body>
+</html>

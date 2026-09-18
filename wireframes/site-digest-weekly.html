@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>周报 /digest/weekly/[slug] · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="news">
+
+<main class="container">
+  <div class="article-head">
+    <div class="crumb"><a href="site-news.html">情报</a> / 周报 / 2026 第 37 周</div>
+    <span class="kicker">周报 · 每周六 · 三栏</span>
+    <h1 class="serif" style="margin-top:8px">这周的主题是「按用量计费」正在成为默认</h1>
+    <div class="article-meta"><span>2026-09-13</span>·<span>覆盖 09-07 – 09-13 的 41 条快讯</span>·<span>简报员三栏草稿 · <b>主编改判断段</b></span></div>
+  </div>
+
+  <div class="prose" style="max-width:720px"><p>导语（人写）：三家工具在同一周改成按用量计费不是巧合……</p></div>
+
+  <div class="slot strip" data-slot="S2 · 周报导语后赞助段" style="margin:16px 0">
+    <div class="when-off" style="width:100%"><p class="muted small" style="margin:0">关闭态整段省略。</p></div>
+    <div class="when-on" style="display:flex;gap:14px;align-items:center;width:100%"><div class="logo"></div><div><span class="ad-tag">赞助</span><div class="small"><b>本周由 X 支持</b> · 一段文案 · <a class="gold" href="#">链接</a></div></div></div>
+  </div>
+
+  <div class="three">
+    <div class="card"><h3>发生了什么</h3><ul class="pts" style="font-size:14px;margin-top:8px"><li>三家编辑器 / Agent 工具改按用量计费（<a class="gold" href="site-news-item.html">快讯</a>）</li><li>上下文 1M 与向量库 2.0（<a class="gold" href="site-news-item.html">快讯</a>）</li><li>国内两家云上批量推理折扣</li><li>…共 8 条，其余归并</li></ul></div>
+    <div class="card" style="border-top:3px solid var(--accent)"><h3>意味着什么 <span class="verified none" style="font-size:10px">判断段 · 人写</span></h3><p class="small" style="margin-top:8px;line-height:1.7">按用量计费会把「怎么用」的成本暴露给个人用户；过去半年靠月费「无限用」养成的习惯（让 Agent 跑长任务）会变贵。对读者：L2 选型的第一问从「哪家好」变成「你一个月到底用多少」……<span class="anno">1</span></p></div>
+    <div class="card"><h3>你该做什么</h3><ol class="pts" style="font-size:14px;margin-top:8px"><li>用 L2 的账单估算表算一次你的月用量</li><li>给 Agent 任务加预算上限（L4 第 8 课会讲）</li><li>关注下周三某开源模型新版</li></ol></div>
+  </div>
+
+  <div class="card gated" data-flag="ads.self_serve.jobs" style="margin-top:18px">
+    <span class="kicker">本周岗位 3 条</span>
+    <div class="job" style="padding:8px 0"><div><b>AI 应用工程师</b><div class="co">某某科技 · 远程 · 25–40k</div></div><a class="btn small secondary" href="site-jobs.html">看</a></div>
+    <div class="job" style="padding:8px 0"><div><b>知识库运营</b><div class="co">某教育公司 · 上海</div></div><a class="btn small secondary" href="site-jobs.html">看</a></div>
+    <div class="job" style="padding:8px 0"><div><b>提示词工程实习</b><div class="co">某工作室 · 远程</div></div><a class="btn small secondary" href="site-jobs.html">看</a></div>
+  </div>
+
+  <div class="mod required" style="max-width:720px"><h4>AI 使用披露</h4><p class="disclosure"><b>三栏草稿由简报员归并本周快讯；「意味着什么」由主编重写（字段 judgement_edited_by 非空才能发）。</b></p></div>
+  <div class="mod required" style="max-width:720px"><h4>这期对你</h4><div class="row"><div class="feedback3"><button class="btn small secondary">有用</button><button class="btn small secondary">没看懂</button><button class="btn small secondary">过时了</button></div><div class="toolstrip right"><button class="btn small ghost">分享卡</button><button class="btn small ghost">报告错误</button></div></div></div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 周报</h3>
+  <ol>
+    <li>三栏固定结构；判断段字段 <code>judgement_edited_by</code> 非空才能发布。<span class="ref">06 §4.9</span></li>
+    <li>「本周岗位 3 条」随 <code>ads.self_serve.jobs</code>；S2 随 <code>ads.email_sponsor</code>。<span class="ref">05 §2.2</span></li>
+    <li>邮件版：默认订阅项；一键退订。<span class="ref">06 §2.11</span></li>
+  </ol>
+</section>
+</body>
+</html>

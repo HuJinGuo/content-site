@@ -1,0 +1,44 @@
+{% extends "base_back.html" %}
+{% block side_title %}Admin 运营{% endblock %}
+{% block sidenav %}{% include "admin/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">发卡</h1>
+<p class="muted">明文只显示这一次，请立刻复制到发卡站。库里只留哈希和后 4 位。</p>
+{% if error %}<div class="banner archived">{{ error }}</div>{% endif %}
+<form method="post" class="card" style="padding:16px">{% csrf_token %}
+  <input type="hidden" name="action" value="issue">
+  <p>
+    <select name="kind">
+      <option value="member">会员码</option>
+      <option value="content">内容码</option>
+      <option value="ad">广告码</option>
+    </select>
+    <input name="count" type="number" value="1" min="1" max="50">
+    <input name="days" type="number" value="31">
+    <input name="node_slug" placeholder="内容码绑定 slug">
+  </p>
+  <p style="margin-top:8px"><input name="reason" required placeholder="原因（必填）" style="width:100%;padding:8px;border:1px solid var(--line);border-radius:8px"></p>
+  <button class="btn" style="margin-top:8px" type="submit">生成</button>
+</form>
+{% if plains %}
+  <div class="card" style="margin-top:16px">
+    <h3>请立即复制（不会再显示）</h3>
+    {% for p in plains %}<div class="mono">{{ p }}</div>{% endfor %}
+  </div>
+{% endif %}
+<form method="post" class="card" style="padding:16px;margin-top:16px">{% csrf_token %}
+  <input type="hidden" name="action" value="void">
+  <p>作废未兑码（粘贴完整明文）</p>
+  <input name="code" required placeholder="XXXX-XXXX-XXXX">
+  <input name="reason" required placeholder="原因">
+  <button class="btn secondary" type="submit">作废</button>
+</form>
+<table class="table" style="width:100%;margin-top:16px">
+<tr><th>后4位</th><th>类型</th><th>状态</th></tr>
+{% for c in recent %}
+<tr><td class="mono">{{ c.last4|default:"—" }}</td><td>{{ c.kind }}</td><td>{{ c.status }}</td></tr>
+{% empty %}
+<tr><td colspan="3">还没有发过码。上面填原因后生成。</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

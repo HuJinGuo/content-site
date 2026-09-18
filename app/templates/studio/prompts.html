@@ -1,0 +1,13 @@
+{% extends "base_back.html" %}
+{% block side_title %}Studio 编辑部{% endblock %}
+{% block sidenav %}{% include "studio/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">提示词版本</h1>
+<form method="post">{% csrf_token %}
+  <input name="name" value="writer">
+  <input name="version" value="1">
+  <textarea name="body" rows="8" style="width:100%"></textarea>
+  <button class="btn" type="submit">保存版本</button>
+</form>
+{% for p in prompts %}<p>{{ p.name }}@{{ p.version }}</p>{% empty %}<p class="back-empty">还没有提示词版本。保存 writer@1 即可。</p>{% endfor %}
+{% endblock %}

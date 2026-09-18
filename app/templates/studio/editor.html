@@ -1,0 +1,72 @@
+{% extends "base_back.html" %}
+{% block side_title %}Studio 编辑部{% endblock %}
+{% block sidenav %}{% include "studio/_sidenav.html" %}{% endblock %}
+{% block main_class %} desk-wide{% endblock %}
+{% block content %}
+<div class="desk">
+  <div class="desk-kicker">
+    <span class="kicker" style="margin:0">{% if node %}{{ node.get_status_display }}{% else %}新文章{% endif %}</span>
+    {% if node %}<a class="muted small" href="/articles/{{ node.slug }}" target="_blank" rel="noopener">前台预览</a>{% endif %}
+  </div>
+  {% if error %}<div class="banner archived">{{ error }}</div>{% endif %}
+  <form method="post">{% csrf_token %}
+    <input type="hidden" name="action" value="save">
+    <div class="desk-head">
+      <input name="title" value="{{ node.title|default:'' }}" required placeholder="标题" class="desk-title">
+      <button class="btn" type="submit">保存</button>
+    </div>
+    <div class="desk-meta">
+      <label>类型
+        <select name="kind">
+          <option value="concept" {% if node.kind == "concept" or not node %}selected{% endif %}>文章</option>
+          <option value="unit" {% if node.kind == "unit" %}selected{% endif %}>教程</option>
+          <option value="news" {% if node.kind == "news" %}selected{% endif %}>快讯</option>
+          <option value="compare" {% if node.kind == "compare" %}selected{% endif %}>对照</option>
+          <option value="pitfall" {% if node.kind == "pitfall" %}selected{% endif %}>坑</option>
+          <option value="project" {% if node.kind == "project" %}selected{% endif %}>系列篇</option>
+        </select>
+      </label>
+      <label>谁能读
+        <select name="access">
+          <option value="free" {% if node.access == "free" or not node %}selected{% endif %}>公开</option>
+          <option value="supporter" {% if node.access == "supporter" %}selected{% endif %}>支持者</option>
+          <option value="code" {% if node.access == "code" %}selected{% endif %}>内容码</option>
+        </select>
+      </label>
+      <label>地址
+        <input name="slug" value="{{ node.slug|default:'' }}" placeholder="可留空自动生成" {% if node %}readonly{% endif %}>
+      </label>
+      <label class="grow">标签（逗号分隔）
+        <input name="tags" value="{% if node %}{{ node.tags|join:", " }}{% endif %}" placeholder="例如：入门, RAG, 办公">
+      </label>
+    </div>
+    <p><input name="summary" value="{{ node.summary|default:'' }}" placeholder="一句话摘要，出现在列表里" class="desk-summary"></p>
+    <div class="editor" style="margin-top:12px">
+      <div class="pane">
+        <div class="toolbar muted small">正文 Markdown · 用 &lt;!-- more --&gt; 切开导语</div>
+        <textarea name="body_md" required>{{ node.body_md|default:'' }}</textarea>
+      </div>
+      <div class="pane">
+        <div class="toolbar muted small">上次保存后的预览</div>
+        <div class="prose">{% if node.html %}{{ node.html|safe }}{% else %}<p class="muted">保存后这里显示排版结果。</p>{% endif %}</div>
+      </div>
+    </div>
+  </form>
+  {% if node %}
+    <div class="row" style="margin-top:12px">
+      <a class="btn secondary" href="/studio/qa/{{ node.slug }}">机审</a>
+      <a class="btn secondary" href="/studio/facts/{{ node.slug }}">事实清单</a>
+    </div>
+  {% endif %}
+  {% if node and next_states %}
+  <form method="post" class="publish-panel row" style="margin-top:16px">{% csrf_token %}
+    <input type="hidden" name="action" value="transition">
+    <span class="muted">当前：{{ node.get_status_display }}</span>
+    <select name="to">{% for s in next_states %}<option>{{ s }}</option>{% endfor %}</select>
+    <input name="reason" required placeholder="转移原因">
+    <button class="btn" type="submit">转移状态</button>
+  </form>
+  <p class="muted small">author 角色不能转到已发布。</p>
+  {% endif %}
+</div>
+{% endblock %}

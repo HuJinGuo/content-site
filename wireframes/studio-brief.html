@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio · Brief /studio/briefs/[id] · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="studio" data-active="briefs">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">Brief · 多模态 RAG（概念卡 + 单元补丁）</span><div class="row"><span class="states"><span class="cur">draft</span><i>→</i><span>ready</span><i>→</i><span>generating</span><i>→</i><span>done</span></span><button class="btn small secondary">保存</button><button class="btn small" disabled>标记 ready（缺 2 项必填）</button></div></div>
+    <div class="page">
+      <div class="split wide-left">
+        <div class="card">
+          <span class="kicker">必填（缺一不能 ready）</span>
+          <div class="fm" style="margin-top:10px">
+            <div class="field"><label>类型</label><select><option>概念卡</option><option>单元</option><option>深度</option><option>对照</option><option>实体</option><option>案例</option></select></div>
+            <div class="field"><label>层 × 领域</label><div class="row"><select><option>L3</option></select><select><option>开发与 Agent</option></select></div></div>
+            <div class="field full"><label>读者画像</label><input value="跑过第 4 课最小 RAG、语料里有 PDF 表格和截图的人"></div>
+            <div class="field"><label>前置节点</label><div class="row small"><span class="chip free">L3 最小 RAG</span><span class="chip free">L1 向量化</span><span class="chip muted">+</span></div></div>
+            <div class="field"><label>完成后解锁</label><div class="row small"><span class="chip free">L4 做成工作流</span><span class="chip muted">+</span></div></div>
+            <div class="field full bad"><label>学习目标 1–3 条（可观察动词词表校验）<span class="anno">1</span></label><textarea style="min-height:70px">1. 理解多模态 RAG（✕ 「理解」不可观察）
+2. 能把一页含表格的 PDF 切成可检索的块，并说出丢了什么</textarea><div class="hint">✕ 第 1 条动词不在词表（允许：说出 / 画出 / 跑起 / 写出 / 判断 / 估算 / 列出 …）</div></div>
+            <div class="field full"><label>必引源（≥ 1）</label><div class="row small"><span class="chip ok">官方 · 某视觉模型文档</span><span class="chip ok">论文 · ColPali 2024</span><span class="chip muted">+</span></div></div>
+            <div class="field full bad"><label>禁止源</label><input placeholder="至少写一条（如：某营销号、无出处的转述）"><div class="hint">✕ 必填</div></div>
+            <div class="field"><label>必须零件</label><div class="row small"><span class="chip free">一句话定义</span><span class="chip free">什么时候不需要</span><span class="chip free">最小示例</span><span class="chip free">常见坑</span></div></div>
+            <div class="field"><label>横切模块</label><div class="row small"><span class="chip free">成本提示</span><span class="chip free">国内可用性</span></div></div>
+            <div class="field"><label>广告上下文标签（ad_context）</label><input value="rag, multimodal, vector-db"></div>
+            <div class="field"><label>输出 schema 版本</label><select><option>cms-schema v3</option></select></div>
+          </div>
+          <div class="callout small" style="margin-top:12px"><b>单元类 brief：</b>人必须先写学习目标与练习，否则不能进生成台。</div>
+        </div>
+        <div>
+          <div class="card"><span class="kicker">信号来源（自动带入）</span><div class="src"><span class="small">搜索无结果 ×14</span><span class="d">近 30 天</span></div><div class="src"><span class="small">问答无引用 ×3</span></div><div class="src"><span class="small">术语缺「多模态」</span></div></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">练习与成功标准（单元类必填）</span><div class="field" style="margin-top:8px"><textarea style="min-height:80px">练习：用 3 页含表格的 PDF 重跑第 4 课；成功标准：能回答 2 个表格数字问题并给出处。</textarea></div></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">配额</span><p class="small" style="margin-top:6px">本月概念卡 14 / 20 ✓ · 单元 2 / 4 ✓</p></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">下一步</span><p class="small" style="margin-top:6px">ready 后在 <a class="gold" href="studio-generate.html">生成台</a> 选它；bot 起草只读本 brief 与研究员的事实清单。</p></div>
+        </div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · Brief</h3>
+      <ol>
+        <li>学习目标用可观察动词词表校验；读者画像、层域、前置、解锁、目标、必引源、禁止源、零件、横切、广告标签、schema 版本 全部必填。<span class="ref">06 §4.3</span></li>
+        <li>brief 状态 ready 才能被生成台选中。<span class="ref">06 §4.3</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

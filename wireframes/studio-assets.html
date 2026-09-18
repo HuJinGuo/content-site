@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio · 资产 /studio/assets · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="studio" data-active="assets">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">资产 · 资源包 · 图片</span><div class="row"><span class="muted small">≤ 50MB · zip / pdf / csv / md / png / jpg / webp · 服务端重编码 · 病毒扫描</span><button class="btn small">上传</button></div></div>
+    <div class="page">
+      <div class="tabs"><button class="active">资源包 9</button><button>图片 212</button><button>OG 图（自动）</button></div>
+      <div class="card">
+        <table class="data">
+          <thead><tr><th>资产</th><th>版本</th><th>access</th><th>关联文章</th><th>下载 30 日</th><th>状态</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><b>知识库上线检查单</b><div class="muted small mono">zip · 1.2MB · sha256 a91f…</div></td><td class="mono small">v1.2 <span class="muted">(v1.1 保留至 12-10)</span></td><td><span class="chip paid">supporter</span></td><td class="small">L6 · 23 项检查</td><td class="num">184</td><td><span class="chip ok">已发布</span></td><td class="actions"><button class="btn small ghost">新版本</button><button class="btn small ghost">编辑</button></td></tr>
+            <tr><td><b>模型对照表 2026-09</b><div class="muted small mono">csv · 12KB</div></td><td class="mono small">v3</td><td><span class="chip free">free</span></td><td class="small">L2 对照页</td><td class="num">920</td><td><span class="chip ok">已发布</span></td><td class="actions"><button class="btn small ghost">新版本</button></td></tr>
+            <tr><td><b>最小 RAG 示例仓库</b><div class="muted small mono">zip · 340KB</div></td><td class="mono small">v3</td><td><span class="chip free">free</span></td><td class="small">第 4 课</td><td class="num">1,204</td><td><span class="chip ok">已发布</span> <span class="verified ok">沙箱 09-11</span></td><td class="actions"><button class="btn small ghost">新版本</button></td></tr>
+            <tr><td><b>20 条金标问题模板</b><div class="muted small mono">md · 8KB</div></td><td class="mono small">v1</td><td><span class="chip paid">code</span></td><td class="small">第 5 课</td><td class="num">62</td><td><span class="chip ok">已发布</span></td><td class="actions"><button class="btn small ghost">编辑</button></td></tr>
+            <tr><td><b>多模态示例 PDF 集</b><div class="muted small mono">zip · 48MB</div></td><td class="mono small">v1</td><td><span class="chip free">free</span></td><td class="small">多模态 RAG（草稿）</td><td class="num">—</td><td><span class="chip warn">扫描中</span><span class="anno">1</span></td><td class="actions"><button class="btn small ghost">…</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="split" style="margin-top:14px">
+        <div class="card"><span class="kicker">资源包元数据</span><div class="fm" style="margin-top:8px"><div class="field"><label>名称</label><input value="知识库上线检查单"></div><div class="field"><label>access</label><select><option>free</option><option selected>supporter</option><option>code</option><option>group</option></select></div><div class="field full"><label>许可</label><input value="个人与团队内部使用 · 不得再分发" disabled></div><div class="field full"><label>变更说明（新版本必填）</label><input value="v1.2：加审计日志一项；修正第 2 节默认值"></div></div></div>
+        <div class="card"><span class="kicker">图片规则</span><p class="small" style="margin-top:6px;line-height:1.7">上传即服务端重编码（去 EXIF · 限宽 1600）· 必填 alt（缺则稿件不能发）· 来源字段（自制 / 官方 / 授权）· OG 图 Pillow 自动生成，不用 headless 浏览器。</p></div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 资产</h3>
+      <ol>
+        <li>上传 → 病毒扫描 → 可用；≤ 50MB；版本化，旧版保留 90 天；下载走签名 URL 10 分钟。<span class="ref">06 §4.15</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

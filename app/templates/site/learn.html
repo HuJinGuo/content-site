@@ -1,0 +1,89 @@
+{% extends "base_site.html" %}
+{% load jiejian %}
+{% block title %}阅读{% endblock %}
+{% block content %}
+<div class="learn-page">
+{% if not filtered %}
+<section class="learn-start">
+  <span class="kicker">从这里开始</span>
+  <h1 class="serif">先读这一篇</h1>
+  <p>别从目录找。打开下面这篇，读完再决定要不要跟一组，或去翻其余文章。</p>
+  {% if start %}
+    <a class="card click featured learn-start-card" href="/articles/{{ start.slug }}" data-slug="{{ start.slug }}">
+      <span class="muted small">{{ start.get_kind_display }} · 大约几分钟</span>
+      <h2 class="serif">{{ start.title }}</h2>
+      <p class="summary">{{ start.summary }}</p>
+      <span class="btn" style="margin-top:16px">开始读 →</span>
+    </a>
+  {% endif %}
+</section>
+
+<section class="section" style="margin-top:28px">
+  <div class="section-head"><h2 class="serif">或者你是为这件事来的</h2></div>
+  <div class="learn-doors">
+    {% for d in doors %}
+      <a class="card click" href="/articles/{{ d.node.slug }}">
+        <h3>{{ d.question }}</h3>
+        <p class="summary">{{ d.blurb }}</p>
+        <p class="muted small" style="margin-top:8px">去读：{{ d.node.title }}</p>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2 class="serif">想跟一组再走</h2><span class="muted small">合集，不是课表</span></div>
+  <div class="learn-series">
+    {% if project %}
+      <a class="card click featured" href="/learn/{{ project.slug }}">
+        <h3>{{ project.title }}</h3>
+        <p class="summary">{{ project.summary }}</p>
+        <div class="meta"><span>约 {{ project.eta_hours }} 小时 · 建议顺序，不锁</span></div>
+      </a>
+    {% endif %}
+    {% for p in shorts %}
+      <a class="card click learn-short" href="/learn/{{ p.slug }}">
+        <h3>{{ p.title }}</h3>
+        <p class="summary">{{ p.summary }}</p>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% else %}
+<section class="hero" style="padding-bottom:8px">
+  <span class="kicker">阅读</span>
+  <h1 class="serif" style="font-size:28px">{% if tag %}标签 · {{ tag }}{% else %}{% for key, lab, url, on in kind_links %}{% if on %}{{ lab }}{% endif %}{% endfor %}{% endif %}</h1>
+  <p><a class="gold" href="/learn">回到「先读这一篇」</a></p>
+</section>
+{% endif %}
+
+<div class="learn-toolbar filters">
+  <div class="segmented" role="navigation" aria-label="按类型">
+    {% for key, lab, url, on in kind_links %}
+      <a href="{{ url }}" class="{% if on %}active{% endif %}">{{ lab }}</a>
+    {% endfor %}
+  </div>
+  {% if tag_links %}
+  <div class="row" style="gap:6px;flex-wrap:wrap">
+    {% if tag %}<a class="chip muted" href="/learn">清除标签</a>{% endif %}
+    {% for t, n, url, on in tag_links %}
+      <a class="chip{% if on %} paid{% else %} free{% endif %}" href="{{ url }}">{{ t }}</a>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+
+<div class="section-head"><h2 class="serif">{% if filtered %}筛选结果{% else %}其余文章{% endif %}</h2><span class="muted small">{% if filtered %}按发布时间{% else %}先读完上面那篇再翻{% endif %}</span></div>
+<div class="learn-feed">
+  {% for p in posts %}
+    <a class="card click post {{ p.map_state }}" href="/articles/{{ p.slug }}" data-slug="{{ p.slug }}">
+      <span class="muted small">{{ p.get_kind_display }}{% if p.last_verified_at %} · {{ p.last_verified_at|date:"Y-m-d" }}{% endif %}</span>
+      <h3>{{ p.title }}</h3>
+      <p class="summary">{{ p.summary }}</p>
+    </a>
+  {% empty %}
+    <div class="card"><p class="muted">这一栏还没有文章。</p></div>
+  {% endfor %}
+</div>
+</div>
+{% endblock %}

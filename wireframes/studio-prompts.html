@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio · 提示词 · 模板 · skill 版本 /studio/prompts · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="studio" data-active="prompts">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">提示词 · 模板 · skill 版本</span><div class="row"><span class="muted small">只 Publisher 能指定「当前」· 每篇 front-matter 记 prompt_version</span><button class="btn small">从 editorial/ 导入</button></div></div>
+    <div class="page">
+      <div class="tabs"><button class="active">提示词 8 角色</button><button>模板 8 体裁</button><button>skill 8</button><button>Git 集成</button></div>
+      <div class="split wide-left">
+        <div class="card">
+          <table class="data">
+            <thead><tr><th>角色 / 体裁</th><th>当前</th><th>草稿</th><th>用于篇数</th><th>回归结果</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><b>撰稿员 · 概念卡</b> <span class="mono small muted">concept</span></td><td class="mono">@2.4 <span class="muted small">09-01</span></td><td class="mono">@2.5</td><td class="num">38</td><td><span class="chip ok">10 篇 · 机审全过</span></td><td class="actions"><button class="btn small">指定 @2.5 为当前</button><button class="btn small ghost">diff</button></td></tr>
+              <tr><td><b>撰稿员 · 单元</b> <span class="mono small muted">unit</span></td><td class="mono">@3.2</td><td class="mono">@3.3</td><td class="num">7</td><td><span class="chip warn">回归未跑</span><span class="anno">1</span></td><td class="actions"><button class="btn small secondary">跑回归（10 篇）</button><button class="btn small ghost">diff</button></td></tr>
+              <tr><td><b>研究员</b></td><td class="mono">@1.6</td><td>—</td><td class="num">61</td><td>—</td><td class="actions"><button class="btn small ghost">历史</button></td></tr>
+              <tr><td><b>核查员</b></td><td class="mono">@1.3</td><td>—</td><td class="num">61</td><td>—</td><td class="actions"><button class="btn small ghost">历史</button></td></tr>
+              <tr><td><b>验证员（沙箱）</b></td><td class="mono">@0.4</td><td>—</td><td class="num">12</td><td>—</td><td class="actions"><button class="btn small ghost">历史</button></td></tr>
+              <tr><td><b>简报员 · 快讯 / 早报 / 周报</b></td><td class="mono">@2.1</td><td class="mono">@2.2</td><td class="num">213</td><td><span class="chip ok">通过</span></td><td class="actions"><button class="btn small">指定当前</button></td></tr>
+              <tr><td><b>保鲜员</b></td><td class="mono">@1.1</td><td>—</td><td class="num">—</td><td>—</td><td class="actions"><button class="btn small ghost">历史</button></td></tr>
+              <tr><td><b>选题员</b></td><td class="mono">@1.0</td><td>—</td><td class="num">—</td><td>—</td><td class="actions"><button class="btn small ghost">历史</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="card"><span class="kicker">diff concept@2.4 → @2.5</span><div class="diff" style="margin-top:8px"><div class="ctx">## 输出规则</div><div class="del">- 每个声明标注来源 id</div><div class="ins">- 每个声明标注来源 id 与 source_span（原文片段 ≤ 60 字）</div><div class="ins">- 不得出现事实清单之外的数字</div><div class="ctx">- 输出 CMS JSON v3</div></div><div class="field" style="margin-top:8px"><label>变更说明（必填）</label><input value="补 source_span，堵住「撰稿员超出清单」漏洞"></div></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">Git 集成（长文 PR 通道）</span><dl class="kv small" style="margin-top:8px;grid-template-columns:110px 1fr"><dt>仓库</dt><dd class="mono">content/ · main 保护</dd><dt>CI Token</dt><dd>只读 + 校验；不能发布</dd><dt>合并即导入</dt><dd>front-matter → CMS · 机审报告 .qa.json 随 PR</dd><dt>打开 PR</dt><dd>2（<a class="gold" href="#">#214 第 7 课</a> · <a class="gold" href="#">#215 概念卡 ×3</a>）</dd><dt>失败</dt><dd>0</dd></dl></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">skill（本地 Grok Build 用）</span><div class="src"><span class="mono small">skill/topic-scout</span><span class="d">v1.0</span></div><div class="src"><span class="mono small">skill/concept-card</span><span class="d">v2.4 ↔ 提示词同版</span></div><div class="src"><span class="mono small">skill/factcheck</span><span class="d">v1.3</span></div><div class="src"><span class="mono small">…8 个</span></div></div>
+        </div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 提示词版本</h3>
+      <ol>
+        <li>新版本需跑 10 篇回归（机审通过率 + 事实清单覆盖）才能被指定为当前；只 Publisher 指定；每篇记 prompt_version。<span class="ref">06 §4.16</span></li>
+        <li>长文走 Git PR（CI 校验 → 合并导入），快讯 / Studio 生成走 API；两条通道同一状态机。<span class="ref">04 §15.11 · 06 §4.17</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

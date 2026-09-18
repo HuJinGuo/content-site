@@ -1,0 +1,10 @@
+{% extends "base_back.html" %}
+{% block side_title %}Studio 编辑部{% endblock %}
+{% block sidenav %}{% include "studio/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">保鲜队列</h1>
+<p class="muted">review_by 已过的已发布稿。</p>
+{% for n in stale %}
+<div class="card" style="margin-top:8px"><a href="/studio/editor/{{ n.slug }}">{{ n.title }}</a> · 复核日 {{ n.review_by }}</div>
+{% empty %}<p class="muted">没有过期稿。</p>{% endfor %}
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends "base_site.html" %}
+{% block title %}{{ item.term }}{% endblock %}
+{% block content %}
+<section class="hero"><span class="kicker">术语</span><h1 class="serif">{{ item.term }}</h1><p>{{ item.definition }}</p></section>
+<p>{{ item.body }}</p>
+<h2>相关概念</h2>
+{% for n in related %}<p><a href="/articles/{{ n.slug }}">{{ n.title }}</a></p>{% endfor %}
+{% endblock %}

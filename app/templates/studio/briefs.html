@@ -1,0 +1,20 @@
+{% extends "base_back.html" %}
+{% block side_title %}Studio 编辑部{% endblock %}
+{% block sidenav %}{% include "studio/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">Brief</h1>
+<form method="post" class="card" style="padding:16px">{% csrf_token %}
+  <p><input name="title" required placeholder="标题" style="width:100%;padding:8px;border:1px solid var(--line);border-radius:8px"></p>
+  <p class="row" style="margin-top:8px">
+    <select name="kind">
+      <option value="concept">文章</option>
+      <option value="unit">教程</option>
+      <option value="news">快讯</option>
+      <option value="compare">对照</option>
+    </select>
+    <input name="tags" placeholder="标签，逗号分隔" style="flex:1;padding:8px;border:1px solid var(--line);border-radius:8px">
+    <button class="btn" type="submit">保存 Brief</button>
+  </p>
+</form>
+{% for b in briefs %}<div class="card" style="margin-top:8px">{{ b.title }} · {{ b.kind }} · {{ b.status }}</div>{% empty %}<p class="back-empty">还没有 Brief。上面填标题保存一条即可。</p>{% endfor %}
+{% endblock %}

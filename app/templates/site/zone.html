@@ -1,0 +1,10 @@
+{% extends "base_site.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<section class="hero"><h1 class="serif">{{ title }}</h1></section>
+{% for it in items %}
+  <div class="card" style="margin-top:10px"><h3>{{ it.title }}</h3><p class="muted">{{ it.body|default:"" }}</p></div>
+{% empty %}
+  <p class="muted">还没有条目。</p>
+{% endfor %}
+{% endblock %}

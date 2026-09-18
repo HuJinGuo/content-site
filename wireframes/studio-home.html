@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio · 工作台 /studio · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="studio" data-active="home">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">工作台 · 2026-09-14 周一</span><div class="row"><span class="muted small">早报 08:00 已发 · 下一刊 09-15</span><a class="btn small" href="studio-review.html">审稿列表 12</a></div></div>
+    <div class="page">
+      <div class="tiles">
+        <div class="tile bad"><em>2</em><span>超 SLA（快讯 2h）</span></div>
+        <div class="tile warn"><em>12</em><span>待审快讯</span></div>
+        <div class="tile"><em>7</em><span>保鲜队列到期</span></div>
+        <div class="tile ok"><em>¥38 / ¥100</em><span>今日模型成本（快讯独立 ¥9 / ¥30）</span></div>
+      </div>
+
+      <div class="split wide-left">
+        <div>
+          <div class="page-head"><h2>今日待办（按 SLA 倒计时）</h2></div>
+          <div class="qi"><div><b>快讯 · 某开源模型新版发布</b><div class="sub">captured 09:10 → machine_qa 通过 · 缺双源（只有 GitHub）</div></div><div class="row"><span class="sla late">-00:32 超时</span><a class="btn small" href="studio-review.html">补源 / 审</a></div></div>
+          <div class="qi"><div><b>快讯 · 某云批量推理折扣</b><div class="sub">review · 双源 ✓ · 候选节点 L2</div></div><div class="row"><span class="sla soon">00:41</span><a class="btn small" href="studio-review.html">审</a></div></div>
+          <div class="qi"><div><b>早报 09-15 · 待汇编</b><div class="sub">07:00 自动汇编 → 你 15 分钟审 → 08:00 发</div></div><div class="row"><span class="sla">明日 07:00</span><a class="btn small secondary" href="studio-issue.html">编排</a></div></div>
+          <div class="qi"><div><b>概念卡 · 提示词注入（L1）</b><div class="sub">factcheck · 事实清单 9 / 12 处理</div></div><div class="row"><span class="sla soon">SLA 48h · 剩 6h</span><a class="btn small secondary" href="studio-qa.html">事实清单</a></div></div>
+          <div class="qi"><div><b>单元 · 第 7 课 做成工作流（L4）</b><div class="sub">drafting · bot 起草中 · brief 已由人写目标与练习</div></div><div class="row"><span class="sla">1 周 · 剩 4 天</span><a class="btn small ghost" href="studio-editor.html">看草稿</a></div></div>
+          <div class="qi"><div><b>过时清单 · 10 月候选</b><div class="sub">freshness 任务 10-01 生成 · 目前 3 条早到候选</div></div><div class="row"><span class="sla">10-01</span><a class="btn small ghost" href="studio-refresh.html">保鲜队列</a></div></div>
+        </div>
+        <div>
+          <div class="card"><span class="kicker">待我处理（Publisher）</span><div class="src"><span class="small">发布 · 概念卡 ×2 已过 editing</span><span class="d">→</span></div><div class="src"><span class="small">作废确认 · 1 篇（保鲜员建议）</span><span class="d">→</span></div><div class="src"><span class="small">提示词版本 unit@3.3 待指定「当前」</span><span class="d">→</span></div></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">缺口 Top 5 <span class="anno">1</span></span><div class="src"><span class="small">「多模态 RAG」搜索无结果 ×14 · 问答无引用 ×3</span><span class="d">L3</span></div><div class="src"><span class="small">L5 客服知识库案例 · 图谱空节点</span><span class="d">L5</span></div><div class="src"><span class="small">「按用量计费怎么估」快讯挂接不到节点 ×2</span><span class="d">L2</span></div><div class="src"><span class="small">第 4 课 §2 「没看懂」聚集 9 人</span><span class="d">L3</span></div><div class="src"><span class="small">L1 隐私与账号安全 · 计划中未开工</span><span class="d">L1</span></div><a class="gold small" href="studio-topics.html">选题池 →</a></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">失败任务 · 告警</span><div class="src"><span class="chip bad">×3</span><span class="small">generate · 单元第 7 课 · JSON 校验失败（修复重试用尽）</span></div><div class="src"><span class="chip warn">停用</span><span class="small">ingest · 源「某博客 RSS」连续失败 5 次</span></div></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">最近发布</span><div class="src"><span class="mono muted small">10:20</span><span class="small">快讯 · 上下文 1M</span></div><div class="src"><span class="mono muted small">08:00</span><span class="small">早报第 61 期</span></div><div class="src"><span class="mono muted small">昨日</span><span class="small">实体页更新 ×2</span></div></div>
+        </div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · Studio 工作台</h3>
+      <ol>
+        <li>五信号缺口：搜索无结果、快讯挂不到节点、问答无引用、「没看懂」聚集、图谱空节点。<span class="ref">06 §4.2</span></li>
+        <li>SLA：快讯 2h、早报 08:00、概念卡 48h、单元 1 周；超时红。<span class="ref">04 §8.4</span></li>
+        <li>后台账号 TOTP 必开；会话 12h；所有写操作审计。<span class="ref">06 §1.1 · G5</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

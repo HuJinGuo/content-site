@@ -1,0 +1,8 @@
+{% extends "base_back.html" %}
+{% block side_title %}Studio 编辑部{% endblock %}
+{% block sidenav %}{% include "studio/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">成本</h1>
+<p>本页任务合计 {{ tokens }} tokens · {{ total }} 分（未接价表则为 0）。</p>
+{% for j in jobs %}<p>{{ j.created_at }} · {{ j.role }} · {{ j.status }} · in {{ j.tokens_in }} / out {{ j.tokens_out }}</p>{% empty %}<p class="back-empty">还没有生成任务，所以没有成本。</p>{% endfor %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base_back.html" %}
+{% block side_title %}Studio 编辑部{% endblock %}
+{% block sidenav %}{% include "studio/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">资产</h1>
+<form method="post" class="row">{% csrf_token %}
+  <input name="title" required placeholder="名称">
+  <input name="slug" placeholder="slug">
+  <select name="access"><option>free</option><option>supporter</option></select>
+  <input name="path" placeholder="对象存储路径">
+  <button class="btn" type="submit">保存</button>
+</form>
+{% for a in assets %}<p>{{ a.title }} · {{ a.access }}</p>{% empty %}<p class="back-empty">还没有资源包。保存一条即可出现在前台工具/下载。</p>{% endfor %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base_site.html" %}
+{% block title %}账户{% endblock %}
+{% block content %}
+<section class="hero"><h1 class="serif">账户</h1><p>{{ user.email }}</p></section>
+{% if error %}<div class="banner archived">{{ error }}</div>{% endif %}
+{% if notice %}<div class="banner notice">{{ notice }}</div>{% endif %}
+<div class="row">
+  <form method="post" action="/app/account/export">{% csrf_token %}<button class="btn secondary" type="submit">导出 Markdown</button></form>
+  <form method="post" action="/logout">{% csrf_token %}<button class="btn" type="submit">退出</button></form>
+</div>
+<form method="post" action="/app/account/delete" class="card" style="padding:16px;margin-top:24px">{% csrf_token %}
+  <p>删除账户：输入 DELETE，7 天冷静期。</p>
+  <input name="confirm" placeholder="DELETE">
+  <button class="btn secondary" type="submit">申请删除</button>
+</form>
+{% endblock %}

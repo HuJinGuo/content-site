@@ -1,0 +1,17 @@
+{% extends "base_back.html" %}
+{% block side_title %}Studio 编辑部{% endblock %}
+{% block sidenav %}{% include "studio/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">实体与认领</h1>
+<form method="post" class="card" style="padding:16px">{% csrf_token %}
+  <input name="name" placeholder="名称" required>
+  <input name="slug" placeholder="slug">
+  <select name="kind"><option>tool</option><option>model</option><option>company</option><option>paper</option></select>
+  <input name="official_url" placeholder="https:// 官方" required>
+  <input name="summary" placeholder="一句话">
+  <button class="btn" type="submit">保存</button>
+</form>
+{% for e in entities %}<p><a href="/entities/{{ e.slug }}">{{ e.name }}</a> · {{ e.kind }}</p>{% endfor %}
+<h2>待核对认领</h2>
+{% for c in claims %}<p>{{ c.entity.name }} · {{ c.email }} · {{ c.status }}</p>{% empty %}<p class="muted">没有待核对。</p>{% endfor %}
+{% endblock %}

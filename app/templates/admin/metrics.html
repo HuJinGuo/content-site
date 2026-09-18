@@ -1,0 +1,9 @@
+{% extends "base_back.html" %}
+{% block side_title %}Admin 运营{% endblock %}
+{% block sidenav %}{% include "admin/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">达标线</h1>
+<p>已发布 {{ published }} 篇 · 用户 {{ numbers.users|default:"—" }}。体验指标需 Umami 聚合后才自动算。</p>
+{% for d in daily %}<p>{{ d.day }} · {{ d.numbers }}</p>{% endfor %}
+{% for e in events %}<p>{{ e.at }} · {{ e.name }}</p>{% empty %}<p class="muted">还没有埋点事件。</p>{% endfor %}
+{% endblock %}

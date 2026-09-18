@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio · 期刊编排（早报）/studio/issues/[id] · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="studio" data-active="issues">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">早报 · 2026-09-15（第 62 期）</span><div class="row"><span class="states"><span class="done">draft</span><i>→</i><span class="done">assembled 07:00</span><i>→</i><span class="cur">review</span><i>→</i><span>scheduled 08:00</span><i>→</i><span>published</span></span><button class="btn small secondary">预览 站内 / 邮件</button><button class="btn small">发布（Publisher）</button></div></div>
+    <div class="page">
+      <div class="tabs"><button class="active">早报</button><button>周报（第 38 周 · 周六）</button><button>深度</button><button>过时清单（10 月候选）</button><button>往期</button></div>
+      <div class="banner stale small" style="margin-top:0">07:45 仍未发布会告警；08:00 未审则发「延迟通知」不发空刊。<span class="anno">1</span></div>
+
+      <div class="split wide-left">
+        <div>
+          <div class="card">
+            <div class="field"><label>今日一句话（≤ 60 字）</label><input value="按用量计费正在成为默认；先算清你一个月用多少。"><div class="hint">24 / 60</div></div>
+            <span class="kicker">条目（自动汇编当日已发布快讯 · 拖拽排序 · 8–12 条）</span>
+            <div class="qi" style="margin-top:8px"><div><b>1 · 某云夜间批量推理 5 折</b><div class="sub">L2 · 关联：账单估算表 ✓</div></div><div class="row"><button class="btn small ghost">↑</button><button class="btn small ghost">↓</button><button class="btn small ghost">删</button></div></div>
+            <div class="qi"><div><b>2 · 某编辑器 Agent 模式 v2</b><div class="sub">L3 · 关联：<span class="chip warn">未确认</span></div></div><div class="row"><button class="btn small ghost">↑</button><button class="btn small ghost">↓</button><button class="btn small ghost">删</button></div></div>
+            <div class="qi"><div><b>3 · 某评测工具 1.0</b><div class="sub">L4 · 关联：第 5 课 ✓</div></div><div class="row"><button class="btn small ghost">↑</button><button class="btn small ghost">↓</button><button class="btn small ghost">删</button></div></div>
+            <div class="qi" style="opacity:.6"><div><b>4–9 · …</b></div><div></div></div>
+            <div class="field" style="margin-top:12px"><label>行动项（≤ 3）</label><textarea style="min-height:70px">1. 算一次你的月用量（10 分钟）
+2. 看一眼向量库版本
+3. </textarea></div>
+            <div class="field"><label>明天看什么</label><input value="周三某开源模型新版；周四过时清单 10 月候选公示"></div>
+          </div>
+        </div>
+        <div>
+          <div class="card gated" data-flag="ads.email_sponsor"><span class="kicker">S1 赞助段（自动填排期）</span><div class="slot strip" data-slot="S1" style="margin-top:8px"><div class="logo"></div><div class="small"><b>本期由 X 支持</b> · 文案 2 句 · 链接</div></div><p class="muted small" style="margin-top:6px">关闭态或无排期：整段省略。</p></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">发送</span><dl class="kv small" style="margin-top:8px;grid-template-columns:90px 1fr"><dt>站内</dt><dd>立即 + RSS</dd><dt>邮件</dt><dd>广播任务 · 订户 3,120 · 每批 ≤ 500 · 08:00–08:30 内发完</dd><dt>分享卡</dt><dd>自动生成</dd><dt>更正</dt><dd>24h 内可追加，不重发</dd></dl></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">周报 tab 要点</span><p class="small" style="margin-top:6px">三栏草稿（简报员）→ <b>判断段必改</b>（judgement_edited_by）→ 本周岗位 3 条（招聘板开时）→ S2 → 发。</p></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">深度 tab 要点</span><p class="small" style="margin-top:6px">人选题 → 材料包 → 起草 → 对抗式核验 → 判断段人重写（assist_ratio ≤ 0.3 校验）。</p></div>
+        </div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 期刊编排</h3>
+      <ol>
+        <li>issues 队列：07:00 汇编、08:00 发布，0 次自动重试（人工介入）；07:45 无待发刊告警。<span class="ref">06 §8.5 · §7.9</span></li>
+        <li>早报发布 = 站内页 + RSS + 邮件广播任务 + 分享卡；更正只追加。<span class="ref">06 §4.9</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends "base_site.html" %}
+{% block title %}{{ page.title|default:slug }}{% endblock %}
+{% block content %}
+<section class="hero"><h1 class="serif">{{ page.title|default:slug }}</h1></section>
+{% if page %}
+  <article class="prose">{{ page.html|safe }}</article>
+{% else %}
+  {% if slug == "about" %}
+    <p>ai.nornless.com 是 nornless 的 AI 知识阶梯与科技情报站。Grok 起草、人审、保鲜。内容默认免费。</p>
+  {% elif slug == "disclosure" %}
+    <p>每篇有 AI 披露模块：模型、协助比例、复核人、复核日。生成内容进站必须有 generation_log。</p>
+  {% elif slug == "ads-policy" %}
+    <p>广告必须标明「广告 / 赞助 / 推广」。禁止绝对化用语。素材不允许脚本、iframe、像素。</p>
+  {% elif slug == "license" %}
+    <p>正文 CC BY-NC-ND 4.0。代码块 MIT。资源包仅个人与团队内部使用。</p>
+  {% elif slug == "privacy" %}
+    <p>邮箱登录。无 cookie 同意横幅。日志不写邮箱、IP、码、令牌。IP 只存日盐哈希。</p>
+  {% else %}
+    <p class="muted">本页正文尚未写入。</p>
+  {% endif %}
+{% endif %}
+{% endblock %}

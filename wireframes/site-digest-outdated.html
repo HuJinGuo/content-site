@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>过时清单 /digest/outdated/[month] · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="news" data-user="1">
+
+<main class="container">
+  <div class="article-head">
+    <div class="crumb"><a href="site-news.html">情报</a> / 过时清单 / 2026-09</div>
+    <span class="kicker">过时清单 · 每月 1 日 · 处决权在人</span>
+    <h1 class="serif" style="margin-top:8px">2026 年 9 月：3 篇作废、5 篇降级、2 张价格表更新</h1>
+    <p class="muted" style="max-width:640px">扫 Last-verified、实体变更与「过时了」反馈得到候选；编辑逐条确认。作废的文 URL 保留、挂红条、给替代。</p>
+  </div>
+
+  <div class="callout" style="margin-bottom:18px">你收藏的 <b>2 篇</b> 在本月清单里：<a href="#a2">L2 某产品价格对照（作废）</a>、<a href="#b1">L3 本地模型运行器入门（降级）</a>。学习台也会提醒。<span class="anno">1</span></div>
+
+  <div class="card">
+    <h2 class="serif" style="font-size:20px;margin-bottom:6px">作废（3）</h2>
+    <div class="outdated-item" id="a1"><div class="what"><b>作废</b> · <a class="gold" href="#">L3 · 某托管向量服务快速上手</a><div class="small muted" style="margin-top:4px">为什么：服务 2026-08-31 停止新注册；现有用户 12 月下线。</div></div><div class="repl"><b>替代</b> · <a class="gold" href="site-unit.html">L3 · 最小 RAG：从文件夹到能提问</a>（用本地库）<div class="small muted" style="margin-top:4px">涉及：路径「文档问答」旧版第 4 课；对照页 ×1</div></div></div>
+    <div class="outdated-item" id="a2"><div class="what"><b>作废</b> · <a class="gold" href="site-compare.html">L2 · 某产品价格对照（2026-03 版）</a><div class="small muted" style="margin-top:4px">为什么：三家改按用量计费，整表失效。</div></div><div class="repl"><b>替代</b> · <a class="gold" href="site-compare.html">L2 · 按用量计费下的月费估算（2026-09）</a></div></div>
+    <div class="outdated-item"><div class="what"><b>作废</b> · <a class="gold" href="#">L1 · 「上下文窗口最大 128k」概念卡旧版</a></div><div class="repl"><b>替代</b> · <a class="gold" href="site-unit.html">L1 · 上下文窗口（已改写为不写具体数字，只给查法）</a></div></div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h2 class="serif" style="font-size:20px;margin-bottom:6px">降级 · 加「可能过时」条（5）</h2>
+    <div class="outdated-item" id="b1"><div class="what"><b style="color:var(--warn)">降级</b> · <a class="gold" href="#">L3 · 本地模型运行器入门</a><div class="small muted" style="margin-top:4px">为什么：新版 UI 改了，步骤截图不对；命令仍有效。</div></div><div class="repl"><span class="muted">计划：10 月重跑截图</span></div></div>
+    <div class="outdated-item"><div class="what"><b style="color:var(--warn)">降级</b> · <a href="#">…</a></div><div></div></div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h2 class="serif" style="font-size:20px;margin-bottom:6px">回写 · 数字更新（2）</h2>
+    <div class="outdated-item"><div class="what"><b style="color:var(--ok)">已更新</b> · <a class="gold" href="site-compare.html">L2 模型对照表</a> 截至 2026-09-13</div><div class="repl"><span class="muted small">变更：3 行价格、1 行上下文长度</span></div></div>
+    <div class="outdated-item"><div class="what"><b style="color:var(--ok)">已更新</b> · <a href="#">L2 云推理价格</a></div><div></div></div>
+  </div>
+
+  <div class="mod required"><h4>AI 使用披露</h4><p class="disclosure"><b>保鲜员扫出候选并产出 diff 建议；作废 / 降级 / 回写全部由编辑确认。</b></p></div>
+  <div class="row" style="margin-top:16px"><a class="btn secondary small" href="site-subscribe.html">订阅过时清单（邮件 / RSS）</a><span class="muted small">← 2026-08 · 2026-10 →</span></div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 过时清单</h3>
+  <ol>
+    <li>登录且收藏了涉及文章的读者，顶部出提醒，学习台同步提醒。<span class="ref">06 §2.9 · §2.13</span></li>
+    <li>每条 = 什么过时了、为什么、替代、涉及文章；作废后原 URL 保留可读 + 红条 + 替代链接，不 404。<span class="ref">06 §4.13</span></li>
+    <li>候选每月 1 日由 freshness 任务生成，编辑在 Studio 保鲜队列确认后发布。<span class="ref">06 §8.5</span></li>
+  </ol>
+</section>
+</body>
+</html>

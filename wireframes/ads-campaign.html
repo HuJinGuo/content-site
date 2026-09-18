@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>广告主门户 · 活动详情 /ads/[campaign] · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="ads" data-active="campaign">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">活动 · 向量库云版 · 9 月</span><div class="row"><button class="btn small secondary">暂停</button><button class="btn small">续投（再兑一张同 SKU 码）</button></div></div>
+    <div class="page">
+      <div class="states" style="margin-bottom:16px"><span class="done">draft</span><i>→</i><span class="done">pending_review</span><i>→</i><span class="done">approved</span><i>→</i><span class="done">scheduled</span><i>→</i><span class="cur">live</span><i>→</i><span>paused</span><i>→</i><span>ended</span></div>
+
+      <div class="tiles">
+        <div class="tile"><em>8,120</em><span>曝光（去爬虫 / 去后台账号）</span></div>
+        <div class="tile"><em>160</em><span>点击（/go · 每会话同素材 1 次 / 分钟）</span></div>
+        <div class="tile"><em>1.97%</em><span>CTR</span></div>
+        <div class="tile"><em>7 天</em><span>剩余 · 到期 09-21 · 提前 7 天提醒</span></div>
+      </div>
+
+      <div class="split wide-left">
+        <div>
+          <div class="card">
+            <div class="row"><span class="kicker">按天</span><div class="segmented right"><button class="active">曝光</button><button>点击</button><button>CTR</button></div></div>
+            <div class="bar-chart" style="margin-top:14px"><i style="height:40%"></i><i style="height:55%"></i><i style="height:70%"></i><i style="height:62%"></i><i style="height:80%"></i><i style="height:45%"></i><i style="height:30%"></i><i style="height:72%"></i><i style="height:85%"></i><i style="height:66%"></i><i style="height:58%"></i><i style="height:74%"></i><i style="height:69%"></i><i style="height:50%"></i></div>
+            <div class="row small muted" style="margin-top:6px"><span>09-08</span><span class="right">09-21</span></div>
+            <p class="muted small" style="margin-top:8px">只出聚合数；投放页面按层 / 领域分布可看（L3 61% · L4 24% · 其他），不出读者任何信息。<span class="anno">1</span></p>
+            <button class="btn small secondary" style="margin-top:10px">导出 CSV</button>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <span class="kicker">审核意见（可见）</span>
+            <div class="src"><span class="chip ok">通过</span><span class="small">09-07 · AdOps：文案已去掉绝对化用语；落地页同域。</span></div>
+            <div class="src"><span class="chip warn">需修改</span><span class="small">09-06 · 第 1 / 3 次：「最好用」不可用。</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <span class="kicker">素材（投放中不可改；改 = 重新审核）</span>
+            <div class="slot creative-preview" data-slot="S4" style="margin-top:12px;border-style:solid;background:var(--card)"><span class="ad-tag">赞助</span><div class="cover" style="height:90px;margin:0 0 8px"></div><h4>向量库云版：免费额度够跑完本路径</h4><p>国内直连，10 分钟上手。</p><a class="cta" href="#">了解一下 →</a></div>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <span class="kicker">排期</span>
+            <dl class="kv" style="margin-top:8px"><dt>位置</dt><dd>S4 文章页侧栏</dd><dt>上下文</dt><dd>L3 · 开发与 Agent</dd><dt>排除</dt><dd>本厂商被评测的 2 页不投</dd><dt>时段</dt><dd class="mono small">09-08 → 09-21</dd><dt>会话去重</dt><dd>同位不连续 3 次同广告主</dd></dl>
+          </div>
+          <div class="card" style="margin-top:14px"><span class="kicker">收据</span><div class="receipt" style="margin-top:8px"><div class="row"><b>收据 #R-2026-0912-031</b><span class="right muted small">暂不开发票</span></div><div class="small muted">广告码 NRL-••••-••••-8HJK · S4 7 天 · 2026-09-07</div><div class="big">¥ —（示意）</div><button class="btn small secondary" style="margin-top:8px">下载 PDF</button></div></div>
+        </div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 活动详情</h3>
+      <ol>
+        <li>报表按天聚合（stats 任务每日 01:00）；广告点击明细保留 13 个月后只留日聚合。<span class="ref">06 §8.5 · §7.4</span></li>
+        <li>续费 = 再兑一张同 SKU 码，天数累加；到期后素材下线、角标消失。<span class="ref">06 §3.8</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

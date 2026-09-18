@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 / 410 / 503 · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="">
+
+<main class="container">
+  <div class="grid cols-3" style="margin-top:32px">
+    <div class="card center-card" style="width:auto">
+      <span class="kicker">404 · 找不到（含关闭态路由）</span>
+      <h1 style="font-size:22px">这页不存在，或者还没开</h1>
+      <p class="muted small">关闭态的专区、/pricing、/app/ask 都返回真 404，不是「即将上线」。<span class="anno">1</span></p>
+      <div class="search-big" style="margin-top:14px"><input class="input" placeholder="搜一下"><button class="btn">搜</button></div>
+      <p class="small" style="margin-top:12px"><b>你可能要找：</b></p>
+      <div class="row small"><a class="chip free" href="site-learn.html">学习地图</a><a class="chip free" href="site-news.html">快讯</a><a class="chip free" href="site-glossary.html">术语表</a><a class="chip free" href="site-home.html">首页</a></div>
+    </div>
+    <div class="card center-card" style="width:auto">
+      <span class="kicker">410 · 已删除 / 过期</span>
+      <h1 style="font-size:22px">这条内容已过期</h1>
+      <p class="muted small">招聘 / 活动 / 优惠过期条目返回 410；作废文章<b>不是</b> 410 —— URL 保留可读 + 红条 + 替代。<span class="anno">2</span></p>
+      <div class="row" style="margin-top:14px"><a class="btn small secondary" href="site-jobs.html">看现在的岗位</a></div>
+    </div>
+    <div class="card center-card" style="width:auto">
+      <span class="kicker">503 · 维护模式</span>
+      <h1 style="font-size:22px">正在维护，几分钟后回来</h1>
+      <p class="muted small">Ops 开启维护模式：公开站 503 + Retry-After；Studio / Admin 仍可登录。500 页同款，不显示堆栈。<span class="anno">3</span></p>
+      <p class="muted small" style="margin-top:12px">RSS 与 sitemap 在维护期间继续从缓存服务。</p>
+    </div>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 错误页</h3>
+  <ol>
+    <li>关闭态 = 路由 404 + 无入口 + 不进 sitemap；404 页带站内搜索与「你可能要找」。<span class="ref">06 G2 · G24</span></li>
+    <li>slug 改名自动 301；删除用 410；作废文章保留 URL。<span class="ref">06 §7.7 · §4.13</span></li>
+    <li>维护模式全站 503；后台正常。<span class="ref">06 §2.1 · §5.11</span></li>
+  </ol>
+</section>
+</body>
+</html>

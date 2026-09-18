@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin · 站点设置 /admin/settings · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="admin" data-active="settings">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">站点设置</span><div class="row"><span class="muted small">每项带版本 · 改动写审计 · 缓存 ≤ 60s</span><button class="btn small">保存</button></div></div>
+    <div class="page">
+      <div class="tabs"><button class="active">站点</button><button>首页块顺序</button><button>预算与限额</button><button>词表</button><button>页脚 · 法务</button><button>集成</button><button>原生 Django admin</button></div>
+      <div class="split">
+        <div>
+          <div class="card"><span class="kicker">站点</span><div class="fm" style="grid-template-columns:1fr;margin-top:8px"><div class="field"><label>站名 · 副标</label><input value="ai.nornless.com · AI 知识阶梯 · 科技情报"></div><div class="field"><label>通知条（≤ 80 字 · 可空）</label><input value="本月过时清单已发布 · 3 篇文章被作废并给出替代"></div><div class="field"><label>默认主题</label><select><option>跟随系统</option><option>浅</option><option>深</option></select></div><div class="field"><label>时区 · 早报时间</label><input value="Asia/Shanghai · 工作日 08:00"></div></div></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">首页块顺序（≤ 8 · 拖拽）</span><div class="qi" style="margin-top:8px"><b>1 · hero + 测评 CTA</b><span class="toggle on"></span></div><div class="qi"><b>2 · 从这里继续（登录态）</b><span class="toggle on"></span></div><div class="qi"><b>3 · 今日简报</b><span class="toggle on"></span></div><div class="qi"><b>4 · 路径</b><span class="toggle on"></span></div><div class="qi"><b>5 · 最新概念卡 + R1 + 工具周榜</b><span class="toggle on"></span></div><div class="qi"><b>6 · 招聘精选（随 jobs 开关）</b><span class="toggle"></span></div><div class="qi"><b>7 · 本周专题</b><span class="toggle"></span></div><p class="muted small" style="margin-top:6px">每块空态文案可配（不出现「暂无数据」）。<span class="anno">1</span></p></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">预算与限额</span><div class="fm" style="margin-top:8px"><div class="field"><label>日模型成本上限</label><input value="¥100"></div><div class="field"><label>快讯独立通道</label><input value="¥30"></div><div class="field"><label>问答额度 Free / Supporter</label><input value="3 / 20"></div><div class="field"><label>每页广告位上限</label><input value="2" disabled><div class="hint">G17 · 代码常量，不可配</div></div><div class="field"><label>单广告主曝光占比</label><input value="30%"></div><div class="field"><label>限流表（附录 D）</label><button class="btn small ghost">查看 / 编辑</button></div></div></div>
+        </div>
+        <div>
+          <div class="card"><span class="kicker">词表（版本化）</span><div class="src"><span class="small">红线词表</span><span class="d">v14 · 312 条 · <a class="gold" href="#">编辑</a></span></div><div class="src"><span class="small">绝对化用语（广告法）</span><span class="d">v3 · 48 条</span></div><div class="src"><span class="small">禁投类目</span><span class="d">v2 · 11 类</span></div><div class="src"><span class="small">可观察动词（学习目标）</span><span class="d">v1 · 26 个</span></div><div class="src"><span class="small">训练爬虫 UA 名单</span><span class="d">v4 · 12 个 · 季度复核</span></div><div class="src"><span class="small">一次性邮箱域名</span><span class="d">v6 · 1,200</span></div></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">页脚 · 法务</span><div class="fm" style="grid-template-columns:1fr;margin-top:8px"><div class="field"><label>页脚右侧文字</label><input value="境外起站 · 暂不备案 · 内容 CC BY-NC-ND 4.0"></div><div class="field"><label>备案号（有则显示 · 现空）</label><input placeholder="暂无"></div><div class="field"><label>支持者展示价（与发卡站一致由人保证）</label><input value="¥9 / 月 · ¥69 / 年"></div><div class="field"><label>发卡站链接</label><input value="https://…（会员码 / 广告码 商品页）"></div></div></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">集成（密钥只在 .env · 这里只显示状态）</span><div class="pre ok">xAI 经 nornless 中转 · base_url 已配</div><div class="pre ok">邮件供应商 · webhook 密钥 ✓</div><div class="pre ok">对象存储</div><div class="pre ok">Umami 站点 id</div><div class="pre ok">Git 托管 · CI Token（只读 + 校验）</div><div class="pre manual">Telegram 告警 bot</div></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">原生 Django admin（/admin/django/ · 只 Super）</span><p class="small muted" style="margin-top:6px">兜底用：所有模型的原生增删改查。用它改状态字段会绕过 transition —— 因此模型层 save() 校验 + 审计仍生效，且操作记为「raw_admin」。<span class="anno">2</span></p></div>
+        </div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 站点设置</h3>
+      <ol>
+        <li>首页块顺序与空态文案是配置；广告位每页上限是常量不是配置。<span class="ref">06 §2.2 · G17</span></li>
+        <li>原生 Django admin 只 Super 可进，作为兜底；写操作同样审计。<span class="ref">06 §5.14</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

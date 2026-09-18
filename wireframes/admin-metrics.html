@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin · 达标线 · 看板 /admin/metrics · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="admin" data-active="metrics">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">达标线 · 看板</span><div class="row"><span class="muted small">数据源：Umami（无 cookie）+ 库内计数 · 每日 01:00 聚合 · 只看聚合</span><div class="segmented"><button>7 日</button><button class="active">30 日</button><button>90 日</button></div></div></div>
+    <div class="page">
+      <div class="card">
+        <span class="kicker">体验达标线（05 §11.1）· 广告总开关前置 <span class="anno">1</span></span>
+        <table class="data" style="margin-top:8px">
+          <thead><tr><th>指标</th><th>初值 / 阈值</th><th>当前</th><th>趋势</th><th>状态</th></tr></thead>
+          <tbody>
+            <tr><td>早报连续工作日</td><td class="num">≥ 30</td><td class="num"><b>61</b></td><td><div class="sparkline"></div></td><td><span class="chip ok">达标</span></td></tr>
+            <tr><td>已发布篇数</td><td class="num">≥ 100</td><td class="num"><b>213</b></td><td><div class="sparkline"></div></td><td><span class="chip ok">达标</span></td></tr>
+            <tr><td>月 UV</td><td class="num">≥ 10,000</td><td class="num"><b>8,200</b></td><td><div class="sparkline"></div></td><td><span class="chip warn">未达 · 82%</span></td></tr>
+            <tr><td>完读率（滚到文末 / 打开）</td><td class="num">≥ 40%</td><td class="num"><b>47%</b></td><td><div class="sparkline"></div></td><td><span class="chip ok">达标</span></td></tr>
+            <tr><td>测评完成率</td><td class="num">≥ 60%</td><td class="num"><b>63%</b></td><td><div class="sparkline"></div></td><td><span class="chip ok">达标</span></td></tr>
+            <tr><td>搜索无结果率</td><td class="num">≤ 15%</td><td class="num"><b>11%</b></td><td><div class="sparkline"></div></td><td><span class="chip ok">达标</span></td></tr>
+            <tr><td>邮件确认率</td><td class="num">≥ 50%</td><td class="num"><b>58%</b></td><td><div class="sparkline"></div></td><td><span class="chip ok">达标</span></td></tr>
+            <tr><td>事实错误报告 / 月 / 100 篇</td><td class="num">≤ 2</td><td class="num"><b>0.5</b></td><td><div class="sparkline"></div></td><td><span class="chip ok">达标</span></td></tr>
+            <tr><td>勘误响应 p90</td><td class="num">≤ 4h</td><td class="num"><b>2h50m</b></td><td><div class="sparkline"></div></td><td><span class="chip ok">达标</span></td></tr>
+            <tr><td>移动 LCP p75 / CLS / INP</td><td class="num">≤ 2.5s / 0.1 / 200ms</td><td class="num"><b>2.1s / 0.04 / 140ms</b></td><td><div class="sparkline"></div></td><td><span class="chip ok">达标</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="split" style="margin-top:14px">
+        <div class="card"><span class="kicker">回退阈值监控（开关开后）</span><table class="data" style="margin-top:6px"><thead><tr><th>指标</th><th>回退阈值</th><th>当前</th></tr></thead><tbody><tr><td>完读率跌幅</td><td class="num">&gt; 5pp</td><td class="num">—（未开）</td></tr><tr><td>三键「有用」率跌幅</td><td class="num">&gt; 5pp</td><td class="num">—</td></tr><tr><td>退订率 / 期</td><td class="num">&gt; 0.5%</td><td class="num">0.3%</td></tr><tr><td>跳出率升幅</td><td class="num">&gt; 5pp</td><td class="num">—</td></tr><tr><td>CLS</td><td class="num">&gt; 0.1</td><td class="num">0.04</td></tr></tbody></table><p class="muted small" style="margin-top:6px">跌破 → 自动回退一级 + 通知（admin-flags）。</p></div>
+        <div>
+          <div class="card"><span class="kicker">内容与编辑部</span><div class="tiles" style="grid-template-columns:1fr 1fr;margin:8px 0 0"><div class="tile"><em>3.2 min</em><span>快讯审稿中位</span></div><div class="tile"><em>96%</em><span>SLA 内快讯</span></div><div class="tile"><em>¥812</em><span>本月模型成本</span></div><div class="tile"><em>¥3.8</em><span>成本 / 篇（概念卡）</span></div></div></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">三键反馈（30 日）</span><div class="bar-chart" style="height:60px;margin-top:8px"><i style="height:90%"></i><i style="height:14%"></i><i style="height:6%"></i></div><div class="row small muted"><span>有用 4,120</span><span>没看懂 610</span><span>过时了 280</span></div></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">广告（开后）</span><p class="small muted" style="margin-top:6px">曝光 / 点击 / CTR / 拦截率估算 / 占比 / 售出率 —— 目前只有 preview 数据。</p></div>
+        </div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 达标线看板</h3>
+      <ol>
+        <li>达标线初值按建议接受；看板值直接喂开关页前置判定。<span class="ref">05 §11.1 · §14.6</span></li>
+        <li>不看个人级数据；Umami 无 cookie；性能指标来自 Lighthouse 定期任务。<span class="ref">06 §7.9 · §7.8</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>首页 / · ai.nornless.com 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="">
+
+<div class="banner notice small">站内通知条（Admin 配置，≤ 80 字，可关，7 天后再出现）：本月过时清单已发布 · 3 篇文章被作废并给出替代 <span class="anno" title="06 §2.1">1</span></div>
+
+<main class="container">
+  <section class="hero">
+    <span class="kicker">AI 知识阶梯 L0 → L7 · 每天更新、会过时就标记的科技情报</span>
+    <h1 class="serif">搞懂 AI，然后真的用上</h1>
+    <p>四道题告诉你从哪一层开始读；每篇都有来源、复核日和 AI 披露。不登录也能读九成。</p>
+    <div class="row">
+      <a class="btn lg" href="site-assess.html">2 分钟选路测评</a>
+      <a class="btn secondary lg" href="site-learn.html">直接看学习地图</a>
+      <span class="muted small">或 <a class="gold" href="site-news.html">先看今天的情报 →</a></span>
+    </div>
+  </section>
+
+  <section class="section" style="margin-top:8px">
+    <div class="card" style="display:flex;gap:16px;align-items:center;border-style:dashed">
+      <span class="avatar">读</span>
+      <div class="grow"><b>登录态才有：从这里继续</b> <span class="anno" title="HTMX 局部加载，private 不缓存">2</span><div class="muted small">从 0 做一个文档问答 · 第 4 课「最小 RAG：从文件夹到能提问」· 读到 60%</div></div>
+      <a class="btn small" href="site-unit.html">继续读</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2 class="serif">今日简报</h2><span class="muted small">2026-09-14 · 工作日 08:00 出</span><a href="site-digest-daily.html">读整期早报 →</a></div>
+    <div class="card">
+      <div class="digest-n"><b class="n">1</b><div><b>某模型厂商把上下文窗口扩到 1M，价格不变</b><div class="rel">影响：<a class="gold" href="site-unit.html">L1 上下文窗口概念卡</a> 已标「待复核」</div></div></div>
+      <div class="digest-n"><b class="n">2</b><div><b>开源向量库 X 发布 2.0，改了默认索引</b><div class="rel">影响：文档问答路径第 4 课代码块待重跑</div></div></div>
+      <div class="digest-n"><b class="n">3</b><div><b>某编辑器 Agent 模式改为按用量计费</b><div class="rel">L2 选型对照表「截至日期」将更新</div></div></div>
+      <div class="digest-n"><b class="n">4</b><div><b>国内某云上线批量推理折扣</b></div></div>
+      <div class="digest-n"><b class="n">5</b><div><b>一篇被广泛转发的「AI 取代」数据被证实来源为二手转述</b><div class="rel">进 L0「谣言澄清」</div></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2 class="serif">路径</h2><a href="site-learn.html">学习地图 →</a></div>
+    <div class="grid cols-3">
+      <a class="card click featured" href="site-track.html"><span class="corner lvl">L0→L7</span><h3>从 0 做一个文档问答</h3><p class="summary">10 单元。做 / 不做决策表 → 最小 RAG（沙箱实测）→ 评测 → 上线检查单 → 原理回看。</p><div class="meta"><span>10 单元 · 7 篇已发布</span>·<span>约 6 小时</span></div></a>
+      <a class="card click" href="site-learn.html"><span class="corner chip muted">计划中</span><h3>把周报做成流水线</h3><p class="summary">L3–L5 · 办公与学习。预计 2026-11。</p><div class="meta"><span>大纲已定 · 0 / 8 发布</span></div></a>
+      <a class="card click" href="site-learn.html"><span class="corner chip muted">计划中</span><h3>AIGC 生产线：文 → 图 → 发布</h3><p class="summary">L3–L5 · AIGC 创作。预计 2026-12。</p><div class="meta"><span>大纲已定</span></div></a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="grid side">
+      <div>
+        <div class="section-head"><h2 class="serif">最新概念卡</h2><a href="site-glossary.html">百科 →</a></div>
+        <div class="grid cols-2">
+          <a class="card click" href="site-unit.html"><span class="corner lvl">L1</span><h3>上下文窗口</h3><p class="summary">模型一次能「看见」多少字；为什么长了不一定好。</p><div class="meta"><span>Last-verified 2026-09-10</span></div></a>
+          <a class="card click" href="site-unit.html"><span class="corner lvl">L1</span><h3>幻觉</h3><p class="summary">一本正经地错：成因、识别、三种缓解办法。</p><div class="meta"><span>2026-09-09</span></div></a>
+          <a class="card click" href="site-unit.html"><span class="corner lvl">L2</span><h3>产品 vs API vs 本地模型</h3><p class="summary">三条路的月费怎么估，什么情况选哪条。</p><div class="meta"><span>2026-09-08</span></div></a>
+          <a class="card click" href="site-unit.html"><span class="corner lvl">L3</span><h3>Embedding 与向量检索</h3><p class="summary">把文字变成可以比距离的数字。</p><div class="meta"><span>2026-09-07</span></div></a>
+        </div>
+      </div>
+      <div>
+        <div class="slot" data-slot="R1 / S3 · 首页推荐位">
+          <div class="when-off">
+            <h4>本月过时清单</h4>
+            <p>3 篇作废、5 篇降级、2 个价格表更新。收藏过的文章有变化会在学习台提醒你。</p>
+            <a class="cta" href="site-digest-outdated.html">看 9 月过时清单 →</a>
+          </div>
+          <div class="when-on">
+            <span class="ad-tag">赞助</span>
+            <h4>某向量数据库 · 免费额度升级</h4>
+            <p>2–3 句赞助文案，原生卡，服务端渲染，无第三方脚本。</p>
+            <a class="cta" href="#">了解 → <span class="mono small">/go/…</span></a>
+          </div>
+        </div>
+        <span class="anno" title="05 §3 R1：登录且有路径→继续；未登录→测评 CTA；否则过时清单">3</span>
+        <div class="card" style="margin-top:16px">
+          <div class="section-head" style="margin-bottom:8px"><h2 class="serif" style="font-size:18px">工具周榜</h2><a href="site-tools.html">目录 →</a></div>
+          <div class="tool-row" style="padding:8px 0"><div class="logo"></div><div><b>某编辑器 Agent</b><div class="muted small">L3 · 开发与 Agent</div></div><span class="verified ok">实测 09-11</span></div>
+          <div class="tool-row" style="padding:8px 0"><div class="logo"></div><div><b>某本地模型运行器</b><div class="muted small">L3 · 通用</div></div><span class="verified ok">实测 09-05</span></div>
+          <div class="tool-row" style="padding:8px 0"><div class="logo"></div><div><b>某自动化编排</b><div class="muted small">L4 · 办公</div></div><span class="verified none">未运行</span></div>
+        </div>
+        <div class="card gated" data-flag="ads.self_serve.jobs" style="margin-top:16px">
+          <div class="section-head" style="margin-bottom:8px"><h2 class="serif" style="font-size:18px">招聘精选</h2><a href="site-jobs.html">招聘板 →</a></div>
+          <div class="job" style="padding:8px 0"><div><b>AI 应用工程师</b><div class="co">某某科技 · 远程 · 25–40k</div></div><span class="pin">置顶</span></div>
+          <div class="job" style="padding:8px 0"><div><b>知识库运营</b><div class="co">某教育公司 · 上海</div></div></div>
+          <div class="job" style="padding:8px 0"><div><b>提示词工程实习</b><div class="co">某工作室 · 远程</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 首页 /</h3>
+  <ol>
+    <li>通知条：Admin 站点设置里配，≤ 1 条；关闭存 localStorage，7 天后再出现。<span class="ref">06 §2.1</span></li>
+    <li>「从这里继续」只在登录态出现；用 HTMX 二次请求加载，响应 <code>Cache-Control: private</code>；匿名整页可缓存 5 分钟。<span class="ref">06 §2.2 · §7.6</span></li>
+    <li>R1 推荐位从第一天占位，固定尺寸预留；关闭态由规则填充（登录有路径 → 继续；未登录 → 测评 CTA；否则过时清单），开启态换 S3 赞助卡，版式不动。用右下角「开关态」切换看两态。<span class="ref">05 §3 · 06 §2.17</span></li>
+    <li>移动端首屏无广告位；块顺序 Admin 可排（≤ 8 块）；每块空态文案由编辑配置，不出现「暂无数据」。<span class="ref">06 §2.2</span></li>
+    <li>没有聊天框、没有登录墙、没有弹窗。<span class="ref">05 §1 原则 1 / 5</span></li>
+  </ol>
+</section>
+</body>
+</html>

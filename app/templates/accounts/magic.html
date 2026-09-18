@@ -1,0 +1,13 @@
+{% extends "base_site.html" %}
+{% block title %}魔法链接{% endblock %}
+{% block content %}
+<section class="hero"><h1 class="serif">邮箱登录链接</h1><p>15 分钟、单次。</p></section>
+{% if error %}<div class="banner archived">{{ error }}</div>{% endif %}
+{% if sent %}<p>如果邮箱存在，确认信已发出（本机看控制台）。</p>
+{% else %}
+<form method="post" class="card" style="padding:20px;max-width:420px">{% csrf_token %}
+  <input name="email" type="email" required style="width:100%;padding:8px">
+  <button class="btn" style="margin-top:12px" type="submit">发送链接</button>
+</form>
+{% endif %}
+{% endblock %}

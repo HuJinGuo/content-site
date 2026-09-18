@@ -1,0 +1,19 @@
+{% with p=request.path %}
+<div class="nav-mod-title">运营</div>
+<a class="nav-btn{% if p == '/admin/' %} active{% endif %}" href="/admin/">总览</a>
+<a class="nav-btn{% if p == '/admin/flags' %} active{% endif %}" href="/admin/flags">功能开关</a>
+<a class="nav-btn{% if p == '/admin/codes' %} active{% endif %}" href="/admin/codes">码</a>
+<a class="nav-btn{% if p == '/admin/users' %} active{% endif %}" href="/admin/users">用户</a>
+<a class="nav-btn{% if p == '/admin/paywall' %} active{% endif %}" href="/admin/paywall">付费墙</a>
+<a class="nav-btn{% if p == '/admin/groups' %} active{% endif %}" href="/admin/groups">分组</a>
+<a class="nav-btn{% if p == '/admin/ads' %} active{% endif %}" href="/admin/ads">广告</a>
+<a class="nav-btn{% if p == '/admin/zones' %} active{% endif %}" href="/admin/zones">专区审核</a>
+<a class="nav-btn{% if p == '/admin/mail' %} active{% endif %}" href="/admin/mail">邮件</a>
+<a class="nav-btn{% if p == '/admin/metrics' %} active{% endif %}" href="/admin/metrics">达标线</a>
+<a class="nav-btn{% if p == '/admin/seo' %} active{% endif %}" href="/admin/seo">SEO</a>
+<a class="nav-btn{% if p == '/admin/system' %} active{% endif %}" href="/admin/system">系统</a>
+<a class="nav-btn{% if p == '/admin/settings' %} active{% endif %}" href="/admin/settings">站点设置</a>
+<a class="nav-btn{% if p == '/admin/audit' %} active{% endif %}" href="/admin/audit">审计</a>
+<div class="nav-mod-title">编辑部</div>
+<a class="nav-btn" href="/studio/">Studio</a>
+{% endwith %}

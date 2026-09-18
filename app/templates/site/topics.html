@@ -1,0 +1,10 @@
+{% extends "base_site.html" %}
+{% block title %}专题{% endblock %}
+{% block content %}
+<section class="hero"><h1 class="serif">专题</h1><p>按路径与标签归组的已发布内容。</p></section>
+{% for it in items %}
+  <a class="chip" href="/topics/{{ it.slug }}">{{ it.title }} · {{ it.count }}</a>
+{% empty %}
+  <p class="muted">还没有专题标签。先读 <a class="gold" href="/learn">学习地图</a>。</p>
+{% endfor %}
+{% endblock %}

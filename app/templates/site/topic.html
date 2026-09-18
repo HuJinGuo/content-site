@@ -1,0 +1,10 @@
+{% extends "base_site.html" %}
+{% block title %}{{ title|default:slug }}{% endblock %}
+{% block content %}
+<section class="hero"><h1 class="serif">专题 · {{ title|default:slug }}</h1></section>
+{% for n in nodes %}
+  <a class="card click" href="/articles/{{ n.slug }}" style="display:block;margin-top:10px"><h3>{{ n.title }}</h3><p class="summary">{{ n.summary }}</p></a>
+{% empty %}
+  <p class="muted">这个专题还没有文章。</p>
+{% endfor %}
+{% endblock %}

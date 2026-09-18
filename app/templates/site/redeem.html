@@ -1,0 +1,16 @@
+{% extends "base_site.html" %}
+{% block title %}兑码{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1 class="serif">兑换码</h1>
+  <p>会员码 / 内容码 / 广告码。明文只在发卡时出现一次。</p>
+</section>
+{% if error %}<div class="banner archived">{{ error }}</div>{% endif %}
+{% if success %}<div class="banner info">{{ success }}</div>{% endif %}
+{% if need_login %}<p><a class="btn" href="/login?next=/redeem">先登录</a></p>{% endif %}
+<form method="post" class="card" style="padding:20px">{% csrf_token %}
+  <label>码</label>
+  <input name="code" maxlength="20" style="width:100%;margin:8px 0 16px;padding:8px;border:1px solid var(--line);border-radius:10px;background:var(--input-bg)">
+  <button class="btn" type="submit">兑换</button>
+</form>
+{% endblock %}

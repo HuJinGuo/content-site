@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin · 邮件 /admin/mail · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="admin" data-active="mail">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">邮件 · 模板 · 广播 · 抑制名单</span><span class="muted small">供应商：单一 · webhook 只收退信 / 投诉</span></div>
+    <div class="page">
+      <div class="tiles"><div class="tile"><em>3,120</em><span>早报 / 周报订户（已确认）</span></div><div class="tile ok"><em>99.2%</em><span>7 日送达率</span></div><div class="tile"><em>0.3%</em><span>上期退订率（阈值 0.5%）</span></div><div class="tile warn"><em>41</em><span>抑制名单</span></div></div>
+      <div class="tabs"><button class="active">模板 9</button><button>广播记录</button><button>抑制名单</button><button>发送配额</button></div>
+      <div class="split wide-left">
+        <div class="card">
+          <table class="data">
+            <thead><tr><th>模板</th><th>类型</th><th>版本</th><th>最近发送</th><th>打开 / 退订</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><b>早报</b><div class="muted small">daily_digest · 含 S1 段（开关）</div></td><td>广播</td><td class="mono">v6</td><td class="mono small">09-14 08:00 · 1,204</td><td class="num small">38% / 0.1%</td><td class="actions"><button class="btn small ghost">编辑</button><button class="btn small ghost">测试发送</button></td></tr>
+              <tr><td><b>周报</b></td><td>广播</td><td class="mono">v4</td><td class="mono small">09-13 · 3,120</td><td class="num small">44% / 0.3%</td><td class="actions"><button class="btn small ghost">编辑</button></td></tr>
+              <tr><td><b>过时清单</b></td><td>广播</td><td class="mono">v2</td><td class="mono small">09-01 · 2,980</td><td class="num small">51% / 0.2%</td><td class="actions"><button class="btn small ghost">编辑</button></td></tr>
+              <tr><td><b>确认订阅 / 魔法链接</b></td><td>事务</td><td class="mono">v3</td><td class="mono small">今日 88</td><td>—</td><td class="actions"><button class="btn small ghost">编辑</button></td></tr>
+              <tr><td><b>收藏更新 · 路径催学</b></td><td>事务（每周 ≤ 1）</td><td class="mono">v1</td><td class="mono small">今日 12</td><td>—</td><td class="actions"><button class="btn small ghost">编辑</button></td></tr>
+              <tr><td><b>会员到期提醒 · 广告到期提醒</b></td><td>事务</td><td class="mono">v1</td><td class="mono small">今日 3</td><td>—</td><td class="actions"><button class="btn small ghost">编辑</button></td></tr>
+              <tr><td><b>广告主通知</b></td><td>事务（每天 ≤ 3）</td><td class="mono">v2</td><td class="mono small">今日 5</td><td>—</td><td class="actions"><button class="btn small ghost">编辑</button></td></tr>
+            </tbody>
+          </table>
+          <p class="muted small" style="margin-top:8px">每封必含：管理订阅链接（签名）、一键退订、<code>List-Unsubscribe</code> 头、发件主体信息。<span class="anno">1</span></p>
+        </div>
+        <div>
+          <div class="card"><span class="kicker">广播（手动 · 少用）</span><div class="fm" style="grid-template-columns:1fr;margin-top:8px"><div class="field"><label>模板</label><select><option>站务通知（≤ 1 / 月）</option></select></div><div class="field"><label>受众</label><select><option>全部已确认订户</option><option>支持者</option><option>广告主</option></select></div><div class="field"><label>预约</label><input value="2026-09-15 08:00"></div></div><button class="btn small secondary" style="margin-top:6px">先发测试 → 再预约</button><p class="muted small" style="margin-top:6px">分批 ≤ 500 / 批；供应商配额监控。</p></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">抑制名单 41</span><div class="src"><span class="small mono">••••@bounce.example</span><span class="d">硬退信 ×2</span></div><div class="src"><span class="small mono">••••@spam.example</span><span class="d">投诉</span></div><div class="src"><span class="small mono">••••@old.example</span><span class="d">手动</span></div><p class="muted small" style="margin-top:6px">进入名单即停止一切发送；解除需写原因。</p></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">退订率告警</span><p class="small" style="margin-top:6px">单期退订率 &gt; 0.5% → 通知 + 暂停 <code>ads.email_sponsor</code> 候选（回退阈值）。</p></div>
+        </div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 邮件</h3>
+      <ol>
+        <li>模板版本化；事务与广播分开配额；每封带一键退订。<span class="ref">06 §5.7 · §2.11</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "base_back.html" %}
+{% block side_title %}Studio 编辑部{% endblock %}
+{% block sidenav %}{% include "studio/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">生成台</h1>
+<p class="muted">有中转站密钥才调用模型，否则用 editorial 模板起草。bot 不能发布。</p>
+{% if error %}<div class="banner archived">{{ error }}</div>{% endif %}
+<form method="post" class="card" style="padding:16px">{% csrf_token %}
+  <p><input name="title" required placeholder="标题" style="width:100%;padding:8px;border:1px solid var(--line);border-radius:8px"></p>
+  <p class="row" style="margin-top:8px">
+    <select name="kind">
+      <option value="concept">文章</option>
+      <option value="unit">教程</option>
+      <option value="news">快讯</option>
+      <option value="pitfall">坑</option>
+      <option value="compare">对照</option>
+    </select>
+    <input name="tags" placeholder="标签，逗号分隔" style="flex:1;padding:8px;border:1px solid var(--line);border-radius:8px">
+    <button class="btn" type="submit">起草</button>
+  </p>
+</form>
+<h2 class="serif" style="margin-top:24px">最近任务</h2>
+{% for j in jobs %}<div class="muted">{{ j.created_at }} · {{ j.status }} · {{ j.model }} · {{ j.tokens_in }}/{{ j.tokens_out }}</div>{% empty %}<p class="muted">还没有生成任务。</p>{% endfor %}
+{% endblock %}

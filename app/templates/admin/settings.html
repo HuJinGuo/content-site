@@ -1,0 +1,14 @@
+{% extends "base_back.html" %}
+{% block side_title %}Admin 运营{% endblock %}
+{% block sidenav %}{% include "admin/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">站点设置</h1>
+<form method="post" class="card" style="padding:16px">{% csrf_token %}
+  <p>通知条 ≤ 80 字<br><input name="notice" value="{{ setting.notice }}" maxlength="80" style="width:100%;padding:8px"></p>
+  <p style="margin-top:8px"><label><input type="checkbox" name="maintenance" {% if setting.maintenance %}checked{% endif %}> 维护模式（公开站 503）</label></p>
+  <p style="margin-top:8px">发卡站 URL<br><input name="card_shop_url" value="{{ setting.card_shop_url }}" style="width:100%;padding:8px"></p>
+  <p style="margin-top:8px">支持者展示价<br><input name="supporter_price" value="{{ setting.supporter_price }}" style="width:100%;padding:8px"></p>
+  <p style="margin-top:8px">发件邮箱<br><input name="from_email" value="{{ setting.from_email }}" style="width:100%;padding:8px"></p>
+  <button class="btn" style="margin-top:12px" type="submit">保存</button>
+</form>
+{% endblock %}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin · 任务 · 成本 · 备份 /admin/system · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="admin" data-active="system">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">系统 · Procrastinate 队列 · 成本 · 备份 · 维护</span><div class="row"><span class="chip ok">健康 · /api/v1/health 200</span><button class="btn small danger">进入维护模式（公开站 503）</button></div></div>
+    <div class="page">
+      <div class="tiles"><div class="tile"><em>2</em><span>running</span></div><div class="tile warn"><em>3</em><span>failed（24h）</span></div><div class="tile"><em>418</em><span>succeeded（24h）</span></div><div class="tile ok"><em>02:10</em><span>今晨备份 · 恢复演练 09-01 ✓</span></div></div>
+      <div class="tabs"><button class="active">队列</button><button>定时任务</button><button>失败与告警</button><button>成本（模型 / 邮件 / 主机）</button><button>备份 · 恢复</button><button>外部依赖</button></div>
+
+      <div class="split wide-left">
+        <div>
+          <div class="card">
+            <table class="data">
+              <thead><tr><th>队列</th><th>并发</th><th>等待</th><th>运行</th><th>失败 24h</th><th>重试策略</th></tr></thead>
+              <tbody>
+                <tr><td class="mono">generate</td><td class="num">3</td><td class="num">1</td><td class="num">1</td><td class="num" style="color:var(--danger)">3</td><td class="small">2 次 · 指数退避</td></tr>
+                <tr><td class="mono">ingest</td><td class="num">4</td><td class="num">0</td><td class="num">1</td><td class="num">0</td><td class="small">源级 5 次停用</td></tr>
+                <tr><td class="mono">issues</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="small">0 次 · 人工</td></tr>
+                <tr><td class="mono">freshness</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="small">1 次</td></tr>
+                <tr><td class="mono">mail</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="small">3 次 · 供应商配额</td></tr>
+                <tr><td class="mono">stats</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="small">1 次</td></tr>
+                <tr><td class="mono">media</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="small">1 次</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <span class="kicker">定时任务</span>
+            <table class="data" style="margin-top:6px"><thead><tr><th>任务</th><th>cron</th><th>上次</th><th>下次</th><th></th></tr></thead><tbody>
+              <tr><td>抓源</td><td class="mono small">*/15 * * * *</td><td class="mono small">16:30 ✓</td><td class="mono small">16:45</td><td class="actions"><button class="btn small ghost">立即跑</button></td></tr>
+              <tr><td>早报汇编</td><td class="mono small">0 7 * * 1-5</td><td class="mono small">今日 07:00 ✓</td><td class="mono small">明 07:00</td><td class="actions"><button class="btn small ghost">立即跑</button></td></tr>
+              <tr><td>早报发布 / 延迟通知</td><td class="mono small">0 8 * * 1-5</td><td class="mono small">08:00 ✓</td><td class="mono small">明 08:00</td><td></td></tr>
+              <tr><td>保鲜扫描</td><td class="mono small">0 3 * * *</td><td class="mono small">03:00 ✓</td><td class="mono small">明 03:00</td><td></td></tr>
+              <tr><td>过时清单候选</td><td class="mono small">0 4 1 * *</td><td class="mono small">09-01 ✓</td><td class="mono small">10-01</td><td></td></tr>
+              <tr><td>统计聚合</td><td class="mono small">0 1 * * *</td><td class="mono small">01:00 ✓</td><td class="mono small">明 01:00</td><td></td></tr>
+              <tr><td>备份（pg_dump + 媒体）</td><td class="mono small">10 2 * * *</td><td class="mono small">02:10 ✓ 1.2GB</td><td class="mono small">明 02:10</td><td class="actions"><button class="btn small ghost">立即备份</button></td></tr>
+              <tr><td>死链扫描</td><td class="mono small">0 5 * * 1</td><td class="mono small">09-14 ✓</td><td class="mono small">09-21</td><td></td></tr>
+              <tr><td>保留期清理（匿名化）</td><td class="mono small">0 6 * * *</td><td class="mono small">06:00 ✓ 12 条</td><td class="mono small">明 06:00</td><td></td></tr>
+            </tbody></table>
+          </div>
+        </div>
+        <div>
+          <div class="card"><span class="kicker">失败与告警（Telegram / 邮件）</span><div class="src"><span class="chip bad">generate</span><span class="small">第 7 课 · JSON 校验失败 ×3 → 需改 brief</span><span class="d">15:02</span></div><div class="src"><span class="chip warn">ingest</span><span class="small">源「某博客 RSS」停用</span><span class="d">昨日</span></div><div class="src"><span class="chip warn">cost</span><span class="small">今日模型成本 80% 预警（示例）</span><span class="d">—</span></div><p class="muted small" style="margin-top:6px">告警条件：队列积压 &gt; 100 · 07:45 无待发刊 · 5xx 率 &gt; 1% · 备份失败 · 磁盘 &gt; 80% · 中转 4xx/5xx 激增。<span class="anno">1</span></p></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">成本（本月）</span><div class="src"><span class="small">模型（经 nornless 中转）</span><span class="d">¥812</span></div><div class="src"><span class="small">邮件供应商</span><span class="d">¥96</span></div><div class="src"><span class="small">VPS + 对象存储</span><span class="d">¥210</span></div><div class="src"><span class="small">合计</span><span class="d"><b>¥1,118</b></span></div></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">备份 · 恢复</span><dl class="kv small" style="margin-top:6px;grid-template-columns:90px 1fr"><dt>每日</dt><dd>pg_dump + 媒体 → 对象存储 · 保留 30 天</dd><dt>每周</dt><dd>异地副本</dd><dt>演练</dt><dd>每季 · 上次 09-01 · RTO 40 分钟</dd></dl><button class="btn small ghost" style="margin-top:6px">恢复到临时库（不覆盖）</button></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">外部依赖</span><div class="pre ok">nornless 中转 /v1/responses · 200 · p50 1.8s</div><div class="pre ok">邮件供应商 API</div><div class="pre ok">对象存储</div><div class="pre ok">Umami</div><div class="pre manual">发卡站（无 API · 人工对账）</div><div class="pre ok">Git 托管（PR 通道）</div></div>
+        </div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 系统</h3>
+      <ol>
+        <li>七个 Procrastinate 队列与重试策略；告警走 Telegram / 邮件；结构化日志 request_id。<span class="ref">06 §8.5 · §7.9</span></li>
+        <li>维护模式：公开站 503 + Retry-After，后台可用；备份每日 + 季度恢复演练。<span class="ref">06 §5.11 · §8.7</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

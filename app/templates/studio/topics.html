@@ -1,0 +1,18 @@
+{% extends "base_back.html" %}
+{% block side_title %}Studio 编辑部{% endblock %}
+{% block sidenav %}{% include "studio/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">选题池</h1>
+<p class="muted">五信号：搜索无结果、图谱空节点、问答无引用、没看懂、快讯挂不上。</p>
+{% for g in gaps %}
+<div class="card" style="margin-top:10px">
+  <b>{{ g.title }}</b> <span class="muted">{{ g.signal }} · {{ g.status }}</span>
+  <form method="post" class="row" style="margin-top:8px">{% csrf_token %}
+    <input type="hidden" name="id" value="{{ g.id }}">
+    <button class="btn small" name="action" value="adopt">采纳为稿</button>
+    <input name="reason" placeholder="忽略原因" style="padding:4px 8px;border:1px solid var(--line);border-radius:8px">
+    <button class="btn small secondary" name="action" value="ignore">忽略</button>
+  </form>
+</div>
+{% empty %}<p class="back-empty">还没有选题缺口。读者搜索无结果时会自动进来。</p>{% endfor %}
+{% endblock %}

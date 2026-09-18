@@ -1,0 +1,144 @@
+{% extends "base_site.html" %}
+{% load jiejian %}
+{% block title %}{{ node.title }}{% endblock %}
+{% block extrahead %}
+<meta name="description" content="{{ node.summary }}">
+<meta property="og:title" content="{{ node.title }}">
+<meta property="og:description" content="{{ node.summary }}">
+<meta property="og:image" content="/og/{{ node.public_id }}.png">
+<script type="application/ld+json" nonce="{{ csp_nonce }}">{"@context":"https://schema.org","@type":"Article","headline":"{{ node.title|escapejs }}","description":"{{ node.summary|escapejs }}","url":"/articles/{{ node.slug }}"}</script>
+{% endblock %}
+{% block content %}
+<div class="coord" style="margin-top:18px">
+  <b>{{ node.get_kind_display }}</b>
+  {% for t in node.tags %}<a class="chip free" href="/learn?tag={{ t }}">{{ t }}</a>{% endfor %}
+</div>
+<h1 class="serif" style="font-size:32px;margin:12px 0 8px">{{ node.title }}</h1>
+<div class="meta">
+  {% if node.last_verified_at %}<span>Last-verified {{ node.last_verified_at|date:"Y-m-d" }}</span>{% endif %}
+  {% if node.review_by %}<span>复核日 {{ node.review_by|date:"Y-m-d" }}</span>{% endif %}
+</div>
+<p class="summary" style="margin:12px 0">{{ node.summary }}</p>
+
+{% if stale %}
+<div class="banner stale">这篇已过复核日，内容可能过时。我们正在更新。</div>
+{% endif %}
+{% if errata %}
+<div class="banner notice">{% for e in errata %}勘误：{{ e.body }} {% endfor %}</div>
+{% endif %}
+{% if archived %}
+<div class="banner archived">这篇已作废。{% if next_nodes %}请改读 {% for p in next_nodes %}<a class="gold" href="/articles/{{ p.slug }}">{{ p.title }}</a>{% endfor %}。{% else %}请改读替代节点。{% endif %}</div>
+{% endif %}
+
+<div class="article-reading" x-data="{ aiOpen: false, prompt: '', selected: '' }">
+  <article class="prose" @mouseup="selected = window.getSelection().toString().trim()">
+    {{ html|safe }}
+  </article>
+
+  <aside class="article-ai" :class="{ 'is-open': aiOpen }" aria-label="AI 阅读助手">
+    <button class="article-ai-launch" type="button" @click="aiOpen = !aiOpen" :aria-expanded="aiOpen.toString()">
+      <span class="ai-spark">✦</span><span class="ai-launch-label">问 AI</span>
+    </button>
+    <div class="article-ai-panel" x-show="aiOpen" x-cloak>
+      <div class="article-ai-head"><div class="article-ai-title"><span class="ai-spark">✦</span><div><strong>文章伴读</strong><span>只根据这篇文章回答</span></div></div><button type="button" class="icon-btn" @click="aiOpen = false" aria-label="收起助手">×</button></div>
+      <div class="article-ai-body">
+        <p class="article-ai-context">正在阅读：<b>{{ node.title }}</b></p>
+        <p class="article-ai-intro">你可以这样问：</p>
+        <div class="article-ai-actions">
+          <button type="button" @click="prompt='总结本文的核心观点'">总结本文</button>
+          <button type="button" @click="prompt='提炼这篇文章的关键要点'">提炼要点</button>
+          <button type="button" @click="prompt='解释本文中的专业术语'">解释术语</button>
+        </div>
+        <template x-if="selected"><div class="article-ai-selection"><span>已选中一段文字</span><button type="button" @click="prompt='请解释这段文字：'+selected">解释选中内容</button></div></template>
+        <form class="article-ai-compose" method="post" action="/app/ask">{% csrf_token %}<textarea name="q" x-model="prompt" rows="2" placeholder="问一个关于本文的问题…"></textarea><button type="submit" class="btn small" :disabled="!prompt.trim()">发送</button></form>
+        <p class="article-ai-note">AI 生成内容可能有误，请结合原文判断。</p>
+      </div>
+    </div>
+  </aside>
+</div>
+
+{% if locked %}
+<div class="card unlock">
+  <h3>后半段需要权益</h3>
+  <p class="muted">这篇标记为 {{ node.get_access_display }}。去兑码，或到发卡站购买。</p>
+  <div class="row" style="margin-top:12px">
+    <a class="btn" href="/redeem">我有码，去兑</a>
+    {% if card_shop_url %}<a class="btn secondary" href="{{ card_shop_url }}">去发卡站</a>{% endif %}
+  </div>
+</div>
+<div class="locked-rest">未授权部分不进入 HTML</div>
+{% endif %}
+
+{% if prereqs %}
+<div class="mod required">
+  <h4>前置</h4>
+  {% for p in prereqs %}<a class="chip" href="/articles/{{ p.slug }}">{{ p.title }}</a>{% endfor %}
+</div>
+{% endif %}
+{% if next_nodes %}
+<div class="mod required">
+  <h4>下一步</h4>
+  {% for p in next_nodes %}<a class="chip" href="/articles/{{ p.slug }}">{{ p.title }}</a>{% endfor %}
+</div>
+{% endif %}
+
+<div class="mod required">
+  <h4>来源</h4>
+  {% for s in node.sources %}
+    <div class="src"><span>{{ s.title }}</span><a class="gold" href="{{ s.url }}">{{ s.url }}</a><span class="d">{{ s.date }}</span></div>
+  {% empty %}
+    <p class="muted">本篇来源见正文链接。</p>
+  {% endfor %}
+</div>
+
+<div class="mod required disclosure">
+  <h4>AI 披露</h4>
+  {% if node.ai.generated %}
+    <p>本文由 {{ node.ai.model|default:"Grok" }} 起草，<b>{{ node.ai.reviewed_by|default:"编辑" }}</b> 于 {{ node.ai.reviewed_at }} 复核。协助比例 {{ node.ai.assist_ratio }}。</p>
+  {% else %}
+    <p>本文由人工撰写。</p>
+  {% endif %}
+</div>
+
+<div class="mod required">
+  <h4>这篇有用吗</h4>
+  <form class="feedback3" method="post" action="/articles/{{ node.slug }}/feedback">
+    {% csrf_token %}
+    <button class="btn small" name="kind" value="useful">有用</button>
+    <button class="btn small secondary" name="kind" value="unclear">没看懂</button>
+    <button class="btn small secondary" name="kind" value="outdated">过时了</button>
+  </form>
+</div>
+
+<div class="row" style="margin:12px 0">
+  <form method="post" action="/articles/{{ node.slug }}/read" data-read-form data-slug="{{ node.slug }}">{% csrf_token %}
+    <button class="btn" type="submit">{% if read %}已读，下一课{% else %}读完，下一课{% endif %}</button>
+  </form>
+  {% if read %}
+  <form method="post" action="/articles/{{ node.slug }}/read" data-read-form data-slug="{{ node.slug }}" data-undo="1">{% csrf_token %}
+    <input type="hidden" name="undo" value="1">
+    <button class="btn secondary" type="submit">撤销读完</button>
+  </form>
+  {% endif %}
+  {% if user.is_authenticated %}
+  <form method="post" action="/articles/{{ node.slug }}/bookmark">{% csrf_token %}
+    <button class="btn secondary" type="submit">{% if bookmarked %}取消收藏{% else %}收藏{% endif %}</button>
+  </form>
+  {% endif %}
+</div>
+{% if user.is_authenticated %}
+<form method="post" action="/articles/{{ node.slug }}/highlight" class="row">{% csrf_token %}
+  <input name="quote" placeholder="划线原文" style="flex:1;padding:8px;border:1px solid var(--line);border-radius:8px">
+  <button class="btn small" type="submit">保存划线</button>
+</form>
+{% endif %}
+<form method="post" action="/articles/{{ node.slug }}/report" class="card" style="padding:12px;margin-top:12px">{% csrf_token %}
+  <p>报告错误</p>
+  <textarea name="body" maxlength="500" required style="width:100%"></textarea>
+  <input name="email" type="email" placeholder="邮箱（可选）">
+  <button class="btn small" type="submit">提交</button>
+</form>
+{% flag "tipping.enabled" as tip %}
+{% if tip %}<p class="muted">赞赏码由编辑在站点设置里配置，此处只展示图片、不记账。</p>{% endif %}
+<p class="muted small">引用：{{ node.title }} · ai.nornless.com · /articles/{{ node.slug }}{% if node.last_verified_at %} · Last-verified {{ node.last_verified_at|date:"Y-m-d" }}{% endif %}</p>
+{% endblock %}

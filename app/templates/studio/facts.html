@@ -1,0 +1,21 @@
+{% extends "base_back.html" %}
+{% block side_title %}Studio 编辑部{% endblock %}
+{% block sidenav %}{% include "studio/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">事实清单</h1>
+<p>{{ node.title }}</p>
+<form method="post" class="row">{% csrf_token %}
+  <input name="claim" required placeholder="断言" style="flex:1;padding:8px;border:1px solid var(--line);border-radius:8px">
+  <input name="source_url" placeholder="https://">
+  <button class="btn" type="submit">加入</button>
+</form>
+{% for c in claims %}
+<div class="row" style="margin-top:8px">
+  <span>{{ c.claim }}</span>
+  <form method="post">{% csrf_token %}<input type="hidden" name="claim_id" value="{{ c.id }}">
+    <button class="btn small" name="status" value="verified">核实</button>
+    <button class="btn small secondary" name="status" value="disputed">存疑</button>
+  </form>
+</div>
+{% endfor %}
+{% endblock %}

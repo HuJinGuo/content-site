@@ -1,0 +1,8 @@
+{% extends "base_site.html" %}
+{% block title %}勘误{% endblock %}
+{% block content %}
+<section class="hero"><h1 class="serif">勘误</h1></section>
+{% for e in items %}
+  <div class="card" style="margin:8px 0"><p>{{ e.published_at|date:"Y-m-d" }} · <a href="/articles/{{ e.node.slug }}">{{ e.node.title }}</a></p><p>{{ e.body }}</p></div>
+{% empty %}<p class="muted">还没有已发布勘误。</p>{% endfor %}
+{% endblock %}

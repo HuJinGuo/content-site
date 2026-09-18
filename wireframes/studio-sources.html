@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio · 情报源 /studio/sources · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="studio" data-active="sources">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">情报源 · 抓取 · 聚类</span><div class="row"><span class="muted small">只存摘要与链接，不存全文</span><button class="btn small">新增源</button></div></div>
+    <div class="page">
+      <div class="tiles"><div class="tile"><em>42</em><span>启用源</span></div><div class="tile warn"><em>1</em><span>自动停用（连续失败 5）</span></div><div class="tile"><em>318</em><span>今日抓到条目</span></div><div class="tile"><em>27</em><span>簇 ≥ 阈值 → 进简报员</span></div></div>
+      <div class="tabs"><button class="active">源</button><button>今日簇 27</button><button>抓取日志</button></div>
+      <div class="card">
+        <div class="filters"><select><option>tier：全部</option><option>官方</option><option>一手</option><option>二手</option><option>社媒</option></select><select><option>状态：全部</option></select><input class="input" placeholder="搜源名 / 域名"></div>
+        <table class="data">
+          <thead><tr><th>源</th><th>tier</th><th>频率</th><th>最近抓取</th><th>连续失败</th><th>作为双源</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><b>某模型厂商 · 官方博客</b><div class="muted small mono">RSS · vendor.example/blog/rss</div></td><td><span class="tier official">官方</span></td><td>15 分钟</td><td class="mono small">16:30 ✓</td><td class="num">0</td><td><span class="chip ok">可</span></td><td class="actions"><button class="btn small ghost">编辑</button><span class="toggle on"></span></td></tr>
+            <tr><td><b>向量库 X · GitHub Releases</b><div class="muted small mono">API</div></td><td><span class="tier official">官方</span></td><td>30 分钟</td><td class="mono small">16:15 ✓</td><td class="num">0</td><td><span class="chip ok">可</span></td><td class="actions"><button class="btn small ghost">编辑</button><span class="toggle on"></span></td></tr>
+            <tr><td><b>某科技媒体</b><div class="muted small mono">RSS</div></td><td><span class="tier">一手</span></td><td>30 分钟</td><td class="mono small">16:20 ✓</td><td class="num">0</td><td><span class="chip ok">可</span></td><td class="actions"><button class="btn small ghost">编辑</button><span class="toggle on"></span></td></tr>
+            <tr><td><b>某个人博客</b><div class="muted small mono">RSS</div></td><td><span class="tier">二手</span></td><td>2 小时</td><td class="mono small">14:00 ✓</td><td class="num">0</td><td><span class="chip muted">不可</span><span class="anno">1</span></td><td class="actions"><button class="btn small ghost">编辑</button><span class="toggle on"></span></td></tr>
+            <tr><td><b>X 列表 · AI 研究者</b><div class="muted small mono">API</div></td><td><span class="tier social">社媒</span></td><td>1 小时</td><td class="mono small">16:00 ✓</td><td class="num">0</td><td><span class="chip muted">只作线索</span></td><td class="actions"><button class="btn small ghost">编辑</button><span class="toggle on"></span></td></tr>
+            <tr style="opacity:.6"><td><b>某博客 RSS</b><div class="muted small mono">RSS · 404</div></td><td><span class="tier">二手</span></td><td>2 小时</td><td class="mono small">09-13 ✕</td><td class="num" style="color:var(--danger)">5</td><td>—</td><td class="actions"><span class="chip bad">自动停用 · 已通知</span><span class="toggle"></span></td></tr>
+            <tr style="opacity:.6"><td><b>某站（robots 禁抓）</b></td><td><span class="tier">一手</span></td><td>—</td><td>—</td><td>—</td><td>—</td><td class="actions"><span class="chip muted">不抓</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="margin-top:14px">
+        <span class="kicker">簇（今日 · 相似度 ≥ 0.85 归簇 · 评分 = tier + 数量 + 时效）</span>
+        <div class="qi" style="margin-top:8px"><div><b>簇 #2031 · 某云批量推理折扣</b><div class="sub">4 条 · 官方 2 · 一手 2 · 首现 09:10 · 评分 0.91</div></div><div class="row"><span class="chip ok">已进简报员 → 审稿列表</span></div></div>
+        <div class="qi"><div><b>簇 #2032 · 某开源模型新版</b><div class="sub">6 条 · 官方（GitHub）1 · 社媒 5 · 评分 0.74</div></div><div class="row"><span class="chip warn">缺双源 · 等官方博客</span></div></div>
+        <div class="qi"><div><b>簇 #2033 · 「AI 取代」数据转述</b><div class="sub">11 条 · 一手 2 · 二手 9</div></div><div class="row"><span class="chip ok">已进简报员（L0 澄清）</span></div></div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 情报源</h3>
+      <ol>
+        <li>只有 tier 官方 / 一手可作「双源」之一；社媒只作线索。<span class="ref">06 §4.11</span></li>
+        <li>频率 ≥ 15 分钟；连续失败 5 次自动停用并通知；robots 禁抓不抓；只存摘要与链接（版权）。<span class="ref">06 §4.11 · §8.5 ingest</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

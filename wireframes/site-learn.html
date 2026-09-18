@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>学习地图 /learn · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="learn" data-user="1">
+
+<main class="container">
+  <section class="hero" style="padding-bottom:12px">
+    <span class="kicker">学习地图 · 八层 × 领域</span>
+    <h1 class="serif" style="font-size:32px">L0 → L7，每格是一个内容节点</h1>
+    <p>没有锁。灰格是还没写；「建议先读」只是建议。登录后显示你的已读 / 读完。</p>
+  </section>
+
+  <div class="filters">
+    <div class="segmented"><button class="active">全部层</button><button>L0–L2 入门</button><button>L3–L5 做出来</button><button>L6–L7 深入</button></div>
+    <select><option>岗位：全部</option><option>办公与学习</option><option>开发与 Agent</option><option>AIGC 创作</option><option>客服 / 研报 / 销售 / 教师 / 法务 / 制造</option></select>
+    <div class="legend right"><span><i class="done"></i>读完</span><span><i class="read"></i>已读</span><span><i></i>已发布</span><span><i class="planned"></i>计划中</span></div>
+  </div>
+
+  <div class="card" style="padding:18px 20px;overflow:auto">
+    <div class="dag" style="min-width:900px">
+      <div></div>
+      <div class="colhead">通用认知</div><div class="colhead">办公与学习</div><div class="colhead">开发与 Agent</div><div class="colhead">AIGC 创作</div><div class="colhead">行业与岗位</div><div class="colhead">原理与研究</div>
+
+      <div class="rowhead"><span class="lvl">L0</span><small>方向与边界</small></div>
+      <div class="node done">AI 能做什么不能做什么</div><div class="node done">你是不是真的需要一个知识库</div><div class="node">岗位地图：开发侧</div><div class="node planned">AIGC 商用边界<small>预计 2026-11</small></div><div class="node planned">六岗位速览<small>预计 2026-12</small></div><div class="node">谣言澄清：常见 5 条</div>
+
+      <div class="rowhead"><span class="lvl">L1</span><small>常识与工具素养</small></div>
+      <div class="node done">Token / 上下文 / 幻觉</div><div class="node read cur">文档问答怎么工作（直觉版）</div><div class="node">评价一次回答的 5 个问题</div><div class="node">提示词基础</div><div class="node planned">隐私与账号安全</div><div class="node empty"></div>
+
+      <div class="rowhead"><span class="lvl">L2</span><small>选型与成本</small></div>
+      <div class="node">产品 vs API vs 本地</div><div class="node suggest">选产品还是自建，选哪家模型</div><div class="node">模型对照表</div><div class="node planned">生成媒体工具矩阵</div><div class="node empty"></div><div class="node empty"></div>
+
+      <div class="rowhead"><span class="lvl">L3</span><small>搭建</small></div>
+      <div class="node planned">Hello World：第一次调 API</div><div class="node">准备语料：切分、清洗、权限</div><div class="node">最小 RAG：从文件夹到能提问</div><div class="node planned">本地模型运行器</div><div class="node planned">Dify / n8n 入门</div><div class="node empty"></div>
+
+      <div class="rowhead"><span class="lvl">L4</span><small>工作流与 Agent</small></div>
+      <div class="node empty"></div><div class="node">做成工作流：定时更新语料</div><div class="node">何时不该上 Agent</div><div class="node empty"></div><div class="node planned">评测清单</div><div class="node empty"></div>
+
+      <div class="rowhead"><span class="lvl">L5</span><small>应用与场景</small></div>
+      <div class="node empty"></div><div class="node planned">周报流水线</div><div class="node empty"></div><div class="node planned">AIGC 生产线</div><div class="node planned">客服知识库案例</div><div class="node empty"></div>
+
+      <div class="rowhead"><span class="lvl">L6</span><small>工程化</small></div>
+      <div class="node empty"></div><div class="node">为什么它会答错，怎样评测</div><div class="node">加引用、拒答、权限和日志</div><div class="node empty"></div><div class="node empty"></div><div class="node planned">安全事件复盘</div>
+
+      <div class="rowhead"><span class="lvl">L7</span><small>原理与前沿</small></div>
+      <div class="node empty"></div><div class="node empty"></div><div class="node">原理回看：检索、嵌入、幻觉从哪来</div><div class="node empty"></div><div class="node empty"></div><div class="node planned">Transformer 直觉</div>
+    </div>
+  </div>
+
+  <div class="grid side" style="margin-top:20px">
+    <div class="card">
+      <span class="kicker">点一个节点 → 抽屉 / 悬停卡 <span class="anno">1</span></span>
+      <div class="row" style="margin-top:8px"><h3 class="serif" style="font-size:18px">选产品还是自建，选哪家模型</h3><span class="lvl">L2</span><span class="chip warn">建议先读 1 篇</span></div>
+      <p class="summary">决策树 + 月费估算表。属于路径「从 0 做一个文档问答」第 2 课。</p>
+      <div class="row" style="margin-top:10px">
+        <span class="muted small">差什么前置：</span><a class="chip free" href="site-unit.html">L1 文档问答怎么工作 · 已读未读完</a>
+      </div>
+      <div class="row" style="margin-top:12px"><a class="btn small" href="site-unit.html">直接读</a><a class="btn small secondary" href="site-track.html">看整条路径</a></div>
+    </div>
+    <div class="card">
+      <span class="kicker">你的进度（登录）</span>
+      <div class="row" style="margin-top:8px"><b>从 0 做一个文档问答</b><span class="right num small">3 / 10 读完</span></div>
+      <div class="progress" style="margin:8px 0 14px"><i style="width:30%"></i></div>
+      <a class="btn block secondary" href="site-unit.html">继续第 4 课 →</a>
+    </div>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 学习地图 /learn</h3>
+  <ol>
+    <li>节点点开是抽屉（桌面）/ 整页（移动），显示：层、领域、一句话、所属路径、前置节点及其你的状态、「直接读」。不做硬锁，只标「建议先读」。<span class="ref">05 §5.3 · 06 §2.4</span></li>
+    <li>计划中节点灰虚线、不可点、显示预计月份；空格 = 图谱缺口，进选题信号。<span class="ref">04 §4.1</span></li>
+    <li>DAG 约束在 Studio 保存时校验：无环；每节点 ≤ 6 前置；层不倒挂。<span class="ref">06 §2.4 · §4.10</span></li>
+    <li>匿名也能看整张图；已读 / 读完标记登录后才显示（匿名存本地，登录合并）。<span class="ref">06 §2.4</span></li>
+    <li>移动端：横向滚动 + 列头吸顶；筛选收成两行。</li>
+  </ol>
+</section>
+</body>
+</html>

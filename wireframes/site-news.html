@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>快讯流 /news · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="news">
+
+<main class="container">
+  <section class="hero" style="padding-bottom:8px">
+    <span class="kicker">情报 · 快讯 · 早报 · 周报 · 深度 · 过时清单</span>
+    <h1 class="serif" style="font-size:32px">快讯</h1>
+    <p>每条 200–400 字 + 3 点结论 + 双源 + 挂到知识节点。事件后 2 小时内。</p>
+    <div class="pill-nav" style="margin-top:14px"><a class="active" href="site-news.html">快讯</a><a href="site-digest-daily.html">早报</a><a href="site-digest-weekly.html">周报</a><a href="site-article-paywalled.html">深度</a><a href="site-digest-outdated.html">过时清单</a><a href="site-topic.html">专题</a><a href="site-entity.html#timeline">时间线</a></div>
+  </section>
+
+  <div class="grid side">
+    <section>
+      <div class="filters">
+        <select><option>层：全部</option><option>L1</option><option>L2</option><option>L3</option></select>
+        <select><option>领域：全部</option><option>开发与 Agent</option><option>办公与学习</option></select>
+        <select><option>实体：全部</option><option>某模型厂商</option><option>向量库 X</option></select>
+        <a class="right small gold" href="site-subscribe.html">RSS · 快讯</a>
+      </div>
+
+      <div class="card">
+        <div class="news-item">
+          <time>09-14<br>10:20</time>
+          <div>
+            <h3><a href="site-news-item.html">某模型厂商把上下文窗口扩到 1M，价格不变</a></h3>
+            <p class="small muted">官方博客 + 定价页确认。对多数应用意义不大：长上下文≠更准，第 4 课的切分策略仍然适用……（200–400 字摘要，续）</p>
+            <ol class="pts"><li>1M 只对「整本书级」输入有意义，日常问答不受益</li><li>价格不变，但输入 tokens 会自然上涨，注意账单</li><li>「上下文窗口」概念卡数字已过时，24h 内更新</li></ol>
+            <div class="hooks"><span class="tier official">官方</span><span class="tier official">官方定价页</span><span class="lvl">L1</span><a class="chip free" href="site-unit.html">上下文窗口 概念卡</a><a class="chip muted" href="site-entity.html">实体页 →</a></div>
+          </div>
+        </div>
+        <div class="news-item">
+          <time>09-14<br>08:05</time>
+          <div>
+            <h3><a href="site-news-item.html">开源向量库 X 发布 2.0，改了默认索引</a></h3>
+            <p class="small muted">GitHub Release + 官方迁移指南。默认 HNSW 参数变化会影响召回率……</p>
+            <ol class="pts"><li>老项目升级前先看迁移指南第 3 节</li><li>第 4 课代码块已重跑，标记更新</li><li>不升级也能用，但 1.x 只维护到年底</li></ol>
+            <div class="hooks"><span class="tier official">GitHub</span><span class="tier official">官方</span><span class="lvl">L3</span><a class="chip free" href="site-unit.html">最小 RAG 第 4 课</a></div>
+          </div>
+        </div>
+        <div class="news-item">
+          <time>09-13<br>21:40</time>
+          <div>
+            <h3><a href="site-news-item.html">某编辑器 Agent 模式改为按用量计费</a></h3>
+            <p class="small muted">官方公告 + 两家一手媒体报道……</p>
+            <ol class="pts"><li>月费用户 10 月起迁移</li><li>估算：中度使用约 ¥xx / 月（截至 09-13）</li><li>L2 对照表更新</li></ol>
+            <div class="hooks"><span class="tier official">官方</span><span class="tier">一手媒体</span><span class="lvl">L2</span><a class="chip free" href="site-compare.html">对照表</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slot wide" data-slot="R4 / S6 · 每 8 条 1 处" style="margin:16px 0">
+        <div class="when-off"><h4>术语卡 · HNSW</h4><p>向量检索常用的近似最近邻索引；参数决定召回率与速度的折中。</p><a class="cta" href="site-glossary.html">看术语 →</a></div>
+        <div class="when-on"><span class="ad-tag">广告</span><h4>列表插卡（与列表卡同尺寸）</h4><p>直销或程序化填充，≤ 1 / 屏。</p></div>
+      </div>
+
+      <div class="card">
+        <div class="news-item"><time>09-13<br>16:10</time><div><h3><a href="site-news-item.html">国内某云上线批量推理折扣</a></h3><p class="small muted">…</p><div class="hooks"><span class="tier official">官方</span><span class="lvl">L2</span></div></div></div>
+        <div class="news-item"><time>09-13<br>09:30</time><div><h3><a href="site-news-item.html">一篇被广泛转发的「AI 取代」数据被证实为二手转述</a></h3><p class="small muted">…</p><div class="hooks"><span class="tier">一手媒体</span><span class="tier">一手媒体</span><span class="lvl">L0</span><a class="chip free" href="#">谣言澄清</a></div></div></div>
+      </div>
+      <div class="row" style="justify-content:center;margin-top:16px"><button class="btn secondary">加载更多</button><span class="muted small">20 条 / 页 · 最多 100 页，超过用搜索</span></div>
+    </section>
+
+    <aside class="rail">
+      <div class="card"><span class="kicker">今日早报</span><h3 class="serif" style="font-size:18px;margin:6px 0">09-14 · 长上下文不是银弹</h3><p class="summary">8 条 + 3 个行动项。</p><a class="btn small block secondary" href="site-digest-daily.html">读早报</a></div>
+      <div class="card"><span class="kicker">订阅</span><p class="small" style="margin:6px 0 10px">早报站内 + RSS 为主；邮件早报可选、周报默认。</p><a class="btn small block" href="site-subscribe.html">订阅中心</a></div>
+      <div class="card"><span class="kicker">这周谁在变</span><div class="row small" style="margin-top:8px"><a class="chip free" href="site-entity.html">某模型厂商</a><a class="chip free" href="site-entity.html">向量库 X</a><a class="chip free" href="site-entity.html">某编辑器</a></div></div>
+    </aside>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 快讯流 /news</h3>
+  <ol>
+    <li>每条快讯字段：标题 ≤ 40 字、正文 200–400 字、3 点结论（每点 ≤ 40 字、不得含正文未出现的事实）、来源 ≥ 2 且 ≥ 1 官方、挂接节点 ≥ 1。双源不满足在 Studio 里发不出来。<span class="ref">06 §2.9 · 附录 A</span></li>
+    <li>快讯流缓存 1 分钟；筛选层 / 领域 / 实体；每 10 条一处 R4（关闭态：术语卡 / 专题卡 / 测评 CTA 轮换）。<span class="ref">06 §2.9 · §7.6</span></li>
+    <li>快讯不做独家判断，不进搜索排序的高权重；专区条目与赞助内容不混入。<span class="ref">04 §8.4</span></li>
+    <li>移动端：时间列并入标题行；3 点结论默认展开（这是价值所在）。</li>
+  </ol>
+</section>
+</body>
+</html>

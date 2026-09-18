@@ -1,0 +1,37 @@
+{% extends "base_back.html" %}
+{% block side_title %}Admin 运营{% endblock %}
+{% block sidenav %}{% include "admin/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">用户</h1>
+{% if error %}<div class="banner archived">{{ error }}</div>{% endif %}
+<table class="table" style="width:100%">
+<tr><th>邮箱</th><th>角色</th><th>状态</th><th></th></tr>
+{% for u in users %}
+<tr>
+  <td>{{ u.email }}</td>
+  <td>{{ u.staff_role|default:"读者" }}</td>
+  <td>{% if u.is_active %}正常{% else %}封禁{% endif %}</td>
+  <td>
+    <form method="post" class="row">{% csrf_token %}
+      <input type="hidden" name="id" value="{{ u.id }}">
+      <input name="days" type="number" value="31" style="width:64px">
+      <button class="btn small" name="action" value="grant">发月卡</button>
+    </form>
+    {% if u.is_active %}
+    <form method="post" class="row">{% csrf_token %}
+      <input type="hidden" name="id" value="{{ u.id }}">
+      <input type="hidden" name="action" value="ban">
+      <input name="reason" placeholder="封禁原因" required>
+      <button class="btn small secondary" type="submit">封禁</button>
+    </form>
+    {% else %}
+    <form method="post">{% csrf_token %}
+      <input type="hidden" name="id" value="{{ u.id }}">
+      <button class="btn small" name="action" value="unban">解封</button>
+    </form>
+    {% endif %}
+  </td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

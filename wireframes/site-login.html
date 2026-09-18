@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>登录 / 注册 /login · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="">
+
+<main class="container">
+  <div class="grid cols-3" style="margin-top:32px">
+    <div class="card center-card" style="width:auto">
+      <span class="kicker">登录 / 注册（同一页）</span>
+      <h1>邮箱就够了</h1>
+      <p class="muted small">登录只为同步进度、收藏、问答、下载。读、搜、测评、快讯、订阅都不需要。<span class="anno">1</span></p>
+      <div class="field" style="margin-top:14px"><label>邮箱</label><input placeholder="you@example.com"></div>
+      <button class="btn block">发登录链接到邮箱</button>
+      <p class="muted small" style="margin:8px 0">15 分钟内有效，只能用一次；没有账号会自动创建。</p>
+      <hr class="line">
+      <div class="field"><label>或用密码</label><input type="password" placeholder="≥ 10 位，常见密码不行"></div>
+      <button class="btn block secondary">密码登录</button>
+      <p class="muted small" style="margin-top:8px">失败 5 次 / 15 分钟锁 15 分钟。</p>
+      <div class="gated" data-flag="wechat_login.enabled" style="margin-top:14px"><button class="btn block ghost">微信登录（只做绑定）</button></div>
+    </div>
+
+    <div class="card center-card" style="width:auto">
+      <span class="kicker">邮件已发</span>
+      <h1 style="font-size:20px">去邮箱点一下</h1>
+      <p class="muted small">我们给 you@example.com 发了登录链接。链接只在发起时的这台设备上有效。</p>
+      <button class="btn block secondary" style="margin-top:14px">没收到？60 秒后可重发</button>
+      <p class="muted small" style="margin-top:8px">每邮箱每小时最多 3 封。</p>
+    </div>
+
+    <div class="card center-card" style="width:auto">
+      <span class="kicker">首次登录 · 合并本地数据 <span class="anno">2</span></span>
+      <h1 style="font-size:20px">把这台浏览器里的进度合并进账户？</h1>
+      <div class="checklist" style="margin-top:8px">
+        <label><input type="checkbox" checked><span>测评结果 1 次</span></label>
+        <label><input type="checkbox" checked><span>已读 / 读完标记 6 条</span></label>
+        <label><input type="checkbox" checked><span>早报行动项勾选 3 条</span></label>
+      </div>
+      <div class="field" style="margin-top:10px"><label>显示名（≤ 20 字，可改）</label><input value="读者 4f2a"></div>
+      <button class="btn block">合并并继续</button>
+      <p class="muted small" style="margin-top:8px">服务端已有的以服务端为准。</p>
+    </div>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 登录 / 注册</h3>
+  <ol>
+    <li>登录只在需要同步时行内出现（读完标记、收藏、兑码、问答、下载）；无登录墙。<span class="ref">05 §14.5 · 06 §2.12</span></li>
+    <li>匿名 → 登录合并：本地 → 服务端；冲突以服务端为准。<span class="ref">06 §2.4</span></li>
+    <li>会话 30 天滑动、最多 5 个；后台账号另有 TOTP（见 admin-login）。<span class="ref">06 §2.12</span></li>
+  </ol>
+</section>
+</body>
+</html>

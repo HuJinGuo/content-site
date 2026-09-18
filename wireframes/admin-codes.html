@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin · 码 · 对账 /admin/codes · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="admin" data-active="codes">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">码 · 批次 · 对账</span><div class="row"><span class="muted small">站内只存哈希 · 明文一次性导出给发卡站</span><button class="btn small">生成批次</button></div></div>
+    <div class="page">
+      <div class="tiles"><div class="tile"><em>1,200</em><span>已生成</span></div><div class="tile"><em>980</em><span>已上架（issued）</span></div><div class="tile ok"><em>412</em><span>已兑换</span></div><div class="tile warn"><em>3</em><span>对账差异</span></div></div>
+      <div class="tabs"><button class="active">批次</button><button>单码查询</button><button>对账</button><button>兑换失败日志</button></div>
+
+      <div class="split wide-left">
+        <div>
+          <div class="card">
+            <table class="data">
+              <thead><tr><th>批次</th><th>类型 · SKU</th><th>数量</th><th>兑换期</th><th>已上架 / 已兑 / 作废</th><th></th></tr></thead>
+              <tbody>
+                <tr><td class="mono">B-2026-09-03</td><td>会员码 · 12 个月</td><td class="num">300</td><td class="mono small">→ 2027-09-03</td><td class="num small">300 / 96 / 0</td><td class="actions"><button class="btn small ghost">详情</button><button class="btn small ghost">作废未售（写原因）</button></td></tr>
+                <tr><td class="mono">B-2026-09-02</td><td>会员码 · 1 个月</td><td class="num">500</td><td class="mono small">→ 2027-09-02</td><td class="num small">500 / 214 / 2</td><td class="actions"><button class="btn small ghost">详情</button></td></tr>
+                <tr><td class="mono">B-2026-09-01</td><td>广告码 · S8 招聘 30 天 + 置顶</td><td class="num">100</td><td class="mono small">→ 2027-03-01</td><td class="num small">100 / 41 / 0</td><td class="actions"><button class="btn small ghost">详情</button></td></tr>
+                <tr><td class="mono">B-2026-08-20</td><td>广告码 · S4 7 天</td><td class="num">100</td><td class="mono small">→ 2027-02-20</td><td class="num small">80 / 37 / 1</td><td class="actions"><button class="btn small ghost">详情</button></td></tr>
+                <tr><td class="mono">B-2026-08-15</td><td>内容码 · 23 项检查</td><td class="num">200</td><td class="mono small">→ 2027-02-15</td><td class="num small">0 / 0 / 0 <span class="chip muted">未上架</span></td><td class="actions"><button class="btn small secondary">导出明文（一次性）<span class="anno">1</span></button></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <span class="kicker">对账（每周导入发卡站销售 CSV 或手填）<span class="anno">2</span></span>
+            <div class="row" style="margin-top:8px"><button class="btn small secondary">导入销售 CSV</button><span class="muted small">列：码后 4 位 / SKU / 售出时间 / 金额</span></div>
+            <table class="data" style="margin-top:8px"><thead><tr><th>SKU</th><th>发卡站售出</th><th>站内兑换</th><th>差</th><th>说明</th></tr></thead><tbody>
+              <tr><td>会员 12 个月</td><td class="num">102</td><td class="num">96</td><td class="num" style="color:var(--warn)">6</td><td class="small muted">买了没兑（正常）</td></tr>
+              <tr><td>会员 1 个月</td><td class="num">214</td><td class="num">214</td><td class="num">0</td><td></td></tr>
+              <tr><td>S4 7 天</td><td class="num">36</td><td class="num">37</td><td class="num" style="color:var(--danger)">-1</td><td class="small" style="color:var(--danger)">兑换 &gt; 售出 → 查是否泄露 / 测试码</td></tr>
+            </tbody></table>
+          </div>
+        </div>
+        <div>
+          <div class="card"><span class="kicker">生成批次</span><div class="fm" style="grid-template-columns:1fr;margin-top:8px"><div class="field"><label>类型</label><select><option>会员码</option><option>内容码</option><option>广告码</option><option>组码</option></select></div><div class="field"><label>SKU / 权益</label><select><option>会员 12 个月</option></select></div><div class="field"><label>数量（≤ 1000）</label><input value="300"></div><div class="field"><label>兑换期（天，默认 365）</label><input value="365"></div><div class="field"><label>备注</label><input placeholder="发卡站商品 id"></div></div><button class="btn small" style="margin-top:6px">生成 → 状态 generated</button><p class="muted small" style="margin-top:6px">格式 NRL-XXXX-XXXX-XXXX，去 0/O/1/I；明文只在导出时出现一次。</p></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">单码查询</span><div class="row" style="margin-top:8px"><input class="input" placeholder="完整码或后 4 位"><button class="btn small secondary">查</button></div><dl class="kv small" style="margin-top:8px;grid-template-columns:70px 1fr"><dt>状态</dt><dd><span class="chip ok">redeemed</span></dd><dt>兑换</dt><dd>2026-09-14 · 用户 #10231</dd><dt>批次</dt><dd class="mono">B-2026-09-03</dd></dl><button class="btn small ghost" style="margin-top:6px">作废（未兑换才可）</button></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">状态机</span><div class="states" style="margin-top:8px"><span>generated</span><i>→</i><span>issued</span><i>→</i><span class="done">redeemed</span><i>·</i><span class="back">void</span></div></div>
+        </div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 码 · 对账</h3>
+      <ol>
+        <li>明文一次性导出（CSV），之后只存哈希；导出写审计。<span class="ref">06 §5.2</span></li>
+        <li>对账：兑换数 &gt; 售出数 触发告警（泄露 / 测试码）；发卡站无 webhook，人工导入。<span class="ref">06 §5.2 · §8.6</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

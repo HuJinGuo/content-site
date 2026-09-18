@@ -1,0 +1,8 @@
+{% extends "base_site.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<section class="hero"><h1 class="serif">{{ title }}</h1></section>
+{% for i in items %}
+  <div class="card" style="margin:8px 0"><h3><a href="/entities/{{ i.slug }}">{{ i.name }}</a></h3><p class="muted">{{ i.summary }}</p></div>
+{% empty %}<p class="muted">还没有条目。</p>{% endfor %}
+{% endblock %}

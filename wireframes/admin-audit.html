@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin · 审计日志 /admin/audit · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="admin" data-active="audit">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">审计日志</span><span class="muted small">只追加 · 保留 24 个月 · 谁 / 何时 / 对象 / 旧 → 新 / 原因 / request_id</span></div>
+    <div class="page">
+      <div class="filters"><input class="input" placeholder="搜对象 id / 用户 / request_id"><select><option>动作：全部</option><option>flag.change</option><option>transition</option><option>code.export</option><option>entitlement.grant</option><option>ad.review</option><option>user.view_email</option><option>role.change</option></select><select><option>操作者：全部</option></select><input class="input" style="min-width:140px" value="2026-09-14"><button class="btn small secondary right">导出 CSV</button></div>
+      <div class="card">
+        <div class="audit-row" style="font-weight:700;color:var(--muted);font-size:12px;border-top:0"><span>时间</span><span>操作者</span><span>动作 · 对象</span><span>变更 · 原因</span></div>
+        <div class="audit-row"><span class="t">16:02:11</span><span class="small">主编 #7</span><span class="small"><code>transition</code> · 稿件 #1207 多模态 RAG</span><span class="small">factcheck → editing · 「12 / 12 处理」· req 9f3a…</span></div>
+        <div class="audit-row"><span class="t">15:40:03</span><span class="small">站长 #1</span><span class="small"><code>user.view_email</code> · 用户 #10231</span><span class="small">查看明文 · 「核对兑码争议」</span><span class="anno">1</span></div>
+        <div class="audit-row"><span class="t">15:02:45</span><span class="small">站长 #1</span><span class="small"><code>flag.change</code> · ads.preview_roles</span><span class="small">off → on · 「截图对比 R1–R5」</span></div>
+        <div class="audit-row"><span class="t">14:20:00</span><span class="small">运营 B #9</span><span class="small"><code>ad.review</code> · 素材 #C-88</span><span class="small">pending_review → needs_change（1 / 3）· 「绝对化用语『最好』」</span></div>
+        <div class="audit-row"><span class="t">11:05:30</span><span class="small">主编 #7</span><span class="small"><code>errata.confirm</code> · 文章 #602</span><span class="small">挂勘误条 · 报告 #E-31 · 署名 读者 7c1e</span></div>
+        <div class="audit-row"><span class="t">10:20:12</span><span class="small">主编 #7</span><span class="small"><code>transition</code> · 快讯 #N-3120</span><span class="small">review → published</span></div>
+        <div class="audit-row"><span class="t">09:12:40</span><span class="small">运营 B #9</span><span class="small"><code>code.export</code> · 批次 B-2026-08-15</span><span class="small">导出明文 200 条（一次性）</span></div>
+        <div class="audit-row"><span class="t">08:00:02</span><span class="small">系统 worker</span><span class="small"><code>transition</code> · 早报 #61</span><span class="small">scheduled → published · 邮件广播 #M-410</span></div>
+        <div class="audit-row"><span class="t">昨 18:30</span><span class="small">站长 #1</span><span class="small"><code>role.change</code> · 用户 #12</span><span class="small">+ FactChecker · 双人确认 主编 #7</span></div>
+        <div class="audit-row"><span class="t">昨 16:11</span><span class="small">站长 #1</span><span class="small"><code>entitlement.grant</code> · 用户 #8891</span><span class="small">Supporter 12 个月 · 「学生免费」</span></div>
+      </div>
+      <div class="row" style="justify-content:center;margin-top:12px"><button class="btn small secondary">加载更多</button></div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 审计日志</h3>
+      <ol>
+        <li>所有后台写操作、开关变更、状态转移、查看敏感信息 均写 audit；只追加、不可改删；24 个月。<span class="ref">06 G5 · §5.12 · §7.4</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

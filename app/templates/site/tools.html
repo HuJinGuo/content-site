@@ -1,0 +1,14 @@
+{% extends "base_site.html" %}
+{% block title %}工具目录{% endblock %}
+{% block content %}
+<section class="hero"><h1 class="serif">工具目录</h1><p>实测过的才有徽章。认领只做信息核对。</p></section>
+{% for it in items %}
+  <a class="card click" href="/entities/{{ it.slug }}" style="display:block;margin-top:10px">
+    <h3>{{ it.name }}</h3>
+    <p class="summary">{{ it.summary }}</p>
+    <div class="meta"><span>{{ it.official_url }}</span></div>
+  </a>
+{% empty %}
+  <p class="muted">目录正在收录。先看 <a class="gold" href="/learn">学习地图</a>。</p>
+{% endfor %}
+{% endblock %}

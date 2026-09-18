@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>收藏与划线 /app/library · 简报 /app/briefing · 下载 /app/downloads · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="app" data-active="library" data-user="1">
+
+<main class="container">
+  <div class="banner info small">三条路由（/app/library · /app/briefing · /app/downloads）叠在一页看版式。</div>
+
+  <section class="section" id="library" style="margin-top:16px">
+    <div class="section-head"><h2 class="serif">收藏与划线</h2><span class="muted small">按篇聚合 · 收藏 ≤ 2000 · 每篇划线 ≤ 100</span><button class="btn small secondary right">导出 Markdown（1 次 / 分钟）</button></div>
+    <div class="filters"><div class="segmented"><button class="active">全部</button><button>有更新</button><button>有划线</button></div><select><option>类型：全部</option><option>概念卡</option><option>单元</option><option>快讯</option><option>实体</option></select></div>
+    <div class="card">
+      <div class="row"><span class="lvl">L3</span><b><a href="site-unit.html">最小 RAG：从文件夹到能提问</a></b><span class="chip ok">09-11 有更新</span><span class="right muted small">收藏 09-03 · 3 条划线</span></div>
+      <div class="hl">「切分粒度是这一课最容易翻车的地方：太碎失去上下文，太大检索不准。」<div class="note">备注：回头对比 500 / 1000 · 09-13</div></div>
+      <div class="hl">「实测徽章来自验证记录；无记录一律显示未运行。」</div>
+      <div class="row small" style="margin-top:8px"><button class="btn small ghost">跳到划线处</button><button class="btn small ghost">取消收藏</button></div>
+    </div>
+    <div class="card" style="margin-top:10px">
+      <div class="row"><span class="lvl">L2</span><b><a href="site-compare.html">某产品价格对照（2026-03）</a></b><span class="chip bad">已作废 · 替代已给</span><span class="right muted small">收藏 08-20</span></div>
+    </div>
+    <div class="card" style="margin-top:10px">
+      <div class="row"><span class="chip muted">快讯</span><b><a href="site-news-item.html">上下文窗口扩到 1M</a></b><span class="right muted small">收藏 09-14</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="briefing">
+    <div class="section-head"><h2 class="serif">简报存档</h2><span class="muted small">订阅者 · 行动项完成率</span></div>
+    <div class="card">
+      <div class="src"><span class="mono muted">09-14</span><a class="gold" href="site-digest-daily.html">早报第 61 期 · 长上下文不是银弹</a><span class="d">行动项 2 / 3</span></div>
+      <div class="src"><span class="mono muted">09-13</span><a class="gold" href="site-digest-weekly.html">周报第 37 周 · 按用量计费正在成为默认</a><span class="d">—</span></div>
+      <div class="src"><span class="mono muted">09-12</span><a class="gold" href="#">早报第 60 期</a><span class="d">行动项 3 / 3</span></div>
+      <div class="src"><span class="mono muted">09-01</span><a class="gold" href="site-digest-outdated.html">过时清单 · 9 月</a><span class="d">涉及你收藏 2 篇</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="downloads">
+    <div class="section-head"><h2 class="serif">下载中心</h2><span class="muted small">签名链接 10 分钟 · 每日 ≤ 50 次 · 旧版保留 90 天</span></div>
+    <div class="card">
+      <div class="attach"><span class="ext">zip</span><div class="grow"><b>知识库上线检查单</b> v1.2 <span class="chip paid">支持者</span><div class="muted small">Markdown + 表格 · 更新 09-12 · 关联：L6 23 项检查</div></div><button class="btn small">下载</button></div>
+      <div class="attach"><span class="ext">csv</span><div class="grow"><b>模型对照表 2026-09</b> <span class="chip free">免费</span><div class="muted small">关联：L2 对照页</div></div><button class="btn small secondary">下载</button></div>
+      <div class="attach"><span class="ext">zip</span><div class="grow"><b>最小 RAG 示例仓库</b> v3 <span class="chip free">示例</span><div class="muted small">沙箱实测 09-11 · 关联：第 4 课</div></div><button class="btn small secondary">下载</button></div>
+      <div class="attach"><span class="ext">md</span><div class="grow"><b>20 条金标问题模板</b> <span class="chip paid">支持者</span> <span class="chip muted">无权益：显示示例 3 条 + 去兑码</span><span class="anno">1</span></div><a class="btn small ghost" href="site-redeem.html">去兑码</a></div>
+    </div>
+  </section>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 收藏与划线 / 简报 / 下载</h3>
+  <ol>
+    <li>资源包权限：<code>asset.access</code> free / supporter / code；无权益显示示例并给兑码入口；下载链接签名 10 分钟。<span class="ref">06 §1.3 · §2.13 · §4.15</span></li>
+    <li>划线 = 段落 id + 偏移 + 可选笔记 ≤ 200 字；导出 Markdown。<span class="ref">06 §2.6</span></li>
+    <li>收藏对象作废 / 勘误 / 更新 → 标记 + 学习台提醒。<span class="ref">06 §2.13</span></li>
+  </ol>
+</section>
+</body>
+</html>

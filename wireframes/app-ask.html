@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>站内问答 /app/ask · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="app" data-active="ask" data-user="1">
+
+<main class="container">
+  <div class="banner info small">整页受 <code>ask.enabled</code> 控制（V1）：关 → 404、文章页无「问这篇」。前置：已审语料 ≥ 100 篇 + 额度与熔断就绪。</div>
+
+  <div class="grid side" style="margin-top:16px">
+    <section>
+      <div class="card">
+        <div class="row"><span class="kicker">问答 · 只用本站已发布已审内容回答</span><span class="right muted small">今日 2 / 3 · 支持者 20</span></div>
+        <div class="chat" style="margin-top:14px">
+          <div class="q">切分 500 字和 1000 字，对召回率影响多大？</div>
+          <div class="a">本站第 4 课给了一张块长与 top_k 的关系表：500 字 + 50 重叠是默认起点，1000 字在长段落文档上召回更稳，但会让引用变粗<span class="cite">§3 · 第 4 课</span>。评测方法见第 5 课的 20 条金标问题<span class="cite">§2 · 第 5 课</span>。没有一个通用最优值，先用你自己的问题集跑一遍。
+            <div class="row small muted" style="margin-top:10px"><span>引用 2 段</span>·<span>grok-4.6 · ask@1.4</span>·<span>1,830 tokens</span><span class="right"><button class="btn small ghost">有用</button><button class="btn small ghost">没回答到</button></span></div>
+          </div>
+          <div class="q">多模态 RAG 怎么做？</div>
+          <div class="a"><b>本站还没写过这个。</b>已记入选题缺口。相近内容：<span class="cite">L3 · 最小 RAG</span> <span class="cite">术语 · 向量化</span>。<span class="anno">1</span></div>
+        </div>
+        <div class="field" style="margin-top:14px"><textarea placeholder="问一个和本站内容有关的问题（≤ 500 字）"></textarea></div>
+        <div class="row"><label class="row small"><input type="checkbox"> 只问这篇：第 4 课</label><button class="btn right">发送</button></div>
+        <p class="muted small" style="margin-top:8px">每问 tokens 上限（默认 4k 上下文 + 1k 输出）；单用户并发 1；红线 / 无关 / 要整篇文章 → 拒答。</p>
+      </div>
+    </section>
+    <aside class="rail">
+      <div class="card"><span class="kicker">我的记录（12 个月）</span><div class="src"><span class="small">切分 500 vs 1000</span><span class="d">09-14</span></div><div class="src"><span class="small">按用量计费怎么估</span><span class="d">09-13</span></div><button class="btn small ghost block" style="margin-top:8px">删除全部记录</button></div>
+      <div class="card"><span class="kicker">规则</span><p class="small" style="margin-top:6px">答案必须带 ≥ 1 段落级引用，点引用跳到段落；无引用答案率 = 0。不生成整篇文章。成本 / 问 有数。</p></div>
+    </aside>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 站内问答</h3>
+  <ol>
+    <li>无引用 → 答「本站还没写过」并写 <code>topic_gaps</code>；引用是段落级 <span class="cite">§n · 篇</span> 可跳转。<span class="ref">06 §2.15</span></li>
+    <li>额度按 entitlements 原子扣减（Free 3 / Supporter 20 / 组按组）；记 tokens 与成本；用户可删记录。<span class="ref">06 §1.3 · §2.15</span></li>
+    <li>数据保留 12 个月后匿名化。<span class="ref">06 §7.4</span></li>
+  </ol>
+</section>
+</body>
+</html>

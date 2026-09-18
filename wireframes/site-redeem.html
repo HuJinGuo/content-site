@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>兑码 /redeem · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="" data-user="1">
+
+<main class="container">
+  <section class="hero" style="padding-bottom:12px;text-align:center">
+    <span class="kicker">兑码 · 会员码 / 内容码（广告码去 /ads 兑）</span>
+    <h1 class="serif" style="font-size:32px">输入你的码</h1>
+    <p style="margin:0 auto">格式 <span class="mono">NRL-XXXX-XXXX-XXXX</span>，不分大小写，没有 0 / O / 1 / I。兑了立即生效。</p>
+  </section>
+
+  <div class="grid cols-3">
+    <div class="card">
+      <span class="kicker">输入态</span>
+      <div class="field" style="margin-top:10px"><label>码</label><input class="codebox" value="NRL-7K3M-P9QW-2XZR"></div>
+      <button class="btn block">兑换</button>
+      <p class="muted small" style="margin-top:10px">每小时 10 次；连续失败 5 次锁 1 小时。<span class="anno">1</span> 兑换后回到 <span class="mono">?next=</span> 指向的那篇。</p>
+    </div>
+
+    <div class="card" style="border-top:3px solid var(--ok)">
+      <span class="kicker">成功态</span>
+      <div class="callout ok" style="margin-top:10px;flex-direction:column;align-items:flex-start;gap:4px">
+        <b>会员已生效</b>
+        <span>到期 2027-09-14 · 权益：问答 20 / 日、全部资源包、会员 RSS、不看赞助卡</span>
+      </div>
+      <div class="row" style="margin-top:12px"><a class="btn small" href="site-article-paywalled.html">回到刚才那篇</a><a class="btn small secondary" href="app-home.html">去学习台</a></div>
+      <hr class="line">
+      <div class="callout ok small" style="flex-direction:column;align-items:flex-start"><b>内容码：已解锁本篇</b><span>《给知识库上线前的 23 项检查》· 永久</span></div>
+    </div>
+
+    <div class="card" style="border-top:3px solid var(--danger)">
+      <span class="kicker">错误态（五种，一一对应） <span class="anno">2</span></span>
+      <div class="field" style="margin-top:10px"><input class="codebox" value="NRL-AAAA-BBBB-CCCC" style="border-color:var(--danger)"></div>
+      <p class="err">码不存在，请核对每一位。</p>
+      <p class="err">这张码已被兑换（2026-09-01）。</p>
+      <p class="err">这张码已过兑换期（2027-03-01 前有效）。</p>
+      <p class="err">这是广告码，请到 广告主门户 兑换。</p>
+      <p class="err">请先登录再兑码。</p>
+      <p class="muted small" style="margin-top:8px">不显示更多细节（防枚举）。</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <span class="kicker">未登录进入 /redeem</span>
+    <div class="row" style="margin-top:8px"><span class="inline-login">兑码需要账号（权益要落在某个人身上）：<a class="gold" href="site-login.html">邮箱登录 / 注册</a>，回来继续。</span><span class="muted small">码不会在登录前被消耗。</span></div>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 兑码</h3>
+  <ol>
+    <li>服务端校验顺序：格式 → 存在 → issued → 未过兑换期 → 类型允许 → 事务内标记 redeemed、写 membership / content_unlock、失效权益缓存、写 audit。并发靠行锁只成功一次。<span class="ref">06 §2.14</span></li>
+    <li>五种错误文案与错误码一一对应：E_CODE_INVALID / E_CODE_REDEEMED / E_CODE_EXPIRED / E_CODE_TYPE / E_AUTH_REQUIRED；有单测。<span class="ref">06 附录 B</span></li>
+    <li>会员码：天数累加；到期前 7 天邮件提醒。<span class="ref">06 §6 memberships</span></li>
+  </ol>
+</section>
+</body>
+</html>

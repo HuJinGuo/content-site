@@ -3,60 +3,172 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AIGC 知识付费站 · 线框索引</title>
+<title>ai.nornless.com · 线框索引</title>
 <link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
 <script src="theme.js"></script>
+<style>
+  .idx .card h3 { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .idx .card h3 .chip { font-weight:500; }
+  .idx .card .summary { margin-top:4px; }
+</style>
 </head>
-<body>
+<body class="idx">
 
 <header class="topbar">
-  <a class="brand" href="index.html"><span class="brand-mark"></span><span class="name">线框索引</span></a>
-  <div class="actions">
-    <button class="icon-btn" data-theme-toggle>☀ 浅</button>
-  </div>
+  <a class="brand" href="index.html"><span class="brand-mark"></span><span><span class="name">线框索引</span><span class="sub">ai.nornless.com · 2026-09-14</span></span></a>
+  <div class="actions"><button class="icon-btn" data-theme-toggle>☀ 浅</button></div>
 </header>
 
 <main class="container">
   <section class="hero" style="padding-bottom:8px">
-    <span class="kicker">nornless「书页」变种 · 浅色 / 深色</span>
-    <h1 class="serif" style="font-size:32px">AIGC 知识付费站 · 页面线框</h1>
-    <p>静态 HTML，只表达版式、组件与状态，不是产品代码。令牌真源在 <code>nornless.css</code>。右上角切换主题，或在网址加 <code>?theme=dark</code>。</p>
-  </section>
-
-  <section class="section">
-    <div class="section-head"><h2 class="serif">前台</h2></div>
-    <div class="grid cols-2">
-      <a class="card click" href="home.html"><h3>首页 <span class="chip muted">/</span></h3><p class="summary">hero · 精选三卡 · 分类四格 · 最新两列。未登录视角。</p></a>
-      <a class="card click" href="category.html"><h3>分类列表 <span class="chip muted">/c/&lt;分类&gt;</span></h3><p class="summary">筛选条 · 列表卡（组内价 chip） · 右栏组权益说明 / 子分类 / 标签。</p></a>
-      <a class="card click featured" href="article-paywall.html"><h3>文章 · 付费墙态 <span class="chip paid">重点</span></h3><p class="summary">进度金线 · 预览渐隐 · 金线断点 · 付费墙卡（原价 / 组折后价） · 右栏目录带锁 / 购买卡 / 附件 · 窄屏吸底购买条。</p></a>
-      <a class="card click" href="me.html"><h3>我的 <span class="chip muted">/me</span></h3><p class="summary">我的购买 · 我的分组（有效 / 过期） · 兑换码原地反馈。</p></a>
+    <span class="kicker">静态 HTML · 只表达版式、组件、状态与约束 · 不是产品代码</span>
+    <h1 class="serif" style="font-size:32px">ai.nornless.com · 全站线框（61 页）</h1>
+    <p>对应 <code>04</code>（结构）· <code>05</code>（体验优先与开关）· <code>06</code>（功能与约束）。令牌真源 <code>nornless.css</code>；新组件在 <code>wire.css</code>（开工时并入）；壳与工具条 <code>wire.js</code>。</p>
+    <div class="card" style="margin-top:16px">
+      <b>每页右下角工具条：</b>
+      <div class="row small" style="margin-top:8px">
+        <span class="chip free">主题 浅 / 深</span>
+        <span class="chip free">标注 显示 / 隐藏</span><span class="muted">→ 页内金色数字 ①②③ 与页底「线框标注」表，写规则与 04 / 05 / 06 出处</span>
+      </div>
+      <div class="row small" style="margin-top:6px">
+        <span class="chip warn">开关态 关闭（默认）/ 开启</span><span class="muted">→ 受开关控制的块（<code>.gated</code>）在关闭态画成虚线灰块并标出开关键名；推荐位（<code>.slot</code>）在两态之间切换「编辑填充 ↔ 赞助卡」，版式不动。也可用网址 <code>?flags=on</code> / <code>?theme=dark</code> / <code>?anno=off</code>（截图用）</span>
+      </div>
+      <p class="muted small" style="margin-top:8px">用 <code>python3 -m http.server</code> 在本目录起服务后打开（或直接双击文件）。缩窄窗口即移动端版式。</p>
     </div>
   </section>
 
   <section class="section">
-    <div class="section-head"><h2 class="serif">后台</h2></div>
-    <div class="grid cols-2">
-      <a class="card click" href="admin-group.html"><h3>分组详情 <span class="chip muted">/admin/groups/&lt;id&gt;</span></h3><p class="summary">侧栏后台壳 · 默认策略分段选择 · 特例规则表 · 邀请码 · 成员表。</p></a>
-      <a class="card click" href="admin-article-edit.html"><h3>文章编辑 <span class="chip muted">/admin/articles/&lt;id&gt;</span></h3><p class="summary">顶条操作 · 左 Markdown 右预览 · 预览分割线标记 · 底部发布设置（访问 / 单价 / 专属组 / 附件）。</p></a>
+    <div class="section-head"><h2 class="serif">对外站 · 学习线</h2><span class="muted small">06 §2.1–2.6</span></div>
+    <div class="grid cols-3">
+      <a class="card click featured" href="site-home.html"><h3>首页 <span class="chip muted">/</span></h3><p class="summary">通知条 · hero · 登录态「从这里继续」· 今日简报 · 路径 · 概念卡 · R1 推荐位（两态）· 工具周榜 · 招聘精选（gated）。</p></a>
+      <a class="card click" href="site-assess.html"><h3>选路测评 <span class="chip muted">/assess</span></h3><p class="summary">4 步 · 可跳过 · 结果页：起点层 + 路径 + 第一课 + 先不要学 · 行内登录提示。</p></a>
+      <a class="card click" href="site-learn.html"><h3>学习地图 <span class="chip muted">/learn</span></h3><p class="summary">八层 × 领域 DAG 网格 · 节点四态 · 建议先读 · 抽屉。</p></a>
+      <a class="card click" href="site-track.html"><h3>路径页 <span class="chip muted">/learn/[track]</span></h3><p class="summary">10 单元大纲 · 学习目标 · 进度 = 书签 · R2。</p></a>
+      <a class="card click featured" href="site-unit.html"><h3>阅读器 · 正常态 <span class="chip muted">/learn/[track]/[unit]</span> <span class="chip paid">重点</span></h3><p class="summary">坐标条 · 更新条 · 六个强制模块 · 动手步骤 + 实测徽章 · 读完下一课 · 三键 · R2 / R3 两态 · 问这篇（gated）。</p></a>
+      <a class="card click featured" href="site-article-paywalled.html"><h3>阅读器 · 收费态 + 过时条 + 勘误条 <span class="chip muted">/articles/[slug]</span> <span class="chip paid">重点</span></h3><p class="summary">paywall.enabled 开时的截断与解锁卡（兑码 / 去发卡站）· 勘误红条 · 过时黄条 · 作废红条 · 目录带锁。</p></a>
     </div>
   </section>
 
   <section class="section">
-    <div class="section-head"><h2 class="serif">组件速览</h2></div>
+    <div class="section-head"><h2 class="serif">对外站 · 情报线 · 百科</h2><span class="muted small">06 §2.7–2.9</span></div>
+    <div class="grid cols-3">
+      <a class="card click" href="site-news.html"><h3>快讯流 <span class="chip muted">/news</span></h3><p class="summary">200–400 字 + 3 点 + 双源 + 挂接 · 筛选 · R4 插卡。</p></a>
+      <a class="card click" href="site-news-item.html"><h3>快讯页 <span class="chip muted">/news/[slug]</span></h3><p class="summary">3 点在前 · 双源 · 可能受影响的知识文 · 实体时间线。</p></a>
+      <a class="card click" href="site-digest-daily.html"><h3>早报 <span class="chip muted">/digest/daily/[date]</span></h3><p class="summary">窄版读物 · S1 赞助段（关闭态整段省略）· 一句话 · 8 条 · 3 行动项勾选 · 更正段。</p></a>
+      <a class="card click" href="site-digest-weekly.html"><h3>周报 <span class="chip muted">/digest/weekly/[slug]</span></h3><p class="summary">三栏：发生 / 意味着（人写）/ 该做 · S2 · 本周岗位（gated）。</p></a>
+      <a class="card click" href="site-digest-outdated.html"><h3>过时清单 <span class="chip muted">/digest/outdated/[month]</span></h3><p class="summary">作废 / 降级 / 回写三段 · 每条：什么 / 为什么 / 替代 · 收藏命中提醒。</p></a>
+      <a class="card click" href="site-topic.html"><h3>专题页 <span class="chip muted">/topics/[cluster]</span></h3><p class="summary">R5 / S11 顶部两态 · 先读 · 对照实体 · 专题快讯 · 独立 RSS。</p></a>
+      <a class="card click" href="site-glossary.html"><h3>术语表 <span class="chip muted">/glossary</span></h3><p class="summary">字母索引 · 一句定义 + 展开 · 正文悬停卡样式。</p></a>
+      <a class="card click" href="site-entity.html"><h3>实体页 <span class="chip muted">/models /companies /papers</span></h3><p class="summary">官方链接 · 关键事实表（每个数字带截至）· 时间线 · 事实区 vs 目录条目区。</p></a>
+      <a class="card click" href="site-compare.html"><h3>对照页 <span class="chip muted">/compare/[pair]</span></h3><p class="summary">结论先行（人写）· ≤ 12 维度表 · CSV 资产 · 涉及厂商不投。</p></a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2 class="serif">对外站 · 工具 · 搜索 · 订阅 · 账号 · 专区 · 公共</h2><span class="muted small">06 §2.8 · §2.10–2.19</span></div>
+    <div class="grid cols-3">
+      <a class="card click" href="site-tools.html"><h3>工具目录 <span class="chip muted">/tools</span></h3><p class="summary">筛选 · 实测徽章 · 认证商家块（gated）· 认领核对表单。</p></a>
+      <a class="card click" href="site-search.html"><h3>搜索 <span class="chip muted">/search</span></h3><p class="summary">分类型 tab · 高亮 · 会员角标 · 无结果态（记缺口）。</p></a>
+      <a class="card click" href="site-subscribe.html"><h3>订阅中心 <span class="chip muted">/subscribe</span></h3><p class="summary">邮件分项（早报默认不勾、周报默认勾）· RSS 分区 · 一键退订。</p></a>
+      <a class="card click" href="site-pricing.html"><h3>支持者 <span class="chip muted">/pricing</span> <span class="chip warn">gated</span></h3><p class="summary">权益随开关增减 · 价格 = 发卡站 · 去买 / 去兑。</p></a>
+      <a class="card click" href="site-redeem.html"><h3>兑码 <span class="chip muted">/redeem</span></h3><p class="summary">输入 / 成功 / 五种错误 三态并列 · 未登录行内提示。</p></a>
+      <a class="card click" href="site-login.html"><h3>登录 / 注册 <span class="chip muted">/login</span></h3><p class="summary">魔法链接 + 密码 · 邮件已发 · 首登合并本地数据。</p></a>
+      <a class="card click" href="site-jobs.html"><h3>招聘板 <span class="chip muted">/jobs</span> <span class="chip warn">gated</span></h3><p class="summary">岗位卡字段 · 置顶角标 · 30 天过期 410 · 发布入口。</p></a>
+      <a class="card click" href="site-zones.html"><h3>发布墙 · 活动 · 优惠 · 赞助内容 <span class="chip muted">/launches /events /deals /sponsored</span> <span class="chip warn">gated</span></h3><p class="summary">四路由叠一页 · 各自开关 · 联盟披露 · 「推广」角标。</p></a>
+      <a class="card click" href="site-advertise.html"><h3>媒体页 <span class="chip muted">/advertise</span> <span class="chip warn">gated</span></h3><p class="summary">受众（含拦截率口径）· SKU 价目 · 自助流程 · 直销询盘 · 暂不开发票。</p></a>
+      <a class="card click" href="site-static.html"><h3>公共页 ×8 <span class="chip muted">/about … /authors</span></h3><p class="summary">关于 · 披露 · 广告政策 · 许可 · 隐私 · 勘误 · 更新日志 · 作者（人 / bot）· 机器接口清单。</p></a>
+      <a class="card click" href="site-404.html"><h3>404 / 410 / 503</h3><p class="summary">关闭态 = 真 404 · 过期 410 · 维护 503。</p></a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2 class="serif">读者区 /app</h2><span class="muted small">06 §2.12–2.15 · 站内顶栏 + 子导航</span></div>
+    <div class="grid cols-4">
+      <a class="card click" href="app-home.html"><h3>学习台 <span class="chip muted">/app</span></h3><p class="summary">从这里继续 · 今日 3 任务 · 路径进度 · 收藏更新 / 过时提醒。</p></a>
+      <a class="card click" href="app-library.html"><h3>收藏与划线 · 简报 · 下载 <span class="chip muted">/app/library …</span></h3><p class="summary">按篇聚合 · 划线笔记 · 简报存档 · 资源包权限态。</p></a>
+      <a class="card click" href="app-ask.html"><h3>问答 <span class="chip muted">/app/ask</span> <span class="chip warn">gated</span></h3><p class="summary">段落级引用 · 无引用 → 没写过 · 额度。</p></a>
+      <a class="card click" href="app-account.html"><h3>账户 <span class="chip muted">/app/account</span></h3><p class="summary">基本 · 权益与码 · 会话 · RSS token · 导出 · 删除（7 天冷静期）。</p></a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2 class="serif">广告主门户 /ads</h2><span class="muted small">06 §3 · 后台壳</span></div>
+    <div class="grid cols-4">
+      <a class="card click" href="ads-dashboard.html"><h3>我的投放</h3><p class="summary">活动表 + 状态机 · 消息 · 主体 · 占比预警。</p></a>
+      <a class="card click featured" href="ads-new.html"><h3>新建投放向导</h3><p class="summary">选产品 → 兑广告码 → 素材（字段上限 · 红线即时提示）→ 实时预览 → 提交审核。</p></a>
+      <a class="card click" href="ads-campaign.html"><h3>活动详情 · 报表</h3><p class="summary">按天聚合 · 审核意见 · 排期 · 续投 · 收据。</p></a>
+      <a class="card click" href="ads-billing.html"><h3>兑码记录 · 收据</h3><p class="summary">兑广告码 · 记录 · 直销订单 · 收据样式。</p></a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2 class="serif">Studio 编辑部 /studio</h2><span class="muted small">06 §4 · 15 页</span></div>
+    <div class="grid cols-3">
+      <a class="card click" href="studio-home.html"><h3>工作台</h3><p class="summary">SLA 倒计时待办 · 待我处理 · 缺口 Top 5 · 失败任务 · 成本条。</p></a>
+      <a class="card click" href="studio-topics.html"><h3>选题池 · 缺口</h3><p class="summary">五信号 · 分数 · 采纳 → Brief · 配额。</p></a>
+      <a class="card click" href="studio-brief.html"><h3>Brief</h3><p class="summary">必填全清单 · 可观察动词校验 · ready 才能生成。</p></a>
+      <a class="card click" href="studio-generate.html"><h3>生成台 · 成本</h3><p class="summary">预算条 · 角色链 · 任务表（tokens / 成本 / 失败原因）· 沙箱 · 按角色 / 篇成本。</p></a>
+      <a class="card click featured" href="studio-editor.html"><h3>稿件编辑器 <span class="chip paid">重点</span></h3><p class="summary">软锁 · 状态机条 · 左 Markdown 右预览（桌面 / 移动 / 收费态）· front-matter v3 表单校验。</p></a>
+      <a class="card click featured" href="studio-qa.html"><h3>机审十门 · 事实清单台 <span class="chip paid">重点</span></h3><p class="summary">十门 pass / fail / 人工放行 · claim 逐条 通过 / 存疑 / 删除 · 100% 才能进 editing。</p></a>
+      <a class="card click featured" href="studio-review.html"><h3>审稿列表（快讯批量）<span class="chip paid">重点</span></h3><p class="summary">双源不满足无「通过」· 批量 ≤ 20 · 键盘 · 3 分钟 / 条。</p></a>
+      <a class="card click" href="studio-issue.html"><h3>期刊编排</h3><p class="summary">早报：一句话 · 拖拽 8–12 条 · 行动项 · S1 · 08:00 规则；周报 / 深度 / 过时清单 tab。</p></a>
+      <a class="card click" href="studio-graph.html"><h3>图谱维护</h3><p class="summary">节点表 · 编辑抽屉 · 校验（无环 / 层倒挂 / ≤ 6）· 路径排序。</p></a>
+      <a class="card click" href="studio-sources.html"><h3>情报源</h3><p class="summary">tier · 频率 · 自动停用 · 双源资格 · 今日簇。</p></a>
+      <a class="card click" href="studio-entities.html"><h3>实体 · 工具目录</h3><p class="summary">自动更新 diff 审 · 实测徽章授予 · 认领核对队列。</p></a>
+      <a class="card click" href="studio-refresh.html"><h3>保鲜队列</h3><p class="summary">四处置：回写 / 降级 / 作废 + 替代 / 延期 · diff 建议。</p></a>
+      <a class="card click" href="studio-errata.html"><h3>勘误 · 反馈</h3><p class="summary">报错队列四判定 · 4h 挂条 · 三键聚合 · 公开记录。</p></a>
+      <a class="card click" href="studio-assets.html"><h3>资产</h3><p class="summary">资源包版本 · access · 扫描 · 图片规则。</p></a>
+      <a class="card click" href="studio-prompts.html"><h3>提示词 · 模板 · skill 版本</h3><p class="summary">当前 / 草稿 · 回归 · diff · Git PR 通道状态。</p></a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2 class="serif">Admin 运营 /admin</h2><span class="muted small">06 §5 · 14 页</span></div>
+    <div class="grid cols-3">
+      <a class="card click featured" href="admin-flags.html"><h3>功能开关 <span class="chip paid">重点</span></h3><p class="summary">分级向导 · 每个开关：前置（自动 ● / 人工 ☐）· 冷静期 · 锁定项 · 变更历史。</p></a>
+      <a class="card click" href="admin-users.html"><h3>用户 · 权益</h3><p class="summary">脱敏 · 详情 · 手动授予（写原因）· 后台角色双人确认。</p></a>
+      <a class="card click" href="admin-codes.html"><h3>码 · 对账</h3><p class="summary">批次 · 一次性导出明文 · 单码查询 · 发卡站对账差异告警。</p></a>
+      <a class="card click" href="admin-paywall.html"><h3>付费墙 · 收费清单 · 分组</h3><p class="summary">全站非 free 清单 · 一键回免费 · 规则 · 分组占位。</p></a>
+      <a class="card click featured" href="admin-ads.html"><h3>广告位 · 排期 · 广告主 · SKU</h3><p class="summary">排期日历（已售 / house / 待审 / 冲突）· 位表 · SKU 价目 · 占比与排除。</p></a>
+      <a class="card click" href="admin-ads-review.html"><h3>素材审核</h3><p class="summary">字段 + 合规清单 + 预览 · 通过 / 需修改 ≤ 3 / 拒绝写原因。</p></a>
+      <a class="card click" href="admin-zones.html"><h3>专区条目审核</h3><p class="summary">四专区待审 · 机检 · 评分 · 重复合并 · 过期规则。</p></a>
+      <a class="card click" href="admin-mail.html"><h3>邮件</h3><p class="summary">模板版本 · 广播 · 抑制名单 · 退订率告警。</p></a>
+      <a class="card click" href="admin-metrics.html"><h3>达标线 · 看板</h3><p class="summary">05 §11.1 十项 · 回退阈值 · 编辑部效率 · 三键。</p></a>
+      <a class="card click" href="admin-seo.html"><h3>SEO</h3><p class="summary">301 表 · 死链 · robots / llms.txt · 结构化数据抽检。</p></a>
+      <a class="card click" href="admin-system.html"><h3>任务 · 成本 · 备份</h3><p class="summary">七队列 · cron 表 · 告警 · 成本 · 备份恢复 · 外部依赖 · 维护模式。</p></a>
+      <a class="card click" href="admin-audit.html"><h3>审计日志</h3><p class="summary">只追加 · 谁 / 何时 / 对象 / 旧 → 新 / 原因。</p></a>
+      <a class="card click" href="admin-settings.html"><h3>站点设置</h3><p class="summary">通知条 · 首页块顺序 · 预算限额 · 词表 · 页脚法务 · 集成状态 · 原生 admin。</p></a>
+      <a class="card click" href="admin-login.html"><h3>后台登录 + TOTP</h3><p class="summary">邮箱密码 → TOTP → 首次绑定与恢复码。</p></a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2 class="serif">组件速览（wire.css 新增）</h2></div>
     <div class="card">
-      <div class="row" style="margin-bottom:14px">
-        <span class="chip free">免费</span><span class="chip paid">¥29</span><span class="chip group">组内免费</span><span class="chip group">组内 ¥14.5</span><span class="chip exclusive">专属</span><span class="chip ok">已解锁</span><span class="chip warn">待确认</span><span class="chip bad">已退款</span><span class="chip muted">草稿</span>
+      <div class="row" style="margin-bottom:12px"><span class="lvl">L3 <small>搭建</small></span><span class="verified ok">沙箱实测 09-11</span><span class="verified none">未运行</span><span class="tier official">官方</span><span class="tier paper">论文</span><span class="tier">二手</span><span class="tier social">社媒</span><span class="badge-cert">认证</span><span class="pin">置顶</span><span class="ad-tag" style="margin:0">赞助</span><span class="chip paid">会员</span><span class="kbd">J</span></div>
+      <div class="row" style="margin-bottom:12px"><span class="toggle on"></span><span class="toggle"></span><span class="toggle forced"></span><span class="states"><span class="done">draft</span><i>→</i><span class="cur">review</span><i>→</i><span>published</span><i>·</i><span class="back">rejected</span></span><span class="sla">00:41</span><span class="sla soon">00:12</span><span class="sla late">-00:32</span></div>
+      <div class="grid cols-3" style="margin-bottom:12px">
+        <div class="banner stale" style="margin:0"><b>可能过时</b> 复核日已过</div>
+        <div class="banner archived" style="margin:0"><b>已作废</b> 替代 →</div>
+        <div class="banner errata" style="margin:0"><b>勘误</b> 第 2 节有误，已改</div>
       </div>
-      <div class="row" style="margin-bottom:14px">
-        <button class="btn">主按钮</button><button class="btn secondary">次按钮</button><button class="btn ghost">幽灵</button><button class="btn danger">危险</button><button class="btn small">小</button>
-        <div class="segmented"><button class="active">免费</button><button>收费</button><button>专属</button></div>
+      <div class="grid cols-3">
+        <div class="slot" data-slot="R · 推荐位"><div class="when-off"><h4>关闭态：编辑填充</h4><p>切右下角「开关态」看变化。</p></div><div class="when-on"><span class="ad-tag">赞助</span><h4>开启态：赞助卡</h4><p>版式不动。</p></div></div>
+        <div class="gated card" data-flag="ads.self_serve.jobs"><b>受开关控制的块</b><p class="summary">关闭态虚线灰 + 键名；开启态正常。</p></div>
+        <div class="gates" style="grid-template-columns:1fr 1fr"><div class="gate pass"><b>结构</b></div><div class="gate fail"><b>代码</b></div><div class="gate waive"><b>可读</b></div><div class="gate"><b>内链</b></div></div>
       </div>
-      <div class="thread-break"></div>
-      <div class="row"><span class="muted small">↑ 金线断点（付费墙专用）</span></div>
     </div>
   </section>
 
-  <p class="muted small" style="margin-top:24px">未画但已在 <code>01-页面设计.md</code> 写清：搜索、登录 / 注册、邀请入组、购买页、后台总览 / 文章列表 / 分组列表 / 用户 / 订单 / 兑换码。</p>
+  <section class="section">
+    <div class="section-head"><h2 class="serif">旧版线框（2026-09-06 · 分组付费站）</h2><span class="muted small">保留供参考；产品方向已变，多数作废</span></div>
+    <div class="row small">
+      <a class="chip free" href="home.html">home</a><a class="chip free" href="category.html">category</a><a class="chip free" href="article-paywall.html">article-paywall（付费墙金线断点 · 仍沿用）</a><a class="chip free" href="me.html">me</a><a class="chip free" href="admin-group.html">admin-group（分组 · groups.enabled 开后沿用）</a><a class="chip free" href="admin-article-edit.html">admin-article-edit</a>
+    </div>
+  </section>
+
+  <p class="muted small" style="margin:24px 0 40px">未单独画（已在 06 写清，版式同类页）：/timeline（= 实体页时间线组件按月聚合）· /companies · /papers（= 实体页模板）· /learn 岗位视图（= 地图筛选）· 邮件模板正文（= 早报 / 周报窄版去壳）· OG 分享卡（Pillow 生成的 1200×630 图）。</p>
 </main>
 </body>
 </html>

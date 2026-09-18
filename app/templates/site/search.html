@@ -1,0 +1,21 @@
+{% extends "base_site.html" %}
+{% block title %}搜索{% endblock %}
+{% block content %}
+<section class="hero" style="padding-bottom:8px">
+  <h1 class="serif">搜索</h1>
+</section>
+<form method="get" class="row">
+  <input name="q" value="{{ q }}" maxlength="80" placeholder="至少 2 个字" style="flex:1;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--input-bg)">
+  <button class="btn" type="submit">搜索</button>
+</form>
+{% if q and q|length < 2 %}<p class="muted">再多打一个字。</p>{% endif %}
+{% for n in results %}
+  <a class="card click" href="/articles/{{ n.slug }}" style="display:block;margin-top:10px">
+    <span class="muted small">{{ n.get_kind_display }}{% if n.tags %} · {{ n.tags|join:" · " }}{% endif %}</span>
+    <h3>{{ n.title }}</h3>
+    <p class="summary">{{ n.summary }}</p>
+  </a>
+{% empty %}
+  {% if q|length >= 2 %}<p class="muted">没有结果。去 <a class="gold" href="/learn">阅读</a> 或看 <a class="gold" href="/glossary">术语表</a>。</p>{% endif %}
+{% endfor %}
+{% endblock %}

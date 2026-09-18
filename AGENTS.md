@@ -1,56 +1,75 @@
-# AGENTS.md · AIGC 知识付费站
+# AGENTS.md · ai.nornless.com（文档代号「阶见」）
 
-给在这个目录里干活的编码代理看（DeepSeek Harness / Claude Code / Codex / Cursor 都读这份）。人也可以看。
+给在这个目录里干活的编码代理看。人也可以看。
+
+冲突时：`docs/06` > `docs/05` > `docs/04`。不要发明开关键名或路由。
 
 ## 先读
 
-1. `00-网站规划.md` — 功能、数据表、权限规则、分步与验收场景。
-2. `01-页面设计.md` — 风格令牌、版式、每页线框说明。
-3. `02-DeepSeek-Harness集成.md` — 走 B 路（dsh 为脚手架）时的插件清单、配置层、分步。
-4. `wireframes/nornless.css` — 视觉令牌真源；`wireframes/*.html` 是版式参考，不是产品代码。
+1. `docs/06-功能设计-对外与后台-Python后端.md` — 功能、约束 G1–G24、状态机、apps、验收。
+2. `docs/05-产品推导-体验优先与广告开关.md` — 开关语义、推荐位关闭态、体验达标线。
+3. `docs/04-阶见合并规划-广告为主.md` — 定位、内容、商业、路线图。
+4. `docs/01-页面设计.md` — 令牌与版式；`wireframes/index.html` 是 61 页线框，不是产品代码。
+5. `docs/00` / `02` / `03` — 文首有状态；`02` 的 B 路暂不采用。
 
 ## 目录
 
-- `content/` Markdown 源，只读，导入用。不要改里面的文件。
-- `web/` A 路网站代码。第 0 步在这里初始化。
-- `harness/` B 路 dsh 插件 workspace（`packages/kb-*`、`bundles/`、`presets/`）。H0 在这里初始化。`skills/` 放每篇案例 / 教程的 `SKILL.md`。
-- `wireframes/` 静态线框。不要往里写业务逻辑。
+- `app/` Django 项目（`config` + 业务 apps + `templates` + `static` + `tests`）
+- `editorial/` 风格、红线、outline、8 模板、8 skill、广告政策、front-matter schema
+- `content/` Markdown 源（front-matter v3）+ `<slug>.log.json` + `<slug>.qa.json`，导入用
+- `wireframes/` 线框；旧六页在 `_legacy/`
+- `deploy/` 本机 compose / Caddy 草稿；**不要**往 65/87 或生产发
+- `grok-export/` Grok 原稿，只读
 
-## 栈（用户未另说时默认）
+## 栈
 
-- A 路：Next.js（App Router, TypeScript）+ PostgreSQL + Drizzle + Tailwind；Markdown 用 remark + shiki；cookie session；上传文件存 `web/data/uploads`。
-- B 路：TypeScript Cordis 插件；HTTP 用 `ctx.webServer` fallback 挂 Hono（`@hono/node-server` 的 `getRequestListener`），页面用 Hono JSX 字串 SSR；存储用 `ctx.storageDomain` + `sqlite` 后端；Markdown 同上。不碰 `@Remote` / Typert 生成链；不改 dsh 源码，一切用上层 patch 或新插件。
+- Python 3.12 + Django 5.2 LTS + 模板 SSR + HTMX + Alpine（无 SPA）
+- Django Ninja：`/api/v1/*`
+- 本机可 sqlite；目标 PostgreSQL 16 + pgvector + zhparser
+- 队列：Procrastinate（免 Redis）；现阶段可不上 worker
+- 包管理：`uv`；检查：`ruff` / `mypy` / `pytest` / `djlint`
+- 不用 FastAPI、Celery、Next.js；Redis / Meilisearch 是目标态不是起步
+
+系统 `python3` 可能是 3.9。一律：
+
+```bash
+uv sync --extra dev
+uv run python manage.py …
+uv run pytest
+```
 
 ## 硬规则
 
-- 权限只在一处算：A 路 `web/lib/access.ts`，B 路 `@aigc/kb-access` 服务（`ctx.kbAccess`）；都导出 `visible()` / `canReadFull()` / `priceFor()`，页面、API、工具、技能目录、助教都调它，不要各写一份。规则见 `00-网站规划.md`「权限规则」。
-- 付费正文在服务端裁切：未授权的部分不进 HTML、不进 JSON。预览分割线 `<!-- more -->`，缺省前 30%。
-- 专属文章对无权用户返回 404，列表不出现；不是 403 页。
-- 不做：课程进度 / 作业 / 评分 / 直播；DRM / 禁复制 / 禁右键；第 1 版接支付 SDK。
-- 密钥只在 `.env`，不进仓库、不进文档、不进日志。
-- 视觉只用 `nornless.css` 里的令牌；青绿 `#14b8a6` 不出现；浅色正文级金字只用 `#8b6914`。
-- 写操作走遮罩弹窗；列表显示中文状态和展示名称。
-- 不改本目录之外的任何东西；不碰线上服务器。
+- 权限只在 `app/access/` 算：`entitlements` / `visible` / `can_read_full` / `sees_ads` / `can`。页面、API、导入、Studio 都调它。
+- 开关只在 `app/core/flags.py` 声明键名（05 §2.2），`core.services.snapshot()` / `set_flag()` 求值。广告子开关在 `ads.enabled` 为假时视为关。
+- 状态只经 `transition()`。非法转移抛错。bot（`staff_role=author`）不能发布。
+- 付费正文服务端裁切：`paywall.enabled` 开时未授权部分不进 HTML / JSON。预览分割 `<!-- more -->`，否则前约 30%。
+- 专属 / 未发布 / 开关关闭的专区：404，不是 403；列表与 sitemap 不出现。
+- 码制：会员码 / 内容码 / 广告码。明文只在生成瞬间返回；库里只存哈希。不接支付 SDK。
+- 广告位全部建好，总开关默认关；关时路由 404、推荐位渲染编辑内容。标识由模板注入。
+- 公开页零第三方请求。HTMX / Alpine 必须 vendor 进 `app/static`，禁止 CDN。
+- 视觉只用 `app/static/nornless.css` 令牌；青绿 `#14b8a6` 不出现；浅色正文级金字只用 `#8b6914`。
+- 不做：LMS（评分 / 排名 / 作业 / 证书）、测验（`quiz.enabled` 关）、动手实验区（`labs.enabled` 关）、公众号、UGC、DRM、微信登录（开关关）。
+- 密钥只在 `.env`。不改本目录之外的东西。不碰线上服务器、不改 65/87 Caddy。不 commit，除非用户明确要求。
 
-## 每步算完的标准
+## 开关键名（只准用这些）
 
-A 路：
+`ads.enabled` 及 `ads.*` 子键、`supporter.enabled`、`ask.enabled`、`quiz.enabled`、`paywall.enabled`、`labs.enabled`、`tipping.enabled`、`groups.enabled`、`wechat_login.enabled`、`search.semantic`、`email.digest`（默认开）、`outdated.banner`（默认开）。
 
-- 第 0 步：`pnpm dev` 起得来；`pnpm import ../content` 后首页 / 分类 / 文章能看（全免费）；后台能登录。
-- 第 1 步：`00-网站规划.md`「第 2 步结束时要过的场景」第 1–3 条通过。
-- 第 2 步：第 4–7 条全部通过。
+关时 404：`/jobs` `/launches` `/events` `/deals` `/sponsored` `/advertise` `/pricing` `/app/ask` `/join`。
 
-B 路（`02` 的 H0–H6）：
+## 第 0 步算完的标准
 
-- H0：`dsh --profile aigc-site --dump-config` 里能看到 `@aigc/site` 层；进程起得来。
-- H1：导入 `content/` 后首页 / 分类 / 文章 SSR 能看，`nornless.css` 生效。
-- H2 / H3：同 A 路第 1 / 2 步的验收条。
-- H4：本机 `dsh web` 装上 `@aigc/studio` 填令牌后，已解锁文章出现在 `<available_skills>`，未解锁的不出现；`kb_read` 对未解锁返回拒绝。
-- H5：文章页助教只引用已解锁正文，对未解锁问题答「先解锁」。
+```bash
+uv run python manage.py migrate
+uv run python manage.py seed_all
+uv run python manage.py bootstrap   # 打印一次 TOTP，写入认证器
+uv run python manage.py runserver
+uv run pytest
+```
 
-每步都要：`pnpm lint && pnpm test && pnpm build` 绿；交一份可点的 URL 清单和一段「怎么验证的」。
+必须能看见：首页、学习地图、文章、概念卡、快讯；关闭开关的专区 404；`/redeem` 能兑一张手发的会员码；`GET /api/v1/health` 200；`/studio/` 与 `/ops/flags` 要登录 + 员工 TOTP。
 
 ## 提交
 
-- 小步提交，一件事一个 commit，消息用中文写「做了什么 + 怎么验证的」。
-- 不 force-push。范围外的脏改动不要顺手清掉。
+用户没要求就不要 commit、不要 push。若要求：小步、中文说明「做了什么 + 怎么验证」。不 force-push。范围外的脏改动不要顺手清掉。

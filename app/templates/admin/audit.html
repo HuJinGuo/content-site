@@ -1,0 +1,9 @@
+{% extends "base_back.html" %}
+{% block side_title %}Admin 运营{% endblock %}
+{% block sidenav %}{% include "admin/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">审计</h1>
+{% for l in logs %}
+  <div class="muted small" style="padding:6px 0;border-bottom:1px solid var(--line)">{{ l.at }} · {{ l.action }} · {{ l.obj_type }} {{ l.obj_id }} · {{ l.reason }}</div>
+{% empty %}<p class="back-empty">还没有审计记录。翻转开关或发卡会写进来。</p>{% endfor %}
+{% endblock %}

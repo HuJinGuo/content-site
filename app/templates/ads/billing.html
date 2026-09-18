@@ -1,0 +1,7 @@
+{% extends "base_back.html" %}
+{% block side_title %}广告主门户{% endblock %}
+{% block content %}
+<h1 class="serif">账单</h1>
+<p>暂不开发票。兑码记录：</p>
+{% for c in campaigns %}<p>{{ c.title }} · {{ c.status }}</p>{% empty %}<p class="muted">没有记录。</p>{% endfor %}
+{% endblock %}

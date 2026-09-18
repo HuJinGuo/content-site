@@ -1,0 +1,21 @@
+{% extends "base_back.html" %}
+{% block side_title %}Admin 运营{% endblock %}
+{% block sidenav %}{% include "admin/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">功能开关</h1>
+<p class="muted">关闭态 = 不渲染 + 路由 404。键名只用 05 §2.2。</p>
+{% if error %}<div class="banner archived">{{ error }}</div>{% endif %}
+<div class="card" style="margin-top:12px;padding:8px 16px">
+{% for key, on, default in rows %}
+  <form method="post" class="row" style="padding:10px 0;border-bottom:1px solid var(--line);align-items:center">{% csrf_token %}
+    <input type="hidden" name="key" value="{{ key }}">
+    <code style="min-width:220px">{{ key }}</code>
+    <label><input type="checkbox" name="value" {% if on %}checked{% endif %}> 开</label>
+    <input name="reason" required placeholder="原因（必填）" style="flex:1;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--input-bg)">
+    <button class="btn small" type="submit">保存</button>
+  </form>
+{% empty %}
+  <p class="back-empty">没有可翻转的布尔开关。</p>
+{% endfor %}
+</div>
+{% endblock %}

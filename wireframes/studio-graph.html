@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio · 图谱维护 /studio/graph · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="studio" data-active="graph">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">图谱维护 · 八层节点表</span><div class="row"><span class="muted small">Studio 是真源 · 导出回 editorial/outline.yml</span><button class="btn small secondary">导出 outline.yml</button><button class="btn small">新建节点</button></div></div>
+    <div class="page">
+      <div class="tiles"><div class="tile"><em>142</em><span>节点</span></div><div class="tile ok"><em>61</em><span>已发布</span></div><div class="tile"><em>48</em><span>计划中</span></div><div class="tile warn"><em>33</em><span>空节点（缺口）</span></div></div>
+      <div class="tabs"><button class="active">表格</button><button>DAG 图（只读渲染）</button><button>路径与单元排序</button><button>校验结果</button></div>
+
+      <div class="split wide-left">
+        <div class="card">
+          <div class="filters"><select><option>层：全部</option></select><select><option>领域：全部</option></select><select><option>状态：全部</option><option>空</option><option>计划</option><option>草稿</option><option>已发布</option></select></div>
+          <table class="data">
+            <thead><tr><th>节点 id</th><th>层 · 领域</th><th>标题</th><th>前置</th><th>状态</th><th></th></tr></thead>
+            <tbody>
+              <tr><td class="mono small">l3-dev-min-rag</td><td><span class="lvl">L3</span> 开发</td><td>最小 RAG：从文件夹到能提问</td><td class="small">l3-dev-corpus · l1-gen-embedding</td><td><span class="chip ok">已发布</span></td><td class="actions"><button class="btn small ghost">编辑</button></td></tr>
+              <tr><td class="mono small">l3-dev-multimodal-rag</td><td><span class="lvl">L3</span> 开发</td><td>多模态 RAG</td><td class="small">l3-dev-min-rag</td><td><span class="chip warn">草稿</span></td><td class="actions"><button class="btn small ghost">编辑</button></td></tr>
+              <tr><td class="mono small">l5-ind-cs-kb</td><td><span class="lvl">L5</span> 行业</td><td>（空）客服知识库案例</td><td class="small">l3-dev-min-rag · l4-dev-eval</td><td><span class="chip muted">空</span></td><td class="actions"><button class="btn small">生成 Brief</button></td></tr>
+              <tr><td class="mono small">l1-gen-privacy</td><td><span class="lvl">L1</span> 通用</td><td>隐私与账号安全</td><td class="small">—</td><td><span class="chip free">计划 · 2026-10</span></td><td class="actions"><button class="btn small ghost">编辑</button></td></tr>
+              <tr><td class="mono small">l7-res-rag-theory</td><td><span class="lvl">L7</span> 原理</td><td>原理回看：检索、嵌入、幻觉</td><td class="small">l3-dev-min-rag · l4-dev-eval · l6-dev-guardrails</td><td><span class="chip free">计划 · 2026-11</span></td><td class="actions"><button class="btn small ghost">编辑</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="card"><span class="kicker">编辑节点（抽屉）</span>
+            <div class="fm" style="margin-top:8px;grid-template-columns:1fr">
+              <div class="field"><label>id</label><input value="l3-dev-multimodal-rag" disabled></div>
+              <div class="field"><label>层 · 领域</label><div class="row"><select><option>L3</option></select><select><option>开发与 Agent</option></select></div></div>
+              <div class="field"><label>标题</label><input value="多模态 RAG：图片和表格怎么进知识库"></div>
+              <div class="field bad"><label>前置（≤ 6 · 层 ≤ 本层 · 无环）</label><input value="l3-dev-min-rag, l4-dev-eval"><div class="hint">✕ l4-dev-eval 层高于本节点（层倒挂）<span class="anno">1</span></div></div>
+              <div class="field"><label>后继</label><input value="l4-dev-workflow"></div>
+              <div class="field"><label>覆盖内容</label><input value="concept · multimodal-rag-tables-images"></div>
+              <div class="field"><label>状态</label><select><option>草稿</option></select></div>
+            </div>
+            <div class="row" style="margin-top:8px"><button class="btn small" disabled>保存（校验未过）</button><button class="btn small ghost danger">删除（有内容须先迁移）</button></div>
+          </div>
+          <div class="card" style="margin-top:14px"><span class="kicker">校验结果（保存时跑）</span><div class="pre ok">无环</div><div class="pre bad">层倒挂 ×1（本节点）</div><div class="pre ok">每节点 ≤ 6 前置</div><div class="pre ok">路径单元 unit_index 连续</div><div class="pre manual">路径「文档问答」已发布单元 7 ≥ 3</div></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">路径与单元排序</span><div class="outline" style="font-size:13px"><div class="u"><div><b>你是不是真的需要…</b></div><span class="mono small">1</span></div><div class="u"><div><b>文档问答怎么工作</b></div><span class="mono small">2</span></div><div class="u"><div><b>选产品还是自建</b></div><span class="mono small">3</span></div></div><span class="muted small">拖拽改序 → unit_index 重排</span></div>
+        </div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 图谱维护</h3>
+      <ol>
+        <li>校验：无环、≤ 6 前置、层不倒挂（前置层 ≤ 本层）、路径单元连续；删除有内容的节点须先迁移。<span class="ref">06 §4.10</span></li>
+        <li>空节点直接生成 Brief（信号 = 图谱空节点）。<span class="ref">06 §4.2</span></li>
+        <li>03 的 70 节点大纲当 backlog 重映射进八层表。<span class="ref">04 §16</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

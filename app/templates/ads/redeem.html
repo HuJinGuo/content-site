@@ -1,0 +1,10 @@
+{% extends "base_back.html" %}
+{% block side_title %}广告主门户{% endblock %}
+{% block content %}
+<h1 class="serif">兑广告码</h1>
+{% if error %}<div class="banner archived">{{ error }}</div>{% endif %}
+<form method="post">{% csrf_token %}
+  <input name="code" required placeholder="XXXX-XXXX-XXXX">
+  <button class="btn" type="submit">兑换</button>
+</form>
+{% endblock %}

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>公共页 /about /disclosure /ads-policy /license /privacy /errata /changelog /authors · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="">
+
+<main class="container">
+  <div class="banner info small" style="margin-top:16px">八个公共页共用「静态页」模板（Studio 静态页类型维护，带版本与生效日期）；这里叠在一页看版式。<span class="anno">1</span></div>
+
+  <div class="grid side">
+    <section>
+      <article class="card" id="about"><span class="kicker">/about</span><h2 class="serif" style="font-size:22px;margin:6px 0">关于 · 编辑方针</h2><div class="prose" style="font-size:15px"><p>我们写什么、不写什么；Grok 编辑部怎么起草、人怎么审；广告怎么放、怎么不放；联系方式。</p></div><p class="muted small">版本 3 · 生效 2026-09-14</p></article>
+
+      <article class="card" id="disclosure" style="margin-top:16px"><span class="kicker">/disclosure</span><h2 class="serif" style="font-size:22px;margin:6px 0">AI 使用披露（全文）</h2><div class="prose" style="font-size:15px"><p>用了哪些模型、每个角色做什么、人审在哪一步、参与度怎么标、错了怎么改。每篇文末的披露块链到这里。</p></div></article>
+
+      <article class="card" id="ads-policy" style="margin-top:16px"><span class="kicker">/ads-policy</span><h2 class="serif" style="font-size:22px;margin:6px 0">广告政策</h2><div class="prose" style="font-size:15px"><p>标识、位置上限、上下文定向、禁投类目、素材规范、审核与拒绝、支持者去广告、联盟披露、软文不接。</p></div><div class="mod"><h4>变更记录（自动生成）</h4><div class="small"><span class="mono muted">2026-09-14</span> 明确评测涉及厂商在该页不投<br><span class="mono muted">2026-09-01</span> 首版</div></div></article>
+
+      <article class="card" id="license" style="margin-top:16px"><span class="kicker">/license</span><h2 class="serif" style="font-size:22px;margin:6px 0">内容许可与抓取政策</h2><div class="prose" style="font-size:15px"><p>正文 CC BY-NC-ND 4.0（署名 + 链回 + 保留披露与 Last-verified）；代码块 MIT；资源包个人与团队内部使用；允许搜索 / 问答引擎索引摘要；拒绝纯训练爬虫（名单季度复核）。<code>robots.txt</code> 与 <code>llms.txt</code> 由同一配置生成。</p></div></article>
+
+      <article class="card" id="privacy" style="margin-top:16px"><span class="kicker">/privacy</span><h2 class="serif" style="font-size:22px;margin:6px 0">隐私</h2><div class="prose" style="font-size:15px"><p>数据清单与保留期表（由 06 §7.4 表生成文字）；无 cookie 同意横幅因为只有登录会话 cookie；Umami 无 cookie；删除账户流程；导出。</p></div></article>
+
+      <article class="card" id="errata" style="margin-top:16px"><span class="kicker">/errata</span><h2 class="serif" style="font-size:22px;margin:6px 0">勘误</h2>
+        <div class="src"><span class="mono muted">2026-09-12</span><a class="gold" href="site-article-paywalled.html">给知识库上线前的 23 项检查</a><span class="small muted">· 第 2 节「默认开启审计日志」有误 · 报告者 读者 7c1e（署名）</span></div>
+        <div class="src"><span class="mono muted">2026-09-03</span><a class="gold" href="#">L2 模型对照表</a><span class="small muted">· 一行价格单位错</span></div>
+      </article>
+
+      <article class="card" id="changelog" style="margin-top:16px"><span class="kicker">/changelog</span><h2 class="serif" style="font-size:22px;margin:6px 0">更新日志（站点 + 内容，自动 + 手写）</h2>
+        <div class="src"><span class="mono muted">2026-09-14</span><span class="small">发布：快讯 ×5 · 早报第 61 期 · 实体页更新 ×2</span></div>
+        <div class="src"><span class="mono muted">2026-09-13</span><span class="small">站点：搜索加「优先未过时」；周报第 37 期</span></div>
+      </article>
+
+      <article class="card" id="authors" style="margin-top:16px"><span class="kicker">/authors/[id]</span><h2 class="serif" style="font-size:22px;margin:6px 0">作者页：人 与 bot 角色</h2>
+        <div class="grid cols-2" style="margin-top:8px">
+          <div class="card"><b>主编（人）</b><p class="summary">终审、判断段、处决权。签发 213 篇。</p></div>
+          <div class="card"><b>撰稿员（bot · grok-4.6）</b><p class="summary">按模板与事实清单起草；不读原网页；不能发布。审核人：主编。提示词版本 unit@3.2。<span class="anno">2</span></p></div>
+        </div>
+      </article>
+    </section>
+
+    <aside class="rail">
+      <div class="toc card"><span class="kicker">公共页</span><a href="#about">关于</a><a href="#disclosure">AI 使用披露</a><a href="#ads-policy">广告政策</a><a href="#license">许可与抓取</a><a href="#privacy">隐私</a><a href="#errata">勘误</a><a href="#changelog">更新日志</a><a href="#authors">作者</a></div>
+      <div class="card"><span class="kicker">机器接口</span><div class="small mono" style="margin-top:6px;line-height:1.9">/rss.xml<br>/rss/[section].xml<br>/sitemap.xml<br>/robots.txt<br>/llms.txt<br>/og/&lt;id&gt;.png<br>/go/&lt;id&gt; → 302<br>/api/v1/health</div></div>
+    </aside>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 公共页</h3>
+  <ol>
+    <li>静态页由 Studio「静态页」类型维护，带版本与生效日期；隐私页文字由保留期表生成。<span class="ref">06 §2.18 · §7.4</span></li>
+    <li>bot 作者页写清模型、提示词版本与审核人；人机署名并列但不混淆。<span class="ref">06 §2.18</span></li>
+  </ol>
+</section>
+</body>
+</html>

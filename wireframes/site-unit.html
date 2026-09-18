@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>阅读器 · 单元 /learn/[track]/[unit] · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="learn" data-user="1">
+<div class="progress-thread"><i style="width:42%"></i></div>
+
+<main class="container">
+  <div class="article-head">
+    <div class="crumb"><a href="site-learn.html">学习地图</a> / <a href="site-track.html">从 0 做一个文档问答</a> / 第 4 课</div>
+    <div class="coord"><span class="lvl">L3 <small>搭建</small></span><b>路径 4 / 10</b><span>· 开发与 Agent</span><span>· 单元教程</span><span>· 约 40 分钟</span><span class="anno" title="05 原则 2：三秒知道自己在哪">1</span></div>
+    <h1 class="serif" style="margin-top:12px">最小 RAG：从文件夹到能提问</h1>
+    <div class="article-meta">
+      <span>发布 2026-09-01</span>·<span class="gold"><b>Last-verified 2026-09-11</b></span>·<span>复核日 2026-12-11</span>·<span>作者 编辑部（Grok 起草 · 主编终审）</span>·<span class="verified ok">代码沙箱实测 · Python 3.12 · 09-11</span>
+    </div>
+    <div class="banner updated small" style="margin-top:12px">自你上次阅读（09-03）后有更新：第 3 步默认索引参数改了。<a href="#changelog">看变更 →</a> <span class="anno">2</span></div>
+  </div>
+
+  <div class="article-wrap">
+    <article>
+      <div class="mod required" style="margin-top:0">
+        <h4>本课前置 · 学完你能</h4>
+        <div class="row small"><span class="muted">前置：</span><a class="chip ok" href="site-unit.html">L3 准备语料 · 已读完</a><a class="chip free" href="site-unit.html">L1 Embedding 概念卡 · 建议先读</a></div>
+        <p class="small" style="margin-top:8px"><b>学完你能：</b>在自己电脑上，从一个文件夹跑起一个能提问、能给出处的最小项目；说出它哪一步最容易出错。</p>
+      </div>
+
+      <div class="prose">
+        <p>先说结论：最小 RAG 只有四步——切分、<span class="term">向量化</span>、检索、拼提示词。这一课不讲原理（第 9 课讲），只让它跑起来。</p>
+        <h2 id="s1">1 · 环境与前置</h2>
+        <p>你需要 Python 3.12、一个文件夹里 20 篇左右的 Markdown、一个模型 API Key（任一家兼容接口）。没有 Key 的话本课末尾有本地模型替代方案。</p>
+        <div class="step">
+          <b>第 1 步 · 建环境</b>
+          <div class="codehead"><span>bash</span><span class="verified ok">沙箱实测 ✓</span><span class="right">复制</span></div>
+<pre><code>uv init doc-qa && cd doc-qa
+uv add openai chromadb</code></pre>
+          <div class="expect">目录里出现 pyproject.toml，`uv run python -c "import chromadb"` 无报错。</div>
+        </div>
+        <h2 id="s2">2 · 切分与向量化</h2>
+        <p>切分粒度是这一课最容易翻车的地方：太碎失去上下文，太大检索不准。先用 500 字 + 50 字重叠。</p>
+        <blockquote>常见失败：把整篇文章当一块 → 检索永远命中同一篇。修法：看第 3 步的 top_k 与块长关系表。</blockquote>
+        <div class="step">
+          <b>第 2 步 · 写入向量库</b>
+          <div class="codehead"><span>python</span><span class="verified ok">沙箱实测 ✓</span></div>
+<pre><code># 20 行左右，略。每段带 source 元数据，之后用来给出处。</code></pre>
+          <div class="expect">打印「已写入 137 段」这样的数字。</div>
+        </div>
+        <h2 id="s3">3 · 检索 + 拼提示词</h2>
+        <p>…（正文续，720 宽 · 17px / 1.85）…</p>
+        <div class="step">
+          <b>第 3 步 · 第一次提问</b>
+          <div class="codehead"><span>python</span><span class="verified none">未运行 <span class="anno">3</span></span></div>
+<pre><code># 这一段在 09-11 的沙箱里因网络白名单未跑通，标「未运行」。</code></pre>
+        </div>
+        <h2 id="s4">4 · 没有 Key 怎么办</h2>
+        <p>…</p>
+        <h2 id="s5">结论 · 练习 · 下一步</h2>
+        <p><b>练习：</b>换一组你自己的文档，记录 3 个答对、3 个答错的问题，下一课用得上。<b>成功标准：</b>能给出处，且出处真的包含答案。</p>
+      </div>
+
+      <div class="card" style="display:flex;gap:16px;align-items:center;margin-top:24px;border-top:3px solid var(--primary-bright)">
+        <div class="grow"><b>读完了？</b><div class="muted small">标记只是书签，可撤销；不评分。</div></div>
+        <button class="btn">读完，下一课 → 第 5 课 为什么它会答错</button>
+        <span class="anno">4</span>
+      </div>
+
+      <div class="mod required">
+        <h4>来源</h4>
+        <div class="src"><span class="tier official">官方</span><a href="#">chromadb 文档 · Getting started</a><span class="d">2026-08 · 官方文档</span></div>
+        <div class="src"><span class="tier official">官方</span><a href="#">OpenAI 兼容接口说明</a><span class="d">2026-07</span></div>
+        <div class="src"><span class="tier paper">论文</span><a href="#">Lewis et al. 2020 · RAG</a><span class="d">arXiv</span></div>
+        <div class="src"><span class="tier">二手</span><a href="#">某工程博客 · 切分策略对比</a><span class="d">2026-05 · nofollow</span></div>
+      </div>
+
+      <div class="mod required">
+        <h4>AI 使用披露</h4>
+        <p class="disclosure"><b>本文由 Grok（grok-4.6）按编辑部模板起草，代码由 grok-build 在一次性沙箱运行，事实清单 14 条全部核对，主编终审。</b> AI 参与度 0.7（判断段人写）。提示词版本 unit@3.2。错了请用下方「报告错误」，我们 4 小时内挂勘误条。<a class="gold" href="site-static.html#disclosure">披露全文 →</a></p>
+      </div>
+
+      <div class="mod" id="changelog">
+        <h4>勘误与变更</h4>
+        <div class="small"><span class="mono muted">2026-09-11</span> 第 3 步默认索引参数随 X 2.0 更新；重跑沙箱。<br><span class="mono muted">2026-09-01</span> 首发。</div>
+      </div>
+
+      <div class="mod">
+        <h4>相关节点 · 相关快讯</h4>
+        <div class="row small"><a class="chip free" href="#">L1 Embedding 与向量检索</a><a class="chip free" href="#">L2 选产品还是自建</a><a class="chip free" href="#">L6 加引用、拒答</a><a class="chip muted" href="site-news-item.html">快讯 · 向量库 X 2.0</a></div>
+      </div>
+
+      <div class="slot" data-slot="R3 / S5 · 文末">
+        <div class="when-off"><h4>编辑选的相关工具实测</h4><p>某向量数据库云版：免费额度够跑完本路径；实测 09-05，国内可直连。</p><a class="cta" href="site-tools.html">看实测 →</a></div>
+        <div class="when-on"><span class="ad-tag">广告</span><h4>相关工具（赞助 / 联盟）</h4><p>原生卡 · 与评测涉及厂商同页时不投。</p><a class="cta" href="#">了解 →</a></div>
+      </div>
+
+      <div class="mod required" style="margin-bottom:0">
+        <h4>这篇对你</h4>
+        <div class="row">
+          <div class="feedback3"><button class="btn small secondary">有用</button><button class="btn small secondary">没看懂</button><button class="btn small secondary">过时了</button></div>
+          <span class="muted small">匿名可点，同篇 24h 去重 <span class="anno">5</span></span>
+          <div class="toolstrip right"><button class="btn small ghost">收藏</button><button class="btn small ghost">划线</button><button class="btn small ghost">复制引用</button><button class="btn small ghost">分享卡</button><button class="btn small ghost">报告错误</button><button class="btn small ghost gated inline" data-flag="tipping.enabled">赞赏</button></div>
+        </div>
+      </div>
+    </article>
+
+    <aside class="rail">
+      <div class="toc card">
+        <span class="kicker">目录</span>
+        <a href="#s1" class="active">1 · 环境与前置</a><a href="#s2">2 · 切分与向量化</a><a href="#s3">3 · 检索 + 拼提示词</a><a href="#s4">4 · 没有 Key 怎么办</a><a href="#s5">结论 · 练习 · 下一步</a>
+      </div>
+      <div class="slot" data-slot="R2 / S4 · 侧栏 sticky">
+        <div class="when-off"><h4>下一课</h4><p>第 5 课 · 为什么它会答错，怎样评测（L4/L6）</p><a class="cta" href="#">先看学习目标 →</a></div>
+        <div class="when-on"><span class="ad-tag">赞助</span><h4>上下文赞助（L3 · 开发与 Agent）</h4><p>280 宽原生卡；支持者不渲染此位。</p><a class="cta" href="#">了解 →</a></div>
+      </div>
+      <div class="article-ai-card" data-flag="ask.enabled">
+        <div class="article-ai-card-head"><div><span class="ai-mark">✦</span><div><b>文章伴读</b><span>只根据本文回答</span></div></div><span class="ai-quota">3 / 3 次</span></div>
+        <p class="article-ai-context">正在阅读：最小 RAG：从文件夹到能提问</p>
+        <p class="article-ai-label">你可以问：</p>
+        <div class="article-ai-prompts"><button>总结这篇文章</button><button>解释这段代码</button><button>指出易错点</button></div>
+        <textarea rows="3" placeholder="问一个关于本文的问题…"></textarea>
+        <div class="article-ai-card-foot"><span>答案会带段落引用</span><a class="btn small" href="app-ask.html">开始提问 →</a></div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 阅读器（正常态）</h3>
+  <ol>
+    <li>顶部坐标：层徽章 + 路径位置 + 面包屑，三秒知道在哪；进度金线只表示阅读位置。<span class="ref">05 §5.5 原则 2</span></li>
+    <li>「自上次阅读后有更新」只对登录且读过的用户出现；来自 changelog 与 progress 的时间比较。<span class="ref">06 §2.5 状态</span></li>
+    <li>代码块必须带语言；实测徽章来自验证记录，无记录一律显示「未运行」。<span class="ref">06 §2.5 · §4.4</span></li>
+    <li>「读完，下一课」= POST 写 progress(done)，匿名存本地登录合并；一天内重复幂等；可撤销；不按滚动判定。<span class="ref">06 §2.4</span></li>
+    <li>三键反馈匿名可点（IP 哈希 + 篇 24h 去重）；「过时了」7 日内达 3 人自动进保鲜队列；报错文本 ≤ 500 字进勘误队列。<span class="ref">06 §2.6</span></li>
+    <li>六个强制模块（前置 / 学完你能、来源、AI 披露、Last-verified、反馈、层徽章）模板层无开关，有单测守着。<span class="ref">06 G16</span></li>
+    <li>移动端：侧栏 R2 并入文末 R3 之后；目录折叠成顶部下拉；工具条变吸底。<span class="ref">04 附录 F</span></li>
+  </ol>
+</section>
+</body>
+</html>

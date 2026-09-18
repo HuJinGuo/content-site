@@ -1,0 +1,20 @@
+{% extends "base_site.html" %}
+{% block title %}招聘{% endblock %}
+{% block content %}
+<section class="hero"><h1 class="serif">AI 相关岗位</h1><p>30 天过期。提交后经 AdOps 审核才出现在列表。</p></section>
+{% if error %}<div class="banner archived">{{ error }}</div>{% endif %}
+{% if user.is_authenticated %}
+<form method="post" class="card" style="padding:16px">{% csrf_token %}
+  <p><input name="title" placeholder="职位" required> <input name="org" placeholder="公司" required></p>
+  <p style="margin-top:8px"><input name="url" type="url" placeholder="https://…" required style="width:100%"></p>
+  <button class="btn" style="margin-top:8px" type="submit">提交岗位</button>
+</form>
+{% else %}
+<p class="muted">登录后可提交岗位。</p>
+{% endif %}
+{% for it in items %}
+  <div class="card" style="margin-top:10px"><h3>{{ it.title }}</h3><p>{{ it.org }}</p></div>
+{% empty %}
+  <p class="muted">还没有岗位。</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base_site.html" %}
+{% block title %}收藏{% endblock %}
+{% block content %}
+<section class="hero"><h1 class="serif">收藏与划线</h1></section>
+<h2>收藏</h2>
+{% for b in bookmarks %}<p><a href="/articles/{{ b.node.slug }}">{{ b.node.title }}</a></p>{% empty %}<p class="muted">空。</p>{% endfor %}
+<h2>划线</h2>
+{% for h in highlights %}<p>{{ h.quote }} — <a href="/articles/{{ h.node.slug }}">{{ h.node.title }}</a></p>{% empty %}<p class="muted">空。</p>{% endfor %}
+{% endblock %}

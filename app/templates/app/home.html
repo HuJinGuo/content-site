@@ -1,0 +1,22 @@
+{% extends "base_site.html" %}
+{% block title %}学习台{% endblock %}
+{% block content %}
+<div class="subnav">
+  <a class="active" href="/app/">学习台</a>
+  <a href="/app/library">收藏与划线</a>
+  <a href="/app/briefing">简报</a>
+  <a href="/app/downloads">资源</a>
+  <a href="/app/account">账户</a>
+</div>
+<section class="hero"><h1 class="serif">学习台</h1><p>每天最多 3 件事。进度只是书签，没有排名。</p></section>
+<h2>今日 3 任务</h2>
+{% for t in tasks %}
+  <div class="card" style="margin-top:8px"><a href="/articles/{{ t.slug }}">{{ t.title }}</a></div>
+{% empty %}<p class="muted">去测评或打开一篇概念卡。</p>{% endfor %}
+<h2>从这里继续</h2>
+{% for p in progress %}
+  <div class="card" style="margin-top:8px"><a href="/articles/{{ p.node.slug }}">{{ p.node.title }}</a></div>
+{% empty %}
+  <p class="muted">还没有读完标记。<a class="gold" href="/assess">做测评</a>。</p>
+{% endfor %}
+{% endblock %}

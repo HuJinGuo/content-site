@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>搜索 /search · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="search">
+
+<main class="container">
+  <section class="hero" style="padding-bottom:12px">
+    <div class="search-big" style="max-width:720px"><input class="input" value="向量库 切分 召回"><button class="btn lg">搜索</button></div>
+    <p class="muted small" style="margin-top:8px">全文检索（zhparser）；<span class="gated inline" data-flag="search.semantic">语义结果混排</span>；专区条目与赞助内容不进搜索。60 次 / 分钟。</p>
+  </section>
+
+  <div class="grid side">
+    <section>
+      <div class="tabs"><button class="active">全部 23</button><button>概念卡 4</button><button>单元 3</button><button>快讯 11</button><button>工具 2</button><button>实体 2</button><button>资产 1</button></div>
+      <div class="filters"><select><option>层：全部</option></select><label class="row small"><input type="checkbox" checked> 优先未过时</label></div>
+
+      <div class="card">
+        <div class="result"><div class="path">单元 · L3 · 从 0 做一个文档问答 / 第 4 课</div><h3><a href="site-unit.html">最小 RAG：从文件夹到能提问</a></h3><p class="small muted">…<mark>切分</mark>粒度是这一课最容易翻车的地方：太碎失去上下文，太大检索不准；<mark>召回</mark>率与块长关系表…</p><div class="row small" style="margin-top:6px"><span class="verified ok">实测</span><span class="muted">Last-verified 09-11</span></div></div>
+        <div class="result"><div class="path">概念卡 · L3</div><h3><a href="site-unit.html">Embedding 与<mark>向量</mark>检索</a></h3><p class="small muted">把文字变成可以比距离的数字…</p></div>
+        <div class="result"><div class="path">快讯 · 09-14</div><h3><a href="site-news-item.html">开源<mark>向量库</mark> X 发布 2.0，改了默认索引</a></h3><p class="small muted">默认 HNSW 参数变化会影响<mark>召回</mark>率…</p></div>
+        <div class="result"><div class="path">深度 · L6 <span class="chip paid" style="margin-left:6px">会员</span></div><h3><a href="site-article-paywalled.html">给知识库上线前的 23 项检查</a></h3><p class="small muted">收费内容进搜索，显示角标；预览可读。<span class="anno">1</span></p></div>
+        <div class="result"><div class="path">术语</div><h3><a href="site-glossary.html">HNSW</a></h3><p class="small muted"><mark>向量</mark>检索常用的近似最近邻索引…</p></div>
+        <div class="result"><div class="path">工具</div><h3><a href="site-tools.html"><mark>向量库</mark> X</a></h3><p class="small muted">开源；实测 09-14。</p></div>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <span class="kicker">无结果态 <span class="anno">2</span></span>
+        <div class="empty" style="margin-top:8px">
+          <b>本站还没写过「多模态 RAG」</b>
+          <p class="small" style="margin-top:6px">已记入选题缺口。相近术语：<a class="gold" href="#">RAG</a> · <a class="gold" href="#">向量化</a></p>
+          <div class="row" style="justify-content:center;margin-top:10px"><a class="btn small secondary" href="site-learn.html">看学习地图</a><a class="btn small ghost" href="site-subscribe.html">订阅早报，写了通知你</a></div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="rail">
+      <div class="card"><span class="kicker">排序</span><p class="small" style="margin-top:6px">相关度 × 未过时加权 × 类型权重（概念卡 &gt; 单元 &gt; 快讯 &gt; 实体 &gt; 工具）。</p></div>
+      <div class="card"><span class="kicker">大家在搜</span><div class="row small" style="margin-top:8px"><a class="chip free" href="#">按用量计费</a><a class="chip free" href="#">上下文窗口</a><a class="chip free" href="#">本地模型</a></div></div>
+    </aside>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 搜索</h3>
+  <ol>
+    <li>收费内容进搜索但带「会员」角标；专区条目与赞助不进。<span class="ref">06 §2.10</span></li>
+    <li>无结果：显示「本站还没写过」+ 相近术语 + 记 <code>search_logs(zero=true)</code> 进选题缺口；达标线无结果率 ≤ 15%。<span class="ref">06 §2.10 · 05 §11.1</span></li>
+    <li>q 2–100 字；过红线的词不返回但记录；p75 ≤ 300ms。<span class="ref">06 §2.10</span></li>
+  </ol>
+</section>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio · 审稿列表（快讯批量）/studio/review · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="studio" data-active="review">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">审稿列表 · 快讯 12 · 早报候选 8</span><div class="row"><span class="muted small"><span class="kbd">J</span> <span class="kbd">K</span> 上下 · <span class="kbd">Enter</span> 通过 · <span class="kbd">E</span> 改 · <span class="kbd">R</span> 退回</span><button class="btn small">批量通过已勾 3 / ≤ 20</button></div></div>
+    <div class="page">
+      <div class="filters"><div class="segmented"><button class="active">待审 12</button><button>超时 2</button><button>缺双源 3</button><button>今日已发 5</button></div><select><option>层：全部</option></select><select><option>实体：全部</option></select><span class="right muted small">目标 3 分钟 / 条 · 手机可用</span></div>
+
+      <div class="review-row sel">
+        <div>
+          <div class="row"><input type="checkbox" checked><b>某云上线批量推理折扣：夜间 5 折</b><span class="lvl">L2</span><span class="sla soon">00:41</span></div>
+          <p class="small" style="margin:8px 0">官方公告 + 定价页确认。夜间 22:00–08:00 批量接口 5 折，实时接口不变。对做离线评测、批量生成语料的人有用……（312 字，可行内改）</p>
+          <ol class="pts" style="font-size:13.5px"><li>只对批量接口，实时不变</li><li>适合离线评测 / 批量生成语料</li><li>L2 账单估算表加一行「夜间批量」</li></ol>
+          <div class="row small"><span class="muted">候选节点：</span><span class="chip ok">L2 选产品还是自建</span><span class="chip free">L2 账单估算（拟建）</span><span class="chip muted">+ 改节点</span></div>
+        </div>
+        <div class="side">
+          <div><b class="small">来源（双源 ✓）</b><div class="src"><span class="tier official">官方</span><a href="#">公告 ↗</a></div><div class="src"><span class="tier official">官方</span><a href="#">定价页 ↗</a></div></div>
+          <div><b class="small">机审</b><div class="row small"><span class="chip ok">10 / 10</span></div></div>
+          <div><b class="small">签字（FactChecker）</b><div class="row small"><span class="chip ok">已签 · 09-14 10:02</span></div></div>
+          <div class="row"><button class="btn small">通过 → 发布</button><button class="btn small secondary">改</button><button class="btn small ghost">合并到…</button><button class="btn small ghost">退回</button><button class="btn small danger">拒</button></div>
+        </div>
+      </div>
+
+      <div class="review-row">
+        <div>
+          <div class="row"><input type="checkbox"><b>某开源模型新版发布，宣称长文本能力提升</b><span class="lvl">L7</span><span class="sla late">-00:32</span></div>
+          <p class="small" style="margin:8px 0">GitHub Release 说明……（缺官方博客或第二一手源）</p>
+          <ol class="pts" style="font-size:13.5px"><li>…</li><li>…</li><li>…</li></ol>
+        </div>
+        <div class="side">
+          <div><b class="small">来源（双源 ✕）<span class="anno">1</span></b><div class="src"><span class="tier official">GitHub</span><a href="#">Release ↗</a></div><div class="src"><span class="tier social">社媒</span><span class="muted">X 帖子（只作线索）</span></div></div>
+          <div><b class="small">机审</b><div class="row small"><span class="chip ok">10 / 10</span></div></div>
+          <div class="row"><button class="btn small secondary">补源</button><button class="btn small ghost">退回</button><button class="btn small danger">拒</button></div>
+          <p class="muted small">双源不满足时不显示「通过」。</p>
+        </div>
+      </div>
+
+      <div class="review-row">
+        <div>
+          <div class="row"><input type="checkbox" checked><b>某编辑器发布 Agent 模式 v2</b><span class="lvl">L3</span><span class="sla">01:20</span></div>
+          <p class="small" style="margin:8px 0">…</p>
+        </div>
+        <div class="side">
+          <div><b class="small">来源（双源 ✓）</b></div>
+          <div><b class="small">机审</b><div class="row small"><span class="chip bad">红线 1</span><span class="muted">命中「网关」词表</span></div></div>
+          <div class="row"><button class="btn small secondary">改</button><button class="btn small ghost">退回</button></div>
+        </div>
+      </div>
+
+      <div class="review-row" style="opacity:.8">
+        <div><div class="row"><input type="checkbox" checked><b>某评测工具 1.0 发布</b><span class="lvl">L4</span><span class="sla">01:55</span></div><p class="small" style="margin:8px 0">…</p></div>
+        <div class="side"><div><b class="small">来源（双源 ✓）</b></div><div><b class="small">机审</b> <span class="chip ok">10 / 10</span></div><div class="row"><button class="btn small">通过</button><button class="btn small secondary">改</button></div></div>
+      </div>
+
+      <div class="card" style="margin-top:16px"><span class="kicker">合并到另一条（示例弹窗内容）</span><p class="small" style="margin-top:6px">选择主条 → 本条标 merged 指向主条 → 来源合并 → 主条 3 点结论需重审。</p></div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 审稿列表</h3>
+      <ol>
+        <li>双源（≥ 2 且 ≥ 1 官方 / 一手）不满足 → 没有「通过」按钮，只有「补源」；社媒源只作线索。<span class="ref">06 §4.8 · §4.11</span></li>
+        <li>批量通过 ≤ 20 条 / 次；通过即 scheduled（快讯立即发布，早报候选进当日期刊）。<span class="ref">06 §4.8</span></li>
+        <li>移动端单列、按钮 ≥ 44px；键盘 J / K / Enter。<span class="ref">06 §4.8</span></li>
+        <li>新闻类必须 FactChecker 签字字段非空。<span class="ref">06 §4.7</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

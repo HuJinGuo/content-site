@@ -1,0 +1,19 @@
+{% extends "base_back.html" %}
+{% block side_title %}Admin 运营{% endblock %}
+{% block sidenav %}{% include "admin/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">付费墙内容</h1>
+<p class="muted">paywall.enabled 关时读者仍能读全文。这里只改 access。</p>
+{% for n in nodes %}
+<form method="post" class="row" style="margin-top:8px">{% csrf_token %}
+  <input type="hidden" name="slug" value="{{ n.slug }}">
+  <span>{{ n.title }}</span>
+  <select name="access">
+    <option {% if n.access == "free" %}selected{% endif %}>free</option>
+    <option {% if n.access == "supporter" %}selected{% endif %}>supporter</option>
+    <option {% if n.access == "code" %}selected{% endif %}>code</option>
+  </select>
+  <button class="btn small" type="submit">保存</button>
+</form>
+{% empty %}<p class="muted">没有收费稿。</p>{% endfor %}
+{% endblock %}

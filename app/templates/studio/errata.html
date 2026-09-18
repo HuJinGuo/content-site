@@ -1,0 +1,14 @@
+{% extends "base_back.html" %}
+{% block side_title %}Studio 编辑部{% endblock %}
+{% block sidenav %}{% include "studio/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">勘误</h1>
+<form method="post" class="row">{% csrf_token %}
+  <input name="slug" placeholder="文章 slug" required>
+  <input name="body" placeholder="更正" required style="flex:1">
+  <button class="btn" type="submit">发布勘误</button>
+</form>
+{% for e in errata %}<p>{{ e.published_at }} · {{ e.node.title }} · {{ e.body }}</p>{% endfor %}
+<h2>读者报错</h2>
+{% for r in reports %}<p>{{ r.node.title }} · {{ r.body }}</p>{% empty %}<p class="muted">没有待处理报错。</p>{% endfor %}
+{% endblock %}

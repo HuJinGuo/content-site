@@ -1,0 +1,13 @@
+{% extends "base_back.html" %}
+{% block side_title %}Admin 运营{% endblock %}
+{% block sidenav %}{% include "admin/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">SEO 重定向</h1>
+<form method="post" class="row">{% csrf_token %}
+  <input name="src" placeholder="/old" required>
+  <input name="dst" placeholder="/new" required>
+  <input name="code" value="301" style="width:4em">
+  <button class="btn" type="submit">保存</button>
+</form>
+{% for r in rules %}<p>{{ r.code }} {{ r.src }} → {{ r.dst }}</p>{% empty %}<p class="muted">没有重定向。</p>{% endfor %}
+{% endblock %}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+<title>ai.nornless.com</title>
+<link>{{ request.scheme }}://{{ request.get_host }}/</link>
+<description>AI 知识阶梯 · 科技情报</description>
+{% for n in items %}
+<item>
+  <title>{{ n.title }}</title>
+  <link>{{ request.scheme }}://{{ request.get_host }}{% if n.slug %}/articles/{{ n.slug }}{% else %}/digest/{{ n.kind }}{% endif %}</link>
+  <description>{{ n.summary|default:n.title }}</description>
+</item>
+{% endfor %}
+</channel></rss>

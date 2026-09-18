@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio · 机审十门 /studio/qa/[id] · 事实清单台 /studio/facts/[id] · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="studio" data-active="qa">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">机审 · 事实清单 · 多模态 RAG</span><div class="row"><span class="states"><span class="done">machine_qa</span><i>→</i><span class="cur">factcheck</span><i>→</i><span>editing</span></span><a class="btn small ghost" href="studio-editor.html">回编辑器</a></div></div>
+    <div class="page">
+      <div class="page-head"><h2>机审十门报告</h2><p>任一失败不能进 factcheck；只有「可读」「内链」可人工放行（写原因）。</p></div>
+      <div class="gates">
+        <div class="gate pass"><b>结构</b>模板零件齐：定义 / 不需要 / 示例 / 坑</div>
+        <div class="gate pass"><b>事实</b>12 条声明抽出，全部有 source_span</div>
+        <div class="gate fail"><b>代码</b>1 个代码块无语言标记（§2 第 2 块）<span class="anno">1</span></div>
+        <div class="gate pass"><b>术语</b>6 个术语匹配术语表；「多模态」新词已建议</div>
+        <div class="gate pass"><b>重复</b>最高相似 0.71 &lt; 0.92（vs L3 最小 RAG）</div>
+        <div class="gate pass"><b>红线</b>0 命中</div>
+        <div class="gate waive"><b>可读</b>句长均值 38 字 &gt; 阈值 32 · 放行原因：术语多</div>
+        <div class="gate pass"><b>标识</b>AI 披露字段齐</div>
+        <div class="gate pass"><b>版权</b>引用 ≤ 60 字 / 处 · 图片 2 张有来源</div>
+        <div class="gate pass"><b>内链</b>内链建议 4 · 已接 2</div>
+      </div>
+      <div class="row" style="margin:12px 0 24px"><span class="muted small">证据行点开可看；报告随 PR 落 <span class="mono">&lt;slug&gt;.qa.json</span>。</span><button class="btn small secondary right">重跑机审</button></div>
+
+      <div class="page-head"><h2>事实清单台</h2><p>12 条 · 已处理 9 · <b>100% 处理才能进 editing</b>；doubtful 必须改稿或删句；新闻类须 FactChecker 签字。</p></div>
+      <div class="card">
+        <div class="filters"><div class="segmented"><button class="active">全部 12</button><button>open 3</button><button>passed 8</button><button>doubtful 1</button><button>removed 0</button></div><button class="btn small secondary right">同源多条一起通过</button><button class="btn small ghost">导出清单（随 PR）</button></div>
+        <div class="claim"><div><div class="quote">「ColPali 在 ViDoRe 基准上比 OCR + 文本检索高 x 点」</div><div class="srcref">来源：论文 · ColPali 2024 · §5 表 2</div></div><div class="row small"><span class="chip ok">passed</span><span class="muted">主编 · 09-14</span></div><div class="row"><button class="btn small ghost">改</button></div></div>
+        <div class="claim"><div><div class="quote">「某视觉模型 API 单张图片计 1,000 tokens」</div><div class="srcref">来源：官方定价页 · 09-10</div></div><div class="row small"><span class="chip warn">doubtful</span><span class="muted">定价页写的是「约」且随分辩率变</span></div><div class="row"><button class="btn small secondary">改稿</button><button class="btn small ghost">删句</button></div></div>
+        <div class="claim"><div><div class="quote">「大多数企业文档中表格占比超过 30%」</div><div class="srcref" style="color:var(--danger)">来源：无（撰稿员超出事实清单）<span class="anno">2</span></div></div><div class="row small"><span class="chip muted">open</span></div><div class="row"><button class="btn small">通过</button><button class="btn small ghost">存疑</button><button class="btn small danger">删除</button></div></div>
+        <div class="claim"><div><div class="quote">「PDF 表格转 Markdown 后再切分，列对齐可保留」</div><div class="srcref">来源：官方 · 某解析库文档</div></div><div class="row small"><span class="chip muted">open</span></div><div class="row"><button class="btn small">通过</button><button class="btn small ghost">存疑</button><button class="btn small danger">删除</button></div></div>
+        <div class="claim"><div><div class="quote">…</div><div class="srcref">…</div></div><div class="row small"><span class="chip muted">open</span></div><div class="row"><button class="btn small">通过</button><button class="btn small ghost">存疑</button><button class="btn small danger">删除</button></div></div>
+        <div class="row" style="margin-top:12px"><span class="muted small">签字（新闻类必填）：<span class="chip muted">signed_by 空</span></span><button class="btn right" disabled>进入 editing（还有 3 条 open）</button></div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 机审 · 事实清单</h3>
+      <ol>
+        <li>十门：结构 / 事实 / 代码 / 术语 / 重复（≥ 0.92 视为重复）/ 红线 / 可读 / 标识 / 版权 / 内链；只有可读、内链可人工放行。<span class="ref">06 §4.6</span></li>
+        <li>撰稿员写了事实清单之外的句子 → 来源为空 → 只能删或补源；这是「撰稿员只读研究员事实清单」隔离的落点。<span class="ref">04 §8.3 · 06 §4.7</span></li>
+        <li>每条 claim：原文句、来源、状态、处理人、时间；导出随 PR。<span class="ref">06 §4.7</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends "base_site.html" %}
+{% block title %}{{ item.name }}{% endblock %}
+{% block content %}
+<section class="hero">
+  <span class="kicker">{{ item.kind }}</span>
+  <h1 class="serif">{{ item.name }}</h1>
+  <p>{{ item.summary }}</p>
+  <a class="btn" href="{{ item.official_url }}">官网</a>
+</section>
+{% if error %}<div class="banner archived">{{ error }}</div>{% endif %}
+{% if notice %}<div class="banner notice">{{ notice }}</div>{% endif %}
+{% if related %}
+<h2>相关</h2>
+{% for n in related %}<p><a href="/articles/{{ n.slug }}">{{ n.title }}</a></p>{% endfor %}
+{% endif %}
+{% if item.kind == "tool" %}
+<form method="post" action="/tools/{{ item.slug }}/claim" class="card" style="padding:16px;margin-top:16px">{% csrf_token %}
+  <p>认领核对（关闭态也保留）</p>
+  <input name="email" type="email" required placeholder="官方邮箱">
+  <input name="contact" placeholder="联系人">
+  <input name="note" placeholder="要改的字段">
+  <button class="btn" type="submit">提交认领</button>
+</form>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base_back.html" %}
+{% block side_title %}广告主门户{% endblock %}
+{% block content %}
+<h1 class="serif">新活动</h1>
+{% if error %}<div class="banner archived">{{ error }}</div>{% endif %}
+<form method="post" class="card" style="padding:16px">{% csrf_token %}
+  <p>标题 ≤ 24 字<br><input name="title" maxlength="24" required style="width:100%"></p>
+  <p>文案 ≤ 60 字<br><input name="body" maxlength="60" style="width:100%"></p>
+  <p>落地 https<br><input name="url" required style="width:100%"></p>
+  <p class="muted">不能填角标、不能传脚本 / iframe / 像素。</p>
+  <button class="btn" type="submit">提交审核</button>
+</form>
+{% endblock %}

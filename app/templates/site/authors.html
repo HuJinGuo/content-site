@@ -1,0 +1,13 @@
+{% extends "base_site.html" %}
+{% block title %}作者{% endblock %}
+{% block content %}
+<section class="hero"><h1 class="serif">作者</h1><p>复核署名来自员工账号的显示名。</p></section>
+{% for p in people %}
+  <a class="card click" href="/authors/{{ p.pk }}" style="display:block;margin-top:10px">
+    <h3>{{ p.display_name|default:p.email }}</h3>
+    <p class="muted">{{ p.get_staff_role_display }}</p>
+  </a>
+{% empty %}
+  <p class="muted">还没有公开作者。</p>
+{% endfor %}
+{% endblock %}

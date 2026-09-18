@@ -1,0 +1,12 @@
+{% extends "base_back.html" %}
+{% block side_title %}广告主门户{% endblock %}
+{% block content %}
+<h1 class="serif">成为广告主</h1>
+{% if error %}<div class="banner archived">{{ error }}</div>{% endif %}
+<form method="post" action="/ads/onboard" class="card" style="padding:16px">{% csrf_token %}
+  <p>主体名称<br><input name="org_name" required style="width:100%;padding:8px"></p>
+  <p>官网 https<br><input name="official_url" required style="width:100%;padding:8px"></p>
+  <button class="btn" style="margin-top:12px" type="submit">提交</button>
+</form>
+<p class="muted">邮箱域名与官网同域则自动通过（起步直接通过，供本机验收）。</p>
+{% endblock %}

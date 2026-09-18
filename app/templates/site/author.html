@@ -1,0 +1,9 @@
+{% extends "base_site.html" %}
+{% block title %}{{ person }}{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1 class="serif">{{ person.display_name|default:person.email }}</h1>
+  <p>角色 {{ person.get_staff_role_display }}。{% if person.staff_role == "author" %}这是撰稿 bot，发布必须由人按。{% endif %}</p>
+</section>
+{% for n in nodes %}<p><a href="/articles/{{ n.slug }}">{{ n.title }}</a></p>{% endfor %}
+{% endblock %}

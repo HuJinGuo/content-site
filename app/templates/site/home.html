@@ -1,0 +1,95 @@
+{% extends "base_site.html" %}
+{% load jiejian %}
+{% block title %}搞懂 AI，然后真的用上 · ai.nornless.com{% endblock %}
+{% block content %}
+<section class="hero">
+  <span class="kicker">AI 知识与科技情报</span>
+  <h1 class="serif">搞懂 AI，然后真的用上</h1>
+  <p>按篇阅读，不必爬课表。测评只给一个建议起点。每篇都有来源、复核日和 AI 披露。不登录也能读九成。</p>
+  <div class="row">
+    <a class="btn lg" href="/assess">2 分钟选路测评</a>
+    <a class="btn secondary lg" href="/learn">看全部文章</a>
+    {% if continue_node %}
+      <a class="btn secondary lg" href="/articles/{{ continue_node.slug }}">从这里继续</a>
+    {% endif %}
+    <span class="muted small">或 <a class="gold" href="/news">先看今天的情报 →</a></span>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2 class="serif">今日简报</h2><a href="/digest/daily">早报 →</a></div>
+  <div class="card">
+    {% for n in news_items %}
+      <div class="digest-n"><b class="n">{{ forloop.counter }}</b><div><b><a href="/articles/{{ n.slug }}">{{ n.title }}</a></b><div class="rel">{{ n.summary }}</div></div></div>
+    {% empty %}
+      <p class="muted">今天还没有快讯。去 <a class="gold" href="/learn">文章</a> 挑一篇。</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2 class="serif">按问题进</h2><a href="/learn">全部文章 →</a></div>
+  <div class="grid cols-3">
+    {% for d in doors %}
+      <a class="card click" href="/articles/{{ d.slug }}">
+        <h3>{{ d.title }}</h3>
+        <p class="summary">{{ d.summary }}</p>
+      </a>
+    {% empty %}
+      <div class="card"><p class="muted">先打开文章列表，点任意一篇。</p></div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2 class="serif">系列</h2><a href="/learn">全部文章 →</a></div>
+  <div class="grid cols-3">
+    {% for p in paths %}
+      <a class="card click featured" href="/learn/{{ p.slug }}">
+        <h3>{{ p.title }}</h3>
+        <p class="summary">{{ p.summary }}</p>
+        <div class="meta"><span>约 {{ p.eta_hours }} 小时</span></div>
+      </a>
+    {% empty %}
+      <div class="card"><p class="muted">路径正在编排。先从测评开始。</p></div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2 class="serif">最新概念卡</h2><a href="/glossary">百科 →</a></div>
+  <div class="grid cols-2">
+    {% for n in concepts %}
+      <a class="card click" href="/articles/{{ n.slug }}">
+        <h3>{{ n.title }}</h3>
+        <p class="summary">{{ n.summary }}</p>
+        <div class="meta">{% if n.last_verified_at %}<span>Last-verified {{ n.last_verified_at|date:"Y-m-d" }}</span>{% endif %}</div>
+      </a>
+    {% empty %}
+      <div class="card"><p class="muted">概念卡即将发布。</p></div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2 class="serif">工具</h2><a href="/tools">目录 →</a></div>
+  <div class="grid cols-2">
+    {% for t in tools %}
+      <a class="card click" href="/entities/{{ t.slug }}">
+        <h3>{{ t.name }}</h3>
+        <p class="summary">{{ t.summary }}</p>
+      </a>
+    {% empty %}
+      <div class="card"><p class="muted">工具条目随实体页导入。先点上面任意一篇概念卡。</p></div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="slot" data-slot="R1">
+    <h4>本月过时清单</h4>
+    <p>过时的文章会在这里汇总。收藏过的变化会在学习台提醒你。</p>
+    <a class="cta" href="/digest/outdated">看过时清单 →</a>
+  </div>
+</section>
+{% endblock %}

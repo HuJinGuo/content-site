@@ -1,0 +1,14 @@
+{% extends "base_site.html" %}
+{% block title %}简报存档{% endblock %}
+{% block content %}
+<div class="subnav"><a href="/app/">学习台</a><a class="active" href="/app/briefing">简报</a></div>
+<h1 class="serif">简报存档</h1>
+{% for i in issues %}
+  <div class="card" style="margin:8px 0"><a href="/digest/{{ i.kind }}">{{ i.title }}</a>
+  <form method="post" style="display:inline">{% csrf_token %}
+    <input type="hidden" name="issue_slug" value="{{ i.slug }}">
+    <input type="hidden" name="item_key" value="done">
+    <button class="btn small" type="submit">勾掉行动项</button>
+  </form></div>
+{% endfor %}
+{% endblock %}

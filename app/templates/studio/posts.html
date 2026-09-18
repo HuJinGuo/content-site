@@ -1,0 +1,33 @@
+{% extends "base_back.html" %}
+{% block side_title %}Studio 编辑部{% endblock %}
+{% block sidenav %}{% include "studio/_sidenav.html" %}{% endblock %}
+{% block content %}
+<div class="desk-kicker">
+  <h1 class="serif" style="margin:0">文章</h1>
+  <a class="btn" href="/studio/editor">写新篇</a>
+</div>
+<p class="muted">一篇一篇管。用标签归类，不必先占层号。</p>
+<p class="row" style="margin:12px 0">
+  <a class="chip{% if not kind %} paid{% else %} free{% endif %}" href="/studio/posts">全部</a>
+  <a class="chip{% if kind == 'concept' %} paid{% else %} free{% endif %}" href="/studio/posts?kind=concept">文章</a>
+  <a class="chip{% if kind == 'unit' %} paid{% else %} free{% endif %}" href="/studio/posts?kind=unit">教程</a>
+  <a class="chip{% if kind == 'news' %} paid{% else %} free{% endif %}" href="/studio/posts?kind=news">快讯</a>
+  <a class="chip{% if kind == 'pitfall' %} paid{% else %} free{% endif %}" href="/studio/posts?kind=pitfall">坑</a>
+  <a class="chip{% if kind == 'compare' %} paid{% else %} free{% endif %}" href="/studio/posts?kind=compare">对照</a>
+</p>
+<table class="table">
+  <thead><tr><th>标题</th><th>类型</th><th>状态</th><th>标签</th></tr></thead>
+  <tbody>
+  {% for n in posts %}
+    <tr>
+      <td><a href="/studio/editor/{{ n.slug }}">{{ n.title }}</a></td>
+      <td>{{ n.get_kind_display }}</td>
+      <td>{{ n.get_status_display }}</td>
+      <td class="muted small">{% for t in n.tags %}{{ t }}{% if not forloop.last %} · {% endif %}{% empty %}—{% endfor %}</td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="4">还没有稿。点右上「写新篇」。seed_all 导入的已发布文章会出现在这里。</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin · 专区条目审核 /admin/zones · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="admin" data-active="zones">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">专区条目审核 · 6 待审</span><span class="muted small">招聘 / 发布墙 / 活动 / 优惠 · SLA ≤ 24h · 过期自动 410</span></div>
+    <div class="page">
+      <div class="tabs"><button class="active">待审 6</button><button>招聘 41</button><button>发布墙 18</button><button>活动 9</button><button>优惠 12</button><button>已过期</button></div>
+      <div class="card">
+        <table class="data">
+          <thead><tr><th>条目</th><th>专区</th><th>提交</th><th>机检</th><th>到期</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><b>AI 产品经理 · 某创业公司</b><div class="muted small">深圳 · 25–35k · https://… <span class="chip ok">同域</span></div></td><td>招聘</td><td class="small">某创业公司 · 09-14 09:10</td><td><span class="chip ok">通过</span></td><td class="mono small">→ 10-14</td><td class="actions"><button class="btn small">通过</button><button class="btn small ghost">需修改</button><button class="btn small danger">拒</button></td></tr>
+            <tr><td><b>某评测工具 1.0</b><div class="muted small">发布墙 · 编辑评分 待打</div></td><td>发布墙</td><td class="small">某评测工具 · 09-13</td><td><span class="chip ok">通过</span></td><td class="mono small">周榜 38 周</td><td class="actions"><div class="row"><select style="width:auto"><option>评分</option><option>3.5</option><option>4.0</option><option>4.5</option></select><button class="btn small">通过</button></div></td></tr>
+            <tr><td><b>AI 应用开发者线下聚会 · 上海</b><div class="muted small">10-11 · 免费 · 某社区</div></td><td>活动</td><td class="small">09-12</td><td><span class="chip ok">通过</span></td><td class="mono small">→ 10-11 后归档</td><td class="actions"><button class="btn small">通过</button><button class="btn small ghost">需修改</button></td></tr>
+            <tr><td><b>某编辑器 · 学生免费 1 年</b><div class="muted small">优惠码 EDU · 至 12-31 · 联盟链接 ✓ 披露</div></td><td>优惠</td><td class="small">09-12</td><td><span class="chip ok">通过</span></td><td class="mono small">→ 12-31</td><td class="actions"><button class="btn small">通过</button></td></tr>
+            <tr><td><b>「AI 培训班招生」</b><div class="muted small">薪资「日入 3000」</div></td><td>招聘</td><td class="small">09-13</td><td><span class="chip bad">红线 · 禁投类目</span><span class="anno">1</span></td><td>—</td><td class="actions"><button class="btn small danger">拒（写原因）</button></td></tr>
+            <tr><td><b>向量库 X 2.0（重复）</b><div class="muted small">同链接 30 天内已存在 #L-208</div></td><td>发布墙</td><td class="small">09-14</td><td><span class="chip warn">重复链接</span></td><td>—</td><td class="actions"><button class="btn small ghost">合并到 #L-208</button><button class="btn small danger">拒</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="split" style="margin-top:14px">
+        <div class="card"><span class="kicker">规则</span><div class="checklist small" style="margin-top:6px"><label><input type="checkbox" checked disabled><span>字段上限（附录 A）· https · 同链接 30 天唯一</span></label><label><input type="checkbox" checked disabled><span>置顶数上限：招聘 5 · 活动 3 · featured 3 / 周</span></label><label><input type="checkbox" checked disabled><span>过期：招聘 30 天 · 活动过日期 · 优惠过有效期 → 410 / 归档</span></label><label><input type="checkbox" checked disabled><span>专区条目不进搜索、不进主 RSS、不进阶梯</span></label></div></div>
+        <div class="card"><span class="kicker">通知</span><p class="small" style="margin-top:6px">通过 / 需修改 / 拒绝 → 门户消息 + 邮件（每天 ≤ 3 封）；到期前 7 天提醒续投。</p></div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 专区条目审核</h3>
+      <ol>
+        <li>禁投类目与红线机检先拦，人工再判；拒绝写原因。<span class="ref">06 §5.6</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

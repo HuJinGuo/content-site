@@ -1,0 +1,16 @@
+{% extends "base_site.html" %}
+{% block title %}{{ kind }}{% endblock %}
+{% block content %}
+<section class="hero">
+  <span class="kicker">期刊</span>
+  <h1 class="serif">{% if issue %}{{ issue.title }}{% else %}{{ kind }}{% endif %}</h1>
+</section>
+{% if issue %}
+  <article class="prose">{{ issue.html|safe }}</article>
+  {% for it in issue.items %}
+    <div class="digest-n"><b class="n">{{ forloop.counter }}</b><div>{% if it.title %}<a href="{{ it.url|default:'/news' }}">{{ it.title }}</a>{% else %}{{ it }}{% endif %}</div></div>
+  {% endfor %}
+{% else %}
+  <p class="muted">这一期还没出。去看 <a class="gold" href="/news">快讯流</a>。</p>
+{% endif %}
+{% endblock %}

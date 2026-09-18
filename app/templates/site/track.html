@@ -1,0 +1,39 @@
+{% extends "base_site.html" %}
+{% load jiejian %}
+{% block title %}{{ path.title }}{% endblock %}
+{% block content %}
+<p class="muted small" style="margin-top:16px"><a href="/learn">阅读</a> · {{ path.title }}</p>
+<section class="hero" style="padding-bottom:8px">
+  <span class="kicker">系列</span>
+  <h1 class="serif" style="font-size:32px">{{ path.title }}</h1>
+  <p>{{ path.summary }}</p>
+  {% if short %}
+    <p class="muted">三条一组。读完一件事即可，不必再进长项目。</p>
+  {% else %}
+    <p class="muted">编号只是建议顺序。已经会的直接跳过。</p>
+  {% endif %}
+</section>
+{% if building %}
+  <div class="banner notice">这条路径还在建设（已发布 {{ published_units }} 课）。已有的课可以直接读。</div>
+{% endif %}
+{% if entries %}
+  <p class="muted small">也可以从这些课进：</p>
+  <p class="row" style="margin-bottom:16px">
+    {% for e in entries %}
+      <a class="chip" href="/learn/{{ path.slug }}/{{ e.node.slug }}">{{ e.title }}</a>
+    {% endfor %}
+  </p>
+{% endif %}
+<div class="outline">
+  {% for u in items %}
+    <div class="u">
+      <div>
+        <b>{% if u.node %}<a href="/learn/{{ path.slug }}/{{ u.node.slug }}">{{ u.title }}</a>{% else %}{{ u.title }}{% endif %}</b>
+
+        <div class="goal">{{ u.goal }}</div>
+      </div>
+      <span class="muted small">{% if u.node %}可直接读{% else %}正文待写{% endif %}</span>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

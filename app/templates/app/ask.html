@@ -1,0 +1,16 @@
+{% extends "base_site.html" %}
+{% block title %}问答{% endblock %}
+{% block content %}
+<div class="subnav"><a href="/app/">学习台</a><a class="active" href="/app/ask">问答</a></div>
+<section class="hero"><h1 class="serif">问已审语料</h1><p>没有段落引用就不编。额度按权益扣。</p></section>
+{% if error %}<div class="banner archived">{{ error }}</div>{% endif %}
+{% if answer %}<div class="card" style="padding:16px"><p>{{ answer }}</p>
+{% for c in citations %}<p><a href="/articles/{{ c.slug }}">{{ c.title }}</a></p>{% endfor %}
+</div>{% endif %}
+<form method="post" class="card" style="padding:16px">{% csrf_token %}
+  <textarea name="q" maxlength="500" required style="width:100%" placeholder="问题"></textarea>
+  <button class="btn" style="margin-top:8px" type="submit">提问</button>
+</form>
+<h2>记录</h2>
+{% for t in threads %}<p>{{ t.question }}</p>{% endfor %}
+{% endblock %}

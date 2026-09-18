@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>招聘板 /jobs · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="jobs">
+
+<main class="container">
+  <div class="banner info small" style="margin-top:16px">整页受 <code>ads.self_serve.jobs</code> 控制：关 → 404、导航无「招聘」、不进 sitemap。这是开启态。<span class="anno">1</span></div>
+
+  <section class="hero" style="padding-bottom:8px">
+    <span class="kicker">专区 · 招聘板（S8）</span>
+    <h1 class="serif" style="font-size:32px">AI 相关岗位</h1>
+    <p>岗位 30 天自动过期；置顶 ≤ 5 条且带角标；外链走 /go 计数。读者免费看、免费订阅。</p>
+  </section>
+
+  <div class="grid side">
+    <section>
+      <div class="filters">
+        <label class="row small"><input type="checkbox"> 远程</label>
+        <select><option>城市：全部</option><option>上海</option><option>北京</option><option>深圳</option><option>杭州</option></select>
+        <select><option>方向：全部</option><option>应用工程</option><option>知识库 / 运营</option><option>提示词 / 内容</option><option>算法</option></select>
+        <a class="right btn small secondary" href="site-subscribe.html">订阅岗位邮件</a>
+      </div>
+
+      <div class="card">
+        <div class="job"><div><div class="row"><b>AI 应用工程师</b><span class="pin">置顶</span></div><div class="co">某某科技 · 远程 · 25–40k / 月 · 应用工程</div><div class="facts-row"><span class="chip free">Python</span><span class="chip free">RAG</span><span class="chip free">Agent</span><span class="muted">发布 09-12 · 剩 28 天</span></div></div><a class="btn small" href="#">去申请 ↗</a></div>
+        <div class="job"><div><div class="row"><b>知识库运营</b><span class="pin">置顶</span></div><div class="co">某教育公司 · 上海 · 15–22k · 知识库 / 运营</div><div class="facts-row"><span class="muted">发布 09-10 · 剩 26 天</span></div></div><a class="btn small" href="#">去申请 ↗</a></div>
+        <div class="job"><div><b>提示词工程实习</b><div class="co">某工作室 · 远程 · 面议</div><div class="facts-row"><span class="muted">发布 09-13</span></div></div><a class="btn small secondary" href="#">去申请 ↗</a></div>
+        <div class="job"><div><b>算法工程师（检索）</b><div class="co">某大厂 · 北京 · 40–60k</div><div class="facts-row"><span class="muted">发布 09-09</span></div></div><a class="btn small secondary" href="#">去申请 ↗</a></div>
+        <div class="job"><div><b>AI 产品经理</b><div class="co">某创业公司 · 深圳 · 25–35k</div><div class="facts-row"><span class="muted">发布 09-08</span></div></div><a class="btn small secondary" href="#">去申请 ↗</a></div>
+        <div class="job" style="opacity:.5"><div><b>（已过期条目 → 410）</b><div class="co">上线 30 天后自动过期，不再列出</div></div><span class="chip muted">410</span></div>
+      </div>
+      <div class="slot wide" data-slot="R4 / S6" style="margin:16px 0"><div class="when-off"><h4>L4 · 何时不该上 Agent</h4><p>面试常问。</p></div><div class="when-on"><span class="ad-tag">广告</span><h4>插卡</h4></div></div>
+    </section>
+
+    <aside class="rail">
+      <div class="card"><span class="kicker">发布岗位</span><p class="small" style="margin:6px 0 10px">按条自助：30 天 / 条，置顶 7 天。广告码在发卡站买，在广告主门户兑。</p><a class="btn small block" href="ads-new.html">去发布 →</a><a class="btn small block ghost" style="margin-top:6px" href="site-advertise.html">看价目</a></div>
+      <div class="card"><span class="kicker">岗位卡字段</span><p class="small muted" style="margin-top:6px">岗位 ≤ 40 字 · 公司 ≤ 30 · 薪资「min–max k/月」或面议 · 远程 / 城市 · 方向 · https 链接 · 发布日 · 置顶角标。审核 ≤ 24h。</p></div>
+    </aside>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 招聘板</h3>
+  <ol>
+    <li><code>ads.self_serve.jobs</code> 关时 404；开启是分级第 3 级。<span class="ref">05 §2.2 · §11.3</span></li>
+    <li>字段限制、30 天过期、置顶 ≤ 5 同屏、过期 410、同链接 30 天内唯一。<span class="ref">06 §2.16 · 附录 A</span></li>
+    <li>置顶只是角标 + 位置，不改岗位信息；AdOps 在专区审核队列过。<span class="ref">06 §5.6</span></li>
+  </ol>
+</section>
+</body>
+</html>

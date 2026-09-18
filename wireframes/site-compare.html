@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>对照页 /compare/[pair] · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="glossary">
+
+<main class="container">
+  <div class="article-head">
+    <div class="crumb"><a href="site-glossary.html">百科</a> / 对照</div>
+    <div class="coord"><span class="lvl">L2 <small>选型与成本</small></span><b>对照页</b><span>· 截至 2026-09-13</span><span>· 复核日 2026-10-13</span></div>
+    <h1 class="serif" style="margin-top:12px">某模型 4.6 vs 某开源模型 3：做文档问答该选谁</h1>
+  </div>
+
+  <div class="article-wrap">
+    <article>
+      <div class="verdict"><span class="verdict human">结论先行 · 人写</span><p style="margin-top:6px;font-size:16px;line-height:1.7">团队 ≤ 5 人、文档不敏感 → 直接用 API 版；有合规要求或月账单 &gt; ¥2000 → 自建开源模型划算。别为 1M 上下文多付钱。</p></div>
+
+      <div class="card" style="margin-top:16px;overflow:auto">
+        <div class="row" style="margin-bottom:8px"><span class="kicker">对照表（≤ 12 维度）</span><div class="segmented right"><button class="active">全部</button><button>成本</button><button>能力</button><button>可用性</button></div></div>
+        <table class="cmp">
+          <thead><tr><th>维度</th><th>某模型 4.6</th><th>某开源模型 3</th><th>对文档问答意味着</th></tr></thead>
+          <tbody>
+            <tr><td>上下文</td><td>1M <span class="asof mono small muted">09-14</span></td><td>128k</td><td>都够用；切分策略更重要</td></tr>
+            <tr><td>价格（输入）</td><td>$x / M</td><td class="win">自托管 ≈ 电费 + 卡</td><td>月账单 &gt; ¥2000 后开源划算</td></tr>
+            <tr><td>许可</td><td>闭源 API</td><td class="win">Apache 2.0</td><td>合规要求高选右边</td></tr>
+            <tr><td>国内可用</td><td>需中转</td><td class="win">本地可跑</td><td>网络受限环境选右边</td></tr>
+            <tr><td>工具调用</td><td class="win">稳定</td><td>需模板</td><td>第 7 课工作流会用到</td></tr>
+            <tr><td>中文质量</td><td class="win">好</td><td>中等</td><td>客服场景注意</td></tr>
+            <tr><td>部署难度</td><td class="win">零</td><td>需 1 张 24G 卡</td><td>L3 之前别自建</td></tr>
+            <tr><td colspan="4" class="muted small">…共 12 行</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose" style="margin-top:20px;font-size:16px">
+        <h2 style="font-size:20px">什么时候选 A</h2><p>…</p>
+        <h2 style="font-size:20px">什么时候选 B</h2><p>…</p>
+        <h2 style="font-size:20px">适合谁</h2><p>…</p>
+      </div>
+
+      <div class="card" style="display:flex;gap:14px;align-items:center;margin-top:16px">
+        <div class="grow"><b>表格 CSV</b><div class="muted small">资源 · <span class="chip free">免费</span>（<code>supporter.enabled</code> 开后可配为支持者）<span class="anno">1</span></div></div>
+        <a class="btn small secondary" href="#">下载 CSV</a>
+      </div>
+
+      <div class="mod required"><h4>来源</h4><div class="src"><span class="tier official">官方</span><a href="#">A 定价页</a><span class="d">09-14</span></div><div class="src"><span class="tier official">官方</span><a href="#">B 模型卡 · GitHub</a><span class="d">09-10</span></div><div class="src"><span class="tier">二手</span><a href="#">第三方评测</a><span class="d">nofollow</span></div></div>
+      <div class="mod required"><h4>AI 使用披露</h4><p class="disclosure"><b>表格由研究员整理、核查员逐格核对；结论段与「什么时候选」由编辑撰写（assist_ratio 标注人写）。</b><span class="anno">2</span></p></div>
+      <div class="mod required"><h4>这页对你</h4><div class="row"><div class="feedback3"><button class="btn small secondary">有用</button><button class="btn small secondary">没看懂</button><button class="btn small secondary">过时了</button></div><div class="toolstrip right"><button class="btn small ghost">收藏</button><button class="btn small ghost">复制引用</button><button class="btn small ghost">报告错误</button></div></div></div>
+    </article>
+
+    <aside class="rail">
+      <div class="card"><span class="kicker">两个实体</span><div class="row small" style="margin-top:8px"><a class="chip free" href="site-entity.html">某模型 4.6</a><a class="chip free" href="site-entity.html">某开源模型 3</a></div></div>
+      <div class="slot" data-slot="R2 · 对照页"><div class="when-off"><h4>相关课</h4><p>L2 · 选产品还是自建，选哪家模型（路径第 3 课）</p><a class="cta" href="site-unit.html">读 →</a></div><div class="when-on"><span class="ad-tag">赞助</span><h4>上下文赞助</h4><p><b>本页涉及的两家厂商都不投</b>（排除规则）。</p></div></div>
+    </aside>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 对照页</h3>
+  <ol>
+    <li>对照表 CSV 是资产，<code>asset.access</code> 配置；默认免费。<span class="ref">06 §2.7 · §4.15</span></li>
+    <li>结论段非 AI 生成（front-matter 对结论段标人写）；移动端表格可横滑、可切维度。<span class="ref">06 §2.7 · 05 §5.9</span></li>
+    <li>评测涉及厂商在本页不投 S4 / S5（排期引擎按实体排除）。<span class="ref">06 §3.10</span></li>
+  </ol>
+</section>
+</body>
+</html>

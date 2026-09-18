@@ -1,0 +1,62 @@
+# outline.yml 由 seed_outline 与本文件同步。节点 = 一层 × 领域。
+
+levels: [L0, L1, L2, L3, L4, L5, L6, L7]
+domains: [general, office, dev-agent, aigc, industry, theory]
+tracks:
+  - slug: doc-qa
+    title: 从 0 做一个文档问答
+    units: 10
+    note: 建议顺序，不锁
+  - slug: ask-better
+    title: 把一次提问写清楚
+    units: 3
+  - slug: hold-agent
+    title: 先别上 Agent
+    units: 3
+  - slug: office-ai
+    title: 办公里先会用
+    units: 3
+    sequence:
+      - need-a-kb
+      - how-it-works
+      - build-vs-buy
+      - corpus
+      - minimal-rag
+      - eval
+      - citations-refusals
+      - workflow
+      - when-not-agent
+      - principles
+nodes:
+  - {id: doc-qa/00-need-a-kb, level: L0, domain: dev-agent, title: 你是不是真的需要一个知识库}
+  - {id: doc-qa/01-how, level: L1, domain: dev-agent, title: 文档问答到底怎么工作（直觉版）}
+  - {id: doc-qa/02-build-vs-buy, level: L2, domain: dev-agent, title: 选产品还是自建，选哪家模型}
+  - {id: doc-qa/03-corpus, level: L3, domain: dev-agent, title: 准备语料：切分、清洗、权限}
+  - {id: doc-qa/04-minimal-rag, level: L3, domain: dev-agent, title: 最小 RAG：从文件夹到能提问}
+  - {id: doc-qa/05-eval, level: L4, domain: dev-agent, title: 为什么它会答错，怎样评测}
+  - {id: doc-qa/06-citations, level: L6, domain: dev-agent, title: 加引用、拒答、权限和日志}
+  - {id: doc-qa/07-workflow, level: L4, domain: dev-agent, title: 做成工作流：定时更新语料}
+  - {id: doc-qa/08-when-not-agent, level: L4, domain: dev-agent, title: 何时不该上 Agent}
+  - {id: doc-qa/09-principles, level: L7, domain: dev-agent, title: 原理回看：检索、嵌入、幻觉从哪来}
+  - {id: l0/what-is-llm, level: L0, domain: general, title: 什么是大语言模型}
+  - {id: l0/ai-vs-search, level: L0, domain: general, title: AI 和搜索差在哪}
+  - {id: l0/when-to-use-ai, level: L0, domain: general, title: 什么时候该用 AI}
+  - {id: l0/chat-privacy, level: L0, domain: general, title: 对话里的隐私}
+  - {id: l0/what-is-kb, level: L0, domain: general, title: 什么是知识库}
+  - {id: l1/context-window, level: L1, domain: general, title: 上下文窗口}
+  - {id: l1/hallucination, level: L1, domain: general, title: 幻觉}
+  - {id: l1/token, level: L1, domain: general, title: Token}
+  - {id: l1/prompt, level: L1, domain: general, title: 提示词基础}
+  - {id: l1/embedding, level: L1, domain: general, title: 嵌入}
+  - {id: l1/temperature, level: L1, domain: general, title: 温度}
+  - {id: l1/system-prompt, level: L1, domain: general, title: 系统提示词}
+  - {id: l1/retrieval, level: L1, domain: general, title: 检索}
+  - {id: l1/chunking, level: L1, domain: general, title: 切块}
+  - {id: l1/citation, level: L1, domain: general, title: 引用}
+  - {id: l1/refusal, level: L1, domain: general, title: 拒答}
+  - {id: l1/eval-basics, level: L1, domain: general, title: 评测入门}
+  - {id: l1/rag, level: L1, domain: dev-agent, title: 检索增强生成}
+  - {id: l2/product-api-local, level: L2, domain: general, title: 产品 vs API vs 本地模型}
+  - {id: l2/cost-estimate, level: L2, domain: general, title: 账单怎么估}
+  - {id: l2/agent-vs-workflow, level: L2, domain: dev-agent, title: Agent 和工作流}
+  - {id: l2/tool-use, level: L2, domain: dev-agent, title: 工具调用}

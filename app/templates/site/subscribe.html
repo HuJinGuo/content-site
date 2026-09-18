@@ -1,0 +1,18 @@
+{% extends "base_site.html" %}
+{% block title %}订阅{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1 class="serif">RSS · 邮件</h1>
+  <p>
+    <a class="gold" href="/rss.xml">全站 RSS</a> ·
+    <a class="gold" href="/rss/news.xml">快讯</a> ·
+    <a class="gold" href="/rss/learn.xml">学习</a>
+  </p>
+</section>
+{% if notice %}<div class="banner notice">{{ notice }}</div>{% endif %}
+<form method="post" class="card" style="padding:20px;max-width:420px">{% csrf_token %}
+  <p>邮箱<br><input name="email" type="email" required style="width:100%;padding:8px"></p>
+  <p class="muted small">周报默认勾，早报默认不勾。确认链接 24 小时有效。</p>
+  <button class="btn" style="margin-top:12px" type="submit">订阅</button>
+</form>
+{% endblock %}

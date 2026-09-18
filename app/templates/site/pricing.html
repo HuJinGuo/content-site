@@ -1,0 +1,13 @@
+{% extends "base_site.html" %}
+{% block title %}支持者{% endblock %}
+{% block content %}
+<section class="hero">
+  <span class="kicker">会员码</span>
+  <h1 class="serif">支持者</h1>
+  <p>去广告、资源包、会员 RSS。展示价 {{ setting.supporter_price|default:"见发卡站" }}。站内只兑码，不收款。</p>
+  <div class="row">
+    <a class="btn" href="/redeem">我有码，去兑</a>
+    {% if card_shop_url %}<a class="btn secondary" href="{{ card_shop_url }}">去发卡站</a>{% endif %}
+  </div>
+</section>
+{% endblock %}

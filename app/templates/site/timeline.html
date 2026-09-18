@@ -1,0 +1,8 @@
+{% extends "base_site.html" %}
+{% block title %}时间线{% endblock %}
+{% block content %}
+<section class="hero"><h1 class="serif">时间线</h1><p>快讯里标记过的节点，按发布日。</p></section>
+{% for n in items %}
+  <div class="digest-n"><b class="n">{{ n.published_at|date:"m-d" }}</b><div><a href="/articles/{{ n.slug }}">{{ n.title }}</a></div></div>
+{% empty %}<p class="muted">还没有里程碑。先看快讯流。</p>{% endfor %}
+{% endblock %}

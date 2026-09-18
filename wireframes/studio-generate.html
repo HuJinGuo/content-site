@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio · 生成台 · 成本 /studio/generate · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="studio" data-active="generate">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">生成台 · 成本</span><div class="row"><span class="muted small">worker 只写草稿，永不发布</span><a class="btn small ghost" href="studio-prompts.html">提示词版本</a></div></div>
+    <div class="page">
+      <div class="card" style="margin-bottom:16px">
+        <div class="row"><span class="kicker">今日成本预算 <span class="anno">1</span></span><span class="right small"><b>¥38</b> / ¥100 · 快讯独立 <b>¥9</b> / ¥30</span></div>
+        <div class="budget" style="margin:8px 0"><i style="width:38%"></i></div>
+        <p class="muted small">80% 预警 · 100% 停止非快讯类生成（阅读不受影响）· 并发 ≤ 3 · 单任务 tokens 上限按角色。</p>
+      </div>
+
+      <div class="split wide-left">
+        <div>
+          <div class="card">
+            <span class="kicker">新任务</span>
+            <div class="fm" style="margin-top:10px">
+              <div class="field"><label>Brief（只列 ready）</label><select><option>多模态 RAG（概念卡）· ready</option><option>按用量计费月费估算（对照）· ready</option></select></div>
+              <div class="field"><label>角色链</label><div class="row small"><span class="chip ok">选题员</span><span class="chip ok">研究员（只读只摘）</span><span class="chip ok">撰稿员</span><span class="chip ok">核查员（新会话）</span><span class="chip free">验证员（沙箱）</span><span class="chip ok">排版员</span></div></div>
+              <div class="field"><label>提示词版本</label><select><option>concept@2.4（当前）</option><option>concept@2.5（草稿，Publisher 未指定）</option></select></div>
+              <div class="field"><label>模型（按角色默认，配置化）</label><div class="small mono muted">写 / 核 grok-4.6 · 验证 grok-build-0.1 · 经 nornless /v1/responses</div></div>
+              <div class="field full"><label>RAG 语料范围</label><div class="row small"><span class="chip ok">已发布已审语料</span><span class="chip ok">白名单源</span><span class="chip bad" style="text-decoration:line-through">草稿</span><span class="chip bad" style="text-decoration:line-through">随机网页</span></div></div>
+            </div>
+            <div class="row" style="margin-top:12px"><button class="btn">提交任务（Procrastinate · generate 队列）</button><span class="muted small">幂等键 brief_id + role + prompt_hash</span></div>
+          </div>
+
+          <div class="card" style="margin-top:14px">
+            <span class="kicker">任务（generation_jobs）</span>
+            <table class="data" style="margin-top:8px">
+              <thead><tr><th>任务</th><th>角色</th><th>状态</th><th>tokens in / out</th><th>成本</th><th>耗时</th><th></th></tr></thead>
+              <tbody>
+                <tr><td><b>多模态 RAG</b><div class="muted small">concept@2.4 · a91f…</div></td><td>研究员</td><td><span class="chip ok">succeeded</span></td><td class="num mono small">18.2k / 3.1k</td><td class="num">¥1.9</td><td class="num">41s</td><td class="actions"><a class="btn small ghost" href="#">日志</a></td></tr>
+                <tr><td><b>多模态 RAG</b></td><td>撰稿员</td><td><span class="chip warn">running</span></td><td class="num mono small">6.4k / …</td><td class="num">—</td><td class="num">12s</td><td class="actions"><button class="btn small ghost">abort</button></td></tr>
+                <tr><td><b>第 7 课 做成工作流</b><div class="muted small">unit@3.2</div></td><td>撰稿员</td><td><span class="chip bad">failed ×3</span> <span class="muted small">JSON 校验：sections[2].claims 缺 source_span</span><span class="anno">2</span></td><td class="num mono small">21k / 5.8k</td><td class="num">¥3.4</td><td class="num">—</td><td class="actions"><button class="btn small secondary">改 brief 重试</button></td></tr>
+                <tr><td><b>第 4 课 §3 代码</b></td><td>验证员（沙箱）</td><td><span class="chip muted">未运行</span> <span class="muted small">网络白名单外的包镜像</span></td><td class="num mono small">—</td><td class="num">¥0.6</td><td class="num">10m 超时</td><td class="actions"><a class="btn small ghost" href="#">日志摘要</a></td></tr>
+                <tr><td><b>快讯 · 某云折扣</b></td><td>简报员</td><td><span class="chip ok">succeeded</span></td><td class="num mono small">4.1k / 0.9k</td><td class="num">¥0.4</td><td class="num">9s</td><td class="actions"><a class="btn small ghost" href="studio-review.html">进审稿</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <div class="card"><span class="kicker">沙箱（验证员）</span><dl class="kv small" style="margin-top:8px;grid-template-columns:90px 1fr"><dt>容器</dt><dd>一次性 · 无挂载</dd><dt>资源</dt><dd>CPU 1 · 内存 1GB · 10 分钟</dd><dt>网络</dt><dd>仅包镜像白名单</dd><dt>回填</dt><dd>verified: sandbox + 环境 + 日期；跑不通标「未运行」</dd></dl></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">成本 · 按日</span><div class="bar-chart" style="margin-top:10px;height:70px"><i style="height:40%"></i><i style="height:62%"></i><i style="height:35%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:48%"></i><i style="height:38%"></i></div><div class="row small muted" style="margin-top:4px"><span>09-08</span><span class="right">09-14</span></div></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">成本 · 按角色 / 模型（本月）</span><div class="src"><span class="small">撰稿员 grok-4.6</span><span class="d">¥312</span></div><div class="src"><span class="small">研究员 grok-4.6</span><span class="d">¥201</span></div><div class="src"><span class="small">核查员 grok-4.6</span><span class="d">¥140</span></div><div class="src"><span class="small">验证员 grok-build</span><span class="d">¥58</span></div><div class="src"><span class="small">简报员</span><span class="d">¥96</span></div><button class="btn small ghost" style="margin-top:8px">导出 CSV</button></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">按篇</span><div class="src"><span class="small">最小 RAG 第 4 课（全链）</span><span class="d">¥14.2</span></div><div class="src"><span class="small">概念卡 · 幻觉</span><span class="d">¥3.8</span></div></div>
+        </div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 生成台</h3>
+      <ol>
+        <li>日成本硬上限（站点设置，默认 ¥100），快讯独立通道 ¥30；达 80% 预警、100% 停非快讯生成。<span class="ref">06 §4.4</span></li>
+        <li>输出必须是 CMS JSON（Pydantic 校验）；不合法 → 修复提示重试 ≤ 2 → failed；每次调用写 generation_jobs。<span class="ref">06 §4.4 · §8.5</span></li>
+        <li>研究员不带写 / 执行工具；撰稿员只读事实清单；核查员新会话。<span class="ref">04 §8.3</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

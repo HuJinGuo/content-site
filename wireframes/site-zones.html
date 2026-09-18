@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>发布墙 /launches · 活动 /events · 优惠 /deals · 赞助内容 /sponsored · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="tools">
+
+<main class="container">
+  <div class="banner info small" style="margin-top:16px">四个独立路由共用列表版式，这里叠在一页看；各自开关：<code>ads.launches</code> / <code>ads.events</code> / <code>ads.deals</code> / <code>ads.sponsored_content</code>，关 → 404。<span class="anno">1</span></div>
+
+  <section class="section gated" data-flag="ads.launches" id="launches">
+    <div class="section-head"><h2 class="serif">发布墙 /launches（S9）</h2><span class="muted small">新产品 / 大版本 · 周榜 = 编辑评分 + 7 日点击 · featured 只标注不改排序</span><a href="#">本周 · 上周 · 更早</a></div>
+    <div class="card">
+      <div class="launch"><div class="logo"></div><div><div class="row"><b>向量库 X 2.0</b><span class="pin">FEATURED</span></div><div class="small muted">改了默认索引；迁移指南完整。</div></div><div class="row"><span class="score">编辑 4.5</span><span class="muted small">点击 312</span><a class="btn small secondary" href="#">↗</a></div></div>
+      <div class="launch"><div class="logo"></div><div><b>某本地运行器 0.9</b><div class="small muted">一条命令跑开源模型，新增 GUI。</div></div><div class="row"><span class="score">编辑 4.0</span><span class="muted small">点击 201</span><a class="btn small secondary" href="#">↗</a></div></div>
+      <div class="launch"><div class="logo"></div><div><b>某评测工具 1.0</b><div class="small muted">20 条金标问题自动跑。</div></div><div class="row"><span class="score">编辑 3.5</span><span class="muted small">点击 88</span><a class="btn small secondary" href="#">↗</a></div></div>
+    </div>
+    <p class="muted small" style="margin-top:8px">字段：产品 ≤ 40 · 一句话 ≤ 140 · https 链接（同链接 30 天内唯一）· 发布日 · featured · 编辑评分。</p>
+  </section>
+
+  <section class="section gated" data-flag="ads.events" id="events">
+    <div class="section-head"><h2 class="serif">活动与课程 /events（S10）</h2><span class="muted small">置顶 ≤ 3 · 过期自动归档 · 加日历（ics）</span></div>
+    <div class="card">
+      <div class="event"><div class="date">09-20<small>周六</small></div><div><div class="row"><b>RAG 落地训练营 · 第 3 期</b><span class="pin">置顶</span></div><div class="small muted">某机构 · 线上 · ¥1,980 · 报名截止 09-18</div></div><div class="row"><button class="btn small ghost">加日历</button><a class="btn small secondary" href="#">报名 ↗</a></div></div>
+      <div class="event"><div class="date">09-24<small>周三</small></div><div><b>某开源模型新版直播解读</b><div class="small muted">社区 · 线上 · 免费</div></div><div class="row"><button class="btn small ghost">加日历</button><a class="btn small secondary" href="#">↗</a></div></div>
+      <div class="event"><div class="date">10-11<small>周六</small></div><div><b>AI 应用开发者线下聚会 · 上海</b><div class="small muted">某社区 · 线下 · ¥0</div></div><div class="row"><button class="btn small ghost">加日历</button><a class="btn small secondary" href="#">↗</a></div></div>
+    </div>
+  </section>
+
+  <section class="section gated" data-flag="ads.deals" id="deals">
+    <div class="section-head"><h2 class="serif">优惠 /deals（S12）</h2><span class="muted small">全部免费展示 · 联盟链接文末披露 · 过期下线</span></div>
+    <div class="card">
+      <div class="deal"><div><b>某向量数据库云版 · 首年 8 折</b><div class="small muted">有效期至 2026-10-31 · <a class="gold" href="site-entity.html">实体页</a></div></div><div class="row"><span class="code">NORNLESS20</span><a class="btn small secondary" href="#">去用 ↗</a></div></div>
+      <div class="deal"><div><b>某编辑器 Agent · 学生免费 1 年</b><div class="small muted">需教育邮箱 · 至 2026-12-31</div></div><div class="row"><span class="code">EDU</span><a class="btn small secondary" href="#">去用 ↗</a></div></div>
+      <p class="muted small" style="margin-top:10px"><b>披露：</b>带 ↗ 的链接部分为联盟链接，我们可能获得佣金；不影响实测徽章与排序。<span class="anno">2</span></p>
+    </div>
+  </section>
+
+  <section class="section gated" data-flag="ads.sponsored_content" id="sponsored">
+    <div class="section-head"><h2 class="serif">赞助内容 /sponsored/[slug]</h2><span class="muted small">不进阶梯 / 搜索 / 早报正文 / 主 RSS · 独立 RSS · 默认 index（Admin 可 noindex）</span></div>
+    <div class="card">
+      <div class="row"><span class="ad-tag" style="margin:0">推广</span><b>如何用 某向量数据库 在 10 分钟内上线知识库</b><span class="muted small">· 广告主：某向量数据库 · 2026-09-10</span></div>
+      <p class="small muted" style="margin-top:8px">正文由广告主提供、编辑部只做红线与绝对化用语审核，不做事实核验；页面模板与普通文章一致但顶部固定「推广」角标、无层徽章、无 Last-verified、不进相关推荐。<span class="anno">3</span></p>
+    </div>
+  </section>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 发布墙 / 活动 / 优惠 / 赞助内容</h3>
+  <ol>
+    <li>四个专区从第一版就建成，关闭态上线；开关分别控制；关时 404 且不进 sitemap。<span class="ref">04 §15.4 · 06 §2.16</span></li>
+    <li>优惠页的联盟披露文案必填；不接软文式「评测」。<span class="ref">06 附录 A · 04 §15.5</span></li>
+    <li>赞助内容 = 广告主供稿；「推广」角标由模板注入；不混入任何编辑内容流。<span class="ref">06 G17 · §2.16</span></li>
+  </ol>
+</section>
+</body>
+</html>

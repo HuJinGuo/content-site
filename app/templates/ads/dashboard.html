@@ -1,0 +1,17 @@
+{% extends "base_back.html" %}
+{% block side_title %}广告主门户{% endblock %}
+{% block sidenav %}
+<a class="nav-btn" href="/ads/">总览</a>
+<a class="nav-btn" href="/ads/new">新活动</a>
+<a class="nav-btn" href="/ads/redeem">兑广告码</a>
+<a class="nav-btn" href="/ads/billing">账单</a>
+{% endblock %}
+{% block content %}
+<h1 class="serif">我的投放</h1>
+<p class="row"><a class="btn" href="/ads/new">新活动</a><a class="btn secondary" href="/ads/redeem">兑广告码</a></p>
+{% for c in campaigns %}
+  <div class="card" style="margin-top:8px"><h3>{{ c.title }}</h3><p>{{ c.status }}</p></div>
+{% empty %}
+  <p class="muted">还没有活动。素材审核通过后才会上排期。</p>
+{% endfor %}
+{% endblock %}

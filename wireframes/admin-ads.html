@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin · 广告位 · 排期 · 广告主 /admin/ads · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="admin" data-active="ads">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">广告系统 · 位 · 排期 · 广告主 · SKU</span><div class="row"><span class="chip muted"><code>ads.enabled</code> 关 · 排期可预排</span><button class="btn small">新建直销活动</button></div></div>
+    <div class="page">
+      <div class="tabs"><button class="active">排期日历</button><button>广告位 12</button><button>SKU · 价目</button><button>广告主 31</button><button>直销订单</button><button>占比与排除</button></div>
+
+      <div class="card">
+        <div class="row" style="margin-bottom:10px"><span class="kicker">2026-09 · 第 38 周</span><div class="segmented right"><button>‹</button><button class="active">周</button><button>月</button><button>›</button></div><div class="legend"><span><i style="background:var(--primary-soft);border-color:var(--primary-100)"></i>已售</span><span><i style="border-style:dashed"></i>house</span><span><i style="border-color:var(--warn);border-style:dashed"></i>待审</span><span><i style="border-color:var(--danger)"></i>冲突</span></div></div>
+        <div class="cal">
+          <div></div><div class="h">一 09-14</div><div class="h">二 15</div><div class="h">三 16</div><div class="h">四 17</div><div class="h">五 18</div><div class="h">六 19</div><div class="h">日 20</div>
+          <div class="r">S1 早报</div><div class="c house">house</div><div class="c house">house</div><div class="c booked">X 支持（试）</div><div class="c house">house</div><div class="c pending">待审 · Y</div><div class="c" style="opacity:.4">—</div><div class="c" style="opacity:.4">—</div>
+          <div class="r">S2 周报</div><div class="c" style="opacity:.4"></div><div class="c" style="opacity:.4"></div><div class="c" style="opacity:.4"></div><div class="c" style="opacity:.4"></div><div class="c" style="opacity:.4"></div><div class="c house">house</div><div class="c" style="opacity:.4"></div>
+          <div class="r">S3 首页卡</div><div class="c booked">向量库 X · 周</div><div class="c booked">·</div><div class="c booked">·</div><div class="c booked">·</div><div class="c booked">·</div><div class="c booked">·</div><div class="c booked">·</div>
+          <div class="r">S4 上下文 · L3 开发</div><div class="c booked">向量库云版</div><div class="c booked">·</div><div class="c booked">·</div><div class="c booked">·</div><div class="c booked">·</div><div class="c booked">·</div><div class="c booked">→ 09-21</div>
+          <div class="r">S4 上下文 · L2 通用</div><div class="c house">house</div><div class="c house">house</div><div class="c conflict">2 家撞期<span class="anno">1</span></div><div class="c house">house</div><div class="c house">house</div><div class="c house">house</div><div class="c house">house</div>
+          <div class="r">S5 文末</div><div class="c house">编辑实测卡</div><div class="c house">·</div><div class="c house">·</div><div class="c house">·</div><div class="c house">·</div><div class="c house">·</div><div class="c house">·</div>
+          <div class="r">S11 专题 · RAG</div><div class="c" style="opacity:.4">未售</div><div class="c" style="opacity:.4"></div><div class="c" style="opacity:.4"></div><div class="c" style="opacity:.4"></div><div class="c" style="opacity:.4"></div><div class="c" style="opacity:.4"></div><div class="c" style="opacity:.4"></div>
+        </div>
+        <p class="muted small" style="margin-top:8px">位满 → 排下一可用日并通知广告主；同位同广告主不连续 3 次；评测涉及厂商在该页排除。</p>
+      </div>
+
+      <div class="split" style="margin-top:14px">
+        <div class="card"><span class="kicker">广告位 12（R1–R5 + S 位）</span><table class="data" style="margin-top:6px"><thead><tr><th>位</th><th>页面 · 位置</th><th>尺寸</th><th>移动</th><th>每页上限</th><th>启用</th></tr></thead><tbody>
+          <tr><td class="mono">S3 / R1</td><td class="small">首页 · 精选下</td><td class="small">280 卡</td><td class="small">首屏外</td><td class="num">1</td><td><span class="toggle on"></span></td></tr>
+          <tr><td class="mono">S4 / R2</td><td class="small">文章 · 侧栏 sticky</td><td class="small">280 卡</td><td class="small">并入 S5</td><td class="num">1</td><td><span class="toggle on"></span></td></tr>
+          <tr><td class="mono">S5 / R3</td><td class="small">文章 · 相关节点后</td><td class="small">280 卡</td><td class="small">是</td><td class="num">1</td><td><span class="toggle on"></span></td></tr>
+          <tr><td class="mono">S6 / R4</td><td class="small">列表 · 每 8 卡</td><td class="small">列表卡</td><td class="small">是</td><td class="num">1 / 屏</td><td><span class="toggle"></span></td></tr>
+          <tr><td class="mono">S1 · S2</td><td class="small">早报 / 周报 段</td><td class="small">文字 + logo</td><td class="small">邮件同</td><td class="num">1</td><td><span class="toggle"></span></td></tr>
+          <tr><td colspan="6" class="muted small">… S7–S12 见专区 · 每页 ≤ 2 位由渲染层强制（G17）</td></tr>
+        </tbody></table></div>
+        <div>
+          <div class="card"><span class="kicker">SKU · 价目（媒体页读这里）</span><table class="data" style="margin-top:6px"><thead><tr><th>SKU</th><th>时长</th><th>渠道</th><th>展示价</th></tr></thead><tbody><tr><td class="mono">S4-7D</td><td>7 天</td><td>码 / 直销</td><td>¥ —</td></tr><tr><td class="mono">S7-CERT-30D</td><td>30 天</td><td>码</td><td>¥ —</td></tr><tr><td class="mono">S8-JOB-30D</td><td>30 天</td><td>码</td><td>¥ —</td></tr><tr><td class="mono">S8-PIN-7D</td><td>7 天</td><td>码</td><td>¥ —</td></tr><tr><td class="mono">S1-ISSUE</td><td>1 期</td><td>直销</td><td>¥ —</td></tr></tbody></table><button class="btn small ghost" style="margin-top:6px">编辑 SKU（写审计）</button></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">占比与排除 <span class="anno">2</span></span><div class="src"><span class="small">向量库 X · 本月曝光占比</span><span class="d" style="color:var(--warn)">27% / 30%</span></div><div class="src"><span class="small">某某科技</span><span class="d">12%</span></div><div class="src"><span class="small">排除规则：对照页「某模型 vs 某开源」→ 两厂商不投</span><span class="d">2 页</span></div></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">广告主 31</span><div class="src"><span class="small">某某科技 · 主体已核验 · 活跃 3</span><span class="d">详情</span></div><div class="src"><span class="small">向量库 X · 直销 · 活跃 2</span><span class="d">详情</span></div><div class="src"><span class="small">Y 公司 · 待核验（邮箱非同域）</span><span class="d">审</span></div></div>
+        </div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 广告系统</h3>
+      <ol>
+        <li>同位同期 &gt; 1 活动 → 冲突红格，排期引擎拒排，手工解决。<span class="ref">06 §3.10 · §5.5</span></li>
+        <li>单广告主 ≤ 30% 曝光预警；排除规则按实体挂在页面。<span class="ref">06 §3.10</span></li>
+        <li>关闭态可预排（scheduled），开关开后自动 live；house 卡 = 编辑填充。<span class="ref">05 §3</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

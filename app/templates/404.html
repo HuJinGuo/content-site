@@ -1,0 +1,9 @@
+{% extends "base_site.html" %}
+{% block title %}没有这页{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1 class="serif">没有这页</h1>
+  <p>可能开关关着，或地址写错。</p>
+  <form method="get" action="/search"><input name="q" placeholder="站内搜索"><button class="btn" type="submit">搜索</button></form>
+</section>
+{% endblock %}

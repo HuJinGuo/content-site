@@ -1,0 +1,15 @@
+{% extends "base_back.html" %}
+{% block side_title %}Studio 编辑部{% endblock %}
+{% block sidenav %}{% include "studio/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">期刊编排</h1>
+<form method="post" class="card" style="padding:16px">{% csrf_token %}
+  <select name="kind"><option>daily</option><option>weekly</option><option>outdated</option><option>deep</option></select>
+  <input name="slug" placeholder="slug">
+  <input name="title" placeholder="标题">
+  <select name="status"><option>draft</option><option>published</option></select>
+  <textarea name="body_md" rows="6" style="width:100%;margin-top:8px"></textarea>
+  <button class="btn" style="margin-top:8px" type="submit">保存</button>
+</form>
+{% for i in issues %}<div class="card" style="margin-top:8px"><a href="/digest/{{ i.kind }}">{{ i.title }}</a> · {{ i.status }}</div>{% empty %}<p class="back-empty">还没有期刊。保存一条早报或周报草稿。</p>{% endfor %}
+{% endblock %}

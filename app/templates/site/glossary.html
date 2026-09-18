@@ -1,0 +1,17 @@
+{% extends "base_site.html" %}
+{% block title %}术语表{% endblock %}
+{% block content %}
+<section class="hero" style="padding-bottom:8px">
+  <span class="kicker">百科</span>
+  <h1 class="serif">术语表</h1>
+</section>
+{% for t in terms %}
+  <div class="card" style="margin:10px 0">
+    <h3><a href="/glossary/{{ t.term }}">{{ t.term }}</a></h3>
+    <p>{{ t.definition }}</p>
+    {% if t.body %}<p class="muted small">{{ t.body }}</p>{% endif %}
+  </div>
+{% empty %}
+  <p class="muted">术语将随概念卡导入。</p>
+{% endfor %}
+{% endblock %}

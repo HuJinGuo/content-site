@@ -1,0 +1,22 @@
+# 本机可选 Postgres。站点第 0 步用 sqlite 即可，不必先起这组。
+# 不要把这文件的服务发到 65 / 87 或现有生产机。
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: nornless
+      POSTGRES_PASSWORD: nornless
+      POSTGRES_DB: nornless
+    ports:
+      - "5432:5432"
+    volumes:
+      - nornless_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nornless"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  nornless_pg:

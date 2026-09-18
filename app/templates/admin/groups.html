@@ -1,0 +1,13 @@
+{% extends "base_back.html" %}
+{% block side_title %}Admin 运营{% endblock %}
+{% block sidenav %}{% include "admin/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">分组</h1>
+<p class="muted">V2。groups.enabled 关时 /join 404。</p>
+<form method="post" class="card" style="padding:16px">{% csrf_token %}
+  <input name="slug" placeholder="slug" required>
+  <input name="name" placeholder="名称">
+  <button class="btn" type="submit">新建</button>
+</form>
+{% for g in groups %}<p>{{ g.slug }} · {{ g.name }}</p>{% empty %}<p class="muted">还没有分组。</p>{% endfor %}
+{% endblock %}

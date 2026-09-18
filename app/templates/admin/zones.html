@@ -1,0 +1,16 @@
+{% extends "base_back.html" %}
+{% block side_title %}Admin 运营{% endblock %}
+{% block sidenav %}{% include "admin/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">专区审核</h1>
+{% for item in jobs %}
+<form method="post" class="row">{% csrf_token %}<input type="hidden" name="kind" value="job"><input type="hidden" name="id" value="{{ item.id }}">{{ item.title }} <button class="btn small" name="status" value="published">发布</button></form>
+{% endfor %}
+{% for item in launches %}<p>发布墙 {{ item.title }}</p>{% endfor %}
+{% for item in events %}<p>活动 {{ item.title }}</p>{% endfor %}
+{% for item in deals %}<p>优惠 {{ item.title }}</p>{% endfor %}
+{% for item in sponsored %}<p>赞助 {{ item.title }} · {{ item.status }}</p>{% endfor %}
+{% if not jobs and not launches and not events and not deals and not sponsored %}
+<p class="back-empty">专区总开关默认关，这里暂无待审条目。打开 ads.enabled 后招聘/发布墙会进来。</p>
+{% endif %}
+{% endblock %}

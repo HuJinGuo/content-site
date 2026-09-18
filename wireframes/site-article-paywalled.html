@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>阅读器 · 收费态 + 过时条 + 勘误条 /articles/[slug] · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="learn">
+<div class="progress-thread"><i style="width:30%"></i></div>
+
+<main class="container">
+  <div class="article-head">
+    <div class="crumb"><a href="site-learn.html">学习地图</a> / 深度拆解</div>
+    <div class="coord"><span class="lvl">L6 <small>工程化</small></span><b>深度</b><span>· 开发与 Agent</span><span>· 约 25 分钟</span><span class="chip paid">会员</span><span class="anno">1</span></div>
+    <h1 class="serif" style="margin-top:12px">给知识库上线前的 23 项检查：引用、拒答、权限、日志</h1>
+    <div class="article-meta"><span>发布 2026-06-02</span>·<span class="gold"><b>Last-verified 2026-06-02</b></span>·<span>复核日 2026-09-02（已过）</span>·<span>作者 编辑部</span></div>
+
+    <div class="banner errata"><b>勘误 2026-09-12：</b>第 2 节「默认开启审计日志」有误，某产品默认关闭，已改。<a href="site-static.html#errata">勘误记录</a> <span class="anno">2</span></div>
+    <div class="banner stale"><b>可能过时：</b>本文复核日 2026-09-02 已过，编辑部正在复核。价格与默认值请以官方为准。 <span class="anno">3</span></div>
+  </div>
+
+  <div class="article-wrap">
+    <article>
+      <div class="mod required" style="margin-top:0"><h4>前置 · 学完你能</h4><p class="small">前置：L3 最小 RAG · L4 评测。学完你能：交出一份可以直接过审的上线检查单。</p></div>
+
+      <div class="prose">
+        <p>上线前最容易被忽略的不是模型效果，而是「答错了谁负责」。这篇把 23 项检查分成四组：引用、拒答、权限、日志。</p>
+        <h2 id="s1">1 · 引用：每句话都要能追到出处</h2>
+        <p>第一组 6 项。最重要的一项是「引用必须是段落级」——文档级引用在审计时等于没有引用……</p>
+        <p>接下来的 3 项处理「多来源冲突」……</p>
+        <div class="fade-out"><p>第二组开始讨论拒答。拒答不是「我不知道」四个字，而是一整套：什么情况拒、拒了给什么替代、怎么记录。第 7 项……</p></div>
+      </div>
+
+      <div class="thread-break"></div>
+
+      <div class="card unlock">
+        <span class="kicker">这篇属于 会员</span>
+        <h3>剩下的 70% 给支持者</h3>
+        <p class="summary">全文 23 项 · 附上线检查单资源包（Markdown + 表格）。会员码在发卡站买，兑了立即生效；已兑不退。</p>
+        <div class="row" style="margin-top:14px">
+          <a class="btn" href="site-redeem.html">我有码，去兑</a>
+          <a class="btn secondary" href="site-pricing.html">去发卡站买会员码</a>
+          <span class="muted small">或 内容码（只解锁本篇）</span>
+        </div>
+        <p class="muted small" style="margin-top:12px">来源、AI 披露、勘误、反馈仍然完整显示在下方 —— 收费不隐藏可信度信息。<span class="anno">4</span></p>
+      </div>
+      <div class="locked-rest">— 截断之后的正文不在 HTML / JSON 里 · Cache-Control: private · JSON-LD isAccessibleForFree:false —</div>
+
+      <div class="mod required"><h4>来源</h4>
+        <div class="src"><span class="tier official">官方</span><a href="#">某产品 · 审计日志文档</a><span class="d">2026-05</span></div>
+        <div class="src"><span class="tier official">官方</span><a href="#">某云 · 访问控制最佳实践</a><span class="d">2026-04</span></div>
+        <div class="src"><span class="tier paper">论文</span><a href="#">RAG 评测综述 2025</a><span class="d">arXiv</span></div>
+      </div>
+      <div class="mod required"><h4>AI 使用披露</h4><p class="disclosure"><b>Grok 起草、对抗式核验、判断段由主编重写（AI 参与度 0.3）。</b>事实清单 31 条全部处理。</p></div>
+      <div class="mod required"><h4>这篇对你</h4><div class="row"><div class="feedback3"><button class="btn small secondary">有用</button><button class="btn small secondary">没看懂</button><button class="btn small secondary">过时了</button></div><div class="toolstrip right"><button class="btn small ghost">收藏</button><button class="btn small ghost">复制引用</button><button class="btn small ghost">报告错误</button></div></div></div>
+    </article>
+
+    <aside class="rail">
+      <div class="toc card">
+        <span class="kicker">目录</span>
+        <a href="#s1" class="active">1 · 引用</a><a class="locked" href="#">2 · 拒答</a><a class="locked" href="#">3 · 权限</a><a class="locked" href="#">4 · 日志</a><a class="locked" href="#">检查单下载</a>
+        <span class="anno">5</span>
+      </div>
+      <div class="slot" data-slot="R2 / S4">
+        <div class="when-off"><h4>建议先读</h4><p>L4 · 为什么它会答错，怎样评测（你还没读）</p><a class="cta" href="site-unit.html">去读 →</a></div>
+        <div class="when-on"><span class="ad-tag">赞助</span><h4>上下文赞助</h4><p>L6 · 工程化</p></div>
+      </div>
+      <div class="card"><span class="kicker">作废态长这样 <span class="anno">6</span></span>
+        <div class="banner archived small" style="margin:8px 0 0"><b>已作废</b> 2026-09：本文依赖的产品已下线。替代：<a href="#">L6 · 新版检查单</a></div>
+      </div>
+      <div class="article-ai-card" data-flag="ask.enabled">
+        <div class="article-ai-card-head"><div><span class="ai-mark">✦</span><div><b>文章伴读</b><span>只根据本文回答</span></div></div><span class="ai-quota">3 / 3 次</span></div>
+        <p class="article-ai-context">正在阅读：给知识库上线前的 23 项检查</p>
+        <p class="article-ai-label">解锁后可以问：</p>
+        <div class="article-ai-prompts"><button>总结已读内容</button><button>解释一个检查项</button><button>指出易错点</button></div>
+        <div class="article-ai-card-foot"><span>答案会带段落引用</span><a class="btn small" href="app-ask.html">去问答页 →</a></div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 阅读器（收费态 · 过时条 · 勘误条）</h3>
+  <ol>
+    <li>收费态出现的条件：<code>paywall.enabled</code> 开 且 <code>access ≠ free</code> 且用户无对应权益。开关关时这页与正常态完全一样。列表卡角标「会员」。<span class="ref">06 §1.3 · §2.5</span></li>
+    <li>勘误条：事实错误确认后 4 小时内挂在文首（可先挂条后修文）；点开到 /errata 条目。<span class="ref">06 §4.14</span></li>
+    <li>过时条：now &gt; review_by 自动挂（不需人）；作废是另一种红条 + 替代链接，URL 保留可读不 404。<span class="ref">06 §4.13</span></li>
+    <li>服务端在 <code>&lt;!-- more --&gt;</code>（缺省前 30%，按段落边界）截断；未授权部分不进 HTML / JSON；来源、披露、反馈完整。<span class="ref">00 权限规则 · 06 §2.5</span></li>
+    <li>目录完整但截断后条目灰显带锁。<span class="ref">05 §5.5</span></li>
+    <li>三种条同时存在时的顺序：勘误（红）→ 过时（黄）→ 更新（紫）；作废条替代过时条。<span class="ref">06 §2.5</span></li>
+    <li><code>group</code> 专属内容对无权用户直接 404，列表不出现，不是这页。<span class="ref">06 §1.3</span></li>
+  </ol>
+</section>
+</body>
+</html>

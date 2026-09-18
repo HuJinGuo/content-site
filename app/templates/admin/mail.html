@@ -1,0 +1,14 @@
+{% extends "base_back.html" %}
+{% block side_title %}Admin 运营{% endblock %}
+{% block sidenav %}{% include "admin/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">邮件</h1>
+<p>订阅者 {{ subscribers|length }} · 抑制名单 {{ suppressions|length }}</p>
+<form method="post" class="card" style="padding:16px">{% csrf_token %}
+  <p><input name="key" placeholder="模板 key" required> <input name="subject" placeholder="主题" required></p>
+  <textarea name="body_md" rows="4" placeholder="正文 Markdown" style="width:100%;margin-top:8px"></textarea>
+  <button class="btn" style="margin-top:8px" type="submit">保存模板</button>
+</form>
+{% for t in templates %}<p>{{ t.key }} · {{ t.subject }}</p>{% endfor %}
+{% for s in subscribers %}<p>{{ s.status }} · {{ s.email }}</p>{% empty %}<p class="muted">还没有订阅者。走 /subscribe。</p>{% endfor %}
+{% endblock %}

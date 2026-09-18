@@ -1,0 +1,13 @@
+{% extends "base_back.html" %}
+{% block side_title %}Studio 编辑部{% endblock %}
+{% block sidenav %}{% include "studio/_sidenav.html" %}{% endblock %}
+{% block content %}
+<h1 class="serif">情报源</h1>
+<form method="post" class="row">{% csrf_token %}
+  <input name="name" placeholder="名称">
+  <input name="url" placeholder="https://" required>
+  <select name="tier"><option>official</option><option>secondary</option></select>
+  <button class="btn" type="submit">加入白名单</button>
+</form>
+{% for s in sources %}<p>{{ s.name }} · {{ s.tier }} · {{ s.url }}</p>{% empty %}<p class="back-empty">白名单是空的。官方源 URL 加进来之后快讯才能引用。</p>{% endfor %}
+{% endblock %}

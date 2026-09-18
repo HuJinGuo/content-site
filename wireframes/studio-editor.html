@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio · 稿件编辑器 /studio/editor/[id] · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="studio" data-active="editor">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="editor-top">
+      <a class="btn small ghost" href="studio-home.html">←</a>
+      <input class="title" value="多模态 RAG：图片和表格怎么进知识库">
+      <span class="chip muted mono">v12 · 09-14 16:02</span>
+      <span class="chip warn">编辑中 · 你（软锁 10 分钟，心跳续）<span class="anno">1</span></span>
+      <button class="btn small secondary">保存</button>
+      <button class="btn small ghost">版本 / diff</button>
+    </div>
+
+    <div class="page" style="padding-top:12px">
+      <div class="row" style="margin-bottom:12px">
+        <span class="states"><span class="done">idea</span><i>→</i><span class="done">assigned</span><i>→</i><span class="done">researching</span><i>→</i><span class="done">drafting</span><i>→</i><span class="done">machine_qa</span><i>→</i><span class="done">factcheck</span><i>→</i><span class="cur">editing</span><i>→</i><span>legal</span><i>→</i><span>scheduled</span><i>→</i><span>published</span></span>
+        <span class="right row"><button class="btn small danger">退回 factcheck（写原因）</button><button class="btn small" disabled>提交排期（缺 2 个强制字段）</button></span>
+        <span class="anno">2</span>
+      </div>
+    </div>
+
+    <div class="editor" style="border-top:1px solid var(--line)">
+      <div class="pane">
+        <div class="toolbar"><button class="btn small ghost">H2</button><button class="btn small ghost">Callout</button><button class="btn small ghost">代码块（语言必填）</button><button class="btn small ghost">动手步骤</button><button class="btn small ghost">术语链接建议 6</button><button class="btn small ghost">内链建议 4</button><button class="btn small ghost">&lt;!-- more --&gt;</button></div>
+        <textarea>先说结论：多模态 RAG 不是「把图片也向量化」四个字……
+
+## 1 · 什么时候不需要
+如果你的 PDF 只是排版好看的纯文字……
+
+## 2 · 表格：先转结构再切
+:::callout 常见坑
+把表格当图片 OCR 会丢列对齐……
+:::
+
+```python
+# 最小示例（验证员：未运行）
+```
+
+<!-- more -->
+
+## 3 · 图片：两条路
+…</textarea>
+      </div>
+      <div class="pane">
+        <div class="row" style="margin-bottom:8px"><span class="kicker">预览（与线上同模板）</span><div class="segmented right"><button class="active">桌面</button><button>移动</button><button>收费态</button></div></div>
+        <div class="prose">
+          <p>先说结论：多模态 RAG 不是「把图片也向量化」四个字……</p>
+          <h2>1 · 什么时候不需要</h2>
+          <p>如果你的 PDF 只是排版好看的纯文字……</p>
+          <h2>2 · 表格：先转结构再切</h2>
+          <blockquote>常见坑：把表格当图片 OCR 会丢列对齐……</blockquote>
+          <div class="codehead"><span>python</span><span class="verified none">未运行</span></div>
+<pre><code># 最小示例</code></pre>
+          <div class="more-mark">MORE · 收费态在此截断（access=free 时无效）</div>
+          <h2>3 · 图片：两条路</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="publish-panel">
+      <div class="row" style="margin-bottom:10px"><span class="kicker">front-matter v3（表单化 · 实时校验 · 缺一发布按钮不亮）<span class="anno">3</span></span><span class="right small muted">schema：front-matter.schema.json（Pydantic 导出）</span></div>
+      <div class="grid cols-4">
+        <div class="field"><label>slug</label><input value="multimodal-rag-tables-images"><div class="hint">✓ 唯一 · 改名自动 301</div></div>
+        <div class="field"><label>kind · level · domain</label><input value="concept · L3 · dev-agent"></div>
+        <div class="field"><label>summary（50–160 字）</label><input value="图片和表格进知识库的两条路，什么时候不需要。"><div class="hint">✓ 62 字</div></div>
+        <div class="field"><label>access</label><select><option>free（默认）</option><option>supporter</option><option>code</option><option>group</option></select></div>
+        <div class="field"><label>prereqs / next</label><input value="min-rag, embedding → workflow-cron"><div class="hint">✓ 无环 · ≤ 6</div></div>
+        <div class="field"><label>sources[]（概念卡 ≥ 1）</label><input value="2 条 · 1 官方 1 论文"><div class="hint">✓</div></div>
+        <div class="field"><label>ai.*</label><input value="generated · grok-4.6 · 0.7 · concept@2.4"><div class="hint" style="color:var(--danger)">✕ ai.reviewed_by 为空</div></div>
+        <div class="field"><label>factcheck_status</label><input value="passed（12 / 12）"><div class="hint">✓</div></div>
+        <div class="field"><label>last_verified_at · review_by · expires_at</label><input value="09-14 · 12-14 · 2027-03-14"><div class="hint">✓ 顺序合法</div></div>
+        <div class="field"><label>verified（代码）</label><input value="none"><div class="hint" style="color:var(--warn)">显示「未运行」</div></div>
+        <div class="field"><label>ad_context</label><input value="rag, multimodal, vector-db"></div>
+        <div class="field"><label>图片 alt</label><input value="2 张 · 1 张缺 alt"><div class="hint" style="color:var(--danger)">✕ 缺 alt</div></div>
+      </div>
+      <div class="row" style="margin-top:10px"><a class="gold small" href="studio-qa.html">机审十门报告 · 10 / 10 通过 →</a><a class="gold small" href="studio-qa.html">事实清单 12 / 12 →</a><span class="right muted small">版本 ≤ 200 / 篇；回滚需 Editor+</span></div>
+    </div>
+
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 稿件编辑器</h3>
+      <ol>
+        <li>软锁：同一稿件同时只一人编辑，10 分钟心跳续。<span class="ref">06 §4.5</span></li>
+        <li>状态转移按钮只在允许的状态与角色出现；回退必填原因；状态只经 transition() 改。<span class="ref">06 §4.5 · §6</span></li>
+        <li>front-matter v3 全部必填校验（附录 A）；ai.reviewed_by 非空、factcheck passed、图片 alt 齐 才能进 scheduled。<span class="ref">04 §8.5 · 06 附录 A</span></li>
+        <li>预览三态：桌面 / 移动 / 收费态（按 &lt;!-- more --&gt; 截断）。<span class="ref">06 §2.5</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin · 用户 · 权益 /admin/users · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="admin" data-active="users">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">用户 · 权益</span><span class="muted small">邮箱只显示脱敏；查看明文写审计</span></div>
+    <div class="page">
+      <div class="tiles"><div class="tile"><em>4,812</em><span>注册用户</span></div><div class="tile ok"><em>96</em><span>支持者有效</span></div><div class="tile"><em>31</em><span>广告主</span></div><div class="tile warn"><em>3</em><span>删除冷静期中</span></div></div>
+      <div class="split wide-left">
+        <div class="card">
+          <div class="filters"><input class="input" placeholder="搜邮箱哈希 / 显示名 / 用户 id"><select><option>角色：全部</option><option>Free</option><option>Supporter</option><option>Advertiser</option><option>后台角色</option></select><select><option>状态：全部</option><option>正常</option><option>封禁</option><option>冷静期</option></select></div>
+          <table class="data">
+            <thead><tr><th>用户</th><th>角色</th><th>权益</th><th>最近活动</th><th>状态</th><th></th></tr></thead>
+            <tbody>
+              <tr class="click"><td><b>读者 4f2a</b><div class="muted small mono">y***@example.com · #10231</div></td><td><span class="chip paid">Supporter</span></td><td class="small">会员至 2027-09-14 · 解锁 1 篇</td><td class="mono small">09-14</td><td><span class="chip ok">正常</span></td><td class="actions"><button class="btn small ghost">详情</button></td></tr>
+              <tr class="click"><td><b>某某科技</b><div class="muted small mono">a***@vendor.example · #9981</div></td><td><span class="chip group">Advertiser</span></td><td class="small">活跃活动 3</td><td class="mono small">09-14</td><td><span class="chip ok">正常</span></td><td class="actions"><button class="btn small ghost">详情</button></td></tr>
+              <tr class="click"><td><b>编辑 A</b><div class="muted small mono">e***@nornless.com · #12</div></td><td><span class="chip exclusive">Editor · FactChecker</span></td><td class="small">TOTP ✓</td><td class="mono small">09-14</td><td><span class="chip ok">正常</span></td><td class="actions"><button class="btn small ghost">详情</button></td></tr>
+              <tr class="click" style="opacity:.6"><td><b>读者 91bd</b></td><td><span class="chip free">Free</span></td><td class="small">—</td><td class="mono small">09-07</td><td><span class="chip warn">冷静期 → 09-21 删除</span></td><td class="actions"><button class="btn small ghost">详情</button></td></tr>
+              <tr class="click" style="opacity:.6"><td><b>读者 2c0e</b></td><td><span class="chip free">Free</span></td><td class="small">—</td><td class="mono small">08-30</td><td><span class="chip bad">封禁 · 反馈滥用</span></td><td class="actions"><button class="btn small ghost">详情</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="card"><span class="kicker">用户详情 · 读者 4f2a</span>
+            <dl class="kv small" style="margin-top:8px;grid-template-columns:90px 1fr"><dt>邮箱</dt><dd>y***@example.com <button class="btn small ghost">查看明文（写审计）</button></dd><dt>注册</dt><dd>2026-06-02 · 魔法链接</dd><dt>会话</dt><dd>3 个 <button class="btn small ghost">全部登出</button></dd><dt>权益</dt><dd>Supporter 至 2027-09-14（码 ••••-2XZR）</dd><dt>解锁</dt><dd>1 篇（内容码）</dd><dt>问答</dt><dd>今日 2 / 20</dd><dt>反馈</dt><dd>有用 14 · 报错 1（采纳）</dd></dl>
+            <div class="row" style="margin-top:10px"><button class="btn small secondary">手动授予会员（写原因）<span class="anno">1</span></button><button class="btn small ghost">换绑邮箱</button><button class="btn small danger">封禁（写原因）</button></div>
+          </div>
+          <div class="card" style="margin-top:14px"><span class="kicker">后台角色管理（Super）</span><div class="src"><span class="small">编辑 A</span><span class="d">Editor · FactChecker</span></div><div class="src"><span class="small">主编</span><span class="d">Publisher</span></div><div class="src"><span class="small">运营 B</span><span class="d">AdOps · Finance</span></div><div class="src"><span class="small">站长</span><span class="d">Admin · Super</span></div><button class="btn small ghost" style="margin-top:8px">授予 / 收回角色（双人确认）</button></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">导出 / 删除请求</span><div class="src"><span class="small">读者 91bd · 删除</span><span class="d">冷静期 → 09-21</span></div><div class="src"><span class="small">读者 77aa · 导出</span><span class="d">已生成 · 09-13</span></div></div>
+        </div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 用户 · 权益</h3>
+      <ol>
+        <li>手动授予 / 收回权益必须写原因并审计；权益缓存即时失效。<span class="ref">06 §5.1</span></li>
+        <li>邮箱脱敏显示；查看明文写审计；后台角色变更需 Super 且双人确认。<span class="ref">06 §5.1 · G5</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

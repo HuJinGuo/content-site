@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>百科 · 术语表 /glossary · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="glossary">
+
+<main class="container">
+  <section class="hero" style="padding-bottom:8px">
+    <span class="kicker">百科 · 概念卡 · 术语 · 实体 · 对照 · 项目课</span>
+    <h1 class="serif" style="font-size:32px">术语表</h1>
+    <p>每条一句定义（≤ 60 字）+ 展开（≤ 300 字）+ 相关概念卡 + 首次出现的快讯。正文里术语首次出现自动链到这里。</p>
+    <div class="pill-nav" style="margin-top:14px"><a href="site-home.html#concepts">概念卡</a><a class="active" href="site-glossary.html">术语</a><a href="site-entity.html">实体：模型 / 公司 / 论文</a><a href="site-compare.html">对照</a><a href="site-tools.html">工具目录</a><a href="site-unit.html">项目课</a></div>
+  </section>
+
+  <div class="grid side">
+    <section>
+      <div class="filters">
+        <input class="input" placeholder="搜术语（中 / 英）">
+        <div class="alpha"><a class="active" href="#">全部</a><a href="#">A</a><a href="#">B</a><a href="#">C</a><a href="#">D</a><a href="#">E</a><a href="#">F</a><a href="#">G</a><a href="#">H</a><a href="#">…</a><a href="#">Z</a></div>
+      </div>
+      <div class="card">
+        <div class="term-row"><div><b>幻觉</b> <span class="mono muted small">Hallucination</span></div><div class="small">模型生成了看起来合理但没有依据的内容。<div class="muted" style="margin-top:2px">相关：<a class="gold" href="site-unit.html">L1 幻觉概念卡</a> · 首现快讯 2026-03</div></div><a class="btn small ghost" href="#">展开</a></div>
+        <div class="term-row"><div><b>上下文窗口</b> <span class="mono muted small">Context window</span></div><div class="small">模型一次能处理的最大输入 + 输出长度，以 token 计。<div class="muted" style="margin-top:2px">相关：<a class="gold" href="site-unit.html">L1 上下文窗口</a> · <a class="gold" href="site-news-item.html">快讯 09-14</a></div></div><a class="btn small ghost" href="#">展开</a></div>
+        <div class="term-row"><div><b>向量化 / 嵌入</b> <span class="mono muted small">Embedding</span></div><div class="small">把文字变成一串数字，使「意思相近」可以用距离衡量。<div class="muted" style="margin-top:2px">相关：<a class="gold" href="site-unit.html">L3 Embedding 与向量检索</a></div></div><a class="btn small ghost" href="#">展开</a></div>
+        <div class="term-row"><div><b>HNSW</b> <span class="mono muted small">Hierarchical Navigable Small World</span></div><div class="small">向量检索常用的近似最近邻索引；参数决定召回率与速度折中。</div><a class="btn small ghost" href="#">展开</a></div>
+        <div class="term-row"><div><b>RAG</b> <span class="mono muted small">Retrieval-Augmented Generation</span></div><div class="small">先检索再生成：把找到的资料塞进提示词再让模型回答。<div class="muted" style="margin-top:2px">相关：路径「从 0 做一个文档问答」</div></div><a class="btn small ghost" href="#">展开</a></div>
+        <div class="term-row"><div><b>Token</b> <span class="mono muted small">Token</span></div><div class="small">模型计数与计费的最小单位，中文约 1–2 字一个。</div><a class="btn small ghost" href="#">展开</a></div>
+      </div>
+      <div class="row" style="justify-content:center;margin-top:16px"><button class="btn secondary">加载更多</button></div>
+    </section>
+
+    <aside class="rail">
+      <div>
+        <span class="kicker">正文里的悬停卡 <span class="anno">1</span></span>
+        <p class="small muted" style="margin:6px 0 10px">正文中 <span class="term">向量化</span> 悬停 / 点按后：</p>
+        <div class="hovercard"><b>向量化 / 嵌入</b><span class="en">Embedding</span><p style="margin:6px 0">把文字变成一串数字，使「意思相近」可以用距离衡量。</p><a class="gold small" href="site-unit.html">读概念卡 →</a> <span class="muted small">· 术语页</span></div>
+      </div>
+      <div class="card"><span class="kicker">术语页 /glossary/[term]</span><p class="small" style="margin-top:6px">= 定义 + 展开 + 相关概念卡 + 首次出现快讯 + 「哪些文章用到」列表；有独立 URL，可被搜索引擎索引。</p></div>
+    </aside>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 术语表</h3>
+  <ol>
+    <li>悬停卡是 HTMX 片段 <code>/glossary/[term]?partial=1</code>，缓存 1 小时；移动端改为点按展开；不遮正文。<span class="ref">06 §2.7 · §7.6</span></li>
+    <li>导入时按术语表匹配正文，首次出现自动加链，每篇 ≤ 30 个，front-matter 可排除。<span class="ref">06 §2.5</span></li>
+    <li>字段：term 唯一、中英、定义 ≤ 60 字、展开 ≤ 300 字。<span class="ref">06 附录 A</span></li>
+  </ol>
+</section>
+</body>
+</html>

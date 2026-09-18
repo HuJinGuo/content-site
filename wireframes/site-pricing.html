@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>支持者 /pricing · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="">
+
+<main class="container">
+  <div class="banner info small" style="margin-top:16px">整页受 <code>supporter.enabled</code> 控制：关 → 404、页脚无入口；这是开启态。<span class="anno">1</span></div>
+
+  <section class="hero" style="padding-bottom:12px;text-align:center">
+    <span class="kicker">支持者</span>
+    <h1 class="serif" style="font-size:34px">内容免费。支持者让它一直免费。</h1>
+    <p style="margin:0 auto">一段话：为什么要有支持者 —— 广告是主收入，但读者的支持让我们在广告面前有底气说不。</p>
+  </section>
+
+  <div class="grid cols-2" style="max-width:860px;margin:0 auto">
+    <div class="card" style="border-top:3px solid var(--primary-bright)">
+      <span class="kicker">权益（随开关自动增减） <span class="anno">2</span></span>
+      <div class="checklist" style="margin-top:8px">
+        <label><span>✓ 站内问答 20 / 日（免费 3）</span></label>
+        <label><span>✓ 全部资源包（检查单、模板、对照 CSV）</span></label>
+        <label><span>✓ 会员 RSS（含资源更新）</span></label>
+        <label><span>✓ 过时清单详情 + 收藏更新邮件</span></label>
+        <label><span>✓ 致谢页署名（可选）</span></label>
+        <label class="gated" data-flag="ads.enabled"><span>✓ 不看推荐位里的赞助卡（S3–S6）</span></label>
+        <label class="gated" data-flag="paywall.enabled"><span>✓ 收费内容全文</span></label>
+      </div>
+    </div>
+    <div class="card">
+      <span class="kicker">价格 = 发卡站商品价 <span class="anno">3</span></span>
+      <div class="row" style="margin-top:10px;align-items:baseline"><span style="font-size:32px;font-weight:700;color:var(--primary)">¥9</span><span class="muted">/ 月</span><span class="muted" style="margin-left:14px;font-size:20px;font-weight:700">¥69</span><span class="muted">/ 年</span></div>
+      <p class="muted small" style="margin-top:4px">示意价；以发卡站商品页为准。学生免费：邮件找我们要码。</p>
+      <div class="row" style="margin-top:14px"><a class="btn" href="#" target="_blank">去发卡站买会员码 ↗</a><a class="btn secondary" href="site-redeem.html">我有码，去兑</a></div>
+      <p class="muted small" style="margin-top:12px">兑码后立即生效；<b>已兑不退</b>；收据可在账户下载（暂无发票）。会员码 12 个月内有效兑换。</p>
+    </div>
+  </div>
+
+  <div class="card" style="max-width:860px;margin:16px auto 0">
+    <span class="kicker">内嵌店铺（可选）</span>
+    <div class="empty" style="margin-top:8px;height:120px;display:grid;place-items:center">发卡站店铺页 iframe（CSP frame-src 白名单唯一例外）· 或新窗口打开</div>
+  </div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 支持者</h3>
+  <ol>
+    <li><code>supporter.enabled</code> 关时 /pricing 404；前置：问答上线 + ≥ 3 个资源包。<span class="ref">05 §2.2</span></li>
+    <li>权益列表读 entitlements 定义并随 <code>ads.enabled</code> / <code>paywall.enabled</code> 自动增减条目。<span class="ref">06 §2.14</span></li>
+    <li>展示价在站点设置里配，与发卡站商品一致由人保证；不接支付 SDK。<span class="ref">06 §2.14 · §5.13</span></li>
+  </ol>
+</section>
+</body>
+</html>

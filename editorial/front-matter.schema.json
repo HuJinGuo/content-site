@@ -1,0 +1,1 @@
+{"title": {"type": "string", "minLength": 4, "maxLength": 60}, "slug": {"type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"}, "kind": {"enum": ["concept", "unit", "compare", "pitfall", "project", "case", "news", "issue", "entity", "glossary", "asset", "lab", "quiz"]}, "access": {"enum": ["free", "supporter", "code", "group"]}}

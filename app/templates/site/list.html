@@ -1,0 +1,10 @@
+{% extends "base_site.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<section class="hero"><h1 class="serif">{{ title }}</h1><p>{{ lead }}</p></section>
+<div class="grid cols-2">
+{% for n in nodes %}
+  <a class="card click" href="/articles/{{ n.slug }}"><h3>{{ n.title }}</h3><p class="summary">{{ n.summary }}</p></a>
+{% empty %}<div class="card"><p class="muted">还没有这一类稿。先看概念卡。</p></div>{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "base_site.html" %}
+{% block title %}资源包{% endblock %}
+{% block content %}
+<div class="subnav"><a href="/app/">学习台</a><a href="/app/library">收藏</a><a class="active" href="/app/downloads">资源</a></div>
+<h1 class="serif">资源包</h1>
+{% for a in assets %}<p>{{ a.title }} · {{ a.access }}</p>{% empty %}<p class="muted">还没有资源包。</p>{% endfor %}
+{% endblock %}

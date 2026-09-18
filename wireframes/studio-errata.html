@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio · 勘误 · 反馈 /studio/errata · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="studio" data-active="errata">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">勘误 · 反馈</span><span class="muted small">事实错误确认后 4 小时内挂勘误条</span></div>
+    <div class="page">
+      <div class="tabs"><button class="active">报错队列 3</button><button>三键反馈聚合</button><button>勘误记录（公开 /errata）</button></div>
+
+      <div class="split wide-left">
+        <div>
+          <div class="review-row sel">
+            <div>
+              <div class="row"><b>《给知识库上线前的 23 项检查》</b><span class="chip bad">事实错误？</span><span class="sla soon">SLA 4h · 剩 1h 20m</span></div>
+              <div class="small" style="margin:8px 0"><b>读者 7c1e（登录）</b> 09-14 14:02：「第 2 节说某产品『默认开启审计日志』，我今天新建的实例默认是关的，见文档链接 …」（≤ 500 字，段落锚 §2）</div>
+              <div class="row small"><span class="muted">锚点：</span><a class="gold" href="#">§2 · 第 3 段</a><span class="muted">· 同段另 1 人报错</span></div>
+            </div>
+            <div class="side">
+              <div class="field" style="margin:0"><label>判定</label><select><option>事实错误（挂勘误条）</option><option>表述不清（回写）</option><option>读者误解（回复）</option><option>无效 / 滥用</option></select></div>
+              <div class="field" style="margin:0"><label>勘误文案（≤ 200 字 · 公开）</label><textarea style="min-height:60px">第 2 节「默认开启审计日志」有误，某产品默认关闭，已改。</textarea></div>
+              <label class="row small"><input type="checkbox" checked> 报告者署名（读者 7c1e）</label>
+              <div class="row"><button class="btn small danger">确认 → 立即挂条</button><button class="btn small secondary">先挂条后修文</button><button class="btn small ghost">驳回</button></div>
+            </div>
+          </div>
+          <div class="review-row">
+            <div><div class="row"><b>《最小 RAG》</b><span class="chip muted">表述不清</span><span class="sla">SLA 48h</span></div><div class="small" style="margin:8px 0"><b>匿名</b> 09-13：「第 3 步说 top_k=5，前面的表格写 3，哪个对？」</div></div>
+            <div class="side"><div class="row"><button class="btn small secondary">回写 → 进 editing</button><button class="btn small ghost">驳回</button></div></div>
+          </div>
+          <div class="review-row" style="opacity:.7">
+            <div><div class="row"><b>《幻觉》</b><span class="chip muted">无效</span></div><div class="small" style="margin:8px 0"><b>匿名</b>：「加我微信 …」</div></div>
+            <div class="side"><span class="chip bad">红线命中 · 自动隐藏</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="card"><span class="kicker">三键反馈聚合（7 日）</span><table class="data" style="margin-top:6px"><thead><tr><th>篇</th><th>有用</th><th>没看懂</th><th>过时</th></tr></thead><tbody><tr><td class="small">最小 RAG（§2 聚集）</td><td class="num">312</td><td class="num" style="color:var(--warn)">41</td><td class="num">3</td></tr><tr><td class="small">上下文窗口</td><td class="num">208</td><td class="num">9</td><td class="num" style="color:var(--danger)">18 → 保鲜</td></tr><tr><td class="small">幻觉</td><td class="num">190</td><td class="num">6</td><td class="num">1</td></tr></tbody></table><p class="muted small" style="margin-top:6px">「没看懂」聚集 → 选题信号；「过时了」≥ 3 / 7 日 → 保鲜队列。<span class="anno">1</span></p></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">勘误记录（公开）</span><div class="src"><span class="mono muted small">09-12</span><span class="small">23 项检查 · §2</span></div><div class="src"><span class="mono muted small">09-03</span><span class="small">L2 对照表 · 单位</span></div><div class="src"><span class="mono muted small">08-20</span><span class="small">幻觉 · 引文年份</span></div><a class="gold small" href="site-static.html#errata">/errata →</a></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">达标线</span><p class="small" style="margin-top:6px">事实错误报告 ≤ 2 / 月 / 100 篇；勘误响应 ≤ 4h（p90）。本月：1 · 2h50m。</p></div>
+        </div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 勘误 · 反馈</h3>
+      <ol>
+        <li>报错 ≤ 500 字带段落锚，过红线自动隐藏；判定四类；事实错误 4h 内挂条（可先挂条后修文），公开记录可署名。<span class="ref">06 §2.6 · §4.14</span></li>
+        <li>反馈保留 24 个月后匿名化。<span class="ref">06 §7.4</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

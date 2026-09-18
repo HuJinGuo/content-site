@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>媒体页 /advertise · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="site" data-active="">
+
+<main class="container">
+  <div class="banner info small" style="margin-top:16px">整页受 <code>ads.enabled</code> 控制；关 → 404、页脚无入口。这是开启态。</div>
+
+  <section class="hero" style="padding-bottom:12px">
+    <span class="kicker">在 ai.nornless.com 投放</span>
+    <h1 class="serif" style="font-size:34px">读者是来学的，不是来被打断的</h1>
+    <p>每页 ≤ 2 位、服务端原生卡、无第三方脚本、固定「广告 / 赞助」标识、按层级与领域的上下文定向（不做人群定向）、单一广告主 ≤ 30%。支持者不看赞助卡。</p>
+  </section>
+
+  <div class="card"><span class="kicker">受众（每月 1 日自动更新 · 数据口径含拦截率估算）<span class="anno">1</span></span>
+    <div class="grid cols-4" style="margin-top:12px">
+      <div class="media-stat"><em>128k</em><span>月独立访客（Umami，无 cookie）</span></div>
+      <div class="media-stat"><em>9,400</em><span>邮件订户（双确认）</span></div>
+      <div class="media-stat"><em>61 期</em><span>早报连续工作日</span></div>
+      <div class="media-stat"><em>38%</em><span>读者层分布：L3–L5</span></div>
+    </div>
+    <div class="row small muted" style="margin-top:10px"><span>层分布：L0–L2 41% · L3–L5 38% · L6–L7 21%</span><span>·</span><span>领域：开发与 Agent 46% · 办公 27% · 其他</span><span>·</span><span>拦截率估算 ≈ 22%（渲染计数 vs 页面数）</span></div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <span class="kicker">产品与价目（示意 · 以发卡站商品页为准）</span>
+    <div style="margin-top:8px">
+      <div class="price-row"><span class="sku">S1</span><span>早报赞助段（站内 + 邮件）</span><span class="muted">按期</span><span class="right"><span class="chip free">直销</span></span></div>
+      <div class="price-row"><span class="sku">S2</span><span>周报赞助段 + 本周岗位 3 条</span><span class="muted">按期</span><span class="right"><span class="chip free">直销</span></span></div>
+      <div class="price-row"><span class="sku">S3</span><span>首页「本周赞助」原生卡</span><span class="muted">按周</span><span class="right"><span class="chip free">直销</span></span></div>
+      <div class="price-row"><span class="sku">S4</span><span>文章页侧栏原生卡 · 按层 / 领域上下文</span><span class="muted">按周 / CPM</span><span class="right"><span class="chip free">直销</span></span></div>
+      <div class="price-row"><span class="sku">S5</span><span>文章末「相关工具」卡（可联盟）</span><span class="muted">按周 / CPS</span><span class="right"><span class="chip free">直销 / 自助</span></span></div>
+      <div class="price-row"><span class="sku">S7</span><span>工具目录 认证 30 天 / 置顶 7 天</span><span class="muted">按月自助</span><span class="right"><span class="chip paid">广告码</span></span></div>
+      <div class="price-row"><span class="sku">S8</span><span>招聘板 发布 30 天 / 置顶 7 天</span><span class="muted">按条自助</span><span class="right"><span class="chip paid">广告码</span></span></div>
+      <div class="price-row"><span class="sku">S9</span><span>发布墙 featured</span><span class="muted">按周自助</span><span class="right"><span class="chip paid">广告码</span></span></div>
+      <div class="price-row"><span class="sku">S10</span><span>活动置顶</span><span class="muted">按周自助</span><span class="right"><span class="chip paid">广告码</span></span></div>
+      <div class="price-row"><span class="sku">S11</span><span>专题赞助（横幅 + 专题内 S4）</span><span class="muted">按月</span><span class="right"><span class="chip free">直销</span></span></div>
+      <div class="price-row"><span class="sku">—</span><span>赞助内容 1 篇（标「推广」）</span><span class="muted">按篇</span><span class="right"><span class="chip free">直销</span></span></div>
+    </div>
+  </div>
+
+  <div class="grid cols-2" style="margin-top:16px">
+    <div class="card">
+      <span class="kicker">自助：买广告码 → 门户兑码 → 传素材 → 审核 ≤ 24h → 上线</span>
+      <div class="row" style="margin-top:12px"><a class="btn" href="#" target="_blank">去发卡站买广告码 ↗</a><a class="btn secondary" href="ads-dashboard.html">进入广告主门户</a></div>
+      <p class="muted small" style="margin-top:10px">素材限制：标题 ≤ 24 字、文案 ≤ 60 字、按钮 ≤ 6 字、一张图（16:9 ≤ 200KB）或 logo、https 落地页须与主体官网同域；不接脚本 / iframe / 像素；禁绝对化用语；禁投类目见广告政策。<b>暂不开发票，提供收据。</b><span class="anno">2</span></p>
+    </div>
+    <div class="card">
+      <span class="kicker">直销询盘（每 IP 3 次 / 日 · 过红线）</span>
+      <div class="fm" style="margin-top:10px">
+        <div class="field"><label>公司</label><input></div>
+        <div class="field"><label>邮箱</label><input></div>
+        <div class="field"><label>预算档</label><select><option>&lt; ¥5k / 月</option><option>¥5k–20k</option><option>&gt; ¥20k</option></select></div>
+        <div class="field"><label>想投的位置</label><select><option>S1 早报</option><option>S4 上下文</option><option>S11 专题</option><option>赞助内容</option></select></div>
+        <div class="field full"><label>说明（≤ 1000 字）</label><textarea></textarea></div>
+      </div>
+      <button class="btn block secondary">发送询盘</button>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px"><span class="kicker">规则摘要</span><p class="small" style="margin-top:6px">评测涉及厂商在该评测页不投 · 不做人群定向 · 素材可被拒（写原因）· 政策变更公开记录 · <a class="gold" href="site-static.html#ads-policy">广告政策全文 →</a></p></div>
+</main>
+
+<section class="wf-notes container">
+  <h3>线框标注 · 媒体页</h3>
+  <ol>
+    <li>受众数据由 stats 任务每月 1 日聚合 Umami + 订阅数写入，页面只读；口径写清（含拦截率估算）。<span class="ref">06 §2.16 · §8.5 stats</span></li>
+    <li>无国内主体：媒体页写明「暂不开发票」；直销付款走对公 / Stripe，由 AdOps / Finance 手改状态。<span class="ref">04 §3.8 · 06 §3.7</span></li>
+    <li>产品表来自 Admin 的 SKU 表（§5.5），价格示意，以发卡站商品页为准。</li>
+  </ol>
+</section>
+</body>
+</html>

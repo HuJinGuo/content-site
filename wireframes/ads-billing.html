@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>广告主门户 · 兑码记录与收据 /ads/billing · 线框</title>
+<link rel="stylesheet" href="nornless.css">
+<link rel="stylesheet" href="wire.css">
+<script src="wire.js"></script>
+<script src="theme.js"></script>
+</head>
+<body data-shell="ads" data-active="billing">
+<div class="shell">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="content">
+    <div class="content-top"><span class="content-kicker">兑码记录 · 收据</span><a class="btn small" href="#" target="_blank">去发卡站买广告码 ↗</a></div>
+    <div class="page">
+      <div class="split wide-left">
+        <div>
+          <div class="card">
+            <span class="kicker">兑广告码</span>
+            <div class="row" style="margin-top:8px"><input class="input codebox" style="flex:1;text-align:left;font-size:16px" placeholder="NRL-XXXX-XXXX-XXXX"><button class="btn">兑换</button></div>
+            <p class="muted small" style="margin-top:6px">兑后生成对应产品的待填活动；错误文案同 /redeem 五态（会员码请到 /redeem）。</p>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <span class="kicker">记录</span>
+            <table class="data" style="margin-top:8px">
+              <thead><tr><th>时间</th><th>码（后 4 位）</th><th>产品</th><th>结果</th><th>收据</th></tr></thead>
+              <tbody>
+                <tr><td class="mono small">09-12</td><td class="mono">••••-3PQ7</td><td>S8 招聘 30 天 + 置顶 7 天</td><td><span class="chip ok">已用 · 活动已发布</span></td><td><a class="gold small" href="#">R-…-032</a></td></tr>
+                <tr><td class="mono small">09-07</td><td class="mono">••••-8HJK</td><td>S4 7 天</td><td><span class="chip ok">已用 · 投放中</span></td><td><a class="gold small" href="#">R-…-031</a></td></tr>
+                <tr><td class="mono small">09-05</td><td class="mono">••••-M2WD</td><td>S7 认证 30 天</td><td><span class="chip ok">已用</span></td><td><a class="gold small" href="#">R-…-029</a></td></tr>
+                <tr><td class="mono small">09-05</td><td class="mono">••••-M2WE</td><td>S9 featured</td><td><span class="chip warn">待填素材（需修改中）</span></td><td>—</td></tr>
+                <tr><td class="mono small">08-01</td><td class="mono">••••-K1AA</td><td>S3 首页卡 4 周</td><td><span class="chip muted">已用 · 已结束</span></td><td><a class="gold small" href="#">R-…-018</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card" style="margin-top:14px">
+            <span class="kicker">直销订单（AdOps / Finance 手改状态）</span>
+            <table class="data" style="margin-top:8px"><thead><tr><th>订单</th><th>产品</th><th>金额</th><th>付款</th><th>收据</th></tr></thead><tbody><tr><td class="mono small">D-2026-09-002</td><td>S1 早报赞助 × 5 期</td><td class="num">¥ —</td><td><span class="chip warn">待对公到账</span></td><td>—</td></tr></tbody></table>
+          </div>
+        </div>
+        <div>
+          <div class="card"><span class="kicker">说明</span><p class="small" style="margin-top:6px;line-height:1.7">· 广告码在发卡站购买，本站只兑不卖。<br>· 收据 PDF 自动生成，写明「暂不开发票」。<br>· 已兑不退；被拒时按广告政策：码退回可再用，或作废。<br>· 海外直销可 Stripe（无 SDK 嵌入，链接跳转）。<span class="anno">1</span></p></div>
+          <div class="card" style="margin-top:14px"><span class="kicker">收据样式</span><div class="receipt" style="margin-top:8px"><b>ai.nornless.com · 收据</b><div class="small muted">编号 R-2026-0912-032 · 2026-09-12</div><div class="small" style="margin-top:6px">项目：S8 招聘板发布 30 天 + 置顶 7 天<br>凭证：广告码 ••••-3PQ7（发卡站订单）<br>付款方：某某科技</div><div class="big">¥ —</div><div class="muted small">暂不开发票（无国内主体，见媒体页）</div></div></div>
+        </div>
+      </div>
+    </div>
+    <section class="wf-notes" style="padding:0 28px">
+      <h3>线框标注 · 兑码与收据</h3>
+      <ol>
+        <li>收款全部码制；直销付款状态手改；收据自动、发票暂无。<span class="ref">06 §3.7 · 04 §3.8</span></li>
+      </ol>
+    </section>
+  </main>
+</div>
+</body>
+</html>

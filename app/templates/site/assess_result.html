@@ -1,0 +1,28 @@
+{% extends "base_site.html" %}
+{% block title %}测评结果{% endblock %}
+{% block content %}
+<section class="hero">
+  <span class="kicker">建议，不是课表</span>
+  <h1 class="serif">建议从这篇开始</h1>
+  <p>不是课表。不想跟一组，就只读下面这一篇。</p>
+  {% if start %}
+    <p>建议先读：<a class="gold" href="/articles/{{ start.slug }}">{{ start.title }}</a></p>
+    <a class="btn" href="/articles/{{ start.slug }}">打开这一篇</a>
+  {% endif %}
+  {% if short and short.slug != "doc-qa" %}
+    <p style="margin-top:12px">三条一组：<a class="gold" href="/learn/{{ short.slug }}">{{ short.title }}</a></p>
+  {% endif %}
+  {% if path %}
+    <p>若这周就要交出一个文档问答，再走完整路径：<a class="gold" href="/learn/{{ path.slug }}">{{ path.title }}</a>（建议顺序，任意一课可直接读）。</p>
+  {% else %}
+    <p>完整项目路径：<a class="gold" href="/learn/doc-qa">从 0 做一个文档问答</a></p>
+  {% endif %}
+  <a class="btn secondary" href="/learn" style="margin-top:8px">回阅读页，自己挑</a>
+</section>
+{% if skip %}
+  <div class="card" style="margin-top:16px">
+    <h3>先不必做</h3>
+    <ul>{% for s in skip %}<li>{{ s }}</li>{% endfor %}</ul>
+  </div>
+{% endif %}
+{% endblock %}
